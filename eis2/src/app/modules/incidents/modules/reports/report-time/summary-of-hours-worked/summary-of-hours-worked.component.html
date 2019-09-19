@@ -1,0 +1,64 @@
+<div class="main-card">
+  <h5 style="font-weight: 600; padding-left: 10px; font-size: 19px">Summary Of Hours Worked</h5>
+  <div class="card-body">
+    <div class="date-box">
+      <label class="label-header">Select Date Range</label>
+      <span class="label-input">Start Date <span class="ast">*</span></span>
+      <app-eis-datepicker class="time-input" #startDate></app-eis-datepicker>
+      &nbsp;
+      <span class="label-input">End Date <span class="ast">*</span></span>
+      <app-eis-datepicker class="time-input" #endDate></app-eis-datepicker>
+    </div>
+    <div class="radio-box">
+      <label><input type="radio" name="isAllResources" [(ngModel)]="allResourcesOrSpecificResources" value="isAllResources">All Resources</label>
+      <label><input type="radio" name="isAllResources" [(ngModel)]="allResourcesOrSpecificResources" value="isSpecificResources">Specific Resource</label>
+    </div>
+    <div style="display: flex">
+      <div class="option-box" *ngIf="allResourcesOrSpecificResources == 'isAllResources'">
+        <label class="label-header">Group By</label>
+        <div style="display: flex">
+          <div class="columns-display">
+            <label><input type="radio" name="groupBy" [(ngModel)]="noneOrSection" value="isNonGroupBy">None</label>
+            <label><input type="radio" name="groupBy" [(ngModel)]="noneOrSection" value="isSection">Section</label>
+          </div>
+          <div class="option-box columns-display" *ngIf="noneOrSection != 'isNonGroupBy'">
+            <div *ngFor="let section of sections"><label class="pl-10 chckbox-lbl"><input type="checkbox" class="chckbox" name="sections"
+                (change)="section.checked = !section.checked"
+                value={{section.value}}
+                [checked]="section.checked">{{section.value}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="option-box" *ngIf="allResourcesOrSpecificResources == 'isAllResources' && noneOrSection == 'isSection'">
+        <label class="label-header">Sort By</label>
+        <label><input type="radio" name="sortBy" [(ngModel)]="sortBy" value="isSortByShifStartDate">Shift Start Date</label>
+        <label><input type="radio" name="sortBy" [(ngModel)]="sortBy" value="isSortByRequestNum">Request Number</label>
+        <label><input type="radio" name="sortBy" [(ngModel)]="sortBy" value="isSortByResourceName">Name</label>
+      </div>
+      <div class="option-box" *ngIf="allResourcesOrSpecificResources != 'isAllResources'">
+        <div class="spc-res">
+          <span>Request Number<span class="ast">*</span></span>
+          <select class="date-input" type="text" [(ngModel)]="resourceIdSelected">
+            <option *ngFor="let option of requestNumbers" value="{{option.resourceId}}">{{option.label}}</option>
+          </select>
+        </div>
+        <div class="spc-res">
+          <span>Resource Name<span class="ast">*</span></span>
+          <select class="date-input" type="text" [(ngModel)]="resourceIdSelected">
+            <option *ngFor="let option of resourceNames" value="{{option.resourceId}}">{{option.label}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex;align-items: center; margin-top: 10px">
+        <label class="chckbox-lbl"><input type="checkbox" class="chckbox"
+          (change)="this.summaryHoursWorkedReportFilter.isExcludeDemob = !this.summaryHoursWorkedReportFilter.isExcludeDemob"
+          [checked]="this.summaryHoursWorkedReportFilter.isExcludeDemob">Exclude Demob/Reassigned</label>
+    </div>
+    <div class="btn-box">
+      <button type="button" class="btn btn-default" (click)="generateReport()" title="Click to generate Summary Of Hours Worked Report">Preview/Print</button>
+    </div>
+  </div>
+</div>
+<app-prompt-modal id="promptModal" #promptModal  (promptActionEvent)="promptActionResult($event)"></app-prompt-modal>

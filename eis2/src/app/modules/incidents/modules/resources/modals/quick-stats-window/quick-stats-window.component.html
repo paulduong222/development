@@ -1,0 +1,64 @@
+<app-jw-modal id="quick-stats-window-modal" style="display: none;" class="box-hdr-dv">
+    <div style="width: 750px; height: 520px;padding: 0px;">
+       <div class="w3-container w3-padding-small w3-theme-d2">
+          <div class="w3-left">{{ this.windowLabel }}</div>
+       </div>
+       <br>
+       <div class="w3-left" style="margin-left: 5px;height: 450px; width: 360px; border: 1px solid darkgray;">
+          <label style="margin-left: 5px; font: 14px Helvetica,Arial,sans-serif;"><b>Resources</b></label>
+          <div style="height:300px; width: 99%">
+              <app-eis-grid
+              [floatingFilter]="false"
+              [rowData]="this.resourceData"
+              [columnDefs]="this.resourceColumnDefs"
+             ></app-eis-grid>
+          </div>
+          <div class="eis">
+            <div>
+              <table>
+                <tr>
+                  <td class="frmlbl"><label><b>Number of Personnel</b></label></td>
+                  <td><label class="ml-20"><b>{{ this.numberOfPersonnelCount }}</b></label></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+       </div>
+       <div class="w3-left" style="margin-left: 5px;height: 450px; width: 360px; border: 1px solid darkgray;">
+          <label style="margin-left: 5px; font: 14px Helvetica,Arial,sans-serif;"><b>Totals</b></label>
+          <div style="height:300px; width: 99%">
+              <app-eis-grid
+              [floatingFilter]="false"
+              [rowData]="this.totalsData"
+              [columnDefs]="this.totalsColumnDefs"
+             ></app-eis-grid>
+          </div>
+          <div class="eis">
+              <div>
+                <table>
+                  <tr>
+                    <td class="frmlbl"><label><b>Filled Resources</b></label></td>
+                    <td><label class="ml-20"><b>{{ this.filledResourcesCount }}</b></label></td>
+                  </tr>
+                  <tr>
+                      <td class="frmlbl"><label><b>Checked-In/Pending Resources</b></label></td>
+                      <td><label class="ml-20"><b>{{ this.checkedInPendingCount }}</b></label></td>
+                    </tr>
+                  <tr>
+                      <td class="frmlbl"><label><b>Released Resources</b></label></td>
+                      <td><label class="ml-20"><b>{{ this.releasedCount }}</b></label></td>
+                    </tr>
+                  <tr>
+                      <td class="frmlbl"><label><b>Total Orders</b></label></td>
+                      <td><label class="ml-20"><b>{{ this.totalOrdersCount }}</b></label></td>
+                    </tr>
+                </table>
+              </div>
+            </div>
+       </div>
+   </div>
+   <div class="dv-action-bar w3-small w3-center">
+     <button (click)="this.update()" title="Click to update Quick Stats">Update</button>
+     <button (click)="this.closeModal();" title="Click to cancel changes and close window">Close</button>
+   </div>
+</app-jw-modal>

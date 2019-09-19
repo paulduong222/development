@@ -1,0 +1,60 @@
+package gov.nwcg.isuite.framework.types;
+
+/**
+ * See ApplicationNavigationEvent.as
+ */
+public enum ApplicationNavigationTypeEnum {
+
+	APPLICATION_NAVIGATION("ApplicationNavigationEvent"),
+	
+	DEST_USER_ACCOUNTS("applicationNavigationEvent_destinationUserAccounts"),
+	DEST_USER_ACCOUNTS_ADD_EDIT("applicationNavigationEvent_destinationUserAccountsAddEdit"),
+	DEST_USER_GROUPS("applicationNavigationEvent_destinationUserGroups"),
+	DEST_USER_GROUPS_ADD("applicationNavigationEvent_destinationUserGroupsAdd"),
+	DEST_INCIDENT_MANAGE("applicationNavigationEvent_destinationIncidentManage"),
+	DEST_INCIDENT_SETUP("applicationNavigationEvent_destinationIncidentSetup"),
+	DEST_INCIDENT_ADD("applicationNavigationEvent_destinationIncidentAdd"),
+	DEST_INCIDENT_GROUPS_MANAGE("applicationNavigationEvent_destinationIncidentGroupsManage"),
+	DEST_INCIDENT_GROUPS_ADD_EDIT("applicationNavigationEvent_destinationIncidentGroupsAddEdit"), 
+	DEST_WORK_AREA_ADD("applicationNavigationEvent_destinationWorkAreaAdd"),
+	DEST_WORK_AREA("applicationNavigationEvent_destinationWorkArea"),
+	DEST_TOOLS_SETTINGS_AND_PREFERENCES("applicationNavigationEvent_destinationSettingsAndPreferences"),
+	DEST_TOOLS_OPTIONS("applicationNavigationEvent_destinationToolsOptions"),
+	DEST_MANAGE_INCIDENT_RESOURCES("applicationNavigationEvent_destinationManageIncidentResources"),
+	DEST_WORK_AREA_RESOURCES("applicationNavigationEvent_destinationWorkAreaResources"),
+	DEST_WORK_AREA_RESOURCE_ADD("applicationNavigationEvent_destinationWorkAreaResourceAdd"),
+	DEST_WORK_AREA_RESOURCE_INCIDENT_ASSIGNMENT("applicationNavigationEvent_destinationWorkAreaResourceIncidentAssignment"),
+	DEST_WORK_AREA_RESOURCE_ROSTER_RESOURCES("applicationNavigationEvent_destinationWorkAreaResourceRosterResources"),
+	DEST_TOOLS_REFERENCE_DATA("applicationNavigationEvent_destinationReferenceData"),
+	DEST_REPORTS_PLANS("applicationNavigationEvent_destinationReportsPlans"),
+	DEST_REPORTS_TIME("applicationNavigationEvent_destinationReportsTime"),
+	DEST_TIME_POST("applicationNavigationEvent_destinationTimePost"),
+	DEST_TIME_ADMIN_OFFICES("applicationNavigationEvent_destinationTimeAdminOffices"),
+	DEST_QUICK_STATS("applicationNavigationEvent_destinationQuickStats"),
+	DEST_TIME_INCIDENT_CONTRACTORS("applicationNavigationEvent_destinationTimeIncidentContractors"),
+	DEST_MANAGE_CONTRACTORS("applicationNavigationEvent_destinationManageContractors"),
+	DEST_TIME_ADD_EDIT_CONTRACTORS_COOPERATORS("applicationNavigationEvent_destinationTimeAddEditContractorsCooperators"),
+	//DEST_TIME_ASSIGN_CONTRACTORS_COOPERATORS_TO_INCIDENT("applicationNavigationEvent_destinationTimeAssignContractorsCooperatorsToIncident"),
+	DEST_SYSTEM_ROLES("applicationNavigationEvent_destinationSystemRoles"),
+	DEST_SYSTEM_PARAMETERS("applicationNavigationEvent_destinationSystemParameters"),
+	DEST_ROSS_IMPORT("applicationNavigationEvent_destinationRossImport"),
+	
+	DEST_ABOUT_EISUITE("applicationNavigationEvent_destinationAboutEisuite"),
+	DEST_LOGOUT_EISUITE("applicationNavigationEvent_destinationLogoutEisuite"),
+	DEST_HOME("applicationNavigationEvent_destinationHome"),
+	DEST_CHANGE_PASSWORD("applicationNavigationEvent_destinationChangePassword"),
+	DEST_USER_SESSION_MANAGEMENT("applicationNavigationEvent_destinationUserSessionManagement"),
+	DEST_DISCONNECT_USERS("applicationNavigationEvent_destinationDisconnectUsers"),
+	//FOR TESTING
+	DEST_MJG_TEST_MODULE("applicationNavigationEvent_destinationMjgTestModule");
+
+	private final String navigationDestination;
+
+	public String getNavigationDestination() {
+		return this.navigationDestination;
+	}
+
+	ApplicationNavigationTypeEnum(String navigationDestination) {
+		this.navigationDestination = navigationDestination;
+	}
+}

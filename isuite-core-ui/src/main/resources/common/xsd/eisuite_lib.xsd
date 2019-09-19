@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://isuite.nwcg.gov/lib"
+		    xmlns="http://isuite.nwcg.gov/lib"
+		    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		    elementFormDefault="qualified"
+		    attributeFormDefault="unqualified"
+		    version="1.0">
+
+	<xsd:simpleType name="SystemRoleType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express a System Role.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="ROLE_ACCOUNT_ADMINISTRATOR"/>
+			<xsd:enumeration value="ROLE_ACCOUNT_MANAGER"/>
+			<xsd:enumeration value="ROLE_CHECKIN_DEMOB"/>
+			<xsd:enumeration value="ROLE_COST"/>
+			<xsd:enumeration value="ROLE_DATA_STEWARD"/>
+			<xsd:enumeration value="ROLE_IAP"/>
+			<xsd:enumeration value="ROLE_INJURY_ILLNESS"/>
+			<xsd:enumeration value="ROLE_SUPPLY_SUPERVISOR"/>
+			<xsd:enumeration value="ROLE_SUPPLY_CLERK"/>
+			<xsd:enumeration value="ROLE_SUPPLY_COMMUNICATIONS"/>
+			<xsd:enumeration value="ROLE_SYNC_MANAGER"/>
+			<xsd:enumeration value="ROLE_TIME"/>
+			<xsd:enumeration value="ROLE_HELP_DESK"/>
+			<xsd:enumeration value="ROLE_GLOBAL_DATA_MANAGER"/>
+			<xsd:enumeration value="ROLE_GLOBAL_REF_DATA_MANAGER"/>
+			<xsd:enumeration value="ROLE_GEOGRAPHIC_DATA_MANAGER"/>
+			<xsd:enumeration value="ROLE_REPORT"/>
+			<xsd:enumeration value="ROLE_TRAINING_SPECIALIST"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+		    
+	<xsd:complexType name="UserType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express an Account User.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="LoginName" type="xsd:string" minOccurs="1"/>
+			<xsd:element name="FirstName" type="xsd:string" minOccurs="1"/>
+			<xsd:element name="LastName" type="xsd:string" minOccurs="1"/>
+			<xsd:element name="HomeUnitCode" type="xsd:string" minOccurs="1"/>
+			<xsd:element name="PrimaryDispatchCenterCode" type="xsd:string" minOccurs="1"/>
+			<xsd:element name="Email" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="WorkPhone" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CellPhone" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Role" type="SystemRoleType" minOccurs="1" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ResourceType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express an Resource.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ResourceName" type="xsd:string"/>
+			<xsd:element name="FirstName" type="xsd:string"/>
+			<xsd:element name="LastName" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="AssignmentType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express an Assignment.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Status" type="xsd:string" maxOccurs="1"/>
+			<xsd:element name="KindCode" type="xsd:string" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="WorkPeriodType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express a Work Period.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CheckInDate" type="xsd:date" maxOccurs="1"/>
+			<xsd:element name="FirstWorkDate" type="xsd:date" maxOccurs="1"/>
+			<xsd:element name="Assignment" type="AssignmentType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="IncidentResourceType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express an Incident Resource.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Resource" type="ResourceType" maxOccurs="1"/>
+			<xsd:element name="WorkPeriod" type="WorkPeriodType" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="IncidentType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express an Incident.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string" />
+			<xsd:element name="Number" type="xsd:string" />
+			<xsd:element name="Description" type="xsd:string" />
+			<xsd:element name="CountrySubdivisionCode" type="xsd:string"/>
+			<xsd:element name="UnitCode" type="xsd:string"/>
+			<xsd:element name="AgencyCode" type="xsd:string"/>
+			<xsd:element name="StartDate" type="xsd:date"/>
+			<xsd:element name="EventTypeCode" type="xsd:string"/>
+			<xsd:element name="Year" type="xsd:string"/>
+			<xsd:element name="Restricted" type="xsd:boolean"/>
+			<xsd:element name="IncidentResource" type="IncidentResourceType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

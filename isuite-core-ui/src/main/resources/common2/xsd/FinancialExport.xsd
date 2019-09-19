@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://isuite.nwcg.gov/FinancialExport"
+		    xmlns:fe="http://isuite.nwcg.gov/FinancialExport"
+		    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		    elementFormDefault="qualified"
+		    attributeFormDefault="unqualified"
+		    version="1.0">
+		    
+	<xsd:element name="ISuiteExport">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="IncidentNumber" type="xsd:string"/>
+				<xsd:element name="IncidentStartDate" type="xsd:string"/>
+				<xsd:element name="ExportDateTime" type="xsd:string"/>
+				<xsd:element name="DBIncidents" type="fe:DBIncidentsType" maxOccurs="unbounded"/>
+				<xsd:element name="Accruals" type="fe:AccrualsType" maxOccurs="unbounded"/>
+				<xsd:element name="ISuiteInvoice286" type="fe:ISuiteInvoice286Type" maxOccurs="unbounded"/>
+				<xsd:element name="Invoice288" type="fe:Invoice288Type" maxOccurs="unbounded"/>
+			</xsd:sequence>	
+		</xsd:complexType>
+	</xsd:element>	
+	
+	<xsd:complexType name="DBIncidentsType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string"/>
+			<xsd:element name="Number" type="xsd:string"/>
+			<xsd:element name="StartDate" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>   
+	
+	<xsd:complexType name="AccrualsType">
+		<xsd:sequence>
+			<xsd:element name="AccrualHeaderID" type="xsd:long"/>
+			<xsd:element name="CaptureDate" type="xsd:string"/>
+			<xsd:element name="CaptureTime" type="xsd:string"/>
+			<xsd:element name="PreparedByName" type="xsd:string"/>
+			<xsd:element name="PreparedByPhone" type="xsd:string"/>
+			<xsd:element name="Incidents" type="fe:IncidentsType" maxOccurs="unbounded"/>
+			<xsd:element name="AccountingCodeSummary" type="fe:AccountingCodeSummaryType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>   
+	
+	<xsd:complexType name="IncidentsType">
+		<xsd:sequence>
+			<xsd:element name="IncidentName" type="xsd:string"/>
+			<xsd:element name="IncidentNumber" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>   
+	
+	<xsd:complexType name="AccountingCodeSummaryType">
+		<xsd:sequence>
+			<xsd:element name="AccountingCode" type="xsd:string"/>
+			<xsd:element name="SubTotalAmount" type="xsd:decimal"/>
+			<xsd:element name="SubPrevAmount" type="xsd:decimal"/>
+			<xsd:element name="SubChangeAmount" type="xsd:decimal"/>
+			<xsd:element name="RCLineSummary" type="fe:RCLineSummaryType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>   
+	
+	<xsd:complexType name="RCLineSummaryType">
+		<xsd:sequence>
+			<xsd:element name="RCLineNumber" type="xsd:string"/>
+			<xsd:element name="RCLineDescription" type="xsd:string"/>
+			<xsd:element name="RCLineTotalAmount" type="xsd:decimal"/>
+			<xsd:element name="RCLinePrevAmount" type="xsd:decimal"/>
+			<xsd:element name="RCLineChangeAmount" type="xsd:decimal"/>
+			<xsd:element name="AccrualCode" type="xsd:string"/>
+			<xsd:element name="AccrualDetail" type="fe:AccrualDetailType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>   
+	
+	<xsd:complexType name="AccrualDetailType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string" />
+			<xsd:element name="RequestNumber" type="xsd:string"/>
+			<xsd:element name="KindCode" type="xsd:string"/>
+			<xsd:element name="HomeUnitCode" type="xsd:string"/>
+			<xsd:element name="TotalAmount" type="xsd:decimal"/>
+			<xsd:element name="PrevAmount" type="xsd:decimal"/>
+			<xsd:element name="ChangeAmount" type="xsd:decimal"/>
+		</xsd:sequence>
+	</xsd:complexType>   
+	
+	<xsd:complexType name="ISuiteInvoice286Type">
+		<xsd:sequence>
+			<xsd:element name="InvoiceID" type="xsd:string"/>
+			<xsd:element name="BeginDate" type="xsd:string"/>
+			<xsd:element name="EndDate" type="xsd:string"/>
+			<xsd:element name="OfficialNum" type="xsd:string"/>
+			<xsd:element name="InvoiceReason" type="xsd:string"/>
+			<xsd:element name="ContractorName" type="xsd:string"/>
+			<xsd:element name="ContractorAddress1" type="xsd:string"/>
+			<xsd:element name="ContractorAddress2" type="xsd:string"/>
+			<xsd:element name="ContractorCity" type="xsd:string"/>
+			<xsd:element name="ContractorState" type="xsd:string"/>
+			<xsd:element name="ContractorZip" type="xsd:string"/>
+			<xsd:element name="AgreementNum" type="xsd:string"/>
+			<xsd:element name="AgreementBegDt" type="xsd:string"/>
+			<xsd:element name="AgreementExpDt" type="xsd:string"/>
+			<xsd:element name="ResourceKindDescription" type="xsd:string"/>
+			<xsd:element name="UniqueName" type="xsd:string"/>
+			<xsd:element name="Make" type="xsd:string"/>
+			<xsd:element name="Model" type="xsd:string"/>
+			<xsd:element name="PointOfHire" type="xsd:string"/>
+			<xsd:element name="HireDate" type="xsd:string"/>
+			<xsd:element name="HireTime" type="xsd:string"/>
+			<xsd:element name="AdminOffice" type="xsd:string"/>
+			<xsd:element name="AdminOfficeAddress1" type="xsd:string"/>
+			<xsd:element name="AdminOfficeAddress2" type="xsd:string"/>
+			<xsd:element name="AdminOfficeCity" type="xsd:string"/>
+			<xsd:element name="AdminOfficeState" type="xsd:string"/>
+			<xsd:element name="AdminOfficeZip" type="xsd:string"/>
+			<xsd:element name="GovtSuppliesYN" type="xsd:string"/>
+			<xsd:element name="GovtOperatorYN" type="xsd:string"/>
+			<xsd:element name="RequestNumber" type="xsd:string"/>
+			<xsd:element name="ReleaseDate" type="xsd:string"/>
+			<xsd:element name="ReleaseTime" type="xsd:string"/>
+			<xsd:element name="Withdrawn" type="xsd:string"/>
+			<xsd:element name="Remarks" type="xsd:string"/>
+			<xsd:element name="TotalDeductions" type="xsd:decimal"/>
+			<xsd:element name="TotalAdditions" type="xsd:decimal"/>
+			<xsd:element name="AdjustmentDetail286" type="fe:AdjustmentDetail286Type" maxOccurs="unbounded"/>
+			<xsd:element name="Invoice286" type="fe:Invoice286Type"/>
+		</xsd:sequence>
+	</xsd:complexType>  
+	
+	 <xsd:complexType name="AdjustmentDetail286Type">
+		<xsd:sequence>
+			<xsd:element name="AdjustmentDate" type="xsd:string"/>
+			<xsd:element name="Description" type="xsd:string"/>	
+			<xsd:element name="DeductionAmount" type="xsd:decimal"/>
+			<xsd:element name="AdditionAmount" type="xsd:decimal"/>
+		</xsd:sequence>
+	</xsd:complexType>   
+	
+	<xsd:complexType name="Invoice286Type">
+		<xsd:sequence>
+			<xsd:element name="InvoiceNumber" type="xsd:string"/>
+			<xsd:element name="IncidentName" type="xsd:string"/>
+			<xsd:element name="IncidentNumber" type="xsd:string"/>
+			<xsd:element name="AcctCodeSummary286" type="fe:AcctCodeSummary286Type" maxOccurs="unbounded"/>	
+		</xsd:sequence>
+	</xsd:complexType>   
+	
+	<xsd:complexType name="AcctCodeSummary286Type">
+		<xsd:sequence>
+			<xsd:element name="AccountingCode" type="xsd:string"/>
+			<xsd:element name="AccountingCodeTotals" type="xsd:decimal"/>
+			<xsd:element name="PostingSummary286" type="fe:PostingSummary286Type" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>  
+	
+	<xsd:complexType name="PostingSummary286Type">
+		<xsd:sequence>
+			<xsd:element name="TotalAmountEarned" type="xsd:decimal"/>
+			<xsd:element name="Guarantee" type="xsd:decimal"/>
+			<xsd:element name="PostTotal" type="xsd:decimal"/>
+			<xsd:element name="ActivityDate" type="xsd:string"/>
+			<xsd:element name="PostingDetail286" type="fe:PostingDetail286Type" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>   
+	
+	<xsd:complexType name="PostingDetail286Type">
+		<xsd:sequence>
+			<xsd:element name="StartTime" type="xsd:string"/>
+			<xsd:element name="StopTime" type="xsd:string"/>
+			<xsd:element name="NumberOfUnits" type="xsd:string"/>
+			<xsd:element name="UnitOfMeasure" type="xsd:string"/>
+			<xsd:element name="Rate" type="xsd:decimal"/>
+			<xsd:element name="Amount" type="xsd:decimal"/>
+			<xsd:element name="SStartTime" type="xsd:string"/>
+			<xsd:element name="SStopTime" type="xsd:string"/>
+			<xsd:element name="SNumberOfUnits" type="xsd:string"/>
+			<xsd:element name="SUnitOfMeasure" type="xsd:string"/>
+			<xsd:element name="SRate" type="xsd:decimal"/>
+			<xsd:element name="SAmount" type="xsd:decimal"/>
+			<xsd:element name="Guarantee" type="xsd:decimal"/>
+		</xsd:sequence>
+	</xsd:complexType>   
+	
+	<xsd:complexType name="Invoice288Type">
+		<xsd:sequence>
+		    <xsd:element name="InvoiceID" type="xsd:string"/>
+			<xsd:element name="InvoiceNumber" type="xsd:string"/>
+			<xsd:element name="ECI" type="xsd:string"/>
+			<xsd:element name="PointOfHire" type="xsd:string"/>	
+			<xsd:element name="FirstName" type="xsd:string"/>	
+			<xsd:element name="LastName" type="xsd:string"/>
+			<xsd:element name="AdjustmentSummary288" type="fe:AdjustmentSummary288Type" maxOccurs="unbounded"/>
+			<xsd:element name="PostingSummary288" type="fe:PostingSummary288Type" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType> 
+	
+	<xsd:complexType name="AdjustmentSummary288Type">
+		<xsd:sequence>
+			<xsd:element name="AdjustmentCategory" type="xsd:string"/>
+			<xsd:element name="AdjustmentAmountSummary" type="xsd:decimal"/>
+			<xsd:element name="AdjustmentDate" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>  
+	
+	<xsd:complexType name="PostingSummary288Type">
+		<xsd:sequence>
+			<xsd:element name="IncidentNumber" type="xsd:string"/>
+			<xsd:element name="AccountingCode" type="xsd:string"/>
+			<xsd:element name="ClassCode" type="xsd:string"/>
+			<xsd:element name="ClassRate" type="xsd:string"/>
+			<xsd:element name="KindCode" type="xsd:string"/>
+			<xsd:element name="PostingYear" type="xsd:string"/>
+			<xsd:element name="PostingDetail288" type="fe:PostingDetail288Type" maxOccurs="unbounded"/>	
+		</xsd:sequence>
+	</xsd:complexType>  
+	
+	<xsd:complexType name="PostingDetail288Type">
+		<xsd:sequence>
+			<xsd:element name="ActivityDate" type="xsd:string"/>
+			<xsd:element name="StartTime" type="xsd:string"/>
+			<xsd:element name="StopTime" type="xsd:string"/>
+			<xsd:element name="SpecialPayCode" type="xsd:string"/>
+			<xsd:element name="ReportOrder" type="xsd:string"/>
+			<xsd:element name="ColumnNumber" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>       
+	
+</xsd:schema>
+

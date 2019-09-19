@@ -1,0 +1,165 @@
+<div>
+  <form [formGroup]="compForm" autocomplete="off" onsubmit="">
+    <div class="eis">
+      <!--
+
+      <div class="split-example">
+        <as-split direction="vertical">
+          <as-split-area [size]="splitAreaTopSize">
+      -->
+      <div>
+        <table>
+              <tr>
+                <td>
+                  <!-- Column 1 -->
+                  <table>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txZoneGroup">Zone Group</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                          <app-text-input id="txZoneGroup" name="txZoneGroup"
+                           allowSpace="true" formControlName="zoneGroup"
+                          width="200" maxlength="50"></app-text-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="ddFunctionType">Function</label></td>
+                        <td><label class="ast">*</label></td>
+                        <td>
+                          <app-eis-dropdown id="ddFunctionType" #ddFunctionType
+                          formControlName="sfunction"
+                          [width]="180"
+                          [selectedDropdownData]="this.functionTypeDropdownData"
+                          [dropdownData]="this.functionTypeData"></app-eis-dropdown>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txChanNum">Channel #</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                          <app-text-input id="txChanNum" name="txChanNum"
+                          formControlName="channel"
+                          width="200" maxlength="50" allowSpace="true"></app-text-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txChanName">Channel Name</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                          <app-text-input id="txChanName" name="txChanName"
+                          formControlName="channelName"
+                          width="200" maxlength="50" allowSpace="true"></app-text-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txAssign">Assignment</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                          <app-text-input id="txAssign" name="txAssign"
+                          formControlName="assignment"
+                          width="200" maxlength="30" allowSpace="true"></app-text-input>
+                        </td>
+                    </tr>
+                  </table>
+                </td>
+                <td>
+                      <!-- Column 2 -->
+                      <table>
+                          <tr>
+                              <td class="frmlbl"><label class="f1" for="txRxFreqNW">RX Freq N or W</label></td>
+                              <td><label class="ast"></label></td>
+                              <td>
+                                <app-text-input id="txRxFreqNW" name="txRxFreqNW"
+                                formControlName="frequencyRx"
+                                 width="150" maxlength="20" allowSpace="true"></app-text-input>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="frmlbl"><label class="f1" for="txRxToneNac">RX Tone/NAC</label></td>
+                              <td><label class="ast"></label></td>
+                              <td>
+                                <app-text-input id="txRxToneNac" name="txRxToneNac"
+                                formControlName="toneRx"
+                                 width="150" maxlength="50" allowSpace="true"></app-text-input>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="frmlbl"><label class="f1" for="txTxFreqNW">TX Freq N or W</label></td>
+                              <td><label class="ast"></label></td>
+                              <td>
+                                <app-text-input id="txTxFreqNW" name="txTxFreqNW"
+                                formControlName="frequencyTx"
+                                 width="150" maxlength="20" allowSpace="true"></app-text-input>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="frmlbl"><label class="f1" for="txTxToneNac">TX Tone/NAC</label></td>
+                              <td><label class="ast"></label></td>
+                              <td>
+                                <app-text-input id="txTxToneNac" name="txTxToneNac"
+                                formControlName="toneTx"
+                                 width="150" maxlength="50" allowspace="true"></app-text-input>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="frmlbl"><label class="f1" for="ddModeType">Mode (A, D, or M)</label></td>
+                              <td><label class="ast"></label></td>
+                              <td>
+                                <app-eis-dropdown id="ddModeType" #ddModeType
+                                formControlName="modeType"
+                                [width]="50"
+                                [selectedDropdownData]="this.modeTypeDropdownData"
+                                [dropdownData]="this.modeTypeData"></app-eis-dropdown>
+                                    </td>
+                          </tr>
+                      </table>
+                  </td>
+                  <td>
+                      <!-- Column 3 -->
+                      <table>
+                          <tr>
+                              <td class="frmlbl"><label class="f1" for="txRemarks">Remarks</label></td>
+                              <td><label class="ast"></label></td>
+                              <td>
+                                  <textarea id="txRemarks" name="txRemarks" 
+                                  allowSpace="true" maxlength="50"
+                                  formControlName="remarks"></textarea>
+                                </td>
+                          </tr>
+                      </table>
+                  </td>
+                </tr>
+            </table> 
+            </div> 
+  <!--        </as-split-area> 
+          <as-split-area [size]="splitAreaBottomSize" class="scroll-x">
+          -->
+            <div id="dv-block-action-bar" class="w3-small w3-left">
+              <button (click)="this.save()" title="Click to save the Radio Channel." [disabled]="this.isFormLocked" type="button">Save</button>
+              <button (click)="this.add()" title="Click to add a new Radio Channel." [disabled]="this.isFormLocked" type="button">Add Frequency</button>
+              <button (click)="this.delete()" title="Click to delete the Radio Channel." [disabled]="this.isFormLocked" type="button">Delete</button>
+              <button (click)="this.cancel()" title="Click to cancel changes." [disabled]="this.isFormLocked" type="button">Cancel</button>
+              <button (click)="this.openMasterFrequencies()" title="Click to add from Master Frequency List." [disabled]="this.isFormLocked" type="button">Add From Master Frequency List</button>
+              <button (click)="this.verifyFrequencies()" title="Click to verify frequencies." [disabled]="this.isFormLocked" type="button">Verify Frequencies</button>
+              <button (click)="this.preAddBlankLine()" title="Click to add a blank line." [disabled]="this.isFormLocked" type="button">Add Blank Line</button>
+              <button (click)="this.reorder()" title="Click to re-order frequencies." [disabled]="this.isFormLocked" type="button">Re-Order Frequencies</button>
+            </div>
+            <div class="w3-left" style="height: 37vh; width: 100%;">
+                  <app-eis-grid #gridFrequency
+                  [floatingFilter]="false"
+                  [columnDefs]="this.gridColumnDefs"
+                  [rowData]="this.frequencyList" 
+                  (rowSelectEvent)="onSelectFrequencyRow($event)">
+                  </app-eis-grid>
+            </div>
+          <!--
+          </as-split-area>
+        </as-split>
+        </div>
+          -->
+    </div>
+ </form>
+</div>
+<app-prompt-modal id="icsForm205PromptModal" #icsForm205PromptModal (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>
+<app-master-frequency-window #masterFrequencyWindow
+  (saveFreqEvent)="this.saveFreqEvent()"></app-master-frequency-window>

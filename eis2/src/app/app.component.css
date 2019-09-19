@@ -1,0 +1,19 @@
+#dv-app-hdr {
+	background-color: #6183A6;
+	color: white;
+	font-weight: bold;
+	font-size: 8px;
+	height: 4%;
+}
+.hdr-lbl1 {
+	margin-top:5px;
+	padding-left:10px;
+}
+.hdr-lbl2 {
+	margin-top:5px;
+	padding-left:40px;
+}
+.hdr-lbl3 {
+	margin-top:5px;
+	padding-left:15px;
+}

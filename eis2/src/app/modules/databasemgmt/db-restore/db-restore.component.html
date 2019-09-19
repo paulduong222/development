@@ -1,0 +1,53 @@
+<h4 class="w3-theme-l3 w3-center mb-20" style="margin-left: 10px; margin-right:10px;">
+    <strong>Restore Database As</strong>
+  </h4>
+    
+  <div class="fs-12 ml-20 mb-10"> 
+  <form [formGroup]="dbForm">
+    <div class="mb-10">
+      <strong>
+        Restore Information
+      </strong>
+    </div>
+    <div class="border-solid-dkg-1 vw-98-p p-20 mb-20">
+      <table>
+        <tr>
+          <td class="frmlbl"><label for="txRestoreFrom">Restore From</label></td>
+          <td><label class="ast">*</label></td>
+          <td>
+              <input type="file" formControlName="restoreFrom" (change)="onFileChange($event)" id="txRestoreFrom" name="txRestoreFrom" >
+              <!--
+              <input formControlName="restoreFrom" id="txRestoreFrom" name="txRestoreFrom" type="text" style="width:260px;">
+            <input type="file"/>
+            <img class="ml-8" src="assets/images/magnifyingGlass.png">
+              -->
+            </td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label for="txDatabase">Restore as Database</label></td>
+          <td><label class="ast">*</label></td>
+          <td>
+            <app-text-input formControlName="database" id="txDatabase" name="txDatabase" type="text" 
+              width="208" maxlength="64" restrict2="a-z,A-Z,_,0-9"></app-text-input>
+            <label class="ml-8">(Database Name MUST begin with an Alpha character.)</label>
+          </td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label for="txDPassword">Database Password</label></td>
+          <td><label class="ast">*</label></td>
+          <td>
+           <app-text-input formControlName="dpassword" id="txDPassword" name="txDPassword" type="password" 
+              width="208" maxlength="35"></app-text-input>
+            </td>
+        </tr>
+      </table>
+    </div>
+  
+    <div class="button-action-bar">
+      <strong>
+        <button (click)="this.restore()" title="Click to restore the database">Restore</button>
+        <button (click)="this.cancel()" title="Click to cancel changes">Cancel</button>
+      </strong>
+    </div>
+    </form>
+  </div>

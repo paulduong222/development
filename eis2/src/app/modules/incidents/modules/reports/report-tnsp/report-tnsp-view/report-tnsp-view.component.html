@@ -1,0 +1,36 @@
+<div class="dv-module-sub-nav-bar">
+  <div class="btn-group-sub-menu">
+    <button routerLink="/incidents/reports/plans">Plans Reports</button>	
+    <button routerLink="/incidents/reports/time">Time Reports</button>	
+    <button routerLink="/incidents/reports/cost">Cost Reports</button>	
+    <button routerLink="/incidents/reports/training" class="btn-selected" title="Click to access the Training Specialist Reports area.">Training Specialist Reports</button>	
+    <button routerLink="/incidents/reports/custom">Custom Reports</button>	
+  </div>
+</div>
+<div style="display: flex" id="dv-mod-view">
+  <div id="dv-tnsp-rpt-left" class="w3-left">
+    <label class="lbl-hdr">Incident Reports</label>
+    <div><button (click)="selectReport('TRAINING_ASSIGNMENTS_LIST');" [class]="buttonClass('TRAINING_ASSIGNMENTS_LIST')" title="Click to access the Training Assignments area.">Training Assignments List</button></div>
+    <div><button (click)="selectReport('INCIDENT_TRAINING_SUMMARY');" [class]="buttonClass('INCIDENT_TRAINING_SUMMARY')" title="Click to access the Incident Training Summary area.">Incident Training Summary</button></div>
+    <label class="lbl-hdr">Blank Forms</label>
+    <div><button (click)="selectReport('DATA_FORM');" [class]="buttonClass('DATA_FORM')" title="Click to access the Data Form area.">Data Form</button></div>
+    <div><button (click)="selectReport('EVALUATOR_FORM');" [class]="buttonClass('EVALUATOR_FORM')" title="Click to access the Evaluator Form area.">Evaluator Form</button></div>
+    <div><button (click)="selectReport('PERFORMANCE_EVALUATION');" [class]="buttonClass('PERFORMANCE_EVALUATION')" title="Click to access the Performance Evaluation area.">Performance Evaluation</button></div>
+    <div><button (click)="selectReport('HOME_UNIT_LETTER');" [class]="buttonClass('HOME_UNIT_LETTER')" title="Click to access the Home Unit Letter area.">Home Unit Letter</button></div>
+    <div><button (click)="selectReport('EXIT_INTERVIEW');" [class]="buttonClass('EXIT_INTERVIEW')" title="Click to access the Exit Interview area.">Exit Interview</button></div>
+    <label class="lbl-hdr">Labels</label>
+    <div><button (click)="selectReport('HOME_UNIT_CONTACT_LABELS');" [class]="buttonClass('HOME_UNIT_CONTACT_LABELS')" title="Click to access the Home Unit Contact Labels area.">Home Unit Contact Labels</button></div>
+   
+  </div>
+  <div id="dv-tnsp-rpt-right" class="w3-left">
+    <app-training-assignments-list #talRpt *ngIf="this._selectedReport === 'TRAINING_ASSIGNMENTS_LIST'"></app-training-assignments-list>
+    <app-incident-training-summary #itsRpt *ngIf="this._selectedReport === 'INCIDENT_TRAINING_SUMMARY'"></app-incident-training-summary>
+    <app-data-form *ngIf="this._selectedReport === 'DATA_FORM'"></app-data-form>
+    <app-evaluator-form *ngIf="this._selectedReport === 'EVALUATOR_FORM'"></app-evaluator-form>
+    <app-performance-evaluation *ngIf="this._selectedReport === 'PERFORMANCE_EVALUATION'"></app-performance-evaluation>
+    <app-home-unit-letter *ngIf="this._selectedReport === 'HOME_UNIT_LETTER'"></app-home-unit-letter>
+    <app-exit-interview *ngIf="this._selectedReport === 'EXIT_INTERVIEW'"></app-exit-interview>
+    <app-home-unit-contact-labels #huclRpt *ngIf="this._selectedReport === 'HOME_UNIT_CONTACT_LABELS'"></app-home-unit-contact-labels>
+  </div>
+</div>
+

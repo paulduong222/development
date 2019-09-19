@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MissingDaysOfPostingsSubReport" columnCount="2" pageWidth="595" pageHeight="840" columnWidth="296" leftMargin="0" rightMargin="2" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="3e676d0f-a25c-4f7a-91a2-697adb566dc7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="resourceName" class="java.lang.String"/>
+	<field name="postingDate" class="java.lang.String"/>
+	<field name="requestNumber" class="java.lang.String"/>
+	<field name="postingDateChar" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="20" splitType="Immediate">
+			<staticText>
+				<reportElement uuid="0b0eecf9-f830-432d-9340-e42dc6c89920" mode="Opaque" x="85" y="0" width="104" height="20" backcolor="#CCFFCC"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc0e7079-edb6-4081-a11f-fddf14b4e0c2" mode="Opaque" x="189" y="0" width="65" height="20" backcolor="#CCFFCC"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d8eb0b3-6d2d-4c17-bdfb-8c1a96d38b2d" mode="Opaque" x="0" y="0" width="85" height="20" backcolor="#CCFFCC"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Request #]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="e863e422-48d9-4eff-9f00-48e4c65f1c18" x="189" y="0" width="65" height="18"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="a181f365-2b0a-466c-9d5c-8a057080a160" x="85" y="0" width="104" height="18"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="9a6605bb-76de-445b-a453-8e357675c3e0" x="0" y="0" width="85" height="18"/>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="16030ff1-a477-456c-8aa0-e916310356eb" mode="Transparent" x="189" y="0" width="65" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{postingDateChar}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="5b143a77-3f9c-496e-8622-dba5f6c4275e" stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" mode="Transparent" x="85" y="0" width="104" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{resourceName}+" "]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="360d6c06-a203-48d9-afcb-ea09942e709d" stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" mode="Transparent" x="0" y="0" width="85" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{requestNumber}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

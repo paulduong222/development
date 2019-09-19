@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="WorkRestRatioReport" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="63d517d4-92c0-4145-bf7b-db5599489520">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="row_conditional_style" backcolor="#FFFFFF">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}%2==0)]]></conditionExpression>
+			<style mode="Opaque" backcolor="#CCCCCC"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="groupByClause" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="startDate" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="endDate" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\workspaces\\e-isuite\\isuite-core\\Webroot\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="incidentTag" class="java.lang.String"/>
+	<field name="incidentId" class="java.lang.Long"/>
+	<field name="dataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<variable name="date_range" class="java.lang.String">
+		<variableExpression><![CDATA[new SimpleDateFormat("MM/dd/yyyy").format($P{startDate}) + " - " + new SimpleDateFormat("MM/dd/yyyy").format($P{endDate})]]></variableExpression>
+	</variable>
+	<variable name="current_date" class="java.lang.String">
+		<variableExpression><![CDATA[new SimpleDateFormat("MM/dd/yyyy").format(new java.util.Date())]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<group name="incident" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{incidentId}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<pageHeader>
+		<band height="72">
+			<staticText>
+				<reportElement uuid="e6ef8944-26aa-497f-95aa-0e5fe41b598a" x="225" y="45" width="65" height="25"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Item Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5730dbc4-ceed-4fb4-97d0-d10b81ae5175" x="290" y="45" width="37" height="25"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7563d219-72de-4e34-8a73-08f6adad54ef" x="327" y="45" width="130" height="25"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Shift Start Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="77230983-89c7-445a-b062-f27373f0e4b5" x="572" y="45" width="115" height="25"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hours of Rest]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="71a2c013-b4cb-48c7-81d3-00dab9a53ade" x="0" y="71" width="802" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="aae0a153-c38e-4798-914a-371011e3ff87" x="0" y="45" width="802" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="a836ac89-17c8-4274-b0e2-80773aec8910" x="457" y="45" width="115" height="25"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hours of Work]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f814891a-9a53-4912-a7b1-8bf790a2a9b0" x="60" y="45" width="165" height="25"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Resource Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c6dbf8d2-9a82-43a9-8669-9edb5bfccd14" x="0" y="45" width="60" height="25" backcolor="#999999"/>
+				<box topPadding="1" leftPadding="2" bottomPadding="1" rightPadding="1"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Request #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9269faaa-88a0-4257-b27e-74e6e2b2e4c2" mode="Transparent" x="0" y="0" width="802" height="25"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Work/Rest Ratio Report]]></text>
+			</staticText>
+			<textField evaluationTime="Group" evaluationGroup="incident" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="a6f5375f-b0de-416d-bdd4-65c35f462e24" mode="Transparent" x="0" y="25" width="405" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Incident: " + $F{incidentName} + "  " + $F{incidentTag}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="a83f7668-64a3-411e-a7bd-54d71d663465" x="687" y="45" width="115" height="25" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Hours Exceeding\nWork/Rest Ratio"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="MM/dd/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="a6f5375f-b0de-416d-bdd4-65c35f462e24" mode="Transparent" x="517" y="25" width="285" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Date Range: " + $V{date_range}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="17">
+			<subreport>
+				<reportElement uuid="6e7aa4aa-5c31-4525-9f1d-ea73e6ad3e62" x="0" y="0" width="842" height="17"/>
+				<subreportParameter name="groupByClause">
+					<subreportParameterExpression><![CDATA[$P{groupByClause}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="startDate">
+					<subreportParameterExpression><![CDATA[$P{startDate}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="endDate">
+					<subreportParameterExpression><![CDATA[$P{endDate}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$F{dataSource}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "WorkRestRatioReport_subreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="cac22b33-6d8b-4a5d-9b9b-11e9bad5e7e8" x="0" y="0" width="59" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="0d6d260e-e3e0-43c2-b105-9127b1548dac" x="62" y="0" width="40" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d5a951db-3639-4622-9289-5c36cc9333c5" x="702" y="0" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{current_date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

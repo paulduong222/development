@@ -1,0 +1,63 @@
+* {
+    font-family: Helvetica, Arial, sans-serif;
+    /* font-size: 13px; */
+}
+.main-card {
+    border: 1px solid gray;
+    height: 83vh;
+    width: 100%;
+    overflow-y: auto;
+}
+.radio-box {
+    border: 1px solid gray;
+    height: 50px;
+    width: 200px;
+    font-size: 12px;
+    padding-top: 7px;
+    padding-left: 5px;
+}
+.card-body {
+    padding: 0 20px 20px 20px;
+    width: 100%;
+}
+input[type="radio"] {
+    margin-top: -1px;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+}
+.text-box {
+    border: 1px solid gray;
+    height: 350px;
+    width: 800px;
+    font-size: 12px;
+    margin-top: 7px;
+    background-color: #dbd6d6;
+    color: black;
+    padding-left: 5px;
+}
+.text-box .title {
+  font-size: 12px;
+  font-weight: 550;
+}
+button {
+    height: 20px;
+    font-size: 12px;
+    font-weight: 550;
+    line-height: 10px;
+}
+.tooltip-box {
+    width: 500px;
+    height: 70px;
+    border: 1px solid gray;
+    margin-left: 20px;
+    border-radius: 8px;
+    background-color: #ccffff;
+    font-size: 12px;
+    font-weight: 550;
+}
+.header-title {
+    font-weight: bold;
+    padding-left: 20px;
+    font-size: 18px;
+}

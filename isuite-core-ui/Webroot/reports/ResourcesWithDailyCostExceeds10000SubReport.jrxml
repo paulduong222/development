@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ResourcesWithDailyCostExceeds10000SubReport" pageWidth="612" pageHeight="792" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="1" bottomMargin="0" isIgnorePagination="true" uuid="3e676d0f-a25c-4f7a-91a2-697adb566dc7">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1" forecolor="#000000" backcolor="#FFFFFF">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" forecolor="#000000" backcolor="#F0F0F0"/>
+		</conditionalStyle>
+	</style>
+	<field name="itemCode" class="java.lang.String"/>
+	<field name="itemCodeCategory" class="java.lang.String"/>
+	<field name="costToDate" class="java.lang.Double"/>
+	<field name="maxUnitCost" class="java.lang.Double"/>
+	<field name="requestNumber" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="agencyCode" class="java.lang.String"/>
+	<field name="assignDateChar" class="java.lang.String"/>
+	<field name="rateType" class="java.lang.String"/>
+	<field name="rateUnits" class="java.lang.Integer"/>
+	<field name="currentDateCost" class="java.lang.Double"/>
+	<group name="itemcategory">
+		<groupExpression><![CDATA[$F{itemCodeCategory}]]></groupExpression>
+		<groupHeader>
+			<band height="16">
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="360d6c06-a203-48d9-afcb-ea09942e709d" stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" mode="Opaque" x="0" y="1" width="572" height="15" backcolor="#E3E3E3"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{itemCodeCategory}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="34" splitType="Immediate">
+			<staticText>
+				<reportElement uuid="cc0e7079-edb6-4081-a11f-fddf14b4e0c2" mode="Opaque" x="385" y="0" width="51" height="30" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Max Unit Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d8eb0b3-6d2d-4c17-bdfb-8c1a96d38b2d" mode="Opaque" x="3" y="0" width="39" height="30" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Item Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc0e7079-edb6-4081-a11f-fddf14b4e0c2" mode="Opaque" x="478" y="0" width="37" height="30" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Rate Units]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d8eb0b3-6d2d-4c17-bdfb-8c1a96d38b2d" mode="Opaque" x="154" y="10" width="36" height="20" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d8eb0b3-6d2d-4c17-bdfb-8c1a96d38b2d" mode="Opaque" x="58" y="10" width="36" height="20" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Req #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d8eb0b3-6d2d-4c17-bdfb-8c1a96d38b2d" mode="Opaque" x="344" y="0" width="42" height="30" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Agency Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc0e7079-edb6-4081-a11f-fddf14b4e0c2" mode="Opaque" x="524" y="0" width="45" height="30" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Assign Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc0e7079-edb6-4081-a11f-fddf14b4e0c2" mode="Opaque" x="436" y="0" width="37" height="30" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Rate Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0b0eecf9-f830-432d-9340-e42dc6c89920" mode="Opaque" x="300" y="0" width="45" height="30" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Current Day Cost]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="c97b16e9-f840-4651-82f7-83e48d3c5520" x="0" y="31" width="572" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="cc0e7079-edb6-4081-a11f-fddf14b4e0c2" mode="Opaque" x="255" y="0" width="37" height="30" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Cost To Date]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="4d667cd0-17f8-4d75-a9a8-0f083b72bad3" style="style1" stretchType="RelativeToBandHeight" x="518" y="0" width="54" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{assignDateChar}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d61ee732-e65f-4f1a-b3f5-8c2a3e1a28bf" style="style1" stretchType="RelativeToBandHeight" x="45" y="0" width="47" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{requestNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d61ee732-e65f-4f1a-b3f5-8c2a3e1a28bf" style="style1" stretchType="RelativeToBandHeight" x="96" y="0" width="145" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d61ee732-e65f-4f1a-b3f5-8c2a3e1a28bf" style="style1" stretchType="RelativeToBandHeight" x="348" y="0" width="30" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{agencyCode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d61ee732-e65f-4f1a-b3f5-8c2a3e1a28bf" style="style1" stretchType="RelativeToBandHeight" x="0" y="0" width="40" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{itemCode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d61ee732-e65f-4f1a-b3f5-8c2a3e1a28bf" style="style1" stretchType="RelativeToBandHeight" x="304" y="0" width="40" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{currentDateCost}]]></textFieldExpression>
+				<patternExpression><![CDATA["¤#,##0"]]></patternExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d61ee732-e65f-4f1a-b3f5-8c2a3e1a28bf" style="style1" stretchType="RelativeToBandHeight" x="382" y="0" width="49" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{maxUnitCost}]]></textFieldExpression>
+				<patternExpression><![CDATA["¤#,##0"]]></patternExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d61ee732-e65f-4f1a-b3f5-8c2a3e1a28bf" style="style1" stretchType="RelativeToBandHeight" x="435" y="0" width="45" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rateType}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d61ee732-e65f-4f1a-b3f5-8c2a3e1a28bf" style="style1" stretchType="RelativeToBandHeight" x="484" y="0" width="30" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rateUnits}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d61ee732-e65f-4f1a-b3f5-8c2a3e1a28bf" style="style1" stretchType="RelativeToBandHeight" x="245" y="0" width="55" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{costToDate}]]></textFieldExpression>
+				<patternExpression><![CDATA["¤#,##0"]]></patternExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,1711 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="GlidePathReport_sectionsheet" language="groovy" pageWidth="1495" pageHeight="999999999" orientation="Landscape" columnWidth="1495" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="63d517d4-92c0-4145-bf7b-db5599489520">
+	<property name="ireport.zoom" value="1.0000000000000016"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.style.evaluation.time.enabled" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.rows" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.columns" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.wrap.text" value="true"/>
+	<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
+	<style name="main_fields_left_aligned" hAlign="Left" vAlign="Top"/>
+	<style name="main_fields_center_aligned" hAlign="Center" vAlign="Top"/>
+	<style name="main_fields_right_aligned" hAlign="Right" vAlign="Top"/>
+	<parameter name="incidentName" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="incidentTag" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="startingDate" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="numberOfDays" class="java.lang.Integer" isForPrompting="false"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="sectionName" class="java.lang.String" isForPrompting="false"/>
+	<field name="subSectionName" class="java.lang.String"/>
+	<field name="requestNumber" class="java.lang.String"/>
+	<field name="resourceName" class="java.lang.String"/>
+	<field name="itemCode" class="java.lang.String"/>
+	<field name="firstWorkingDate" class="java.util.Date"/>
+	<field name="lengthOfAssignment" class="java.lang.Integer"/>
+	<field name="demobDate" class="java.util.Date"/>
+	<field name="resourceDayDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<variable name="date_long" class="java.lang.String">
+		<variableExpression><![CDATA[new SimpleDateFormat("EEEE, MMMMM dd, yyyy").format(new java.util.Date())]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<group name="subSection">
+		<groupExpression><![CDATA[$F{subSectionName}]]></groupExpression>
+		<groupHeader>
+			<band height="72">
+				<printWhenExpression><![CDATA[$F{requestNumber}==null || !($F{requestNumber}.equalsIgnoreCase("MARKER_ROW") && $F{resourceName}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				<staticText>
+					<reportElement uuid="c6dbf8d2-9a82-43a9-8669-9edb5bfccd14" x="0" y="30" width="55" height="42" isPrintWhenDetailOverflows="true"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement verticalAlignment="Top">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Request #]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="e6ef8944-26aa-497f-95aa-0e5fe41b598a" x="345" y="30" width="50" height="42" isPrintWhenDetailOverflows="true"/>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Item Code]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="77230983-89c7-445a-b062-f27373f0e4b5" x="520" y="30" width="75" height="42" isPrintWhenDetailOverflows="true"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Demob Date]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="a836ac89-17c8-4274-b0e2-80773aec8910" x="470" y="30" width="50" height="42" isPrintWhenDetailOverflows="true"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[LOA]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="625" y="30" width="30" height="21"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(1))]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="6ff84e0c-3d19-406a-8d30-4fceae56d20c" x="595" y="0" width="30" height="30" isPrintWhenDetailOverflows="true"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[1]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="556c448a-ab30-4261-89ea-af0b6501133e" x="625" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[2]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="4975bee4-07c0-4daa-ac28-b975f25122fb" x="655" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[3]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="305d73bb-f6e3-4b63-a9e0-098093b32777" x="685" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[4]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="ee227fab-474b-42e1-b2b5-b8211d7db7e9" x="715" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[5]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="de3875bc-3fd7-4651-9e8f-778efb44aba4" x="745" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[6]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="f1c64f6c-c593-4fa6-bec2-b845019f14b1" x="775" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[7]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="3412441b-5857-4ba5-9550-7c57b543ede5" x="805" y="0" width="30" height="30" isPrintWhenDetailOverflows="true">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>7]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[8]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="df46c44c-2914-4b50-94e4-6f8151d95d2b" x="835" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>8]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[9]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="767c34ef-7485-4080-801d-0bb193d1a029" x="865" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>9]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[10]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="4380eb9d-5615-4eb0-89c8-d25ce5c41681" mode="Transparent" x="895" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>10]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[11]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="78ce5192-5768-47cf-9f89-ee51b8a030fe" x="925" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>11]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[12]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="ff37ad2d-d1e5-4679-b6ed-6c729a7882a4" x="955" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>12]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[13]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="788dd57b-3163-4801-8260-00250c2c95a8" x="985" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>13]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[14]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="6ff84e0c-3d19-406a-8d30-4fceae56d20c" x="1015" y="0" width="30" height="30" isPrintWhenDetailOverflows="true">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>14]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[15]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="556c448a-ab30-4261-89ea-af0b6501133e" x="1045" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>15]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[16]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="4975bee4-07c0-4daa-ac28-b975f25122fb" x="1075" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>16]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[17]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="305d73bb-f6e3-4b63-a9e0-098093b32777" x="1105" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>17]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[18]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="ee227fab-474b-42e1-b2b5-b8211d7db7e9" x="1135" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>18]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[19]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="de3875bc-3fd7-4651-9e8f-778efb44aba4" x="1165" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>19]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[20]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="f1c64f6c-c593-4fa6-bec2-b845019f14b1" x="1195" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>20]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[21]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="3412441b-5857-4ba5-9550-7c57b543ede5" x="1225" y="0" width="30" height="30" isPrintWhenDetailOverflows="true">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>21]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[22]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="df46c44c-2914-4b50-94e4-6f8151d95d2b" x="1255" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>22]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[23]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="767c34ef-7485-4080-801d-0bb193d1a029" x="1285" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>23]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[24]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="4380eb9d-5615-4eb0-89c8-d25ce5c41681" x="1315" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>24]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[25]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="78ce5192-5768-47cf-9f89-ee51b8a030fe" x="1345" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>25]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[26]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="ff37ad2d-d1e5-4679-b6ed-6c729a7882a4" x="1375" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>26]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[27]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="788dd57b-3163-4801-8260-00250c2c95a8" x="1405" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>27]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[28]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="ff37ad2d-d1e5-4679-b6ed-6c729a7882a4" x="1435" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>28]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[29]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0">
+					<reportElement uuid="788dd57b-3163-4801-8260-00250c2c95a8" x="1465" y="0" width="30" height="30" isPrintWhenDetailOverflows="true" backcolor="#999999">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>29]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[30]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="745" y="51" width="30" height="21"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(5))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="625" y="51" width="30" height="21"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(1))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="595" y="30" width="30" height="21"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="655" y="30" width="30" height="21"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(2))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="715" y="30" width="30" height="21"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(4))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="775" y="30" width="30" height="21"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(6))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="775" y="51" width="30" height="21"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(6))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="685" y="51" width="30" height="21"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(3))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="745" y="30" width="30" height="21"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(5))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="595" y="51" width="30" height="21"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(0))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="715" y="51" width="30" height="21"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(4))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="655" y="51" width="30" height="21"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(2))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="685" y="30" width="30" height="21"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(3))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" mode="Opaque" x="0" y="0" width="595" height="30" forecolor="#FFFFFF" backcolor="#000000"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{subSectionName}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="f814891a-9a53-4912-a7b1-8bf790a2a9b0" x="55" y="30" width="290" height="42" isPrintWhenDetailOverflows="true"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Resource Name]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="805" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>7]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(7))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="925" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>11]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(11))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="895" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>10]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(10))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="955" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>12]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(12))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="895" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>10]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(10))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="865" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>9]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(9))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="805" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>7]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(7))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="985" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>13]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(13))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="865" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>9]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(9))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="835" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>8]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(8))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="925" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>11]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(11))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="835" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>8]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(8))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="985" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>13]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(13))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="955" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>12]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(12))]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="7563d219-72de-4e34-8a73-08f6adad54ef" x="395" y="30" width="75" height="42" isPrintWhenDetailOverflows="true"/>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[First Working Date]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1015" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>14]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(14))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1135" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>18]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(18))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1105" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>17]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(17))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1165" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>19]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(19))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1105" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>17]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(17))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1075" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>16]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(16))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1015" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>14]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(14))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1195" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>20]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(20))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1075" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>16]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(16))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1045" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>15]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(15))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1135" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>18]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(18))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1045" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>15]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(15))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1195" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>20]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(20))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1165" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>19]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(19))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1225" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>21]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(21))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1345" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>25]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(25))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1315" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>24]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(24))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1375" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>26]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(26))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1315" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>24]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(24))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1285" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>23]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(23))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1225" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>21]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(21))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1405" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>27]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(27))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1285" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>23]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(23))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1255" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>22]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(22))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1345" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>25]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(25))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1255" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>22]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(22))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1405" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>27]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(27))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1375" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>26]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(26))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1465" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>29]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(29))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1465" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>29]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(29))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1435" y="30" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>28]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("EEE").format($P{startingDate}.plus(28))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" x="1435" y="51" width="30" height="21">
+						<printWhenExpression><![CDATA[$P{numberOfDays}>28]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+						<pen lineWidth="0.5" lineColor="#999999"/>
+						<topPen lineWidth="0.5" lineColor="#999999"/>
+						<leftPen lineWidth="0.5" lineColor="#999999"/>
+						<bottomPen lineWidth="0.5" lineColor="#999999"/>
+						<rightPen lineWidth="0.5" lineColor="#999999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new SimpleDateFormat("M/d").format($P{startingDate}.plus(28))]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<columnHeader>
+		<band height="50">
+			<staticText>
+				<reportElement uuid="a836ac89-17c8-4274-b0e2-80773aec8910" key="sectionTitle" mode="Opaque" x="0" y="0" width="595" height="25" isPrintWhenDetailOverflows="true" backcolor="#CCCCCC"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="0.0" lineColor="#999999"/>
+					<topPen lineWidth="0.0" lineColor="#999999"/>
+					<leftPen lineWidth="0.0" lineColor="#999999"/>
+					<bottomPen lineWidth="0.0" lineColor="#999999"/>
+					<rightPen lineWidth="0.0" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESOURCE TRACKING CHART]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" evaluationTime="Report">
+				<reportElement uuid="d384f2fa-88fc-42e0-9d66-eaba3152a0c4" mode="Opaque" x="0" y="25" width="595" height="25" forecolor="#000000" backcolor="#CCCCCC"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="0.0" lineColor="#999999"/>
+					<topPen lineWidth="0.0" lineColor="#999999"/>
+					<leftPen lineWidth="0.0" lineColor="#999999"/>
+					<bottomPen lineWidth="0.0" lineColor="#999999"/>
+					<rightPen lineWidth="0.0" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{incidentTag}!=null && !"".equals($P{incidentTag}))?
+$P{incidentName} + " (" + $P{incidentTag} + ")":$P{incidentName}]]></textFieldExpression>
+			</textField>
+			<subreport isUsingCache="true">
+				<reportElement uuid="1a835d0a-57f8-47af-99b6-0327c532d365" isPrintRepeatedValues="false" x="595" y="0" width="900" height="50"/>
+				<subreportParameter name="numberOfDays">
+					<subreportParameterExpression><![CDATA[$P{numberOfDays}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "GlidePathReport_sectionsheet_header.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<printWhenExpression><![CDATA[$F{requestNumber}==null || !$F{requestNumber}.equalsIgnoreCase("MARKER_ROW")]]></printWhenExpression>
+			<textField isStretchWithOverflow="true" pattern="MM/dd/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="6e54680f-efaa-458a-a636-892b41293270" style="main_fields_center_aligned" stretchType="RelativeToTallestObject" mode="Transparent" x="520" y="0" width="75" height="20" isPrintWhenDetailOverflows="true" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="0.5" lineColor="#999999"/>
+					<topPen lineWidth="0.5" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{demobDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="MM/dd/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="7f954a3d-af85-4612-9f89-ed0ae2adc728" style="main_fields_center_aligned" stretchType="RelativeToTallestObject" mode="Transparent" x="395" y="0" width="75" height="20" isPrintWhenDetailOverflows="true" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="0.5" lineColor="#999999"/>
+					<topPen lineWidth="0.5" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{firstWorkingDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="dbfb6f9c-d556-4b24-be78-3af1f99d6e6b" style="main_fields_center_aligned" stretchType="RelativeToTallestObject" mode="Transparent" x="345" y="0" width="50" height="20" isPrintWhenDetailOverflows="true" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="0.5" lineColor="#999999"/>
+					<topPen lineWidth="0.5" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{itemCode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="7d4159a7-2b1d-4e2a-951a-62ee8ec3c1a8" style="main_fields_left_aligned" stretchType="RelativeToTallestObject" mode="Transparent" x="55" y="0" width="290" height="20" isPrintWhenDetailOverflows="true" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="0.5" lineColor="#999999"/>
+					<topPen lineWidth="0.5" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{resourceName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement uuid="a5492bfe-8873-47c1-bbc4-4045c7802d56" style="main_fields_left_aligned" stretchType="RelativeToTallestObject" x="0" y="0" width="55" height="20" isPrintWhenDetailOverflows="true" backcolor="#FFFFFF"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="0.5" lineColor="#999999"/>
+					<topPen lineWidth="0.5" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{requestNumber}==null?" ":$F{requestNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0" isBlankWhenNull="true">
+				<reportElement uuid="7c206623-6e87-4d5a-b36b-ea2c40319fc1" style="main_fields_center_aligned" stretchType="RelativeToTallestObject" mode="Transparent" x="470" y="0" width="50" height="20" isPrintWhenDetailOverflows="true" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="0.5" lineColor="#999999"/>
+					<topPen lineWidth="0.5" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lengthOfAssignment}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement uuid="1a835d0a-57f8-47af-99b6-0327c532d365" x="595" y="0" width="900" height="20"/>
+				<dataSourceExpression><![CDATA[$F{resourceDayDataSource}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "GlidePathReport_resourceday.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="20">
+			<printWhenExpression><![CDATA[$F{requestNumber}!=null && $F{requestNumber}.equalsIgnoreCase("MARKER_ROW") && $F{resourceName}.equalsIgnoreCase("TOTAL")]]></printWhenExpression>
+			<subreport>
+				<reportElement uuid="1a835d0a-57f8-47af-99b6-0327c532d365" x="595" y="0" width="900" height="20"/>
+				<dataSourceExpression><![CDATA[$F{resourceDayDataSource}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "GlidePathReport_resourceday_totals.jasper"]]></subreportExpression>
+			</subreport>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="a5492bfe-8873-47c1-bbc4-4045c7802d56" mode="Opaque" x="0" y="0" width="595" height="20" isPrintWhenDetailOverflows="true" backcolor="#CCCCCC"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="0.5" lineColor="#999999"/>
+					<topPen lineWidth="0.5" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTAL"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="20">
+			<printWhenExpression><![CDATA[$F{requestNumber}!=null && $F{requestNumber}.equalsIgnoreCase("MARKER_ROW") && $F{resourceName}.equalsIgnoreCase("NO_RESOURCE_FOUND")]]></printWhenExpression>
+			<subreport>
+				<reportElement uuid="39cff4bb-9c7f-40b8-b0fd-922c14f3d8bf" x="595" y="0" width="900" height="20"/>
+				<dataSourceExpression><![CDATA[$F{resourceDayDataSource}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "GlidePathReport_resourceday.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement uuid="1884edc6-32d1-489f-8bf4-c20a727845ab" mode="Transparent" x="0" y="0" width="595" height="20"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="0.5" lineColor="#999999"/>
+					<topPen lineWidth="0.5" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NO RESOURCES FOUND"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

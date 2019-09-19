@@ -1,0 +1,149 @@
+package gov.nwcg.isuite.core.rules.timepost.contractor;
+
+import gov.nwcg.isuite.core.domain.Assignment;
+import gov.nwcg.isuite.core.vo.dialogue.CourseOfActionVo;
+import gov.nwcg.isuite.core.vo.dialogue.DialogueVo;
+import gov.nwcg.isuite.core.vo.dialogue.PromptVo;
+import gov.nwcg.isuite.framework.core.rules.IRule;
+import gov.nwcg.isuite.framework.exceptions.ServiceException;
+import gov.nwcg.isuite.framework.types.CourseOfActionTypeEnum;
+import gov.nwcg.isuite.framework.util.DateUtil;
+
+import java.util.Date;
+
+import org.springframework.context.ApplicationContext;
+
+public class CheckPostStartHiredDateRules extends AbstractContractorRule implements IRule{
+	public static final String _RULE_NAME=TimePostContractorRuleFactory.RuleEnum.CHECK_POST_START_HIRED_DATE.name();
+
+	public CheckPostStartHiredDateRules(ApplicationContext ctx)
+	{
+		super(ctx,_RULE_NAME);
+	}
+
+	
+	/* (non-Javadoc)
+	 * @see gov.nwcg.isuite.framework.core.rules.IRule#executeRules(gov.nwcg.isuite.core.vo.dialogue.DialogueVo)
+	 */
+	public int executeRules(DialogueVo dialogueVo) throws Exception {
+
+		try{
+			
+			/*
+			 * if rule check has been completed, return
+			 */
+			if(isCourseOfActionComplete(dialogueVo, _RULE_NAME))
+				return _OK;
+
+			if(isCurrentCourseOfAction(dialogueVo, _RULE_NAME)){
+
+				// add to processed
+				dialogueVo.getCourseOfActionVo().setIsComplete(true);
+
+				return checkPromptResult(dialogueVo);
+				
+			}else{
+				/*
+				 * Run rule check
+				 */
+				if(runRuleCheck(dialogueVo)==_FAIL)
+					return _FAIL;
+				
+				/*
+				 * Rule check passed, mark as completed
+				 */
+				dialogueVo.getProcessedCourseOfActionVos()
+					.add(super.buildNoActionCoaVo(_RULE_NAME,true));
+				
+			}
+			
+		}catch(Exception e){
+			throw new ServiceException(e);
+		}
+		
+		return _OK;
+	}
+
+	/**
+	 * @param dialogueVo
+	 * @return
+	 */
+	private int runRuleCheck(DialogueVo dialogueVo) throws Exception {
+		
+		/*
+		 * Defect 4001
+		 * 
+			Scenario Testing March 2014
+			The user should not be allowed to post equipment time with a date prior to the hired date.  
+			Need a validation error message when is attempted.		
+		 */
+		Date hiredDate=null;
+		Date startDate = null;
+		if(super.postType.equals("SPECIAL"))
+			startDate=super.specialVo.getPostStartDate();
+		else
+			startDate=super.vo.getPostStartDate();
+
+		if(DateUtil.hasValue(startDate))
+			startDate=DateUtil.addMilitaryTimeToDate(startDate, "2359");
+		
+		if(null != incidentResourceEntity
+				&& null != incidentResourceEntity.getWorkPeriod()){
+			for(Assignment a : incidentResourceEntity.getWorkPeriod().getAssignments()){
+				if(!DateUtil.hasValue(a.getEndDate())
+						&& null != a.getAssignmentTime()
+						&& null != a.getAssignmentTime().getContractorPaymentInfo()){
+					hiredDate=a.getAssignmentTime().getContractorPaymentInfo().getHiredDate();
+					if(DateUtil.hasValue(hiredDate))
+						hiredDate=DateUtil.addMilitaryTimeToDate(hiredDate, "2359");
+					break;
+				}
+			}
+		}
+		
+		if(DateUtil.hasValue(startDate) && DateUtil.hasValue(hiredDate)) {
+
+			if(startDate.before(hiredDate)){
+				dialogueVo.setCourseOfActionVo(
+						super.buildErrorCoaVo("text.time"
+											  ,"validationerror"
+											  ,"error.800000"
+											  , new String[]{"Start date cannot be before hired date."}));	
+				return _FAIL;
+			}
+		}
+		
+		return _OK;
+	}
+	
+	private int checkPromptResult(DialogueVo dialogueVo) {
+
+		if(getPromptResult(dialogueVo) == PromptVo._YES) {
+
+			// continue
+			dialogueVo.getCourseOfActionVo().setCoaType(CourseOfActionTypeEnum.NOACTION);
+			dialogueVo.getProcessedCourseOfActionVos().add(dialogueVo.getCourseOfActionVo());
+			
+		}else if(getPromptResult(dialogueVo) == PromptVo._NO){
+			
+			// cannot continue if prompt was no
+			CourseOfActionVo coaVo = new CourseOfActionVo();
+			coaVo.setCoaName(_MSG_FINISHED);
+			coaVo.setCoaType(CourseOfActionTypeEnum.NOACTION);
+			coaVo.setIsDialogueEnding(true);
+			dialogueVo.setCourseOfActionVo(coaVo);
+	
+			return _FAIL;
+		}
+		
+		return _OK;
+	}
+	
+	/* (non-Javadoc)
+	 * @see gov.nwcg.isuite.framework.core.rules.IRule#executePostProcessActions(gov.nwcg.isuite.core.vo.dialogue.DialogueVo)
+	 */
+	public void executePostProcessActions(DialogueVo dialogueVo) throws Exception {
+		
+	}
+
+}

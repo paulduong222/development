@@ -1,0 +1,13 @@
+<input type="text"
+  autocomplete="false"
+  pattern="[0-9]"
+  [ngModel]="formattedValue | currency:'USD':'symbol':'2.2'"
+  (click)="$event.target.select()"
+  (focus)="onFocus($event)"
+  (keypress)="keyboardEvent($event)"
+  (blur)="onBlur($event)"
+  [disabled]="this.disabled"
+  [ngModelOptions]="{updateOn:'blur'}"
+  [style.width.px]="width"
+  (ngModelChange)="formattedValue=$event"/>
+

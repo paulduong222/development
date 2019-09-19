@@ -1,0 +1,37 @@
+
+<table class="data-table">
+    <thead *ngIf="!noHeader">
+        <tr>
+            <th *ngFor="let colDef of tableDefinition.columns; let i = index" [ngStyle]="colDef.style" class="header">
+                {{colDef.title}}
+                <input *ngIf="filter" type="text" name="filter" (input)="inputFilterChange($event, colDef.field)" [(ngModel)]="filterData[colDef.field]">
+            </th>
+        </tr>
+    </thead>
+    <tbody class="body" [ngClass]="{'scroll-y': scrollAble}" [ngStyle]="bodyStyle">
+        <tr *ngFor="let row of data; let i = index" (click)="onRowClick($event, i, row)" [ngClass]="{'selected': indexSelected && indexSelected.includes(row.id)}" [ngStyle]="extraStyle.row">
+            <td *ngFor="let col of tableDefinition.columns" [ngStyle]="col.style">
+                <ng-container *ngIf="col.field">
+                    <ng-container *ngIf="getPropertyValue(row, col.field) === true; else boolFalse">
+                        <i class="fa fa-check"></i>
+                    </ng-container>
+                    <ng-template #boolFalse>
+                        <ng-container *ngIf="getPropertyValue(row, col.field) === false; else notExist"></ng-container>
+                    </ng-template>
+                    <ng-template #notExist>
+                        <ng-container *ngIf="getPropertyValue(row, col.field) === null || getPropertyValue(row, col.field) === undefined; else lastTerm">
+                            <p>&ensp;</p>
+                        </ng-container>
+                    </ng-template>
+                    <ng-template #lastTerm>
+                        <a *ngIf="col.showAsLink; else cellContent">{{prettifyDateString(getPropertyValue(row, col.field))}}</a>
+                        <ng-template #cellContent>{{prettifyDateString(getPropertyValue(row, col.field))}}</ng-template>
+                    </ng-template>
+                </ng-container>
+                <ng-container *ngIf="!col.field">
+                    <button *ngIf="col.button" [attr.class]="col.button.class" (click)="$event.stopPropagation();">{{col.button.text}}</button>
+                </ng-container>
+            </td>
+        </tr>
+    </tbody>
+</table>

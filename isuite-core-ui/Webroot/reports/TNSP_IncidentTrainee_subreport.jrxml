@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TNSP_IncidentTrainee_subreport" language="groovy" pageWidth="552" pageHeight="45" orientation="Landscape" columnWidth="552" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="63d517d4-92c0-4145-bf7b-db5599489520">
+	<property name="ireport.zoom" value="1.3310000000000026"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="row_conditional_style" backcolor="#FFFFFF">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}%2==0)]]></conditionExpression>
+			<style mode="Opaque" backcolor="#CCCCCC"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="groupByClause" class="java.lang.String" isForPrompting="false"/>
+	<field name="commentDate" class="java.lang.String"/>
+	<field name="commentTime" class="java.lang.String"/>
+	<field name="comments" class="java.lang.String"/>
+	<detail>
+		<band height="45">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="7d4159a7-2b1d-4e2a-951a-62ee8ec3c1a8" stretchType="RelativeToBandHeight" mode="Opaque" x="0" y="0" width="103" height="45" isPrintWhenDetailOverflows="true" backcolor="#FFFFFF"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{commentDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="7d4159a7-2b1d-4e2a-951a-62ee8ec3c1a8" stretchType="RelativeToBandHeight" mode="Transparent" x="103" y="0" width="64" height="45" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{commentTime}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="7c206623-6e87-4d5a-b36b-ea2c40319fc1" stretchType="RelativeToBandHeight" mode="Transparent" x="168" y="0" width="384" height="45" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<textElement verticalAlignment="Top">
+					<paragraph leftIndent="4" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{comments}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="0" y="0" width="1" height="45"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="102" y="0" width="1" height="45"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="167" y="0" width="1" height="45"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="552" y="0" width="1" height="45"/>
+			</line>
+			<line>
+				<reportElement uuid="379f724b-9876-4e12-8de0-13ed0708ca60" x="0" y="44" width="552" height="1"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

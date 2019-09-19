@@ -1,0 +1,123 @@
+<div [style.height]="calcHt()">
+    <div id="dv-top-bar">
+        <div id="dv-top-bar-left" class="w3-left">
+            <app-grid-icon-bar
+                [showCustomize]="false"
+                [showExpandRetract]="this.isDataSteward"
+                (customizeEvent)="this.customizeColumnsEvent()"
+                (refreshEvent)="this.refreshGridEvent()"
+                (filterEvent)="this.clearFilterEvent()"
+				(expandRetractEvent)="this.expandRetractEvent()">
+            </app-grid-icon-bar>
+        </div>
+    </div>
+    <div class="split-example" style="height: 85vh;">
+        <as-split direction="horizontal">
+            <as-split-area id="incSplitLeft" #incSplitLeft [size]="splitAreaLeftSize">
+                <div class="dv-inc-grid">
+                    <app-eis-grid #incGrid id="grdIncidents"
+                        [treeViewMode]="true"
+                        [columnDefs]="this.gridColumnDefs" 
+                        [rowData]="incidentGridList"
+                        (gridReadyEvent)="this.onGridReadyEvent()"
+                        (rowSelectEvent)="this.onSelectIncidentRow($event)">
+                    </app-eis-grid>
+                </div>
+            </as-split-area> 
+            <as-split-area id="incSplitRight" [size]="splitAreaRightSize">
+                <div class="dv-inc-view">
+                    <div class="dv-dt-bar">
+                        <button (click)="selectView('import_ent');" [class]="buttonClass('import_ent')">Import Enterprise Transition File</button>
+                        <!-- <button (click)="selectView('trans_ent');" [class]="buttonClass('trans_ent')">Transition to Enterprise</button> -->
+                    </div>
+                    <div class="dv-dt-view">
+                        <div class="dv-dt-view-sub" *ngIf="this.currentView === 'import_ent'">
+                            <p>Follow these instructions to import a transition file from Enterprise.</p>
+                            <br>
+                            <p>To import the Enterprise transition file from a local storage device:</p>
+                            <p>1. Click the Browse for File button.</p>
+                            <p>2. Browse to the location where you saved the Enterprise transition file.</p>
+                            <p>3. Select the transition file and click the Open button.</p>
+                            <p>4. Enter the password for the transition file and click the OK button.</p>
+                            <div class="dv-dt-view-sub-bottom">
+                                <button class="w3-small">Browse for File</button>
+                            </div>
+                        </div>
+                        <!-- <div class="dv-dt-view-sub" *ngIf="this.currentView === 'trans_ent'">
+                            <p>Follow these instructions to transition a Site database to the Enterprise system:</p>
+                            <br>
+                            <p>Create and Save the Transition File:</p>
+                            <p>1. Enter the Transition File Name.</p>
+                            <p>2. Enter a password for the Transition File.</p>
+                            <p>3. Click the Create Transition File button.</p>
+                            <p>4. Follow the on screen save prompt to save the Transition File to a media device.</p>
+                            <p>5. A user at Enterprise will then need to import the file.</p>
+                            <div class="eis dv-create-box">
+                                <form [formGroup]="transToEntForm">
+                                    <table>
+                                        <tr>
+                                            <td class="frmlbl">
+                                                <label class='f1"' for="txFileName">
+                                                Transition File Name
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label class="ast">*</label>
+                                            </td>
+                                            <td>
+                                                <app-text-input formControlName="transitionFileName" type="text" id="txName" name="txFileName" width="350" allowSpace="true"></app-text-input>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="frmlbl"> 
+                                                <label class='f1"' for="txPass">
+                                                    Password
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label class="ast">*</label>
+                                            </td>
+                                            <td>
+                                                <app-text-input formControlName="password" type="password" width="350" allowSpace="true" id="txPass" name="txPass" allowSpace="true"></app-text-input>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="frmlbl"> 
+                                                <label class='f1"' for="txVerify">
+                                                    Verify Password
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label class="ast">*</label>
+                                            </td>
+                                            <td>
+                                                <app-text-input formControlName="verify" type="password" width="350" allowSpace="true" id="txVerify" name="txVerify" allowSpace="true"></app-text-input>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="frmlbl">
+                                                <label class='f1"' for="txVerify">
+                                                    Generate Site to Site file.
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <label class="ast">*</label>
+                                            </td>
+                                            <td>
+                                                <input type="checkbox">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="dv-create-btn-box">
+                                        <button class="w3-small">Create Transition File</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </as-split-area>
+        </as-split>
+    </div>
+</div>
+<app-prompt-modal id="promptModalIncView" #promptModalIncView ></app-prompt-modal>

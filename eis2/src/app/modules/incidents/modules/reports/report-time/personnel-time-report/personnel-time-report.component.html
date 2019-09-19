@@ -1,0 +1,89 @@
+<div class="main-card">
+  <div class="card-body">
+    <div class="text-box">
+      <p class="label-input">You can only include Resources on this report that have:</p>
+      <div class="sub-box">
+        <div class="label-input">-An Agency defined</div>
+        <div class="label-input">-Fax Number</div>
+      </div>
+      <div class="sub-box">
+        <div class="label-input">-Employment Code of FED or OTHER</div>
+        <div class="label-input">-Status that is NOT Demobed</div>
+      </div>
+    </div>
+    <div class="date-box">
+      <label class="label-header">Select Date Range</label>
+      <span class="label-input">Start Date  <span class="ast">*</span></span>
+      <app-eis-datepicker class="time-input" #dtStart></app-eis-datepicker>
+      <span class="label-input">End Date  <span class="ast">*</span></span>
+      <app-eis-datepicker class="time-input" #dtEnd></app-eis-datepicker>
+    </div>
+    <div style="width: 820px; display: flex;">
+      <div class="left-box">
+        <div style="width: 420px; height: 100px; margin-left: 7px" class="text-box">
+          <p class="label-input">Checking the box next to the agency or phone number</p>
+          <p class="label-input">will select all resources with the same fax number.</p>
+          <p class="label-input">Selecting individual or multiple persons</p>
+          <p class="label-input">will only include the selected persons on the report.</p>
+        </div>
+        <p style="font-weight: 600" class="label-input">Agencies</p>
+        <div class="text-box" style="width: 420px; height: 180px; margin-left: 7px; background-color: #FFFFFF; padding: 5px; overflow-y: auto;">
+          <ng-container *ngIf="!agencies || agencies.length == 0">
+            <label style="display: flex"><img src="assets/images/triangleRight.jpg"><input style="margin-left: 5px; width: 18px; height: 18px;" type="checkbox" name="state" value="group">No Resources Avaiable</label>
+          </ng-container>
+          <ng-container *ngFor="let agencie of agencies">
+            <label>
+              <img *ngIf="!agencie.collapse" src="assets/images/triangleRight.jpg" (click)="collapseOption($event, agencie)">
+              <img *ngIf="agencie.collapse" src="assets/images/triangleDown.jpg" (click)="collapseOption($event, agencie)">
+              <input style="margin-left: 5px; width: 18px; height: 18px;" type="checkbox" name="state" [checked]="agencie.checked" (click)="clickCheckBox(agencie)" value="{{agencie.id}}">{{agencie.label}}
+            </label>
+            <ng-container *ngIf="agencie.collapse">
+              <ng-container *ngFor="let agencie of agencie.children">
+                <label class="lv2">
+                  <img *ngIf="!agencie.collapse" src="assets/images/triangleRight.jpg" (click)="collapseOption($event, agencie)">
+                  <img *ngIf="agencie.collapse" src="assets/images/triangleDown.jpg" (click)="collapseOption($event, agencie)">
+                  <input style="margin-left: 5px; width: 18px; height: 18px;"  [checked]="agencie.checked"  (click)="clickCheckBox(agencie)" type="checkbox" name="state" value="{{agencie.id}}">{{agencie.label}}
+                </label>
+                <ng-container *ngFor="let agencie of agencie.children">
+                  <label class="lv3">
+                    <img *ngIf="!agencie.collapse" src="assets/images/triangleRight.jpg" (click)="collapseOption($event, agencie)">
+                    <img *ngIf="agencie.collapse" src="assets/images/triangleDown.jpg" (click)="collapseOption($event, agencie)">
+                    <input style="margin-left: 5px; width: 18px; height: 18px;"  [checked]="agencie.checked"  (click)="clickCheckBox(agencie)" type="checkbox" name="state" value="{{agencie.id}}">{{agencie.label}}
+                  </label>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </div>
+        <button type="button" class="btn btn-default" title="Check All">Check All</button>
+        <button type="button" class="btn btn-default" title="Clear All">Clear All</button>
+      </div>
+      <div class="right-box">
+        <div style="width: 350px; height: 80px; border: 1px solid gray; margin-bottom: 10px">
+          <div style="margin: 10px 5px 5px 5px">
+            <span class="label-input">Time Unit Leader Name </span>
+            <input class="date-input" [(ngModel)]="personnelTimeReportFilter.timeUnitLeaderName" type="text">
+          </div>
+          <div style="margin: 10px 5px 5px 5px">
+            <span class="label-input">Time Unit Leader Phone # </span>
+            <input class="date-input" [(ngModel)]="personnelTimeReportFilter.timeUnitLeaderPhoneNumber" type="text">
+          </div>
+        </div>
+        <div style="width: 350px; height: 100px; border: 1px solid gray;">
+          <div style="margin: 10px 5px 5px 5px; display: flex;">
+            <input type="checkbox" value="true" [(ngModel)]="personnelTimeReportFilter.callsAreLongDistance" class="checkbox"><label style="margin-left: 5px">Assume Call are Long Distance</label>
+          </div>
+          <div style="margin: 10px 5px 5px 5px; display: flex;">
+            <input type="checkbox" value="true" [(ngModel)]="personnelTimeReportFilter.dialOutsideLine" class="checkbox"><label style="margin-left: 5px">Dial Outside Line</label>
+          </div>
+          <input style="margin-left: 15px; width: 50px" [(ngModel)]="personnelTimeReportFilter.dialOutsideLineNumber" class="date-input" type="text">
+        </div>
+      </div>
+    </div>
+    <div class="btn-box">
+      <button type="button" class="btn btn-default" (click)="generateReport()" title="Preview Report">Preview/Print</button>
+      <button type="button" class="btn btn-default">Fax</button>
+      <button type="button" class="btn btn-default" title="TEST______Export To Excel______TEST">Export to Excel</button>
+    </div>
+  </div>
+</div>

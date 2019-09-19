@@ -1,0 +1,53 @@
+<div [style.height]="calcHt()">
+	<div id="dv-top-bar">
+		<div id="dv-top-bar-left" class="w3-left">
+			<app-grid-icon-bar
+				[showCustomize]="false"
+				[showExpandRetract]="this.isDataSteward"
+				(customizeEvent)="this.customizeColumnsEvent()"
+				(refreshEvent)="this.refreshGridEvent()"
+				(filterEvent)="this.clearFilterEvent()"
+				(expandRetractEvent)="this.expandRetractEvent()">
+			</app-grid-icon-bar>
+		</div>
+		<div *ngIf="this.isDataSteward" id="dv-top-bar-right" class="w3-right">
+			<button [class]="buttonClass('add')" (click)="addIncident()" title="Click to add a new Incident">Add Incident</button>
+			<button [class]="buttonClass('edit')" (click)="editIncident()" title="Click to edit the Incident/Incident Group">Edit Incident</button>
+			<button [class]="buttonClass('delete')" (click)="deleteIncident()" title="Click to delete the Incident">Delete Incident</button>
+			<button class="w3-small btn-normal" routerLink="/incidents/rossimport" title="Click to navigate to ROSS Import">ROSS Import</button>
+			<button class="w3-small btn-normal" routerLink="/incidents/finexp" title="Click to navigate to Financial Export">Financial Export</button>
+			<button class="w3-small btn-normal" routerLink="/incidents/datatransfer" title="Click to navigate to Data Transfer">Data Transfer</button>
+		</div>
+	</div>
+	<div class="split-example" style="height: 85vh;">
+		<as-split direction="horizontal">
+			<as-split-area id="incSplitLeft" #incSplitLeft [size]="splitAreaLeftSize">
+				<div id="dv-inc-grid">
+					<app-eis-grid #incGrid id="grdIncidents"
+						[treeViewMode]="true"
+						[columnDefs]="this.gridColumnDefs" 
+						[rowData]="incidentGridList"
+						(gridReadyEvent)="this.onGridReadyEvent()"
+						(rowSelectEvent)="this.onSelectIncidentRow($event)">
+					</app-eis-grid>
+				</div>
+			</as-split-area> 
+			<as-split-area id="incSplitRight" [size]="splitAreaRightSize">
+				<div *ngIf="this.isDataSteward" id="dv-inc-view" class="eis">
+					<app-inc-view-incidents 
+						#incViewIncidents 
+						(incViewIncProcessingEvent)="this.incViewIncProcessingEvent($event)"
+						*ngIf="this.viewMode === 'INCIDENT'">
+					</app-inc-view-incidents>
+					<app-inc-view-incident-group 
+						#incViewIncidentGroup 
+						(incGroupProcessingEvent)="this.incGroupProcessingEvent($event)"
+						(incGroupUpdateEvent)="incGroupUpdateEvent($event)"
+						*ngIf="this.viewMode === 'INCIDENTGROUP'">
+					</app-inc-view-incident-group>
+				</div>
+			</as-split-area>
+		</as-split>
+	</div>
+</div>
+<app-prompt-modal id="promptModalIncView" #promptModalIncView (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>

@@ -1,0 +1,101 @@
+<div id="dv-incidents-nav-bar" class="btn-group-menu">
+  <button id="btnNavIncidents" style="width: 90px" (click)="tabClick('/incidents','', '')" [class]="getStyle('/incidents/inc','')">Incidents</button>
+  <button class="btn-normal sub-menu-div" style="width: 20px; background-color: #EEEEEE; padding: 0px">
+      <div class="sub-menu-div">
+         <img src="assets/images/triangleDown.jpg">
+      </div>
+  </button>
+<button *ngIf="this.checkinDemobRole" style="width: 90px" (click)="tabClick('/incidents/resources','checkin', 'resview')" [class]="getStyle('/incidents/resources', 'checkin')">Check-In</button>
+  <button *ngIf="this.checkinDemobRole"  class="btn-normal sub-menu-div" style="width: 20px; background-color: #EEEEEE; padding: 0px">
+          <img src="assets/images/triangleDown.jpg">
+           <div class="sub-menu-content">
+             <div><a (click)="this.openCheckInSettingsModal()">Check-In Settings</a></div>
+             <br>
+            </div>
+    </button>
+  <button *ngIf="this.checkinDemobRole"  style="width: 90px" (click)="tabClick('/incidents/resources', 'demob', 'resview')" [class]="getStyle('/incidents/resources', 'demob')">Demob</button>
+  <button *ngIf="this.checkinDemobRole"  class="btn-normal sub-menu-div" style="width: 20px; background-color: #EEEEEE; padding: 0px">
+          <img src="assets/images/triangleDown.jpg">
+           <div class="sub-menu-content">
+              <div><a (click)="this.openDemobSettingsModal()">Demob Settings</a></div>
+               <br>
+           </div>
+  </button>
+  <button *ngIf="this.timeRole"  style="width: 90px" (click)="tabClick('/incidents/resources', 'time', 'timeview')" [class]="getStyle('/incidents/resources', 'time')">Time</button>
+  <button *ngIf="this.timeRole"  class="btn-normal sub-menu-div" style="width: 20px; background-color: #EEEEEE; padding: 0px">
+          <img src="assets/images/triangleDown.jpg">
+           <div class="sub-menu-content">
+             <div><a (click)="tabClick('/incidents/adminoffice','', '')">Admin Office</a></div>
+             <div><a (click)="tabClick('/incidents/contractors','', '')">Contractors</a></div>
+             <br>
+           </div>
+  </button>
+  <button *ngIf="this.costRole"  style="width: 90px" (click)="tabClick('/incidents/resources', 'cost', 'costview')" [class]="getStyle('/incidents/resources', 'cost')">Cost</button>
+  <button *ngIf="this.costRole"  class="btn-normal sub-menu-div" style="width: 20px; background-color: #EEEEEE; padding: 0px">
+          <img src="assets/images/triangleDown.jpg">
+           <div class="sub-menu-content">
+            <div><a  (click)="tabClick('/incidents/costaccruals', '', '')" >Accruals</a></div>
+            <div><a  (click)="tabClick('/incidents/costgroups', '', '')" >Cost Groups</a></div>
+            <div><a>Cost Rates</a></div>
+            <div><a (click)="this.openCostSettingsModal()">Incident Cost Settings</a></div>
+            <br>
+          </div>
+  </button>
+  <button *ngIf="this.iapRole"  style="width: 90px" (click)="tabClick('/incidents/iap', 'iap', '')" [class]="getStyle('/incidents/iap','')">IAP</button>
+  <button *ngIf="this.iapRole"  class="btn-normal sub-menu-div" style="width: 20px; background-color: #EEEEEE; padding: 0px">
+          <img src="assets/images/triangleDown.jpg">
+           <div class="sub-menu-content">
+              <div><a (click)="this.openIapSettingsModal()">IAP Settings</a></div>
+              <br>
+            </div>
+  </button>
+  <button *ngIf="this.tnspRole"  style="width: 90px" (click)="tabClick('/incidents/training', '', '')"  [class]="getStyle('/incidents/training','')">Training</button>
+  <button *ngIf="this.tnspRole"  class="btn-normal sub-menu-div" style="width: 20px; background-color: #EEEEEE; padding: 0px">
+          <img src="assets/images/triangleDown.jpg">
+           <div class="sub-menu-content">
+              <div><a (click)="this.openTrainingSettingsModal()">Training Settings</a></div>
+              <br>
+            </div>
+ </button>
+  <button style="width: 90px" (click)="tabClick('/incidents/reports/plans','', '')" [class]="getStyle('/incidents/reports','')">Reports</button>
+  <div id="dv-inc-nav-bar-right" class="w3-right">
+    <form [formGroup]="this.frm">
+    <div *ngIf="this.showIncidentInfo()">
+      <table>
+        <tr>
+          <td><label>Selected Incident:</label></td>
+          <td><label><strong>{{ this.incidentSelectorService.selectedGridRow.name }}</strong></label></td>
+          <td style="width: 10px;"></td>
+          <td><label>{{ this.incidentSelectorService.selectedGridRow.incidentNumber }}</label></td>
+        </tr>
+      </table>
+    </div>
+    <div *ngIf="this.showIncidentGroupInfo()">
+        <table>
+          <tr>
+            <td><label>Selected Group:</label></td>
+            <td><label><strong>{{ this.incidentSelectorService.selectedGridRow.name }}</strong></label></td>
+            <td style="width: 10px;"></td>
+            <td><input formControlName="manageAsGroup" id="chkManageAsGroup" type="checkbox" style="margin-top:3px;"
+                (change)="this.onChangeManageAsGroup($event)"></td>
+            <td style="width: 2px;"></td>
+            <td><label>Manage as Group</label></td>
+            <td *ngIf="this.showIncidentDropdown === true" style="width: 10px;"></td>
+            <td *ngIf="this.showIncidentDropdown === true">
+              <select formControlName="selectedIncident" style="width: 200px;"
+               (change)="this.onChangeSelectIncident($event)">
+                  <option *ngFor="let v of this.incidentSelectorService.selectedGridRow.children"
+                    [ngValue]="v.incidentId" >{{ v['name'] }}</option>
+               </select>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </div>
+</div>
+<app-prompt-modal id="promptModalNavBar" #promptModalNavBar (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal><app-check-in-settings-modal #checkInSettingsModal (closeModalEvent)="this.closeCheckInSettingsModalEvent()"></app-check-in-settings-modal>
+<app-demob-settings-modal #demobSettingsModal (closeModalEvent)="this.closeDemobSettingsModalEvent()"></app-demob-settings-modal>
+<app-iap-settings-modal #iapSettingsModal (closeModalEvent)="this.closeIapSettingsModalEvent()"></app-iap-settings-modal>
+<app-cost-settings-modal #costSettingsModal (closeModalEvent)="this.closeCostSettingsModalEvent()"></app-cost-settings-modal>
+<app-training-settings-modal #trainingSettingsModal (closeModalEvent)="this.closeTrainingSettingsModalEvent()"></app-training-settings-modal>

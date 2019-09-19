@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AircraftDetailSubChartReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c9ce507c-a6c5-4b79-b489-c8eaa0763618">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="groupName" class="java.lang.String"/>
+	<field name="description" class="java.lang.String"/>
+	<field name="totalAmount" class="java.lang.Double"/>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="190">
+			<pie3DChart>
+				<chart isShowLegend="false">
+					<reportElement uuid="7f15059b-fec7-4e89-892c-d918cab4ca67" x="0" y="22" width="555" height="168"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{groupName}]]></keyExpression>
+					<valueExpression><![CDATA[$F{totalAmount}]]></valueExpression>
+					<labelExpression><![CDATA[$F{description}]]></labelExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel color="#000000" backgroundColor="#FFFFFF">
+						<font size="5"/>
+					</itemLabel>
+				</pie3DPlot>
+			</pie3DChart>
+			<staticText>
+				<reportElement uuid="81eef080-98d1-4b56-a3e3-52f5058f418c" x="0" y="2" width="555" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Aircraft Flight Cost]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

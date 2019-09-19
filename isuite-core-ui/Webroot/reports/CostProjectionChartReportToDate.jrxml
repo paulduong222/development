@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CostProjectionChartReportToDate" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="20" uuid="7651fdfa-47a3-4c99-8dc4-e4740e40368d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="reportName" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="groupName" class="java.lang.String"/>
+	<field name="totalAmount" class="java.lang.Double"/>
+	<field name="description" class="java.lang.String"/>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="332">
+			<pie3DChart>
+				<chart isShowLegend="false">
+					<reportElement uuid="2fa057e7-4e0b-4892-a3b9-4f1f6a604191" x="0" y="48" width="555" height="276"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{groupName}]]></keyExpression>
+					<valueExpression><![CDATA[$F{totalAmount}]]></valueExpression>
+					<labelExpression><![CDATA[$F{description}]]></labelExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel color="#000000" backgroundColor="#FFFFFF">
+						<font size="5"/>
+					</itemLabel>
+				</pie3DPlot>
+			</pie3DChart>
+			<staticText>
+				<reportElement uuid="48411863-01cd-4066-8fdc-0da79ff30763" x="155" y="16" width="224" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Current Costs To Date ]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

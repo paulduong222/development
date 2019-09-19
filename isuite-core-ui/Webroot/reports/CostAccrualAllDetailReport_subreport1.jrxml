@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CostAccrualAllDetailReport_subreport1" language="groovy" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="3b59b47b-09d9-45ab-bb25-11c46206a7fc">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="accountingCode" class="java.lang.String"/>
+	<field name="totalAmount" class="java.lang.Double"/>
+	<field name="accrualDescription" class="java.lang.String"/>
+	<field name="previousAmount" class="java.lang.Double"/>
+	<field name="changeAmount" class="java.lang.Double"/>
+	<field name="incidentResourceId" class="java.lang.Long"/>
+	<field name="resourceName" class="java.lang.String"/>
+	<field name="requestNumber" class="java.lang.String"/>
+	<field name="itemCode" class="java.lang.String"/>
+	<field name="isPerson" class="java.lang.Boolean"/>
+	<field name="lastName" class="java.lang.String"/>
+	<field name="firstName" class="java.lang.String"/>
+	<field name="unitCode" class="java.lang.String"/>
+	<field name="accountingCodeRcDesc" class="java.lang.String"/>
+	<variable name="vTotal" class="java.lang.Double" resetType="Group" resetGroup="groupAcctCodeAccrual" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalAmount}]]></variableExpression>
+	</variable>
+	<variable name="vPrevious" class="java.lang.Double" resetType="Group" resetGroup="groupAcctCodeAccrual" calculation="Sum">
+		<variableExpression><![CDATA[$F{previousAmount}]]></variableExpression>
+	</variable>
+	<variable name="vChange" class="java.lang.Double" resetType="Group" resetGroup="groupAcctCodeAccrual" calculation="Sum">
+		<variableExpression><![CDATA[$F{changeAmount}]]></variableExpression>
+	</variable>
+	<variable name="vGrandTotal" class="java.lang.Double" incrementType="Group" incrementGroup="groupAcctCodeAccrual" calculation="Sum">
+		<variableExpression><![CDATA[$V{vTotal}]]></variableExpression>
+	</variable>
+	<variable name="vGrandTotalPrevious" class="java.lang.Double" incrementType="Group" incrementGroup="groupAcctCodeAccrual" calculation="Sum">
+		<variableExpression><![CDATA[$V{vPrevious}]]></variableExpression>
+	</variable>
+	<variable name="vGrandTotalChange" class="java.lang.Double" incrementType="Group" incrementGroup="groupAcctCodeAccrual" calculation="Sum">
+		<variableExpression><![CDATA[$V{vChange}]]></variableExpression>
+	</variable>
+	<variable name="vTotalAcctCode" class="java.lang.Double" resetType="Group" resetGroup="groupAcctCode" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalAmount}]]></variableExpression>
+	</variable>
+	<variable name="vChangeAcctCode" class="java.lang.Double" resetType="Group" resetGroup="groupAcctCode" calculation="Sum">
+		<variableExpression><![CDATA[$F{changeAmount}]]></variableExpression>
+	</variable>
+	<variable name="vPrevAcctCode" class="java.lang.Double" resetType="Group" resetGroup="groupAcctCode" calculation="Sum">
+		<variableExpression><![CDATA[$F{previousAmount}]]></variableExpression>
+	</variable>
+	<group name="groupAcctCode">
+		<groupExpression><![CDATA[$F{accountingCode}]]></groupExpression>
+		<groupFooter>
+			<band height="14">
+				<textField pattern="¤ #,##0.00">
+					<reportElement uuid="99839b03-b530-4eb4-8704-b6572ba7f1d5" mode="Opaque" x="312" y="0" width="80" height="14" backcolor="#CCCCCC"/>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{vTotalAcctCode}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="fa220b2e-837e-4d1a-9385-56c9ebedfdb8" mode="Opaque" x="44" y="0" width="255" height="14" backcolor="#CCCCCC"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{accountingCode}+" Total:"]]></textFieldExpression>
+				</textField>
+				<textField pattern="¤ #,##0.00">
+					<reportElement uuid="99839b03-b530-4eb4-8704-b6572ba7f1d5" mode="Opaque" x="392" y="0" width="90" height="14" backcolor="#CCCCCC"/>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{vPrevAcctCode}]]></textFieldExpression>
+				</textField>
+				<textField pattern="¤ #,##0.00">
+					<reportElement uuid="99839b03-b530-4eb4-8704-b6572ba7f1d5" mode="Opaque" x="483" y="0" width="86" height="14" backcolor="#CCCCCC"/>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{vChangeAcctCode}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="groupAcctCodeAccrual">
+		<groupExpression><![CDATA[$F{accountingCodeRcDesc}]]></groupExpression>
+		<groupHeader>
+			<band height="17">
+				<textField>
+					<reportElement uuid="72fcc58e-5256-42f1-8006-51f6570c2034" x="0" y="0" width="230" height="16"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{accountingCodeRcDesc}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="14">
+				<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="3dba7078-12f1-41fc-8674-04b40c809260" mode="Opaque" x="392" y="0" width="90" height="14" backcolor="#CCCCCC"/>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{vPrevious}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="fa220b2e-837e-4d1a-9385-56c9ebedfdb8" mode="Opaque" x="71" y="0" width="206" height="14" backcolor="#CCCCCC"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["All "+$F{accrualDescription}+" Total:"]]></textFieldExpression>
+				</textField>
+				<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="3dba7078-12f1-41fc-8674-04b40c809260" mode="Opaque" x="483" y="0" width="86" height="14" backcolor="#CCCCCC"/>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{vChange}]]></textFieldExpression>
+				</textField>
+				<textField pattern="¤ #,##0.00">
+					<reportElement uuid="99839b03-b530-4eb4-8704-b6572ba7f1d5" mode="Opaque" x="288" y="0" width="104" height="14" backcolor="#CCCCCC"/>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{vTotal}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="e663855f-497d-452e-8978-27dfa5256a40" x="0" y="0" width="159" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{isPerson}==true ? $F{lastName} +", " + $F{firstName}: $F{resourceName})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="d29aa1c6-2d5a-4dc2-919f-47f4c09f8387" x="159" y="0" width="47" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{requestNumber}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="d29aa1c6-2d5a-4dc2-919f-47f4c09f8387" x="207" y="0" width="41" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{itemCode}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="d29aa1c6-2d5a-4dc2-919f-47f4c09f8387" x="248" y="0" width="40" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{unitCode}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="d29aa1c6-2d5a-4dc2-919f-47f4c09f8387" x="299" y="0" width="93" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalAmount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="d29aa1c6-2d5a-4dc2-919f-47f4c09f8387" x="392" y="0" width="90" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{previousAmount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="d29aa1c6-2d5a-4dc2-919f-47f4c09f8387" x="484" y="0" width="85" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{changeAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="19" splitType="Stretch">
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="3dba7078-12f1-41fc-8674-04b40c809260" mode="Opaque" x="483" y="0" width="86" height="14" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{vGrandTotalChange}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement uuid="99839b03-b530-4eb4-8704-b6572ba7f1d5" mode="Opaque" x="299" y="0" width="93" height="14" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{vGrandTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fa220b2e-837e-4d1a-9385-56c9ebedfdb8" mode="Opaque" x="3" y="0" width="296" height="14" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Grand Total: "]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="3dba7078-12f1-41fc-8674-04b40c809260" mode="Opaque" x="392" y="0" width="90" height="14" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{vGrandTotalPrevious}]]></textFieldExpression>
+			</textField>
+			<break>
+				<reportElement uuid="4da598d7-ac82-4780-8459-cac28a67d403" x="0" y="18" width="100" height="1"/>
+			</break>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://www.w3schools.com"
+xmlns="http://www.w3schools.com"
+elementFormDefault="qualified">
+
+<!-- anything prefixed by xs comes from the "http://www.w3.org.2001/XMLSchema" namespace -->
+<!-- elements defined in this xsd are to be in the "http://www.w3schools.com" namespace -->
+<!-- any use of the elements defined here in an xml document must use the namespace -->
+
+<xs:simpleType name="importanceType">
+  <xs:restriction base="xs:string">
+	 <xs:enumeration value="high"/>
+	 <xs:enumeration value="medium"/>
+	 <xs:enumeration value="low"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="emailAddress">
+	<xs:restriction base="xs:string">
+		<xs:pattern value="\w+[@]\w+"/>
+	</xs:restriction>
+</xs:simpleType>
+
+
+<xs:element name="note">
+    <xs:complexType>
+      <xs:sequence>
+			<xs:element name="to" type="xs:string"/>
+			<xs:element name="email" type="emailAddress" />
+			<xs:element name="sendDate" type="xs:date" />
+			<xs:element name="importance" type="importanceType" />
+			<xs:element name="from" type="xs:string"/>
+			<xs:element name="heading" type="xs:string"/>
+			<xs:element name="body" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+
+</xs:schema>
+			<!--
+			<xs:element name="importance">
+				<xs:simpleType>
+				  <xs:restriction base="xs:string">
+					 <xs:enumeration value="high"/>
+					 <xs:enumeration value="medium"/>
+					 <xs:enumeration value="low"/>
+				  </xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			-->

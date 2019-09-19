@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://isuite.nwcg.gov/lib2"
+		    xmlns="http://isuite.nwcg.gov/lib2"
+		    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		    elementFormDefault="qualified"
+		    attributeFormDefault="unqualified"
+		    version="1.0">
+
+	<xsd:complexType name="AgencyGroupType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express an Agency Group.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:long" minOccurs="0"/>
+			<xsd:element name="Code" type="xsd:string"  minOccurs="0" />
+			<xsd:element name="Description" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Standard" type="xsd:boolean" minOccurs="0" />
+			<xsd:element name="Active" type="xsd:boolean" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="RateGroupType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express a Rate Group.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:long" minOccurs="0" />
+			<xsd:element name="Code" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Description" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Standard" type="xsd:boolean" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CountryCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express a CountryCode.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:long" minOccurs="0" />
+			<xsd:element name="Name" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Abbreviation" type="xsd:string" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CountrySubdivisionType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express a CountrySubdivision.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:long" minOccurs="0" />
+			<xsd:element name="Name" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Abbreviation" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Standard" type="xsd:boolean" minOccurs="0" />
+			<xsd:element name="CountryCode" type="CountryCodeType" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="EventTypeType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express Event Type.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:long" minOccurs="0" />
+			<xsd:element name="EventTypeCode" type="xsd:string" minOccurs="0" />
+			<xsd:element name="EventType" type="xsd:string" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="AgencyType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express an Agency.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:long" minOccurs="0" />
+			<xsd:element name="AgencyCode" type="xsd:string" minOccurs="0" />
+			<xsd:element name="AgencyName" type="xsd:string" minOccurs="0" />
+			<xsd:element name="AgencyType" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Standard" type="xsd:boolean" minOccurs="0" />
+			<xsd:element name="State" type="xsd:boolean" minOccurs="0" />
+			<xsd:element name="Active" type="xsd:boolean" minOccurs="0" />
+			<xsd:element name="AgencyGroup" type="AgencyGroupType" minOccurs="0" />
+			<xsd:element name="RateGroup" type="RateGroupType" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="OrganizationType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express a Organization.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:long" minOccurs="0" />
+			<xsd:element name="OrgType" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Name" type="xsd:string" minOccurs="0" />
+			<xsd:element name="UnitCode" type="xsd:string" minOccurs="0" />
+			<xsd:element name="CountrySubAbbreviation" type="CountryCodeType" minOccurs="0" />
+			<xsd:element name="Agency" type="AgencyType" minOccurs="0" />
+			<xsd:element name="IsDispatchCenter" type="xsd:boolean" minOccurs="0" />
+			<xsd:element name="SupplyCache" type="xsd:boolean" minOccurs="0" />
+			<xsd:element name="Standard" type="xsd:boolean" minOccurs="0" />
+			<xsd:element name="Local" type="xsd:boolean" minOccurs="0" />
+			<xsd:element name="Active" type="xsd:boolean" minOccurs="0" />
+			<xsd:element name="IncidentId" type="xsd:long" minOccurs="0" />
+			<xsd:element name="IncidentGroupId" type="xsd:long" minOccurs="0" />
+			<xsd:element name="DispatchCenter" type="OrganizationType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="RegionCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express a RegionCode.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:long" minOccurs="0" />
+			<xsd:element name="Code" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Description" type="xsd:string" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="AccountCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express a AccountCode.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:long" minOccurs="0" />
+			<xsd:element name="AccountCode" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Agency" type="AgencyType" minOccurs="0" />
+			<xsd:element name="RegionCode" type="RegionCodeType" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="IncidentAccountCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express a IncidentAccountCode.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:long" minOccurs="0" />
+			<xsd:element name="DefaultFlag" type="xsd:boolean" minOccurs="0" />
+			<xsd:element name="AccrualAccountCode" type="xsd:string" minOccurs="0" />
+			<xsd:element name="AccountCode" type="AccountCodeType" minOccurs="0" />
+			<xsd:element name="OverrideAccountCode" type="AccountCodeType" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="SystemRoleType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express a SystemRoleType.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:long" minOccurs="0" />
+			<xsd:element name="RoleName" type="xsd:string" minOccurs="0" />
+			<xsd:element name="DisplayName" type="xsd:string" minOccurs="0" />
+			<xsd:element name="PrivilegedRole" type="xsd:boolean" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="UserType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express User.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:long" minOccurs="0" />
+			<xsd:element name="LoginName" type="xsd:string" minOccurs="0" />
+			<xsd:element name="FirstName" type="xsd:string" minOccurs="0" />
+			<xsd:element name="LastName" type="xsd:string" minOccurs="0" />
+			<xsd:element name="CellPhone" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Email" type="xsd:string" minOccurs="0" />
+			<xsd:element name="IsFromNap" type="xsd:boolean" minOccurs="0" />
+			<xsd:element name="HomeUnit" type="OrganizationType" minOccurs="0" />
+			<xsd:element name="SystemRole" type="SystemRoleType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="RestrictedIncidentUserType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express a RestrictedIncidentUser.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:long" minOccurs="0" />
+			<xsd:element name="IncidentId" type="xsd:long" minOccurs="0" />
+			<xsd:element name="UserType" type="xsd:string" minOccurs="0" />
+			<xsd:element name="DefaultCheckInDate" type="xsd:string" minOccurs="0" />
+			<xsd:element name="DefaultCheckInType" type="xsd:string" minOccurs="0" />
+			<xsd:element name="User" type="UserType" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="IncidentPrefsOtherFieldsType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express a IncidentPrefsOtherFields.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:long" minOccurs="0" />
+			<xsd:element name="IncidentId" type="xsd:long" minOccurs="0" />
+			<xsd:element name="Other1Label" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Other2Label" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Other3Label" type="xsd:string" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="IncidentType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express an Incident.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:long"  minOccurs="0"/>
+			<xsd:element name="IncidentName" type="xsd:string"  minOccurs="0"/>
+			<xsd:element name="IncidentDescription" type="xsd:string" minOccurs="0" />
+			<xsd:element name="IncidentNumber" type="xsd:string" minOccurs="0" />
+			<xsd:element name="IncidentStartDate" type="xsd:string" minOccurs="0" />
+			<xsd:element name="IncidentEndDate" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Restricted" type="xsd:string"  minOccurs="0"/>
+			<xsd:element name="RossIncidentId" type="xsd:string"  minOccurs="0"/>
+			<xsd:element name="RossXmlFileId" type="xsd:string"  minOccurs="0"/>
+			<xsd:element name="Nbr" type="xsd:string"  minOccurs="0"/>
+			<xsd:element name="IapPersonNameOrder" type="xsd:string"  minOccurs="0"/>
+			<xsd:element name="IncludeFilled" type="xsd:string" minOccurs="0" />
+			<xsd:element name="IapResourceToDisplayFrom" type="xsd:string" minOccurs="0" />
+			<xsd:element name="IapTreeviewDisplay" type="xsd:string" minOccurs="0" />
+			<xsd:element name="ByDate" type="xsd:string" minOccurs="0" />
+			<xsd:element name="NbrOfDaysPrior" type="xsd:string" minOccurs="0" />
+			<xsd:element name="IncidentCostDefaultHours" type="xsd:string" minOccurs="0" />
+			<xsd:element name="CostAutoRun" type="xsd:string" minOccurs="0" />
+			<xsd:element name="AccrualExtractNumber" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Location" type="xsd:string"  minOccurs="0"/>
+			<xsd:element name="Latitude" type="xsd:string" minOccurs="0" />
+			<xsd:element name="Longitude" type="xsd:string"  minOccurs="0"/>
+			<xsd:element name="CreatedBy" type="xsd:string"  minOccurs="0"/>
+			<xsd:element name="CreatedDate" type="xsd:string"  minOccurs="0"/>
+			<xsd:element name="CreatedById" type="xsd:string"  minOccurs="0"/>
+			<xsd:element name="LastModifiedBy" type="xsd:string"  minOccurs="0"/>
+			<xsd:element name="LastModifiedByDate" type="xsd:string"  minOccurs="0"/>
+			<xsd:element name="LastModifiedById" type="xsd:string"  minOccurs="0"/>
+			<xsd:element name="CountrySubdivision" type="CountrySubdivisionType" minOccurs="0"/>
+			<xsd:element name="Agency" type="AgencyType" minOccurs="0"/>
+			<xsd:element name="EventType" type="EventTypeType" minOccurs="0"/>
+			<xsd:element name="HomeUnit" type="OrganizationType" minOccurs="0"/>
+			<xsd:element name="Pdc" type="OrganizationType" minOccurs="0"/>
+			<xsd:element name="IncidentAccountCode" type="IncidentAccountCodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="RestrictedIncidentUser" type="RestrictedIncidentUserType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="IncidentPrefsOtherFields" type="IncidentPrefsOtherFieldsType" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

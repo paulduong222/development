@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OF288TimeInvoiceSubReportV2a" pageWidth="188" pageHeight="258" columnWidth="187" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e2591360-61ce-4cff-bfdf-940e05475b6f">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\workspace\\isuite-core\\Webroot\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\workspace\\isuite-core\\Webroot\\fx\\assets\\images\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DRAFT" class="java.lang.String" isForPrompting="false"/>
+	<field name="accountingCode" class="java.lang.String"/>
+	<field name="fireFighterClassification" class="java.lang.String"/>
+	<field name="firstDateToIncludeOnReport" class="java.util.Date"/>
+	<field name="incidentLocation" class="java.lang.String"/>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="incidentNumber" class="java.lang.String"/>
+	<field name="incidentState" class="java.lang.String"/>
+	<field name="lastDateToIncludeOnReport" class="java.util.Date"/>
+	<field name="rate" class="java.lang.Double"/>
+	<field name="year" class="java.lang.Integer"/>
+	<field name="header" class="java.lang.String"/>
+	<field name="postStartMonth" class="java.lang.Integer"/>
+	<field name="postStartDay" class="java.lang.Integer"/>
+	<field name="startTime" class="java.lang.String"/>
+	<field name="stopTime" class="java.lang.String"/>
+	<field name="hours" class="java.lang.Double"/>
+	<field name="specialPayCode" class="java.lang.String"/>
+	<field name="specialPayId" class="java.lang.Long"/>
+	<field name="halfRate" class="java.lang.Boolean"/>
+	<field name="startTimeOnly" class="java.lang.Boolean"/>
+	<field name="employeeType" class="java.lang.String"/>
+	<field name="groupIndex" class="java.lang.String"/>
+	<field name="showStartStop" class="java.lang.Boolean"/>
+	<field name="showHoursSpecial" class="java.lang.Boolean"/>
+	<field name="showHours" class="java.lang.Boolean"/>
+	<field name="requestNumber" class="java.lang.String"/>
+	<field name="kindCode" class="java.lang.String"/>
+	<field name="adClass" class="java.lang.String"/>
+	<variable name="totalHours" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{specialPayId}!=null?$F{specialPayId}.intValue()==13?$F{startTimeOnly}.booleanValue()==false?$F{hours}:$F{hours}.valueOf( "0.0" ):$F{hours}:$F{hours}]]></variableExpression>
+	</variable>
+	<variable name="TOTALGROSSAMOUNT" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[new Double($F{hours}.doubleValue() * $F{rate}.doubleValue())]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="grossAmount" class="java.lang.Double" resetType="Column">
+		<variableExpression><![CDATA[new Double($V{totalHours}.doubleValue()*$F{rate}.doubleValue())]]></variableExpression>
+	</variable>
+	<variable name="columnStartDate" class="java.lang.String" resetType="Column" calculation="First">
+		<variableExpression><![CDATA[($F{postStartMonth}==null ? "" : $F{postStartMonth}+"/"+$F{postStartDay})]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="columnEndDate" class="java.lang.String" resetType="Column" incrementType="Group" incrementGroup="maxRows">
+		<variableExpression><![CDATA[($F{postStartMonth}==null ? "" : $F{postStartMonth}+ "/" + $F{postStartDay})]]></variableExpression>
+	</variable>
+	<variable name="columnDataCount" class="java.lang.Integer" resetType="Group" resetGroup="fireFighterClassification" incrementType="Group" incrementGroup="fireFighterClassification" calculation="Count"/>
+	<variable name="vTotalHours" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{hours}]]></variableExpression>
+	</variable>
+	<group name="incidentName" isStartNewColumn="true">
+		<groupExpression><![CDATA[$F{incidentName}]]></groupExpression>
+	</group>
+	<group name="incidentNumber" isStartNewColumn="true">
+		<groupExpression><![CDATA[$F{incidentNumber}]]></groupExpression>
+	</group>
+	<group name="accounting Code" isStartNewColumn="true">
+		<groupExpression><![CDATA[$F{accountingCode}]]></groupExpression>
+	</group>
+	<group name="incidentLocation" isStartNewColumn="true">
+		<groupExpression><![CDATA[$F{incidentLocation}]]></groupExpression>
+	</group>
+	<group name="incidentState" isStartNewColumn="true">
+		<groupExpression><![CDATA[$F{incidentState}]]></groupExpression>
+	</group>
+	<group name="rate" isStartNewColumn="true">
+		<groupExpression><![CDATA[$F{rate}]]></groupExpression>
+	</group>
+	<group name="year" isStartNewColumn="true">
+		<groupExpression><![CDATA[$F{year}]]></groupExpression>
+	</group>
+	<group name="fireFighterClassification" isStartNewColumn="true">
+		<groupExpression><![CDATA[$F{fireFighterClassification}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band splitType="Prevent"/>
+		</groupFooter>
+	</group>
+	<group name="maxRows" isStartNewColumn="true" footerPosition="ForceAtBottom">
+		<groupExpression><![CDATA[$F{groupIndex}=="a" ?"a":"b"]]></groupExpression>
+		<groupHeader>
+			<band height="157">
+				<elementGroup>
+					<staticText>
+						<reportElement uuid="fc20b84c-9645-4041-802d-38c5076ee91d" x="1" y="14" width="70" height="11"/>
+						<textElement>
+							<font size="7"/>
+						</textElement>
+						<text><![CDATA[8. Incident Name]]></text>
+					</staticText>
+					<textField isBlankWhenNull="true">
+						<reportElement uuid="50fbf132-1f52-4b98-9e38-1ca1d78cc524" x="3" y="22" width="178" height="12"/>
+						<textElement>
+							<font size="9" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{incidentName}]]></textFieldExpression>
+					</textField>
+					<textField isBlankWhenNull="true">
+						<reportElement uuid="6c4a81f0-853e-40bd-a7ec-0cc9b5821d6a" x="3" y="41" width="98" height="12"/>
+						<textElement>
+							<font size="8" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{incidentNumber}]]></textFieldExpression>
+					</textField>
+					<textField isBlankWhenNull="true">
+						<reportElement uuid="855e9758-344a-499f-b3b6-1cf7d956b1bc" x="2" y="69" width="72" height="12"/>
+						<textElement textAlignment="Center">
+							<font size="8" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{accountingCode}]]></textFieldExpression>
+					</textField>
+					<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+						<reportElement uuid="001b314e-94b3-4f26-ad9c-bbdfdbcca5ef" x="133" y="103" width="42" height="12">
+							<printWhenExpression><![CDATA[$F{rate}.doubleValue() > 0.0 ? Boolean.TRUE : Boolean.FALSE]]></printWhenExpression>
+						</reportElement>
+						<textElement>
+							<font size="9" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{rate}]]></textFieldExpression>
+					</textField>
+					<textField isBlankWhenNull="true">
+						<reportElement uuid="53c07dc1-13ff-4eb0-a898-9f8bed8ce7d5" x="4" y="103" width="66" height="12"/>
+						<textElement>
+							<font size="8" isBold="false"/>
+						</textElement>
+						<textFieldExpression><![CDATA[($F{fireFighterClassification}=="Blank" ? "" : $F{kindCode})]]></textFieldExpression>
+					</textField>
+				</elementGroup>
+				<line>
+					<reportElement uuid="ac0898c4-e145-4fb9-b519-1f36af36e103" x="0" y="14" width="188" height="1"/>
+				</line>
+				<line>
+					<reportElement uuid="ac0898c4-e145-4fb9-b519-1f36af36e103" x="0" y="33" width="188" height="1"/>
+				</line>
+				<staticText>
+					<reportElement uuid="fc20b84c-9645-4041-802d-38c5076ee91d" x="1" y="33" width="178" height="11"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[9. Incident Order Number (e.g., ID-BOF-000123)]]></text>
+				</staticText>
+				<line>
+					<reportElement uuid="ac0898c4-e145-4fb9-b519-1f36af36e103" x="0" y="52" width="188" height="1"/>
+				</line>
+				<staticText>
+					<reportElement uuid="fc20b84c-9645-4041-802d-38c5076ee91d" x="1" y="52" width="63" height="11"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[10. FireCode]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="fc20b84c-9645-4041-802d-38c5076ee91d" x="80" y="52" width="107" height="11"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[11. Resource Request Number]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="fc20b84c-9645-4041-802d-38c5076ee91d" x="1" y="146" width="25" height="11"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[Mo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="fc20b84c-9645-4041-802d-38c5076ee91d" x="28" y="146" width="25" height="11"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[Day]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="fc20b84c-9645-4041-802d-38c5076ee91d" x="55" y="146" width="37" height="11"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[Start]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="fc20b84c-9645-4041-802d-38c5076ee91d" x="95" y="146" width="37" height="11"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[Stop]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="fc20b84c-9645-4041-802d-38c5076ee91d" x="134" y="146" width="52" height="11"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[Hours]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="fc20b84c-9645-4041-802d-38c5076ee91d" x="2" y="86" width="63" height="11"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[12. Position Code]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="fc20b84c-9645-4041-802d-38c5076ee91d" x="3" y="119" width="178" height="11"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[15. Home/Hiring Unit Account Code]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="fc20b84c-9645-4041-802d-38c5076ee91d" x="77" y="86" width="46" height="11"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[13. AD Class]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="fc20b84c-9645-4041-802d-38c5076ee91d" x="127" y="86" width="59" height="11"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[14. AD Rate]]></text>
+				</staticText>
+				<line>
+					<reportElement uuid="ac0898c4-e145-4fb9-b519-1f36af36e103" x="0" y="85" width="188" height="1"/>
+				</line>
+				<staticText>
+					<reportElement uuid="fc20b84c-9645-4041-802d-38c5076ee91d" x="11" y="58" width="63" height="11"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[(e.g., B2C5)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="fc20b84c-9645-4041-802d-38c5076ee91d" x="93" y="58" width="86" height="11"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[(e.g., O-33)]]></text>
+				</staticText>
+				<line>
+					<reportElement uuid="d3a63e30-4879-4472-b11e-e8592a93e460" x="75" y="52" width="1" height="67"/>
+				</line>
+				<line>
+					<reportElement uuid="d3a63e30-4879-4472-b11e-e8592a93e460" x="124" y="86" width="1" height="33"/>
+				</line>
+				<line>
+					<reportElement uuid="ac0898c4-e145-4fb9-b519-1f36af36e103" x="0" y="118" width="188" height="1"/>
+				</line>
+				<line>
+					<reportElement uuid="ac0898c4-e145-4fb9-b519-1f36af36e103" x="0" y="145" width="188" height="1"/>
+				</line>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="53c07dc1-13ff-4eb0-a898-9f8bed8ce7d5" x="81" y="103" width="40" height="12"/>
+					<textElement>
+						<font size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[($F{fireFighterClassification}=="Blank" ? "" : $F{adClass})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="53c07dc1-13ff-4eb0-a898-9f8bed8ce7d5" x="89" y="69" width="92" height="12"/>
+					<textElement>
+						<font size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{requestNumber}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="fc20b84c-9645-4041-802d-38c5076ee91d" x="11" y="92" width="63" height="11"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[(e.g., CRWB-T)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="fc20b84c-9645-4041-802d-38c5076ee91d" x="86" y="92" width="35" height="11"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[(e.g., B)]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="11">
+				<staticText>
+					<reportElement uuid="fc20b84c-9645-4041-802d-38c5076ee91d" x="4" y="0" width="22" height="11"/>
+					<textElement verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[Year]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="fc20b84c-9645-4041-802d-38c5076ee91d" x="95" y="0" width="54" height="11"/>
+					<textElement verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[16. Total Hours]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="34058a75-5616-4fb2-be38-3932b977e4e7" x="39" y="0" width="31" height="11"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{year}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="33688170-b43f-4370-85d2-e5d8f4c92f18" positionType="FixRelativeToBottom" x="149" y="0" width="37" height="11"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totalHours}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement uuid="1dc535a1-e6af-481f-b0f2-071de659a187" x="92" y="0" width="1" height="10"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement uuid="bb9e9820-614f-48b6-a3ac-9610ca3f869c" x="1" y="0" width="187" height="1"/>
+				</line>
+				<line>
+					<reportElement uuid="1dc535a1-e6af-481f-b0f2-071de659a187" x="0" y="0" width="1" height="10"/>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="employeeType" isStartNewColumn="true">
+		<groupExpression><![CDATA[$F{employeeType}]]></groupExpression>
+	</group>
+	<background>
+		<band height="258" splitType="Prevent">
+			<elementGroup>
+				<line>
+					<reportElement uuid="5b8475f9-eec0-49ab-89a6-ba9e23ef3edb" x="0" y="201" width="188" height="1"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement uuid="a56072a5-6f83-42cd-8b2e-916ecc3298e5" x="0" y="215" width="188" height="1"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+			</elementGroup>
+			<elementGroup/>
+			<elementGroup/>
+			<line>
+				<reportElement uuid="139f7f6f-1f96-41e3-92da-f14fc23ce321" x="92" y="146" width="1" height="112"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="08606134-3061-4438-a49d-bacbe2e9e1e6" x="0" y="229" width="188" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="15a26530-5196-4f64-9466-e3874dd1e778" x="53" y="146" width="1" height="112"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="9bfe6a7f-94c9-479d-8f2d-7d513b92ae13" x="132" y="146" width="1" height="112"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="ccd64601-27a4-4423-bd98-6aa5ee18199e" x="26" y="146" width="1" height="112"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="78e7eff3-0da7-49db-bb65-be2076e5d811" x="0" y="244" width="188" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="87e2d752-96dd-4cc4-927f-4ad647cb571f" x="0" y="172" width="188" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b3eb3421-5c0b-45be-966a-cf6d8d0f64d9" x="0" y="187" width="188" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="5b8475f9-eec0-49ab-89a6-ba9e23ef3edb" x="0" y="157" width="188" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</background>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="3e5516dc-c0a2-4947-8c9b-14e10062b005" x="1" y="2" width="25" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{postStartMonth}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="26bac3b2-90a0-4c03-8f11-ae897740c012" x="28" y="2" width="25" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{postStartDay}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="71b96e58-ffa1-4b71-bbff-04a814123d78" x="95" y="2" width="34" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{showStartStop}.booleanValue()==true && $F{startTimeOnly}.booleanValue()==false?$F{stopTime}:""]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="96411090-f221-4e03-9630-33933d8c1c9f" x="55" y="2" width="37" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{showStartStop}.booleanValue()==true?$F{startTime}:""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="34058a75-5616-4fb2-be38-3932b977e4e7" x="55" y="2" width="72" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{showStartStop}.booleanValue()==false?$F{specialPayCode}:""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="65163fbf-a478-4fd5-ba3b-98c6e2360c26" x="134" y="2" width="31" height="12"/>
+				<textElement textAlignment="Left">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{showHours}.booleanValue()==true?$F{hours}:null]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2223e94b-eedc-43e2-8aff-8fb6d4853d60" x="165" y="2" width="16" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{halfRate}.booleanValue()==true?"HFRT":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="6a82fef0-49d4-454c-9f8a-931f20636c2e" x="160" y="2" width="26" height="12"/>
+				<textElement>
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{showHoursSpecial}.booleanValue()==true?$F{specialPayCode}:""]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

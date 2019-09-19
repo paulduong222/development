@@ -1,0 +1,70 @@
+<div class="eis">
+	<form [formGroup]="adminOfficeForm" autocomplete="off">
+  <div id="dv-admin-office-form" class="eis bg-white">
+    <table>
+				<tr>
+           <td class="frmlbl"><label class="f1" for="txName">Office Name</label></td>
+           <td><label class="ast">*</label></td>
+           <td>
+              <app-text-input formControlName="officeName" id="txUName" name="txUName" type="text"
+                width="350" maxlength="30" allowSpace="true" textTransform="uppercase"></app-text-input>
+           </td>
+       </tr>
+       <tr>
+          <td class="frmlbl"><label class="f1" for="txAddr1">Address Line 1</label></td>
+          <td><label class="ast">*</label></td>
+          <td>
+             <app-text-input  formControlName="addressLine1" id="txUAddr1" name="txAddr1" type="text"
+               width="350" maxlength="35" allowSpace="true" textTransform="uppercase"></app-text-input>
+          </td>
+      </tr>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="txAddr2">Address Line 2</label></td>
+          <td><label class="ast"></label></td>
+          <td>
+             <app-text-input formControlName="addressLine2" id="txUAddr2" name="txAddr2" type="text"
+               width="350" maxlength="35" allowSpace="true" textTransform="uppercase"></app-text-input>
+          </td>
+      </tr>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="txCity">City</label></td>
+          <td><label class="ast">*</label></td>
+          <td>
+             <app-text-input formControlName="city" id="txCity" name="txCity" type="text"
+               width="350" maxlength="30" allowSpace="true" textTransform="uppercase"></app-text-input>
+          </td>
+      </tr>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="ddState">State</label></td>
+          <td><label class="ast">*</label></td>
+          <td>
+              <app-eis-dropdown id="ddState" #ddState
+                formControlName="countryCodeSubdivisionVo"
+                [width]="40"
+                [selectedDropdownData]="this.stateDropdownData"
+                [dropdownData]="this.statesDropdownData"></app-eis-dropdown>
+          </td>
+      </tr>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="txZip">Zip Code</label></td>
+          <td><label class="ast">*</label></td>
+          <td>
+             <app-text-input formControlName="zip" id="txZip" name="txZip" type="text"
+              width="100" maxlength="10" restrict2="0-9" textTransform="uppercase"></app-text-input>
+         </td>
+      </tr>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="txPhone">Phone</label></td>
+          <td><label class="ast"></label></td>
+          <td>
+             <app-phone-input formControlName="phone" id="txPhone" name="txPhone" style="width:100px;"></app-phone-input>
+          </td>
+      </tr>
+   </table>
+  </div>
+	<div id="dv-adminoffice-action-bar">
+      <button id="btnSave" [disabled]="this.adminOfficeVo.standard === true" (click)="save()" title="Click to save the Admin Office For Payment">Save</button>
+      <button id="btnCancel" [disabled]="this.adminOfficeVo.standard === true" (click)="cancel()" title="Click to cancel changes">Cancel</button>
+  </div>
+  </form>
+</div>

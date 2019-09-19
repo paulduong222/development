@@ -1,0 +1,155 @@
+<label class="blk-hdr"><u>Remote Camp Location(s)</u></label>
+<div>
+  <form [formGroup]="compForm" autocomplete="off" onsubmit="">
+    <div class="eis">
+      <!--
+
+      <div class="split-example">
+        <as-split direction="vertical">
+          <as-split-area [size]="splitAreaTopSize">
+      -->
+      <div>
+        <table>
+              <tr>
+                <td>
+                  <!-- Column 1 -->
+                  <table>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txName">Name</label></td>
+                        <td><label class="ast">*</label></td>
+                        <td>
+                          <app-text-input id="txName" name="txName"
+                           allowSpace="true" formControlName="name"
+                          width="250" maxlength="200"></app-text-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txLoc">Location</label></td>
+                        <td><label class="ast">*</label></td>
+                        <td>
+                            <app-text-input id="txLoc" name="txLoc"
+                            allowSpace="true" formControlName="location"
+                           width="250" maxlength="200"></app-text-input>
+                         </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txPoc">Point of Contact</label></td>
+                        <td><label class="ast">*</label></td>
+                        <td>
+                            <app-text-input id="txPoc" name="txPoc"
+                            allowSpace="true" formControlName="pointOfContact"
+                           width="250" maxlength="200"></app-text-input>
+                         </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txEms">EMS Responders</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                            <app-text-input id="txEms" name="txEms"
+                            allowSpace="true" formControlName="emsResponders"
+                           width="250" maxlength="200"></app-text-input>
+                         </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txCap">Capability</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                            <app-text-input id="txCap" name="txCap"
+                            allowSpace="true" formControlName="capability"
+                           width="250" maxlength="200"></app-text-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txEquip">Available Equipment</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                            <app-text-input id="txEquip" name="txEquip"
+                            allowSpace="true" formControlName="availEquipment"
+                           width="250" maxlength="200"></app-text-input>
+                        </td>
+                    </tr>
+                  </table>
+                </td>
+                <td>
+                      <!-- Column 2 -->
+                      <table>
+                          <tr>
+                              <td class="frmlbl"><label class="f1" for="txChannel">Emergency Channel</label></td>
+                              <td><label class="ast"></label></td>
+                              <td>
+                                  <app-text-input id="txChannel" name="txChannel"
+                                  allowSpace="true" formControlName="emergencyChannel"
+                                 width="250" maxlength="200"></app-text-input>
+                              </td>
+                          </tr>
+                          <tr>
+                          <td class="frmlbl"><label class="f1" for="txEta1">ETA for Ambulance to Scene (Air)</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                              <app-text-input id="txEta1" name="txEta1"
+                              allowSpace="true" formControlName="ambAirEta"
+                             width="250" maxlength="50"></app-text-input>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="frmlbl"><label class="f1" for="txEta2">ETA for Ambulance to Scene (Ground)</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                              <app-text-input id="txEta2" name="txEta2"
+                              allowSpace="true" formControlName="ambGroundEta"
+                             width="250" maxlength="50"></app-text-input>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="frmlbl"><label class="f1" for="txHeli1">Approved Helispot (Lat)</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                              <app-text-input id="txHeli1" name="txHeli1"
+                              allowSpace="true" formControlName="latitude"
+                             width="250" maxlength="50"></app-text-input>
+
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="frmlbl"><label class="f1" for="txHeli2">Approved Helispot (Long)</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                              <app-text-input id="txHeli2" name="txHeli2"
+                              allowSpace="true" formControlName="longitude"
+                             width="250" maxlength="50"></app-text-input>
+
+                          </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+            </table> 
+            </div> 
+  <!--        </as-split-area> 
+          <as-split-area [size]="splitAreaBottomSize" class="scroll-x">
+          -->
+            <div id="dv-block-action-bar" class="w3-small w3-left">
+              <button (click)="this.save()" title="Click to save the Remote Camp Location." [disabled]="this.isFormLocked" type="button">Save</button>
+              <button (click)="this.add()" title="Click to add a new Remote Camp Location." [disabled]="this.isFormLocked" type="button">Add Remote Camp Location</button>
+              <button (click)="this.delete()" title="Click to delete the Remote Camp Location." [disabled]="this.isFormLocked" type="button">Delete</button>
+              <button (click)="this.cancel()" title="Click to cancel changes." [disabled]="this.isFormLocked" type="button">Cancel</button>
+              <button (click)="this.preAddBlankLine()" title="Click to add a blank line." [disabled]="this.isFormLocked" type="button">Add Blank Line</button>
+              <button (click)="this.reorder()" title="Click to re-order Remote Camp Locations." [disabled]="this.isFormLocked" type="button">Re-Order Remote Camp Locations</button>
+            </div>
+            <div class="w3-left" style="height: 34vh; width: 100%;">
+                  <app-eis-grid #gridRcl
+                  [floatingFilter]="false"
+                  [columnDefs]="this.gridColumnDefs"
+                  [rowData]="this.rclList" 
+                  (rowSelectEvent)="onSelectRow($event)">
+                  </app-eis-grid>
+            </div>
+          <!--
+          </as-split-area>
+        </as-split>
+        </div>
+          -->
+    </div>
+ </form>
+</div>
+<app-prompt-modal id="icsForm206RclPromptModal" #icsForm206RclPromptModal (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>

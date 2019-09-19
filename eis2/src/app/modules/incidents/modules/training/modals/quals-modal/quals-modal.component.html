@@ -1,0 +1,21 @@
+<app-jw-modal id="quals-modal" style="display: none;" class="box-hdr-dv">
+    <div style="width: 560px; height: 270px; padding: 0px;">
+      <div class="w3-container w3-padding-small w3-theme-d2">
+        <div class="w3-left" tabIndex="0">Qualifications</div>
+      </div>
+      <div class="eis">
+        <div class="mt-10">
+          <div>
+            <app-eis-grid #qualsGrid class="w3-left ml-10 dv-quals-grid"
+              [columnDefs]="this.qGridColumnDefs" 
+              [rowData]="this.otherQuals"
+              [floatingFilter]="false">
+            </app-eis-grid>  
+          </div>
+        </div>
+      </div>
+      <div class="dv-action-bar w3-small w3-left">
+          <button id="btnClose" type="button" (click)="closeModal('quals-modal');" title="Click to close.">Close</button>
+      </div>
+    </div>
+  </app-jw-modal>

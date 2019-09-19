@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EmergencyFirefighterCommissaryReport" language="groovy" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="01587954-303f-4ebe-9f97-0335464b65b7">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\workspace\\isuite-core\\Webroot\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="dataSourceSubReport" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="incidentLocation" class="java.lang.String"/>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="incidentNumber" class="java.lang.String"/>
+	<field name="incidentState" class="java.lang.String"/>
+	<field name="identificationNumber" class="java.lang.String"/>
+	<field name="officialNumber" class="java.lang.String"/>
+	<field name="personDetail" class="java.lang.Object"/>
+	<field name="unitCode" class="java.lang.String"/>
+	<field name="reportType" class="java.lang.String"/>
+	<field name="startDate" class="java.util.Date"/>
+	<field name="endDate" class="java.util.Date"/>
+	<field name="reportTypeHeader" class="java.lang.String"/>
+	<field name="requestNumber" class="java.lang.String"/>
+	<variable name="totalAmount" class="java.lang.Double"/>
+	<background>
+		<band height="752" splitType="Stretch">
+			<line>
+				<reportElement uuid="e403f0c5-8c23-4d68-a800-90b152ee3397" x="0" y="0" width="1" height="752"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="ce3a9581-7407-4c05-a120-753540c2cb6d" x="572" y="0" width="1" height="752"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="11b2f3ec-6b0a-497c-9346-e87d43673dae" x="0" y="0" width="572" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="813d5440-2c21-4660-b2be-a352d613849e" x="0" y="751" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="fcd5ca6c-7f57-437e-ba5c-f6afc3107051" x="1" y="731" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="aad052b6-403f-4674-b500-9b53ae51fdc4" x="0" y="179" width="572" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="50ba8030-ab6b-44ae-8f4b-add12f2e9aa7" x="0" y="47" width="572" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="fc8955aa-f348-4ed1-89c9-8338a2229f03" x="0" y="72" width="572" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="9bd74663-afed-453f-b64e-90e971997f8f" x="1" y="96" width="572" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="767e2281-15ab-495e-9db1-df1239ee4912" x="1" y="120" width="572" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="640cabf4-b3e4-45ce-83c0-0c999abd4252" x="0" y="144" width="572" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="1fb5aaf4-78e8-464c-886a-abe6f4c9ff5b" x="1" y="163" width="572" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="e0aa62f3-aca3-447e-9c06-2408c862fdb8" x="82" y="163" width="1" height="568"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="63747f97-eba7-4023-9008-ed3f5ab7a752" x="207" y="163" width="1" height="568"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="6b024680-56be-4b9a-bb11-d9032d4c0619" x="496" y="163" width="1" height="568"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="a16fa946-16fe-4e20-a816-de3e3f7e7915" x="362" y="47" width="1" height="97"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="d9d99750-5627-4ac0-814b-f1b563ad837d" x="133" y="120" width="1" height="24"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="2162b6e1-77ce-42cd-977a-da24b6873ad6" x="257" y="120" width="1" height="24"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="179" splitType="Stretch">
+			<elementGroup>
+				<line>
+					<reportElement uuid="22ae7ee2-09d9-4f10-8b7e-03a34360f49d" x="74" y="40" width="5" height="1"/>
+				</line>
+				<staticText>
+					<reportElement uuid="ed997aed-5eea-4e87-9008-a3bb20e7ba8f" x="133" y="4" width="320" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Emergency FireFighter Commissary Record]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="fc17b71e-997e-4d18-b33a-d0bb10d014d9" x="191" y="22" width="191" height="15"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[(For use with OF-288 Block 22 Commissary Record)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="4b64d624-1d75-44be-bbc9-8c79f3ffb944" x="393" y="34" width="43" height="15"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Official # ]]></text>
+				</staticText>
+				<textField evaluationTime="Report" pattern="MM/dd/yyyy" isBlankWhenNull="true">
+					<reportElement uuid="7fa3389e-430e-47db-b551-1b10de269c8f" x="14" y="34" width="59" height="15"/>
+					<textElement textAlignment="Right">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{startDate}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Report" pattern="MM/dd/yyyy" isBlankWhenNull="true">
+					<reportElement uuid="404c90f2-45da-4253-b50c-5aef943ad920" x="80" y="34" width="59" height="15"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{endDate}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="dc568ef0-c03b-4c3f-b22d-34841a91ba5a" x="191" y="34" width="191" height="15"/>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{reportTypeHeader}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="f62259e8-b4e1-4a2e-bdd9-29ef3d98f44a" x="393" y="22" width="175" height="15"/>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{identificationNumber}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="e6ad2a29-bf33-44be-936f-c884cf978808" x="435" y="32" width="85" height="15"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{officialNumber}]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<staticText>
+				<reportElement uuid="43020780-8dec-4372-9ed7-8bfd4818c766" x="14" y="48" width="167" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1. Name (First, Middle, Last)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="831c4ba5-b179-42d8-a3e1-16eed3cb955a" key="" x="14" y="58" width="279" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personDetail}.getFirstName() +"  " + $F{personDetail}.getLastName()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="95031653-fbe1-4591-96d8-880ba016c27c" x="367" y="48" width="100" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[7. Fire Name]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="5feb8caa-add1-4ec4-8887-46ec5785cf88" x="367" y="58" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{incidentName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="25805885-6db4-4704-aa28-f0bdd6accbd3" x="14" y="73" width="130" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2. Social Security Number]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2f9341a6-8716-48d6-9ae4-fdefb8931617" x="14" y="83" width="130" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{personDetail}.getSSN()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b0a06aad-c216-440e-9987-e74cba2b01f3" x="14" y="96" width="100" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[3. Street Address]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="3d1eecc4-7811-40c9-a035-86ecdbacb0a3" x="14" y="106" width="147" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{personDetail}.getStreetAddress1()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f9c627de-f61e-4991-a045-ff56c154c71e" x="367" y="73" width="100" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[8. Fire No.]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="57efc4cb-32e2-4e16-9bfd-b2166d977fad" x="367" y="83" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{incidentNumber}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="49d594be-ccfe-4de7-bd58-c08c4cdca8dc" x="367" y="96" width="100" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[9. Fire Location]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="1477c498-5a4b-42d3-bb34-832337590170" x="367" y="106" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{incidentLocation}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c5a99670-28ed-47d5-a0a5-dce3d3fdeedd" x="488" y="96" width="57" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[10. State]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="dd653fe3-4d07-482d-afc3-744637e7f42b" x="488" y="106" width="80" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{incidentState}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2e4866fa-65f2-4ada-a0b6-e8429f226fac" x="14" y="121" width="100" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[4. City]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="9f307109-d8ae-44be-9c5a-168732b15c31" x="14" y="131" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{personDetail}.getCity()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="44941c52-5a54-43f3-959b-f5dc6e257952" x="142" y="121" width="64" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[5. State]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="3cdca300-6a93-4e4f-97e8-52e4333ea8d7" x="142" y="130" width="84" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{personDetail}.getState()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="401e9bcd-32e8-4b78-94e3-75c67dba7b54" x="263" y="121" width="78" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[6. Zip Code]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="a132b99f-ab5d-4b10-ad8c-831d1eb263c1" x="263" y="131" width="78" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{personDetail}.getZipCode()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8661e5d2-bd52-4b7b-ab75-6e7a5c6b1b57" x="367" y="121" width="100" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[11. Unit Code]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b48b47e2-3401-4ce7-9ec1-b2028d92ae03" x="367" y="131" width="100" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{unitCode}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b1992137-6423-4bd9-b73e-ff99d18d1629" x="144" y="148" width="279" height="15"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Block 22 Commissary Record (From OF-288)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="20935bda-e0dd-4e73-9202-7544a709a36c" x="165" y="106" width="176" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{personDetail}.getStreetAddress2()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2940555f-0df6-46a8-9b45-0c79b1ab3f0c" x="5" y="165" width="47" height="13"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[a. Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0d8bd567-78f7-4fac-9a02-8fa683ed49d5" x="86" y="165" width="75" height="13"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ b. Category]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bee7d619-e2fc-4b2a-85ad-91f3da2a7983" x="323" y="165" width="44" height="13"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[c. Item]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8f438f5c-67f4-4023-ab19-ff94bdd2c1c5" x="497" y="165" width="74" height="13"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ d. Amount]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="0c8d5548-3483-418f-ad90-39e789b08ee1" x="5" y="4" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{requestNumber}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="522" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="a0c57b7c-9820-494b-817c-fdb98bd888a1" x="0" y="0" width="572" height="522"/>
+				<dataSourceExpression><![CDATA[$F{dataSourceSubReport}]]></dataSourceExpression>
+				<returnValue subreportVariable="AMOUNT" toVariable="totalAmount"/>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "EmergencyFirefighterCommissaryReport_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="61f5ada8-5361-414b-9257-c2aff176ada6" x="89" y="2" width="100" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField evaluationTime="Report" pattern="¤ #,##0.00;(¤ #,##0.00)" isBlankWhenNull="true">
+				<reportElement uuid="a0448263-724c-490e-a856-ab00ef6d7d27" x="502" y="2" width="70" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{totalAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

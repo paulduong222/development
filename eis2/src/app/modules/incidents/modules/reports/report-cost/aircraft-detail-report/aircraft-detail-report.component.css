@@ -1,0 +1,16 @@
+.main-card {
+    border: 1px solid gray;
+    height: 80vh;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding: 20px 10px 20px 20px;
+}
+.checkbox-box {
+    height: 250px;
+    width: 400px;
+    overflow-y: auto;
+    border: 1px solid gray;
+}
+.checkbox-box label {
+    font-size: 12px !important;
+}

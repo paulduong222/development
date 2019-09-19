@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CostShareApportionment" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4a4f9d4b-e8e3-47c6-84c6-583ab37221e5">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\workspace\\isuite-core\\Webroot\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="reportTitle" class="java.lang.String"/>
+	<field name="reportSubTitle" class="java.lang.String"/>
+	<field name="incident" class="java.lang.String"/>
+	<field name="printDate" class="java.util.Date"/>
+	<field name="details" class="java.util.Collection"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="90" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="f40f540b-d761-463d-aca1-2d17f77c317d" x="145" y="0" width="264" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reportTitle}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="895760e6-630e-4cbf-8f5d-a9c683e315c4" x="133" y="40" width="287" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incident}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d655d434-f895-43ec-8fc1-7c5609bd9614" x="455" y="0" width="100" height="16"/>
+				<textElement textAlignment="Right">
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[I-Suite Cost Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2a618168-ee0d-4ce1-b45f-2f73024cb4a1" x="450" y="16" width="35" height="15"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Printed:]]></text>
+			</staticText>
+			<textField pattern="d/M/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="52596ac5-2fa9-4c5a-a6c6-d5027936b1c6" x="485" y="16" width="70" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{printDate}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm" isBlankWhenNull="true">
+				<reportElement uuid="85776bbc-6b5d-4533-8d70-63d974d2c1db" x="485" y="31" width="70" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{printDate}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="5ad81a81-fc29-4913-98ab-68dd6c08c350" x="145" y="20" width="264" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reportSubTitle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6c95b55e-df34-484e-b8af-a80cd1e84874" x="449" y="46" width="80" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="199536d2-ce5d-4441-992a-a05245a5e18b" x="515" y="46" width="40" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="78c9cfa0-9cda-4b77-a948-cae575ee431a" x="0" y="75" width="100" height="15"/>
+				<textElement/>
+				<text><![CDATA[Resource]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="96fa5c80-a181-4295-a8ff-0b84633faca2" x="100" y="75" width="45" height="15"/>
+				<textElement/>
+				<text><![CDATA[Agency]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6619d969-50cc-48d5-9bfc-585a2b567fb2" x="146" y="63" width="30" height="27"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Item Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e0fba7e6-9a9f-49e9-9b4a-ceecc7cccd9d" x="177" y="63" width="30" height="27"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Cost Grp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="076e7582-df6e-4726-b7de-fe9dcefc1d63" x="208" y="75" width="45" height="15"/>
+				<textElement/>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4720e117-ad24-48c5-9be8-a630fba239ed" x="255" y="75" width="61" height="15"/>
+				<textElement/>
+				<text><![CDATA[Daily Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f2dba475-1049-4973-9358-da27c45c4d57" x="335" y="75" width="27" height="15"/>
+				<textElement/>
+				<text><![CDATA[Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="acd18355-b329-44a6-8b54-c6b6b1da9c7f" x="374" y="75" width="17" height="15"/>
+				<textElement/>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3a087b27-fdd1-4d82-a38c-278ffa948750" x="426" y="75" width="27" height="15"/>
+				<textElement/>
+				<text><![CDATA[Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a82c840a-b7e4-4ebb-ba11-cfd088803b6e" x="456" y="75" width="15" height="15"/>
+				<textElement/>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c9aad01c-b7b4-4e3f-886f-693a3687cd33" x="501" y="75" width="27" height="15"/>
+				<textElement/>
+				<text><![CDATA[Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5016e373-f081-4349-8b24-189805c78dc5" x="538" y="75" width="17" height="15"/>
+				<textElement/>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="22ba3699-50e2-49d4-b91a-455171e09242" mode="Opaque" x="321" y="60" width="70" height="15" forecolor="#000000" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Federal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="06dd16af-65e2-4e55-88a6-2fbf75a0c655" mode="Opaque" x="401" y="60" width="70" height="15" forecolor="#000000" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[State]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ea8b88d7-b8c9-47db-a7ad-e64783a1e6a9" mode="Opaque" x="485" y="60" width="70" height="15" forecolor="#000000" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[FS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="692" splitType="Stretch">
+			<elementGroup/>
+			<subreport>
+				<reportElement uuid="b945414a-cf46-449c-bd08-fa74e93303d9" x="0" y="0" width="555" height="692"/>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CostShareApportionmenDetails.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

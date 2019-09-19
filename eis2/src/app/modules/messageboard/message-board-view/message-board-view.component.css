@@ -1,0 +1,31 @@
+
+label {
+	padding: 5px;
+}
+
+.messagelabel {
+	font-weight: bold;
+}
+
+.dv-updated-label {
+	font-weight: bold;
+	font-size: 10px;
+}
+
+.msg-container-main {
+	background: white;
+	border: solid darkgray;
+	margin: auto 2px 0px;
+}
+
+.msg-container-second{
+	padding-top: 24px;
+	background: lightgray;
+	border: solid darkgray;
+	margin-top: 6px;
+}
+.msg-container-third{
+	background:white;
+	border: solid darkgray;
+	min-height: 502px;
+}

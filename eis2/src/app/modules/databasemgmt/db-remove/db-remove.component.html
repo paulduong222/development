@@ -1,0 +1,35 @@
+<h4 class="w3-theme-l3 w3-center mb-20" style="margin-left: 10px; margin-right:10px;">
+    <strong>Remove Database</strong>
+  </h4>
+  
+  <div class="fs-12 ml-20 mb-10"> 
+  <form [formGroup]="dbForm">
+      <div class="border-solid-dkg-1 vw-98-p p-20 mb-20">
+      <table>
+        <tr>
+          <td class="frmlbl"><label for="txName">Database to Remove</label></td>
+          <td></td>
+          <td>
+            <input formControlName="databaseName" id="txName" name="txName" type="text" style="width:200px;"/>
+          </td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label for="txDPassword">Database Password</label></td>
+          <td><label class="ast">*</label></td>
+          <td>
+            <app-text-input formControlName="dPassword" id="txDPassword" name="txDPassword" type="password" 
+              width="208" maxlength="35" (input)="this.dbAvailVo.password = $event.target.value"></app-text-input>
+          </td>
+        </tr>
+      </table>
+    </div>
+  
+    <div class="button-action-bar">
+      <strong>
+        <button (click)="removeDb()" title="Click to remove the database">Remove</button>
+        <button (click)="cancel()" title="Click to cancel changes">Cancel</button>
+      </strong>
+    </div>
+  </form>
+  </div>
+  

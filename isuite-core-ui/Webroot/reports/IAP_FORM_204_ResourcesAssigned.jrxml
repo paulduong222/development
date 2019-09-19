@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IAP_FORM_204_ResourcesAssigned" language="groovy" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="38fbcc7d-85ad-44f9-893a-54c247d772c1">
+	<property name="ireport.zoom" value="1.7715610000000017"/>
+	<property name="ireport.x" value="282"/>
+	<property name="ireport.y" value="0"/>
+	<field name="resourceIdentifier" class="java.lang.String"/>
+	<field name="leader" class="java.lang.String"/>
+	<field name="numPersonnel" class="java.lang.String"/>
+	<field name="lastWorkDay" class="java.lang.String"/>
+	<field name="emt" class="java.lang.String"/>
+	<field name="dropOff" class="java.lang.String"/>
+	<field name="pickUp" class="java.lang.String"/>
+	<pageHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="52ebe534-75c4-4acd-a475-e564db209ec7" x="0" y="0" width="191" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Strike Team / Task Force /]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="52ebe534-75c4-4acd-a475-e564db209ec7" x="480" y="10" width="92" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Pick Up PT./Time]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="7503c9f2-e3ba-469c-9ac7-f2f7a41d8ce6" x="0" y="25" width="572" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="52ebe534-75c4-4acd-a475-e564db209ec7" x="356" y="0" width="35" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="52ebe534-75c4-4acd-a475-e564db209ec7" x="245" y="10" width="108" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Leader]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="91cea6af-edff-4326-b915-88883937911d" x="195" y="0" width="1" height="25"/>
+			</line>
+			<line>
+				<reportElement uuid="91cea6af-edff-4326-b915-88883937911d" x="242" y="0" width="1" height="25"/>
+			</line>
+			<staticText>
+				<reportElement uuid="52ebe534-75c4-4acd-a475-e564db209ec7" x="198" y="10" width="43" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[LWD]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="91cea6af-edff-4326-b915-88883937911d" x="355" y="0" width="1" height="25"/>
+			</line>
+			<staticText>
+				<reportElement uuid="52ebe534-75c4-4acd-a475-e564db209ec7" x="0" y="10" width="191" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Resource Designator]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="52ebe534-75c4-4acd-a475-e564db209ec7" x="356" y="10" width="35" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Persons]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="52ebe534-75c4-4acd-a475-e564db209ec7" x="393" y="10" width="85" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Drop Off PT./Time]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="91cea6af-edff-4326-b915-88883937911d" x="391" y="0" width="1" height="25"/>
+			</line>
+			<line>
+				<reportElement uuid="91cea6af-edff-4326-b915-88883937911d" x="481" y="0" width="1" height="25"/>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="9a547e06-9ac6-4da6-94f9-82f49663affe" x="2" y="0" width="191" height="16" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{resourceIdentifier}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="9a547e06-9ac6-4da6-94f9-82f49663affe" x="198" y="0" width="43" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lastWorkDay}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="9a547e06-9ac6-4da6-94f9-82f49663affe" x="245" y="0" width="108" height="16" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{leader}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="9a547e06-9ac6-4da6-94f9-82f49663affe" x="483" y="0" width="88" height="16" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[$F{pickUp}!="/"]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pickUp}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="e655017d-4fe7-4c7b-bc18-f5d6bdc88c4e" positionType="Float" x="0" y="17" width="572" height="1" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="91cea6af-edff-4326-b915-88883937911d" stretchType="RelativeToTallestObject" x="242" y="0" width="1" height="17" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="91cea6af-edff-4326-b915-88883937911d" stretchType="RelativeToTallestObject" x="195" y="0" width="1" height="17" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="91cea6af-edff-4326-b915-88883937911d" stretchType="RelativeToTallestObject" x="242" y="0" width="1" height="17" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="91cea6af-edff-4326-b915-88883937911d" stretchType="RelativeToTallestObject" x="242" y="0" width="1" height="17" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="91cea6af-edff-4326-b915-88883937911d" stretchType="RelativeToTallestObject" x="481" y="0" width="1" height="17" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="91cea6af-edff-4326-b915-88883937911d" stretchType="RelativeToTallestObject" x="391" y="0" width="1" height="17" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="91cea6af-edff-4326-b915-88883937911d" stretchType="RelativeToTallestObject" x="355" y="0" width="1" height="17" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="9a547e06-9ac6-4da6-94f9-82f49663affe" x="393" y="0" width="88" height="16" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[$F{dropOff}!="/"]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dropOff}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="9a547e06-9ac6-4da6-94f9-82f49663affe" x="356" y="0" width="35" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numPersonnel}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

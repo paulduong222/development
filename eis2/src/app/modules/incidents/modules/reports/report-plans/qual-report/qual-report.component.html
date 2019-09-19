@@ -1,0 +1,41 @@
+<div class="main-card">
+  <p class="title">Qualifications Report</p>
+  <h6 style="font-weight: 550; padding-left: 50px; font-size: 13px">Available Item Codes</h6>
+  <div class="card-body">
+    <button type="button" class="btn btn-default" title="Click to clear filters" (click)="clear()">Clear</button>
+    <div style="display: flex; flex-direction: row; margin-top: 10px; width: 1150px;">
+      <div class="left-box">
+        <h5 class="title">Available</h5>
+        <app-data-table [bodyStyle]="bodyStyle" [tableDefinition]="tableDef" [data]="data" [filter]="filter" (rowClicked)="getClickedRow($event, 'indexSelected', 'data', 'shiftIndex')" [scrollAble]="scrollAble" [indexSelected]="indexSelected"  (filterChange)="filterChange($event, 'data')" [filterData]="filterObject"></app-data-table>
+      </div>
+      <div class="center-box">
+        <div class="icon" (click)="moveSelected('data', 'dataSelected', 'indexSelected', 'shiftIndex')"><img src="assets/images/arrow_right.png" title="Add Selected Item"></div>
+        <div class="icon" (click)="moveSelected('dataSelected', 'data', 'indexSelectedCopy', 'shiftIndexCopy')"><img src="assets/images/arrow_left.png" title="Remove Selected Item"></div>
+        <div class="icon" (click)="moveAll('data', 'dataSelected', 'indexSelected', 'shiftIndex')"><img src="assets/images/arrow_right_double.png" title="Add All Items"></div>
+        <div class="icon" (click)="moveAll('dataSelected', 'data', 'indexSelectedCopy', 'shiftIndexCopy')"><img src="assets/images/arrow_left_double.png" title="Remove All Items"></div>
+      </div>
+      <div class="right-box">
+        <h5 class="title">Selected</h5>
+        <app-data-table class="noselect" [bodyStyle]="bodyStyle" [tableDefinition]="tableDef" [data]="dataSelected" (rowClicked)="getClickedRow($event, 'indexSelectedCopy', 'dataSelected', 'shiftIndexCopy')" [scrollAble]="scrollAble" [indexSelected]="indexSelectedCopy"></app-data-table>
+      </div>
+    </div>
+    <div style="display: flex; padding-top: 10px">
+      <div class="radio-box">
+        <label><input type="radio" name="state" value="allResources" [(ngModel)]="optionFilter" checked> All Resources<br></label>
+        <label><input type="radio" name="state" value="excludeTrainees" [(ngModel)]="optionFilter"> Qualified Only<br></label>
+        <label><input type="radio" name="state" value="traineesOnly" [(ngModel)]="optionFilter"> Trainees Only<br></label>
+      </div>
+      <button type="button" class="btn btn-default" (click)="showHideInstruction()" title="Click to toggle showing the instructions">Show/Hide&nbsp;Instructions</button>
+      <div class="tooltip-box" *ngIf="tooltipBox">
+        <div>-Select the Item Codes to include in the report.</div>
+        <div>-To include all Item Codes in the report, click the >> button.</div>
+        <div>-To exclude trainees from the report, click Exclude Trainees.</div>
+        <div>-To only include trainees in the report, click Trainees Only.</div>
+      </div>
+    </div>
+    <div style="width: 100%;">
+      <button type="button" class="btn btn-default" (click)="generateReport()" title="Click to generate Qualifications Report">Preview/Print</button>
+      <button type="button" class="btn btn-default" style="margin-left: 10px" title="Click to restore defaults" (click)="restoreDefault()">Restore Defaults</button>
+    </div>
+  </div>
+</div>

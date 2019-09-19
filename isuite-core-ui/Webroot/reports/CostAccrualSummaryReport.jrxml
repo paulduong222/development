@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CostAccrualSummaryReport" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2905d836-73b5-418e-9ef1-c7ba125d99bc">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="262"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="header1" class="java.lang.String"/>
+	<parameter name="header2" class="java.lang.String"/>
+	<parameter name="header3" class="java.lang.String"/>
+	<parameter name="header4" class="java.lang.String"/>
+	<field name="accountingCode" class="java.lang.String"/>
+	<field name="rcLineNumber" class="java.lang.String"/>
+	<field name="totalAmount" class="java.lang.Double"/>
+	<field name="accrualDescription" class="java.lang.String"/>
+	<field name="previousAmount" class="java.lang.Double"/>
+	<field name="changeAmount" class="java.lang.Double"/>
+	<field name="incidentResourceId" class="java.lang.Long"/>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="incidentNumber" class="java.lang.String"/>
+	<variable name="vTotal" class="java.lang.Double" resetType="Group" resetGroup="groupAccCode" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalAmount}]]></variableExpression>
+	</variable>
+	<variable name="vGrandTotal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalAmount}]]></variableExpression>
+	</variable>
+	<variable name="vPrevious" class="java.lang.Double" resetType="Group" resetGroup="groupAccCode" calculation="Sum">
+		<variableExpression><![CDATA[$F{previousAmount}]]></variableExpression>
+	</variable>
+	<variable name="vChange" class="java.lang.Double" resetType="Group" resetGroup="groupAccCode" calculation="Sum">
+		<variableExpression><![CDATA[$F{changeAmount}]]></variableExpression>
+	</variable>
+	<variable name="vGrandTotalPrevious" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{previousAmount}]]></variableExpression>
+	</variable>
+	<variable name="vGrandTotalChange" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{changeAmount}]]></variableExpression>
+	</variable>
+	<variable name="vIncidentTotal" class="java.lang.Double" resetType="Group" resetGroup="groupIncident" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalAmount}]]></variableExpression>
+	</variable>
+	<variable name="vIncidentPrevious" class="java.lang.Double" resetType="Group" resetGroup="groupIncident" calculation="Sum">
+		<variableExpression><![CDATA[$F{previousAmount}]]></variableExpression>
+	</variable>
+	<variable name="vIncidentChange" class="java.lang.Double" resetType="Group" resetGroup="groupIncident" calculation="Sum">
+		<variableExpression><![CDATA[$F{changeAmount}]]></variableExpression>
+	</variable>
+	<group name="groupIncident" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{incidentName}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement uuid="5affcddc-e015-473a-a589-c927379704db" x="3" y="0" width="566" height="20"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{incidentName}+" ("+$F{incidentNumber}+")"]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement uuid="1cabb06b-cb3e-4b0c-ad62-53b87015d25e" x="0" y="16" width="572" height="1"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="13">
+				<textField pattern="¤ #,##0.00">
+					<reportElement uuid="46ca80ff-857d-46b0-8c40-fc6f9b0ea6cb" mode="Opaque" x="303" y="0" width="87" height="12" backcolor="#CCCCCC">
+						<printWhenExpression><![CDATA[$V{vIncidentTotal}!=null]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{vIncidentTotal}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="c9594f94-5e9f-4d00-b19a-b2a03bb90e63" mode="Opaque" x="0" y="0" width="300" height="12" backcolor="#CCCCCC"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{incidentName}+"("+$F{incidentNumber}+") Total: "]]></textFieldExpression>
+				</textField>
+				<textField pattern="¤ #,##0.00">
+					<reportElement uuid="46ca80ff-857d-46b0-8c40-fc6f9b0ea6cb" mode="Opaque" x="483" y="0" width="87" height="12" backcolor="#CCCCCC">
+						<printWhenExpression><![CDATA[$V{vIncidentChange}!=null]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{vIncidentChange}]]></textFieldExpression>
+				</textField>
+				<textField pattern="¤ #,##0.00">
+					<reportElement uuid="46ca80ff-857d-46b0-8c40-fc6f9b0ea6cb" mode="Opaque" x="393" y="0" width="87" height="12" backcolor="#CCCCCC">
+						<printWhenExpression><![CDATA[$V{vIncidentPrevious}!=null]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{vIncidentPrevious}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="groupAccCode" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{accountingCode}]]></groupExpression>
+		<groupHeader>
+			<band height="48">
+				<textField>
+					<reportElement uuid="764c4f4f-7ba5-460e-bf46-dd4ae7438ee9" x="0" y="36" width="100" height="12"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{accountingCode}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="cd840686-e5c5-4bfb-800c-169c8c319b74" mode="Transparent" x="1" y="0" width="99" height="14" backcolor="#FFFFFF"/>
+					<textElement>
+						<font fontName="SansSerif" size="8" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Accounting Code]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="cd840686-e5c5-4bfb-800c-169c8c319b74" mode="Transparent" x="100" y="14" width="65" height="14" backcolor="#FFFFFF"/>
+					<textElement>
+						<font fontName="SansSerif" size="8" isBold="false"/>
+					</textElement>
+					<text><![CDATA[RC Line #]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="cd840686-e5c5-4bfb-800c-169c8c319b74" mode="Transparent" x="480" y="14" width="90" height="14" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font fontName="SansSerif" size="8" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Change Amount]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="cd840686-e5c5-4bfb-800c-169c8c319b74" mode="Transparent" x="165" y="14" width="135" height="14" backcolor="#FFFFFF"/>
+					<textElement>
+						<font fontName="SansSerif" size="8" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Accrual]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="cd840686-e5c5-4bfb-800c-169c8c319b74" mode="Transparent" x="300" y="14" width="90" height="14" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font fontName="SansSerif" size="8" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Total Amount]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="cd840686-e5c5-4bfb-800c-169c8c319b74" mode="Transparent" x="390" y="14" width="90" height="14" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font fontName="SansSerif" size="8" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Prev Amount]]></text>
+				</staticText>
+				<line>
+					<reportElement uuid="1c1b0fd4-0fe3-467f-bfaa-c09efa60f9fd" x="0" y="28" width="569" height="1"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="13">
+				<textField pattern="¤ #,##0.00">
+					<reportElement uuid="46ca80ff-857d-46b0-8c40-fc6f9b0ea6cb" mode="Opaque" x="393" y="0" width="87" height="12" backcolor="#CCCCCC">
+						<printWhenExpression><![CDATA[$V{vPrevious}!=null]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{vPrevious}]]></textFieldExpression>
+				</textField>
+				<textField pattern="¤ #,##0.00">
+					<reportElement uuid="46ca80ff-857d-46b0-8c40-fc6f9b0ea6cb" mode="Opaque" x="483" y="0" width="87" height="12" backcolor="#CCCCCC">
+						<printWhenExpression><![CDATA[$V{vChange}!=null]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{vChange}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="c9594f94-5e9f-4d00-b19a-b2a03bb90e63" mode="Opaque" x="0" y="0" width="300" height="12" backcolor="#CCCCCC"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{accountingCode}+" Total: "]]></textFieldExpression>
+				</textField>
+				<textField pattern="¤ #,##0.00">
+					<reportElement uuid="46ca80ff-857d-46b0-8c40-fc6f9b0ea6cb" mode="Opaque" x="303" y="0" width="87" height="12" backcolor="#CCCCCC">
+						<printWhenExpression><![CDATA[$V{vTotal}!=null]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{vTotal}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="76" splitType="Stretch">
+			<textField>
+				<reportElement uuid="0c074741-942d-46cb-bed6-43f9b41a31e8" x="-2" y="18" width="572" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Extract Date: " +$P{header1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0c074741-942d-46cb-bed6-43f9b41a31e8" x="-2" y="32" width="572" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Sequence: " + $P{header2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0c074741-942d-46cb-bed6-43f9b41a31e8" x="-2" y="46" width="572" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Prepared By: " + $P{header3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0c074741-942d-46cb-bed6-43f9b41a31e8" x="-2" y="60" width="572" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{header4}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="1cabb06b-cb3e-4b0c-ad62-53b87015d25e" x="-2" y="75" width="572" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="d6444ea5-8bf1-4252-80ec-ec6f04e21ce8" x="497" y="36" width="28" height="11"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Printed:]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy HH:mm">
+				<reportElement uuid="f39e69a7-4470-4dc7-b5eb-77612c35ec3e" x="525" y="36" width="42" height="11"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("MM/dd/yyyy HH:mm").format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="496b3ce2-b2ff-4bef-a8a4-5c501e50b6b0" x="506" y="47" width="40" height="11"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="0efefca9-67f3-4bf4-89f2-4e5b79d77fa4" x="547" y="47" width="20" height="11"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="38a44045-c8be-4d36-9de7-eaf286cf291f" x="0" y="4" width="448" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[                                           Accrual Summary Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1f9c1433-b5df-487d-bb86-db3da9533d57" x="459" y="4" width="110" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[e-ISuite Cost Report ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<textField>
+				<reportElement uuid="764c4f4f-7ba5-460e-bf46-dd4ae7438ee9" x="100" y="0" width="65" height="12"/>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rcLineNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="764c4f4f-7ba5-460e-bf46-dd4ae7438ee9" x="165" y="0" width="135" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{accrualDescription}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement uuid="764c4f4f-7ba5-460e-bf46-dd4ae7438ee9" x="303" y="0" width="87" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalAmount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement uuid="764c4f4f-7ba5-460e-bf46-dd4ae7438ee9" x="393" y="0" width="87" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{previousAmount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement uuid="764c4f4f-7ba5-460e-bf46-dd4ae7438ee9" x="483" y="0" width="87" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{changeAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="1" splitType="Stretch"/>
+	</columnFooter>
+	<summary>
+		<band height="12" splitType="Stretch">
+			<textField pattern="¤ #,##0.00">
+				<reportElement uuid="46ca80ff-857d-46b0-8c40-fc6f9b0ea6cb" mode="Opaque" x="303" y="0" width="87" height="12" backcolor="#CCCCCC">
+					<printWhenExpression><![CDATA[$V{vGrandTotal}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{vGrandTotal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement uuid="46ca80ff-857d-46b0-8c40-fc6f9b0ea6cb" mode="Opaque" x="393" y="0" width="87" height="12" backcolor="#CCCCCC">
+					<printWhenExpression><![CDATA[$V{vGrandTotalPrevious}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{vGrandTotalPrevious}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement uuid="46ca80ff-857d-46b0-8c40-fc6f9b0ea6cb" mode="Opaque" x="483" y="0" width="87" height="12" backcolor="#CCCCCC">
+					<printWhenExpression><![CDATA[$V{vGrandTotalChange}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{vGrandTotalChange}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement uuid="46ca80ff-857d-46b0-8c40-fc6f9b0ea6cb" mode="Opaque" x="0" y="0" width="300" height="12" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Grand Total:"]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

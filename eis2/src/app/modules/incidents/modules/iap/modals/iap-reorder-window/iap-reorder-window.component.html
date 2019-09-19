@@ -1,0 +1,35 @@
+<app-jw-modal id="reorder-window-modal" style="display: none;" class="box-hdr-dv">
+    <div *ngIf="this.showModal === true" 
+      style="width: 85vw; height: 85vh;">
+      <div class="w3-container w3-padding-small w3-theme-d2">
+          <div class="w3-left w3-medium">{{ this.windowLabel }}</div>
+       </div>
+       <label class="ml-10"><strong>Select position order for the form</strong></label>
+       <div class="w-container" style="width: 100%; width: 100%;">
+         <div class="w3-left" style="width: 73vw; height: 73vh;">
+            <app-eis-grid #gridReorder
+            [floatingFilter]="false"
+            [columnDefs]="this.gridColumnDefs"
+            [rowData]="this.list" 
+            (rowSelectEvent)="onSelectRow($event)">
+            </app-eis-grid>
+         </div>
+         <div class="w3-right" style="width: 10vw; height: 70vh;">
+          <div class="w3-small" style="margin-left: 20px; margin-top: 100px;">
+              <button (click)="this.moveUp()" [disabled]="this.moveUpDisabled"
+                 title="Click to move row up." style="height: 22px;" type="button">Move Up</button>
+              <br>
+              <br>
+              <button (click)="this.moveDown()" [disabled]="this.moveDownDisabled"
+                 title="Click to move row down." style="height: 22px;" type="button">Move Down</button>
+          </div>
+        </div>
+       </div>
+       <br>
+       <div class="dv-action-bar w3-center w3-small w3-left">
+          <button (click)="this.save()" title="Click to save the order positions">Save</button>
+          <button (click)="this.closeModal();" title="Click to cancel changes and close window">Close</button>
+       </div>
+    </div>
+
+</app-jw-modal>

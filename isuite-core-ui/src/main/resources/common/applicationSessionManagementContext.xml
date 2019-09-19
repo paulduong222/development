@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:flex="http://www.springframework.org/schema/flex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.1.xsd
+        http://www.springframework.org/schema/flex 
+        http://www.springframework.org/schema/flex/spring-flex-1.0.xsd">
+
+	<bean id="userSessionManagementServiceTask"
+	    parent="transactionServiceTarget"
+		class="gov.nwcg.isuite.core.service.impl.UserSessionManagementService2Impl"
+		scope="singleton">
+		<property name="sysRunMode" value="ENTERPRISE" />
+		<aop:scoped-proxy />
+	</bean>
+
+	<bean id="closeStaleUserSessionsTask"
+		class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+		<property name="targetObject" ref="userSessionManagementServiceTask" />
+		<property name="targetMethod" value="closeStaleUserSessions" />
+	</bean>
+
+	<bean id="scheduledSessionMgmtTask" class="org.springframework.scheduling.timer.ScheduledTimerTask">
+		<property name="timerTask" ref="closeStaleUserSessionsTask" />
+		<property name="delay" value="300000" />
+	</bean>
+	
+	<bean id="timerFactory" class="org.springframework.scheduling.timer.TimerFactoryBean">
+		<property name="scheduledTimerTasks">
+			<list>
+				<ref bean="scheduledSessionMgmtTask" />
+			</list>
+		</property>
+	</bean>
+
+
+
+	<bean id="sessionManager" class="gov.nwcg.isuite.framework.core.session.SessionManager"
+		scope="singleton">
+		<aop:scoped-proxy />
+	</bean>
+
+	<bean id="sessionManagementRunner"
+		class="gov.nwcg.isuite.framework.core.session.SessionManagementRunner"
+		scope="singleton">
+		<aop:scoped-proxy />
+	</bean>
+
+</beans>
+	

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:security="http://www.springframework.org/schema/security"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.1.xsd">
+
+<!--
+7	Common sessionFactory spring configuration file
+	
+	NOTE!!!:  We are trying to list (at least semi-) alphabetically based on
+			    class name to save needless searching and accidental duplicates
+-->
+
+	<bean id="baseSessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties" ref="hibernateProperties" />
+
+		<property name="annotatedClasses">
+			<list>
+				<value>gov.nwcg.isuite.framework.core.domain.impl.AuditableImpl</value>
+				<value>gov.nwcg.isuite.framework.core.domain.impl.TransferableImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.AccountCodeImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.AccrualCodeImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.AddressImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.AdjustCategoryImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.AdminOfficeImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.AdPaymentInfoImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.AirTravelImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.AssignmentImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.AssignmentTimeImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.AssignmentTimePostImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.AgencyImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.AgencyGroupImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.BranchSettingImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.BranchSettingPositionImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.Cat1AImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.Cat1BImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ComplexityImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ContractorImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ContractorNameHistoryImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ContractorAgreementImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ContractorAgreementNumberHistoryImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ContractorRateImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ContractorPaymentInfoImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ContractorRateImpl</value>
+			    <value>gov.nwcg.isuite.core.domain.impl.CostAccrualExtractImpl</value>
+			    <value>gov.nwcg.isuite.core.domain.impl.CostAccrualExtractRscImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.CostDataImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.CostGroupImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.CostGroupAgencyDayShareImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.CostGroupAgencyDaySharePercentageImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.CostGroupDefaultAgencyDaySharePercentageImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.CountryCodeImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.CountrySubdivisionImpl</value>				
+				<value>gov.nwcg.isuite.core.domain.impl.CustomReportImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.CustomReportColumnImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.CustomReportFilterImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.CustomReportViewImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.CustomReportViewFieldImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.DailyFormImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.DataAuditConfigImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.DataAuditTrackingImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.DataTransferImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.DbAvailImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.DepartmentImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.DepartmentSubImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.EventTypeImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.FinancialExportImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.FontImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.FuelTypeImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.GraphGroupImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.GridColumnImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.GridColumnUserImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.GroupCategoryImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapAircraftImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapAircraftFrequencyImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapAircraftTaskImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapAreaLocationCapabilityImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapAttachmentImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapBranchImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapBranchCommSummaryImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapBranchPersonnelImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapBranchPersonnelResImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapBranchPosItemCodeImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapBranchRscAssignImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapForm202Impl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapForm203Impl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapForm205Impl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapForm206Impl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapForm220Impl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapFrequencyImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapHospitalImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapMasterFrequencyImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapMedicalAidImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapPersonnelImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapPersonnelResImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapPlanImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapPlanPrintOrderImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapPositionItemCodeImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IapRemoteCampLocationsImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentAccountCodeImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentBranchImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentCostDefaultsImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentGroupImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentGroupUserImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentPrefsImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentGroupPrefsImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentGroupQSKindImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentOrgImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentPrefsOtherFieldsImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentQSKindImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentQuestionImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentGroupQuestionImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentResourceImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentResourceDailyCostImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentResourceOtherImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentShiftImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentCostRateImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentCostRateKindImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentCostRateOvhdImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentCostRateStateImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.IncidentCostRateStateKindImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.InputDataSourceImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.JetPortImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.KindImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.KindAltDescImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.KindFunctionImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.KindGroupImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.MessageImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.OfficeTypeImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.OrganizationImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.PasswordHistoryImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.PriorityProgramImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ProjectionImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ProjectionItemImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ProjectionItemWorksheetImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.QuestionImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.RateAreaImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.RateClassImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.RateClassRateImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.RateGroupImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ReportImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.RecommendationImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ResInvImportImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ResInvImportConflictImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ResourceImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ResourceHomeUnitContactImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ResourceOtherImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ResourceKindImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ResourceMobilizationImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ResourceTrainingImpl</value>
+                <value>gov.nwcg.isuite.core.domain.impl.RestrictedIncidentUserImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.RequestCategoryImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.RossImportProcessImpl</value>		
+				<value>gov.nwcg.isuite.core.domain.impl.RossImportProcessMatchIncImpl</value>		
+				<value>gov.nwcg.isuite.core.domain.impl.RossImportProcessDataErrorImpl</value>		
+				<value>gov.nwcg.isuite.core.domain.impl.RossImportProcessResourceErrorImpl</value>		
+				<value>gov.nwcg.isuite.core.domain.impl.RossIncBlacklistImpl</value>		
+				<value>gov.nwcg.isuite.core.domain.impl.RossIncDataBlacklistImpl</value>		
+				<value>gov.nwcg.isuite.core.domain.impl.RossResErrorImpl</value>		
+				<value>gov.nwcg.isuite.core.domain.impl.RossXmlFileImpl</value>		
+				<value>gov.nwcg.isuite.core.domain.impl.RossXmlFileDataImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.RscTrainingObjectiveImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.RscTrainingTrainerImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.ScratchReportTimeImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.Sit209Impl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.SubGroupCategoryImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.SpecialPayImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.SpecialPayImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.SysCostRateImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.SysCostRateKindImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.SysCostRateOvhdImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.SysCostRateStateImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.SysCostRateStateKindImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.SystemModuleImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.SystemModulePermImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.SystemNotificationImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.SystemNotifyUserImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.SystemRoleImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.SystemRolePermImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.SystemParameterImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.TimeAssignAdjustImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.TimeInvoiceImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.TaskQueueImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.TaskQueueLogImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.TrainingContactImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.TrainingSettingsImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.TransferControlImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.UserImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.UserImportFailureImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.UserNotificationImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.UserOrganizationImpl</value>	
+				<value>gov.nwcg.isuite.core.domain.impl.UserSessionLogImpl</value>	
+				<value>gov.nwcg.isuite.core.domain.impl.UserSessionLogActivityImpl</value>	
+				<value>gov.nwcg.isuite.core.domain.impl.UserIncidentViewExcludeImpl</value>	
+				<value>gov.nwcg.isuite.core.domain.impl.WorkPeriodAssignmentImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.WorkPeriodQuestionValueImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.WorkPeriodImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.WorkPeriodOvernightStayInfoImpl</value>
+				
+				<value>gov.nwcg.isuite.core.domain.views.impl.CRItemCodeViewImpl</value>
+				<value>gov.nwcg.isuite.core.domain.views.impl.CRJetPortViewImpl</value>
+				<value>gov.nwcg.isuite.core.domain.views.impl.CRPersonPlanViewImpl</value>
+				<value>gov.nwcg.isuite.core.domain.views.impl.CRPersonPostViewImpl</value>
+				<value>gov.nwcg.isuite.core.domain.views.impl.CRPersonTimeViewImpl</value>
+				<value>gov.nwcg.isuite.core.domain.views.impl.CRResourceCostViewImpl</value>
+				<value>gov.nwcg.isuite.core.domain.views.impl.CRResourceCostRateViewImpl</value>
+				<value>gov.nwcg.isuite.core.domain.views.impl.CRResourcePlanViewImpl</value>
+				<value>gov.nwcg.isuite.core.domain.views.impl.CRResourceTimeViewImpl</value>
+				<value>gov.nwcg.isuite.core.domain.views.impl.CRUnitViewImpl</value>
+				
+				<value>gov.nwcg.isuite.core.domain.views.impl.IncidentResourceViewImpl</value>
+				<value>gov.nwcg.isuite.core.domain.views.impl.IncidentResourceView2Impl</value>
+				<value>gov.nwcg.isuite.core.domain.views.impl.IncidentResourceOnlyViewImpl</value>
+				<value>gov.nwcg.isuite.core.domain.views.impl.IncidentResourceCommonViewImpl</value>
+		
+				<value>gov.nwcg.isuite.core.domain.impl.UserGroupImpl</value>
+				<value>gov.nwcg.isuite.core.domain.impl.UserGroupUserImpl</value>
+				
+				<value>gov.nwcg.isuite.core.domain.impl.RegionCodeImpl</value>
+
+			</list>
+		</property>
+	</bean>
+	
+	
+</beans>

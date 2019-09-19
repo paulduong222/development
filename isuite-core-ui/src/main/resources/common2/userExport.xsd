@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="users">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="user">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="roles">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="role" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="loginName" type="xs:string" use="optional" />
+            <xs:attribute name="firstName" type="xs:string" use="optional" />
+            <xs:attribute name="lastName" type="xs:string" use="optional" />
+            <xs:attribute name="homeUnitCode" type="xs:string" use="required" />
+            <xs:attribute name="pdcUnitCode" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

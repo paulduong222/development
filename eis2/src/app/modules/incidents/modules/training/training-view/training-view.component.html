@@ -1,0 +1,50 @@
+<div [style.height]="calcHt()">
+  <div id="dv-resource-filter">
+    <input type="radio" name="resourcefilter"><label>All Personnel</label>
+    <input type="radio" name="resourcefilter"><label>Overhead Personnel</label>
+    <input type="radio" name="resourcefilter"><label>Crew Personnel</label>
+    <input type="radio" name="resourcefilter"><label>Equipment Personnel</label>
+    <input type="checkbox"><label class="pl-10">Trainees Only</label>
+    <input type="checkbox"><label class="pl-10">Exclude Filled</label>
+    <input type="checkbox"><label class="pl-10">Exclude Demob/Reassigned</label>
+  </div>
+  <div id="dv-top-bar">
+    <div id="dv-top-bar-left" class="w3-left">
+      <app-grid-icon-bar
+          [showCustomize]="false"
+          [showFilter]="true" 
+          [showExpandRetract]="true"
+          (customizeEvent)="this.customizeColumnsEvent()"
+          (filterEvent)="this.clearFilter()"
+          (refreshEvent)="this.refreshGrid()"
+          (expandRetractEvent)="this.expandRetractEvent()">
+      </app-grid-icon-bar>
+    </div>
+    <div id="dv-top-bar-right" class="w3-right">
+      <button class="w3-small" (click)="this.openAssignmentCloseoutModal()">Assignment Closeout</button>
+      <app-training-reports #trainingReports (promptEventTrainingReports)="this.promptEventTrainingReports()"></app-training-reports>
+    </div>
+  </div>
+  <div class="split-example">
+    <as-split direction="horizontal">
+      <as-split-area id="incSplitLeft" #incSplitLeft [size]="splitAreaLeftSize">
+			<div id="dv-resource-grid">
+          <app-eis-grid #resGrid
+            [treeViewMode]="false"
+            [columnDefs]="this.rColumnDefs" 
+            [rowData]="this.incidentResourceGridVos"
+            (rowSelectEvent)="this.onSelectGridRow($event)">
+          </app-eis-grid>
+          <!---
+          <app-training-resource-grid #resourceGrid>
+          </app-training-resource-grid>
+          -->
+			</div>
+      </as-split-area>
+      <as-split-area id="incSplitRight" [size]="splitAreaRightSize" style="background-color: white;">
+        <app-training-form #trainingForm (trainingAssignmentSelectedEvent)="this.trainingAssignmentSelectedEvent($event)"></app-training-form>
+      </as-split-area>
+    </as-split>
+  </div>
+</div>
+<app-assignment-closeout-modal #assignmentCloseoutModal (closeModalEvent)="this.closeAssignmentCloseoutModalEvent()"></app-assignment-closeout-modal>

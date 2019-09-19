@@ -1,0 +1,1424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Form-ICS209" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="de31b525-1e9b-4dc3-a814-a861084b5894">
+	<property name="ireport.zoom" value="1.7715610000000017"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="98"/>
+	<style name="style1" backcolor="#CCCCCC"/>
+	<parameter name="headerTitle" class="java.lang.String"/>
+	<parameter name="headerSubTitle" class="java.lang.String"/>
+	<field name="agencyCode" class="java.lang.String"/>
+	<field name="crw1Count" class="java.lang.Integer"/>
+	<field name="crw1PersonCount" class="java.lang.Integer"/>
+	<field name="crw1StCount" class="java.lang.Integer"/>
+	<field name="crw1StPersonCount" class="java.lang.Integer"/>
+	<field name="crw2Count" class="java.lang.Integer"/>
+	<field name="crw2PersonCount" class="java.lang.Integer"/>
+	<field name="crw2StCount" class="java.lang.Integer"/>
+	<field name="crw2StPersonCount" class="java.lang.Integer"/>
+	<field name="hel1Count" class="java.lang.Integer"/>
+	<field name="hel1PersonCount" class="java.lang.Integer"/>
+	<field name="hel2Count" class="java.lang.Integer"/>
+	<field name="hel2PersonCount" class="java.lang.Integer"/>
+	<field name="hel3Count" class="java.lang.Integer"/>
+	<field name="hel3PersonCount" class="java.lang.Integer"/>
+	<field name="engsCount" class="java.lang.Integer"/>
+	<field name="engsPersonCount" class="java.lang.Integer"/>
+	<field name="engsStCount" class="java.lang.Integer"/>
+	<field name="engsStPersonCount" class="java.lang.Integer"/>
+	<field name="dozrCount" class="java.lang.Integer"/>
+	<field name="dozrPersonCount" class="java.lang.Integer"/>
+	<field name="dozrStCount" class="java.lang.Integer"/>
+	<field name="dozrStPersonCount" class="java.lang.Integer"/>
+	<field name="wtdrCount" class="java.lang.Integer"/>
+	<field name="wtdrPersonCount" class="java.lang.Integer"/>
+	<field name="ovhdCount" class="java.lang.Integer"/>
+	<field name="ovhdPersonCount" class="java.lang.Integer"/>
+	<field name="ccCount" class="java.lang.Integer"/>
+	<field name="ccPersonCount" class="java.lang.Integer"/>
+	<field name="non209Count" class="java.lang.Integer"/>
+	<field name="non209PersonCount" class="java.lang.Integer"/>
+	<field name="incidentId" class="java.lang.Long"/>
+	<field name="pagesubtitle" class="java.lang.String"/>
+	<variable name="crw1CountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{crw1Count}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="crw1PersonCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{crw1PersonCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="crw1StCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{crw1StCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="crw1StPersonCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{crw1StPersonCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="crw2CountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{crw2Count}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="crw2PersonCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{crw2PersonCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="crw2StCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{crw2StCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="crw2StPersonCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{crw2StPersonCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="hel1CountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{hel1Count}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="hel1PersonCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{hel1PersonCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="hel2CountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{hel2Count}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="hel2PersonCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{hel2PersonCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="hel3CountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{hel3Count}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="hel3PersonCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{hel3PersonCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="engsCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{engsCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="engsPersonCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{engsPersonCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="engsStCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{engsStCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="engsStPersonCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{engsStPersonCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="dozrCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{dozrCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="dozrPersonCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{dozrPersonCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="dozrStCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{dozrStCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="dozrStPersonCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{dozrStPersonCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="wtdrCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{wtdrCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="wtdrPersonCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{wtdrPersonCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="ovhdCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{ovhdCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="ovhdPersonCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{ovhdPersonCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="ccCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{ccCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="ccPersonCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{ccPersonCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="non209CountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{non209Count}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="non209PersonCountColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Incident" calculation="Sum">
+		<variableExpression><![CDATA[$F{non209PersonCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="countSubTotal" class="java.lang.Integer" resetType="None">
+		<variableExpression><![CDATA[$F{crw1Count}+
+            $F{crw1StCount}+
+            $F{crw2Count}+
+            $F{crw2StCount}+
+            $F{hel1Count}+
+            $F{hel2Count}+
+            $F{hel3Count}+
+            $F{engsCount}+
+            $F{engsStCount}+
+            $F{dozrCount}+
+            $F{dozrStCount}+
+            $F{wtdrCount}+
+            $F{ovhdCount}+
+            $F{ccCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="totalCountSubTotal" class="java.lang.Integer" resetType="Group" resetGroup="Incident">
+		<variableExpression><![CDATA[$V{crw1CountColumnSum}+
+            $V{crw1StCountColumnSum}+
+            $V{crw2CountColumnSum}+
+            $V{crw2StCountColumnSum}+
+            $V{hel1CountColumnSum}+
+            $V{hel2CountColumnSum}+
+            $V{hel3CountColumnSum}+
+            $V{engsCountColumnSum}+
+            $V{engsStCountColumnSum}+
+            $V{dozrCountColumnSum}+
+            $V{dozrStCountColumnSum}+
+            $V{wtdrCountColumnSum}+
+            $V{ovhdCountColumnSum}+
+            $V{ccCountColumnSum}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="personCountSubTotal" class="java.lang.Integer" resetType="None">
+		<variableExpression><![CDATA[$F{crw1PersonCount}+
+            $F{crw1StPersonCount}+
+            $F{crw2PersonCount}+
+            $F{crw2StPersonCount}+
+            $F{hel1PersonCount}+
+            $F{hel2PersonCount}+
+            $F{hel3PersonCount}+
+            $F{engsPersonCount}+
+            $F{engsStPersonCount}+
+            $F{dozrPersonCount}+
+            $F{dozrStPersonCount}+
+            $F{wtdrPersonCount}+
+            $F{ovhdPersonCount}+
+            $F{ccPersonCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="totalPersonCountSubTotal" class="java.lang.Integer" resetType="Group" resetGroup="Incident">
+		<variableExpression><![CDATA[$V{crw1PersonCountColumnSum}+
+            $V{crw1StPersonCountColumnSum}+
+            $V{crw2PersonCountColumnSum}+
+            $V{crw2StPersonCountColumnSum}+
+            $V{hel1PersonCountColumnSum}+
+            $V{hel2PersonCountColumnSum}+
+            $V{hel3PersonCountColumnSum}+
+            $V{engsPersonCountColumnSum}+
+            $V{engsStPersonCountColumnSum}+
+            $V{dozrPersonCountColumnSum}+
+            $V{dozrStPersonCountColumnSum}+
+            $V{wtdrPersonCountColumnSum}+
+            $V{ovhdPersonCountColumnSum}+
+            $V{ccPersonCountColumnSum}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="countTotal" class="java.lang.Integer" resetType="None">
+		<variableExpression><![CDATA[$V{countSubTotal}+$F{non209Count}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="personCountTotal" class="java.lang.Integer" resetType="None">
+		<variableExpression><![CDATA[$V{personCountSubTotal}+$F{non209PersonCount}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="totalCounts" class="java.lang.Integer" resetType="None">
+		<variableExpression><![CDATA[$V{totalCountSubTotal}+$V{non209CountColumnSum}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<variable name="totalPersonCounts" class="java.lang.Integer" resetType="None">
+		<variableExpression><![CDATA[$V{totalPersonCountSubTotal}+$V{non209PersonCountColumnSum}]]></variableExpression>
+		<initialValueExpression><![CDATA[new Integer(0)]]></initialValueExpression>
+	</variable>
+	<group name="Incident" isStartNewPage="true" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{incidentId}]]></groupExpression>
+		<groupHeader>
+			<band height="2"/>
+		</groupHeader>
+		<groupFooter>
+			<band height="47">
+				<textField>
+					<reportElement uuid="d345f7da-eb86-41c5-ba8c-8a7ea1f2f1ad" style="style1" mode="Opaque" x="39" y="24" width="46" height="23"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{crw1PersonCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="4aee4731-61b9-4918-8f32-d6d916cb4841" style="style1" mode="Opaque" x="85" y="24" width="44" height="23"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{crw1StPersonCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="4493257f-e57c-4304-895c-faa7d2c30c47" style="style1" mode="Opaque" x="174" y="24" width="45" height="23"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{crw2StPersonCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="7e4ca937-af39-409a-9776-294e411f09e1" style="style1" mode="Opaque" x="129" y="24" width="45" height="23"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{crw2PersonCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="84106c49-03f1-4ac8-a189-5ba2542d4818" style="style1" mode="Opaque" x="219" y="24" width="45" height="23"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{hel1PersonCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="99356810-d20f-41eb-860d-3593a342d0a4" style="style1" mode="Opaque" x="264" y="24" width="45" height="23"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{hel2PersonCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="5af20019-e042-447b-b628-b1352bb8ce48" style="style1" mode="Opaque" x="309" y="24" width="45" height="23"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{hel3PersonCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="a749c93d-b620-4c3f-a106-8f15d4218949" style="style1" mode="Opaque" x="354" y="24" width="45" height="23"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{engsPersonCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="118ba96b-1816-4a83-b3f1-2ffdc3281f87" style="style1" mode="Opaque" x="399" y="24" width="45" height="23"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{engsStPersonCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="79aa0fbe-65a8-4364-872e-b47fd17fc381" style="style1" mode="Opaque" x="444" y="24" width="45" height="23"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{dozrPersonCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="9c5d4ad3-e7cb-4b7f-8094-67a9821e3a6a" style="style1" mode="Opaque" x="489" y="24" width="45" height="23"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{dozrStPersonCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="cb043a59-f196-4598-bd9b-3f5984f7fbd1" style="style1" mode="Opaque" x="534" y="24" width="45" height="23"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{wtdrPersonCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="76b198a4-3fb9-44aa-9395-7476f3396a7c" style="style1" mode="Opaque" x="579" y="24" width="45" height="23"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{ovhdPersonCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="811ab7ed-71fb-444f-9fa8-37afa520131c" style="style1" mode="Opaque" x="624" y="24" width="45" height="23"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{ccPersonCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="406e8363-a1f1-42b1-94ae-4a89846e7d4a" style="style1" mode="Opaque" x="669" y="24" width="45" height="23"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{totalPersonCountSubTotal}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="c6bfeef9-5c5f-4451-b719-e87d6a24153e" style="style1" mode="Opaque" x="714" y="24" width="45" height="23"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{non209PersonCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="019cca7d-1649-453b-b0cb-f27938b37545" style="style1" mode="Opaque" x="759" y="24" width="43" height="23"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{totalPersonCounts}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="2308d832-bea6-4059-a82b-d8690ecabde7" x="0" y="1" width="39" height="46"/>
+					<box leftPadding="1">
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["TOTAL"]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="8e7130b8-94cb-4a3e-97df-7d61c213bc3f" mode="Opaque" x="39" y="1" width="46" height="23" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{crw1CountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="2d861a23-75f5-42ac-9de0-83a391e83a3e" mode="Opaque" x="85" y="1" width="44" height="23" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{crw1StCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="926e24ec-8bd0-4ba5-ad0e-94e59cd93a85" mode="Opaque" x="129" y="1" width="45" height="23" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{crw2CountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="6632ad93-93ca-49b9-814a-6fc4d894de77" mode="Opaque" x="174" y="1" width="45" height="23" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{crw2StCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="f835c7c4-694c-42bd-84c4-78f8fcbd9aea" mode="Opaque" x="219" y="1" width="45" height="23" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{hel1CountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="83b5bd1c-738a-41e3-a2dc-92eee7e25169" mode="Opaque" x="264" y="1" width="45" height="23" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{hel2CountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="18dadfcd-9e6c-4ec0-a312-84916d29cacf" mode="Opaque" x="309" y="1" width="45" height="23" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{hel3CountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="751daa6b-a0be-4f52-886e-bedfa9171dba" mode="Opaque" x="354" y="1" width="45" height="23" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{engsCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="6afc8f28-c5e4-415a-ac53-182a6b036281" mode="Opaque" x="399" y="1" width="45" height="23" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{engsStCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="6365de45-919c-4012-b955-30ae864b745f" mode="Opaque" x="444" y="1" width="45" height="23" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{dozrCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="23fa9b8b-a436-4c36-aa0a-60827cd918bd" mode="Opaque" x="489" y="1" width="45" height="23" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{dozrStCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="a694945f-d82e-4103-a46c-4123d178d2bc" mode="Opaque" x="534" y="1" width="45" height="23" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{wtdrCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="f8d6f36c-ade8-4b25-bbad-d16785676e93" mode="Opaque" x="579" y="1" width="45" height="23" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{ovhdCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="72765a02-0d70-4a81-a8ce-4334be68f2bd" mode="Opaque" x="624" y="1" width="45" height="23" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{ccCountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="de53eec7-485e-4c12-be26-a1e880a21118" mode="Opaque" x="669" y="1" width="45" height="23" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{totalCountSubTotal}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="7b78ffba-2fcd-431d-9561-49ff42f7fe0c" mode="Opaque" x="714" y="1" width="45" height="23" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{non209CountColumnSum}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="1e57738e-b384-44cb-8e2f-67517caa3fe8" mode="Opaque" x="759" y="1" width="43" height="23" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineWidth="0.25"/>
+						<topPen lineWidth="0.25"/>
+						<leftPen lineWidth="0.25"/>
+						<bottomPen lineWidth="0.25"/>
+						<rightPen lineWidth="0.25"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{totalCounts}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<pageHeader>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="6b573507-c2b0-4c5b-9574-8c8ca9430d8b" x="265" y="11" width="282" height="27"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ICS-209 INFORMATION FOR BLOCK 29]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="da7ad74d-51a1-4c5f-b947-31f97a2caa1f" x="273" y="38" width="257" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pagesubtitle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="86ff9c64-af7d-4c94-8857-68d2463a33a3" x="750" y="11" width="42" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9b2199da-6d76-4b36-99bd-1e63660bcac9" x="650" y="11" width="100" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[PAGE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ae2295d0-87e1-412d-ab11-eb1bc3f418e6" x="121" y="11" width="33" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Time:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="HH:mm">
+				<reportElement uuid="2841bc10-566d-4126-bb8b-5532fb8d5522" x="154" y="11" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement uuid="39a12d0e-0f97-4f0e-9baa-f1cf0a6256ad" x="39" y="11" width="82" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="216f635d-850b-4283-b832-fd9d990f40af" x="8" y="11" width="31" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bb8137b9-78b2-432b-8ba4-82836371c3b5" x="8" y="58" width="42" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOTE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="90b280a8-0c25-4c74-bdcb-cff004aa6839" x="54" y="58" width="738" height="36"/>
+				<textElement/>
+				<text><![CDATA[The top number in each box identifies the number of resources for that category. The bottom number in each box identifies the number of personnel associated with that resource category.]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="f6a4f4c1-e602-486b-9558-997d777c050b" mode="Opaque" x="0" y="0" width="39" height="40" backcolor="#CCCCCC"/>
+				<box leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom" markup="none">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Agency Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="392a0ab3-67ab-4431-8868-7dd9517d28b0" mode="Opaque" x="39" y="0" width="46" height="40" backcolor="#CCCCCC"/>
+				<box leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CRW1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e9150277-bd90-40f6-a79a-806d73f2b200" mode="Opaque" x="85" y="0" width="44" height="40" backcolor="#CCCCCC"/>
+				<box leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CRW1 ST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4edb78ce-eef3-49ab-8c59-566bf9ff5962" mode="Opaque" x="264" y="0" width="45" height="40" backcolor="#CCCCCC"/>
+				<box leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HEL2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="891027ae-4d49-41a0-886e-86ebe56f22b1" mode="Opaque" x="174" y="0" width="45" height="40" backcolor="#CCCCCC"/>
+				<box leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CRW2 ST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e80bb775-14db-4036-b39f-921dadcbc966" mode="Opaque" x="309" y="0" width="45" height="40" backcolor="#CCCCCC"/>
+				<box leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HEL3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7c563e9f-2dd5-47cb-ba2e-5b4c2f395798" mode="Opaque" x="354" y="0" width="45" height="40" backcolor="#CCCCCC"/>
+				<box leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ENGS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4c07aecf-a06a-426b-a8ff-a63fe3d0f916" mode="Opaque" x="399" y="0" width="45" height="40" backcolor="#CCCCCC"/>
+				<box leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ENGS ST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="12b70e59-0c79-4a85-8038-ff1e7bffb705" mode="Opaque" x="444" y="0" width="45" height="40" backcolor="#CCCCCC"/>
+				<box leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOZR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5a0906b7-e655-44a0-8dc5-bb0a0ae0541e" mode="Opaque" x="579" y="0" width="45" height="40" backcolor="#CCCCCC"/>
+				<box leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OVHD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2d6e499f-30ea-4fe6-bf9d-3985bf6090e9" mode="Opaque" x="129" y="0" width="45" height="40" backcolor="#CCCCCC"/>
+				<box leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CRW2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="38773939-ad56-4dbe-b93b-35d176954134" mode="Opaque" x="489" y="0" width="45" height="40" backcolor="#CCCCCC"/>
+				<box leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOZR  ST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="897376dd-ec00-4377-99c5-c1cee2d3102e" mode="Opaque" x="534" y="0" width="45" height="40" backcolor="#CCCCCC"/>
+				<box leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[WTDR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="aefed382-091f-40b0-b902-80282cb669ca" mode="Opaque" x="624" y="0" width="45" height="40" backcolor="#CCCCCC"/>
+				<box leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CAMP CREWS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="25160bdc-daf4-4065-8390-164eea4d8f9f" mode="Opaque" x="669" y="0" width="45" height="40" backcolor="#CCCCCC"/>
+				<box leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUB TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f69bf42c-9a3f-44d8-a1ef-8503da9749bf" mode="Opaque" x="714" y="0" width="45" height="40" backcolor="#CCCCCC"/>
+				<box leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NON  209]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="64c96a71-287f-468e-b306-07c01c9899e1" mode="Opaque" x="759" y="0" width="43" height="40" backcolor="#CCCCCC"/>
+				<box leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a51a2117-7e7b-4322-a5b9-43aec3fcda36" mode="Opaque" x="219" y="0" width="45" height="40" backcolor="#CCCCCC"/>
+				<box leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HEL1]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="735e29fd-2103-4b77-a744-2c3a5f07abd1" mode="Opaque" x="39" y="0" width="46" height="23" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{crw1Count}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="4b46db4c-e32a-417d-b6a4-9b33d972d250" style="style1" mode="Opaque" x="39" y="23" width="46" height="23"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{crw1PersonCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ccf78d39-0dd9-4387-8344-61b56564f985" style="style1" mode="Opaque" x="85" y="23" width="44" height="23"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{crw1StPersonCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3d16c3e6-9f68-4d8a-b818-305539de8dc7" mode="Opaque" x="85" y="0" width="44" height="23" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{crw1StCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1ff2d40e-586a-4986-b1f5-56c39a23d1aa" style="style1" mode="Opaque" x="129" y="23" width="45" height="23"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{crw2PersonCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1663eb87-9133-40e9-8538-db5377f06c9f" mode="Opaque" x="129" y="0" width="45" height="23" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{crw2Count}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="68bf8f51-1c17-4891-9916-7ba606c5408c" style="style1" mode="Opaque" x="174" y="23" width="45" height="23"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{crw2StPersonCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="17e2cf9b-5e03-4e94-8155-bbf55e28adaf" mode="Opaque" x="174" y="0" width="45" height="23" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{crw2StCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="968c0a9c-eb31-4a3a-9cf6-6be1c6b6308c" style="style1" mode="Opaque" x="264" y="23" width="45" height="23"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{hel2PersonCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="64ed9fa6-c3d7-409d-9cfe-7ee885819e5d" mode="Opaque" x="264" y="0" width="45" height="23" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{hel2Count}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="87ce9136-0b70-4976-986d-ee09bdc99a95" style="style1" mode="Opaque" x="309" y="23" width="45" height="23"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{hel3PersonCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a1c19768-4e0e-430c-9c42-487eaea972d6" mode="Opaque" x="309" y="0" width="45" height="23" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{hel3Count}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a49b3311-316f-49ba-a97c-b306a275aad9" style="style1" mode="Opaque" x="354" y="23" width="45" height="23"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{engsPersonCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e62c2cd3-12cb-4037-bf29-e7778156decf" mode="Opaque" x="354" y="0" width="45" height="23" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{engsCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0aba1eac-a343-4d23-990c-ca86b6f06470" style="style1" mode="Opaque" x="399" y="23" width="45" height="23"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{engsStPersonCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6cde0e78-8b76-44d5-8130-2e4e359beba0" mode="Opaque" x="399" y="0" width="45" height="23" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{engsStCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c3da7b94-8b82-4039-bfe0-33593621ffa9" style="style1" mode="Opaque" x="444" y="23" width="45" height="23"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dozrPersonCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f3bb9059-e494-42e1-9f3d-df3c1e2fe208" mode="Opaque" x="444" y="0" width="45" height="23" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dozrCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6383e0a8-ed8f-492f-804d-eebf8cd7b345" style="style1" mode="Opaque" x="489" y="23" width="45" height="23"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dozrStPersonCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a2eaf912-43d2-4794-906e-8ad602d38059" mode="Opaque" x="489" y="0" width="45" height="23" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dozrStCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f336349f-52cc-49b9-b121-197469d29aee" style="style1" mode="Opaque" x="534" y="23" width="45" height="23"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{wtdrPersonCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8df7204a-e9c0-40de-8a52-89d3659ca8e4" mode="Opaque" x="534" y="0" width="45" height="23" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{wtdrCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="82b722fc-2e53-4101-aff1-3d3d3d71cfdd" style="style1" mode="Opaque" x="579" y="23" width="45" height="23"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ovhdPersonCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1c5d6d5e-4c91-4c7a-934d-70c9959fc46a" mode="Opaque" x="579" y="0" width="45" height="23" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ovhdCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cedf5c50-aabb-4735-a601-2b2a009009e2" style="style1" mode="Opaque" x="624" y="23" width="45" height="23"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ccPersonCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3a494c66-adf2-4c36-9290-1ed8c5fb8ef8" mode="Opaque" x="624" y="0" width="45" height="23" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ccCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="56ec9e97-c453-4af6-a178-cafb09a02af7" style="style1" mode="Opaque" x="669" y="23" width="45" height="23"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{personCountSubTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2548a399-549b-4650-8fb4-5d62d912e68a" mode="Opaque" x="669" y="0" width="45" height="23" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{countSubTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8c32a4ae-266d-4caf-85f9-c367c44c38f8" style="style1" mode="Opaque" x="714" y="23" width="45" height="23"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{non209PersonCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="80638508-49ae-4a21-b193-d7e587c1eb71" mode="Opaque" x="714" y="0" width="45" height="23" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{non209Count}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3ec945ce-44e5-41ba-b461-cb1627ad1bea" style="style1" mode="Opaque" x="759" y="23" width="43" height="23"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{personCountTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="50c136db-16c6-4ea4-8c41-093238575288" mode="Opaque" x="759" y="0" width="43" height="23" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{countTotal}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="d2f5ba9e-88cd-407b-bd2c-f912cadabab0" x="0" y="0" width="39" height="46"/>
+				<box leftPadding="1">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{agencyCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="07c8860e-a519-4cf4-918f-fca83892aed0" style="style1" mode="Opaque" x="219" y="23" width="45" height="23"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{hel1PersonCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="67b283e2-00b6-456e-8c09-0fcc426464eb" mode="Opaque" x="219" y="0" width="45" height="23" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{hel1Count}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="GroupCategorySummaryReport" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5254c3a5-e4b7-4575-b66b-18957fb64949">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\workspace_fs\\isuite-core\\Webroot\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="reportDateRange" class="java.lang.String"/>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="incidentNumber" class="java.lang.String"/>
+	<field name="groupingName" class="java.lang.String"/>
+	<field name="incidentId" class="java.lang.Long"/>
+	<field name="dataSourceSubReportDataByGroup" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="dataSourceSubReportChartData" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="startDate" class="java.util.Date"/>
+	<field name="endDate" class="java.util.Date"/>
+	<field name="incidentGroupId" class="java.lang.Number"/>
+	<field name="incidentGroupName" class="java.lang.String"/>
+	<field name="dataSourceSubReportDataByDate" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<group name="incidentGroup" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{incidentName}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<textField isBlankWhenNull="true" hyperlinkType="LocalAnchor" bookmarkLevel="1">
+				<reportElement uuid="115dbe71-b05e-4f18-8e01-6bde2c0539b3" x="0" y="0" width="572" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Group Category Summary Report by " + $F{groupingName}]]></textFieldExpression>
+				<anchorNameExpression><![CDATA[$V{PAGE_NUMBER} + " - " + $F{incidentName} + " (" + $F{incidentNumber} +")"]]></anchorNameExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="231a527a-8395-469a-9478-3b32f4ffae5b" x="0" y="19" width="572" height="19"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="11" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(($F{incidentGroupName} != "" && $F{incidentGroupName} != null) ? "Incident Group: " + $F{incidentGroupName} : "Incident: " + $F{incidentName} + " (" + $F{incidentNumber} +") ") + $P{reportDateRange}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="d4a15c9b-8a50-4a90-be55-9d3b0131af88" x="0" y="38" width="572" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<printWhenExpression><![CDATA[($F{incidentGroupName} != "" && $F{incidentGroupName} != null)]]></printWhenExpression>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="c8436d54-0b1f-40a2-94a2-819ee91bac18" mode="Opaque" x="0" y="0" width="572" height="16" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{incidentGroupName} != "" && $F{incidentGroupName} != null) ? "Incident: " + $F{incidentName} + " (" + $F{incidentNumber} +")" : null]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="44" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="13ebb6ab-0e4f-4e1d-974b-27fe8d2b74ad" x="0" y="2" width="38" height="38" isRemoveLineWhenBlank="true"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$F{dataSourceSubReportChartData}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR}+"GroupCategorySummarySubChartReport.jasper"]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement uuid="c84ca052-3a35-451c-9183-59e54d0d998e" x="0" y="43" width="100" height="1">
+					<printWhenExpression><![CDATA[($F{dataSourceSubReportChartData}.getRecordCount() > 0) && ($F{dataSourceSubReportDataByDate}.getRecordCount() > 0)]]></printWhenExpression>
+				</reportElement>
+			</break>
+		</band>
+		<band height="38" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="d560fdb9-b8fd-4c5b-a80f-292c7be933f6" x="0" y="0" width="38" height="38"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="groupingName">
+					<subreportParameterExpression><![CDATA[$F{groupingName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$F{dataSourceSubReportDataByDate}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "GroupCategorySummarySubReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="41">
+			<printWhenExpression><![CDATA[!($F{groupingName}.equalsIgnoreCase("Incident"))]]></printWhenExpression>
+			<subreport>
+				<reportElement uuid="c9c9373d-0c23-444f-8e25-5cb32c00cc91" x="0" y="3" width="38" height="38"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="groupingName">
+					<subreportParameterExpression><![CDATA[$F{groupingName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$F{dataSourceSubReportDataByGroup}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR}+"GroupCategorySummarySubReportByGroupCrosstab.jasper"]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement uuid="b1d8e4e2-b3ff-42e6-a020-544f09215470" x="0" y="2" width="100" height="1">
+					<printWhenExpression><![CDATA[$F{dataSourceSubReportDataByGroup}.getRecordCount() > 0]]></printWhenExpression>
+				</reportElement>
+			</break>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17" splitType="Stretch">
+			<line>
+				<reportElement uuid="d4a15c9b-8a50-4a90-be55-9d3b0131af88" x="0" y="0" width="572" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField pattern="yyyy.MMMMM.dd GGG hh:mm aaa">
+				<reportElement uuid="c467b3a2-ba56-4d0e-87af-a3df7c1a3d7c" x="0" y="1" width="99" height="16"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="SansSerif" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("MM/dd/yyyy HHmm").format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d11acb87-3ad9-431f-b08b-d31ada72d9ea" x="474" y="1" width="80" height="16"/>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="1d612d07-7257-4d5c-8afd-b6bbf8a542c3" x="554" y="1" width="40" height="16"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

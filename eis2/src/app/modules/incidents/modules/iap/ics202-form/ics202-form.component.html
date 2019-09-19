@@ -1,0 +1,45 @@
+<div id="dv-ics202">
+  <div class="w3-left">
+    <button [class]="getBtnClass('block3')" (click)="this.openTab('block3')" title="Click to edit Block 3. Objectives.">3. Objectives</button>
+    <button [class]="getBtnClass('block4')" (click)="this.openTab('block4')" title="Click to edit Block 4. Operational Period Command Emphasis.">4. Operational Period Command Emphasis</button>
+    <button [class]="getBtnClass('block4gsa')" (click)="this.openTab('block4gsa')" title="Click to edit 4. General Situational Awareness.">4. General Situational Awareness</button>
+    <button [class]="getBtnClass('block5')" (click)="this.openTab('block5')" title="Click to edit 5. Site Safety Plan.">5. Site Safety Plan</button>
+    <button [class]="getBtnClass('block6')" (click)="this.openTab('block6')" title="Click to edit 6. Incident Action Plan Items.">6. Incident Action Plan Items</button>
+    <button [class]="getBtnClass('block78')" (click)="this.openTab('block78')" title="Click to edit Block 7/8. Prepared By / Approved By.">7/8. Prepared By / Approved By</button>
+  </div>
+  <br>
+	<!-- Block 3 -->
+  <div id="dv-block3" [class]="getDivBlockClass('block3')">
+    <label class="blk-hdr"><u>Objectives</u></label>
+    <app-ics202-objectives #ics202Objectives></app-ics202-objectives>
+  </div>  
+	<!-- Block 4 -->
+  <div id="dv-block4" [class]="getDivBlockClass('block4')">
+      <label class="blk-hdr"><u>Operational Period Command Emphasis</u></label>
+      <app-ics202-op-per-cmd-emphasis #ics202OpPerCmdEmphasis></app-ics202-op-per-cmd-emphasis>
+  </div>
+	<!-- Block 4gsa -->
+  <div id="dv-block4gsa" [class]="getDivBlockClass('block4gsa')">
+      <label class="blk-hdr"><u>General Situational Awareness</u></label>
+      <app-ics202-gen-sit-awareness #ics202GenSitAwareness></app-ics202-gen-sit-awareness>
+  </div>
+	<!-- Block 5 -->
+  <div id="dv-block5" [class]="getDivBlockClass('block5')">
+      <label class="blk-hdr"><u>Site Safety Plan</u></label>
+      <app-ics202-site-safety-plan #ics202SiteSafetyPlan></app-ics202-site-safety-plan>
+  </div>
+	<!-- Block 6 -->
+  <div id="dv-block6" [class]="getDivBlockClass('block6')">
+      <label class="blk-hdr"><u>Incident Action Plan Items</u></label>
+      <app-ics202-inc-action-plan #ics202IncActionPlan></app-ics202-inc-action-plan>
+  </div>
+	<!-- Block 78 -->
+  <div id="dv-block78" [class]="getDivBlockClass('block78')">
+      <app-ics202-prep-appr-by #ics202PrepApprBy></app-ics202-prep-appr-by>
+  </div>
+  <div id="dv-block-action-bar" class="w3-small w3-left">
+      <button (click)="this.save(false)" [disabled]="this.isFormLocked" title="Click to save the block changes.">Save</button>
+      <button (click)="this.save(true)" [disabled]="this.isFormLocked"  title="Click to save the block and move to next block.">Save/Next Block</button>
+      <button (click)="this.cancel()" [disabled]="this.isFormLocked"  title="Click to cancel changes.">Cancel</button>
+  </div>
+</div>

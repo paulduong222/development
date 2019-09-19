@@ -1,0 +1,14 @@
+#dvnonfshdr {
+    border-top: solid 1px black;
+    width: 890px;
+}
+#dvnonfshdr label{
+    font-size: 14px;
+    font-weight: bold;
+}
+#dvnonfs {
+    width: 890px;
+    height: 450px;
+    overflow: auto;
+    border-top: solid 1px black;
+}

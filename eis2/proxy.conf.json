@@ -1,0 +1,14 @@
+{
+  "/service/*": {
+    "target": "http://localhost:8080/isuite",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {"^/service*": ""}
+  },
+  "/assets/*":{
+    "target": "http://localhost:8080/isuite",
+    "changeOrigin": true,
+    "secure": false
+
+  }
+}

@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="NWCG_ICS-202" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="1126"/>
+	<field name="field" class="java.lang.String"/>
+	<background>
+		<band height="752" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="1" height="736"/>
+			</line>
+			<line>
+				<reportElement x="572" y="0" width="1" height="736"/>
+			</line>
+			<line>
+				<reportElement x="1" y="0" width="571" height="1"/>
+			</line>
+		</band>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="63" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="191" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Incident Objectives]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="195" y="2" width="100" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[1. Incident Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="2" width="76" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[2. Date Prepared]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="496" y="2" width="75" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[3. Time Prepared]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="34" width="100" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[4. Operational Period]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="32" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement x="191" y="0" width="1" height="32"/>
+			</line>
+			<line>
+				<reportElement x="413" y="0" width="1" height="32"/>
+			</line>
+			<line>
+				<reportElement x="493" y="0" width="1" height="32"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="195" y="16" width="215" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yy" isBlankWhenNull="true">
+				<reportElement x="417" y="15" width="73" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HHmm" isBlankWhenNull="true">
+				<reportElement x="497" y="15" width="73" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="3" y="47" width="564" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="225" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="572" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="3" y="5" width="314" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[5. Geneal Control Objectives for the incident ( include alternatives)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="2" y="28" width="565" height="186"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="152">
+			<line>
+				<reportElement x="0" y="0" width="572" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="3" width="156" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[6. Weather Forecast for Period]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="2" y="23" width="565" height="120"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="152">
+			<line>
+				<reportElement x="0" y="0" width="572" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="2" width="156" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[7. General Safety Message]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="2" y="22" width="565" height="120"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="144" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="1" width="571" height="21" backcolor="#CCCCCC"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="0" y="0" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="21" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="114" width="572" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="3" y="4" width="156" height="15"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[8. Attachments (mark if attached)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="25" width="156" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Organization List - ICS 203]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="43" width="156" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Div. Assignment Lists - ICS 204]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="61" width="156" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Communications Plan - ICS 205]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="79" width="156" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Medical Plan - ICS 206]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="97" width="156" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Air Operations Summary - ICS 220]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="25" width="156" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Incident Map]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="43" width="156" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Safety Message]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="61" width="156" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Traffic Plan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="117" width="188" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[9. Prepared by (Planning Section Chief)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="130" width="97" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Planning Section Chief]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="116" width="188" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[10. Approved by (Inicident Commander)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="130" width="188" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Inicident Commander]]></text>
+			</staticText>
+			<line>
+				<reportElement x="282" y="115" width="1" height="29"/>
+			</line>
+			<rectangle>
+				<reportElement x="37" y="27" width="9" height="9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="37" y="45" width="9" height="9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="37" y="63" width="9" height="9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="37" y="81" width="9" height="9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="37" y="99" width="9" height="9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="27" width="9" height="9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="45" width="9" height="9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="63" width="9" height="9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="81" width="9" height="9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="99" width="9" height="9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="386" y="27" width="9" height="9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="386" y="45" width="9" height="9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="386" y="63" width="9" height="9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="386" y="81" width="9" height="9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="386" y="99" width="9" height="9"/>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement x="37" y="27" width="9" height="9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="37" y="45" width="9" height="9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="37" y="63" width="9" height="9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="37" y="81" width="9" height="9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="37" y="99" width="9" height="9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="218" y="27" width="9" height="9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="218" y="45" width="9" height="9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="218" y="63" width="9" height="9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="572" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="2" width="97" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[ICS 202]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="496" y="2" width="75" height="13"/>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[ICS 202 Forms]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="385" y="2" width="80" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="466" y="2" width="40" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="218" y="2" width="131" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

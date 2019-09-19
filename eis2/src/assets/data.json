@@ -1,0 +1,6 @@
+[
+    {"id": 1,"excludeUser": false, "loginName": "test1", "firstName": "user", "lastName": "one", "homeUnitCode": "test1"},
+    {"id": 2,"excludeUser": false, "loginName": "test2", "firstName": "user", "lastName": "two", "homeUnitCode": "test2"},
+    {"id": 3,"excludeUser": false, "loginName": "test3", "firstName": "user", "lastName": "three", "homeUnitCode": "test3"},
+    {"id": 4,"excludeUser": false, "loginName": "test4", "firstName": "user", "lastName": "four", "homeUnitCode": "test4"}
+]

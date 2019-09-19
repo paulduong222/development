@@ -1,0 +1,120 @@
+<app-jw-modal id="assignment-closeout-modal" style="display: none;" class="box-hdr-dv">
+  <div style="width: 690px; height: 370px;padding: 0px;">
+    <div class="w3-container w3-padding-small w3-theme-d2">
+      <div class="w3-left" tabIndex="0">Assignment Closeout</div>
+      <div class="w3-right"></div>
+    </div>
+    <div id="dv-hdr-info">
+      <label tabIndex="0"><strong>{{ requestNumber }}</strong></label>
+      <label tabIndex="0"><strong>{{ resourceName }}</strong></label>
+      <label tabIndex="0">{{ itemCodeDesc }}</label>
+    </div>  
+    <div class="eis">
+      <div>
+      <form [formGroup]="assignmentCloseoutForm">
+        <table class="tbl">
+          <tr>
+            <td>
+            <table>
+              <tr>
+                <td class="frmlbl"><label for="dtStart">Assignment Start Date</label></td>
+                <td>
+                  <app-eis-datepicker #dtStart
+                  id="dtStart" 
+                  formControlName="startDate"
+                  (dateChangeEvent)="this.calculateLengthOfAssignment()">
+                  </app-eis-datepicker>
+                </td>
+              </tr>
+              <tr>
+                <td class="frmlbl"><label for="dtEnd">Assignment End Date</label></td>
+                <td>
+                    <app-eis-datepicker #dtEnd
+                    id="dtEnd"
+                    formControlName="endDate" 
+                    (dateChangeEvent)="this.calculateLengthOfAssignment()">
+                    </app-eis-datepicker>
+                  </td>
+              </tr>
+              <tr>
+                <td class="frmlbl"><label for="txLofAssign">Length of Trainee Assignment</label></td>
+                <td>
+                  <input id="txLofAssign" class="w3-transparent, w3-border-0" formControlName="lengthOfAssign"
+                    type="text" readonly="true" value="14">
+                </td>
+              </tr>
+              <tr>
+                <td class="frmlbl"><label for="txProgress">PTB Progress</label></td>
+                <td>
+                  <app-text-input id="txProgress" formControlName="ptbProgress" name="txProgress" type="text"
+                    width="30" maxlength="3" restrict2="0-9"></app-text-input>
+                </td>
+              </tr>
+              <tr>
+                <td class="frmlbl"><label for="ddRecommendation">Recommendation</label></td>
+                <td class="pl-10">
+                  <app-eis-dropdown  id="ddRecommendation" #ddRecommendation width="30"
+                    formControlName="recommendationVo"
+                    [dropdownData]="this.recommendationDropdownData"
+                    [selectedDropdownData]="this.selectedRecommendationDropdownData"
+                  ></app-eis-dropdown>
+                </td>
+              </tr>
+            </table>
+            </td>
+            <td>
+            <table>
+              <tr>
+                <td class="frmlbl"><label for="ddComplexity">Complexity</label></td>
+                <td class="pl-10">
+                  <app-eis-dropdown  id="ddComplexity" #ddComplexity width="180"
+                    formControlName="complexityVo"
+                    [dropdownData]="this.complexityDropdownData"
+                    [selectedDropdownData]="this.selectedComplexityDropdownData"
+                    [viewportWidth]="390"
+                  ></app-eis-dropdown>
+                </td>
+              </tr>
+              <tr>
+                <td class="frmlbl"><label for="txAcres">Acres</label></td>
+                <td>
+                  <app-text-input class="mr-5" id="txAcres" formControlName="acres" name="txAcres" type="text"
+                    width="80" maxlength="10" restrict2="0-9"></app-text-input>
+                  <button class="acresButton" type="button" (click)="updateAcres()" title="Click to update acres in settings">Update Default Acres</button> 
+                </td>
+              </tr>
+              <tr>
+                  <td class="frmlbl"><label tabIndex="0">Fuel Types</label></td>
+                  <td>
+                      <div class="pl-10">
+                          <div><input id="ckBrush" formControlName="isBrush" type="checkbox"><label class="pl-10" for="ckBrush">B - BRUSH GROUP</label></div>
+                          <div><input id="ckGrass" formControlName="isGrass" type="checkbox"><label class="pl-10" for="ckGrass">G - GRASS GROUP</label></div>
+                          <div><input id="ckSlash" formControlName="isSlash" type="checkbox"><label class="pl-10" for="ckSlash">S - SLASH GROUP</label></div>
+                          <div><input id="ckTimber" formControlName="isTimber" type="checkbox"><label class="pl-10" for="ckTimber">T - TIMBER GROUP</label></div>
+                      </div>
+                  </td>
+              </tr>
+            </table>
+            </td>
+          </tr>
+        </table> 
+        <table class="tbl">
+          <tr>
+            <td><label class="frmlbl" for="taRemarks">Remarks</label></td>
+            <td>
+              <textarea class="remarks" id="taRemarks" name="taRemarks" 
+                formControlName="remarks" maxlength="450"
+              ></textarea> 
+            </td>
+          </tr> 
+        </table>
+      </form>
+      </div> 
+    </div>
+    <div class="dv-action-bar w3-small">
+        <button id="btnSave" type="button" (click)="save()" title="Click to save">Save</button>
+        <button id="btnCancel" type="button" type="button" (click)="closeModal('assignment-closeout-modal');" title="Click to cancel changes">Cancel</button>
+    </div>
+  </div>
+</app-jw-modal>
+<app-prompt-modal id="promptModalAssignmentCloseout" #promptModalAssignmentCloseout (promptActionEvent)="this.promptActionResultAssignmentCloseout($event)"></app-prompt-modal>

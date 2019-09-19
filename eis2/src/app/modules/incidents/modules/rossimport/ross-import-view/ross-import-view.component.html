@@ -1,0 +1,12 @@
+<div [style.height]="calcHt()">
+    <div class="dv-mod-view" >
+        <div id="dv-rossimport-nav-bar">
+            <div class="btn-group-sub-menu">
+                <button (click)="menuSelect('rossfiles')" [class]="getActiveTab('rossfiles')">ROSS Files</button>	
+                <button (click)="menuSelect('importexcluded')" [class]="getActiveTab('importexcluded')">Import Excluded Resources</button>	
+            </div>
+        </div>
+        <app-ross-import-file [class]="getActiveView('rossfiles')"></app-ross-import-file>
+        <app-ross-import-excluded [class]="getActiveView('importexcluded')"></app-ross-import-excluded>
+    </div>
+</div>

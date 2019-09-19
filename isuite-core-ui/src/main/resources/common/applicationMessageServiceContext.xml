@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:flex="http://www.springframework.org/schema/flex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.1.xsd
+        http://www.springframework.org/schema/flex 
+        http://www.springframework.org/schema/flex/spring-flex-1.0.xsd">
+
+  <bean name="JMSService" 
+    parent="transactionServiceTarget"
+    class="gov.nwcg.isuite.framework.core.service.JMSService"
+    scope="singleton">
+    <aop:scoped-proxy/>
+  </bean>
+
+	<bean id="jndiTemplate" class="org.springframework.jndi.JndiTemplate">
+		<property name="environment">
+			<props>
+				<prop key="java.naming.factory.initial">
+        	org.apache.naming.java.javaURLContextFactory
+				</prop>
+				<prop key="java.naming.provider.url">
+					java:comp/env/jms/flex/TopicConnectionFactory
+				</prop>
+			</props>
+		</property>
+	</bean>
+  
+  <bean id="connectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiTemplate" ref="jndiTemplate" /> 
+		<property name="jndiName" value="jms/flex/TopicConnectionFactory" /> 
+		<property name="resourceRef" value="true" />
+	</bean>
+
+  <bean id="session-k-topic" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiTemplate" ref="jndiTemplate" />
+		<property name="jndiName" value="jms/flex/session-k-topic" /> 
+		<property name="resourceRef" value="true" />
+	</bean>
+  
+  <bean id="user-id-topic" class="org.springframework.jndi.JndiObjectFactoryBean">
+    <property name="jndiTemplate" ref="jndiTemplate" />
+    <property name="jndiName" value="jms/flex/user-id-topic" /> 
+    <property name="resourceRef" value="true" />
+  </bean>
+	
+	<bean id="jmsSessionTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestination" ref="session-k-topic" />
+	</bean>
+  
+  <bean id="jmsUserIdTemplate" class="org.springframework.jms.core.JmsTemplate">
+    <property name="connectionFactory" ref="connectionFactory" />
+    <property name="defaultDestination" ref="user-id-topic" />
+  </bean>
+
+	<bean id="jmsFactory"
+		class="org.apache.activemq.pool.PooledConnectionFactory"
+		destroy-method="stop">
+		<property name="connectionFactory" ref="connectionFactory"/>
+	</bean>
+
+	<bean id="jmsConnFactoryWrapper"
+		class="org.springframework.jms.connection.SingleConnectionFactory">
+		<property name="targetConnectionFactory">
+			<ref bean="jmsFactory" />
+		</property>
+	</bean>
+
+
+	<!-- ################################### -->
+    <!--       JMS Message Converters        -->
+    <!-- ################################### -->	
+    <bean id="simpleMessageConverter" 
+        class="org.springframework.jms.support.converter.SimpleMessageConverter">
+    </bean>
+    
+    <bean id="entryMessageConverter" 
+        class="gov.nwcg.isuite.framework.other.impl.EntryMessageConverter">
+        <constructor-arg> <ref bean="simpleMessageConverter"/> </constructor-arg>
+    </bean>
+
+	
+	<!-- ############################### -->
+    <!--         EntryService            -->
+    <!-- ############################### -->	
+	<bean name="entryServiceTarget" parent="transactionServiceTarget"
+        class="gov.nwcg.isuite.core.service.impl.EntryServiceImpl">
+		<constructor-arg ref="entryDao" />
+		<constructor-arg ref="entryErrorDao" />
+	</bean>
+	<bean name="entryService" parent="transactionService">
+    	<property name="target" ref="entryServiceTarget" />
+	</bean>
+	
+	<!-- ######################################### -->
+    <!--       Template for EntryInputQueue        -->
+    <!-- ######################################### -->	
+	<bean id="jmsEntryInputQueueTemplate"
+		class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory">
+			<ref bean="jmsConnFactoryWrapper" />
+		</property>
+		<property name="defaultDestinationName">
+			<value>isuite.InputQ</value>
+		</property>
+		<property name="messageConverter">
+			<ref bean="entryMessageConverter" />
+		</property>
+	</bean>
+
+<!-- Not sure this is used for anything -->
+	<!-- ####################################### -->
+	<!--      Template for EntryProcessingQueue  -->
+	<!-- ####################################### -->	
+	<bean id="jmsEntryProcessingQueueTemplate"
+		class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory">
+			<ref bean="jmsConnFactoryWrapper" />
+		</property>
+		<!-- using name because jndiTemplate was not working -->
+		<property name="defaultDestinationName">
+			<value>isuite.ProcessQ</value>
+		</property>
+		<property name="messageConverter">
+			<ref bean="entryMessageConverter" />
+		</property>
+	</bean>
+
+    <bean id="entryInputQueuePostingService"  class="gov.nwcg.isuite.core.service.impl.JmsPostingServiceImpl">
+        <property name="jmsTemplate">
+            <ref bean="jmsEntryInputQueueTemplate" />
+        </property>
+    </bean>
+
+    <bean id="processQueueResolver" class="gov.nwcg.isuite.core.service.impl.ProcessQueueResolverImpl">
+        <constructor-arg>
+            <ref bean="entryProcessingQueuePostingService"/>
+        </constructor-arg>
+    </bean>
+    
+    <bean id="entryProcessingQueuePostingService"  class="gov.nwcg.isuite.core.service.impl.JmsPostingServiceImpl">
+        <property name="jmsTemplate">
+            <ref bean="jmsEntryProcessingQueueTemplate" />
+        </property>
+    </bean>
+
+	<bean id="jmsTemplate"
+		class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory">
+			<ref bean="jmsConnFactoryWrapper" />
+		</property>
+		<!-- using name because jndiTemplate was not working -->
+		<property name="defaultDestinationName">
+			<value>isuite.TaskExecution</value>
+		</property>
+	</bean>
+	
+</beans>
+	

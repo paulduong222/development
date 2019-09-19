@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CostProjectionCategorySubReport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b852d2ce-0ed7-4a3e-a721-8f7ea00af802">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="category" class="java.lang.String"/>
+	<field name="subGroupCatDescription" class="java.lang.String"/>
+	<field name="day_01" class="java.lang.String"/>
+	<field name="costAmount_01" class="java.lang.Double"/>
+	<field name="day_02" class="java.lang.String"/>
+	<field name="costAmount_02" class="java.lang.Double"/>
+	<field name="day_03" class="java.lang.String"/>
+	<field name="costAmount_03" class="java.lang.Double"/>
+	<field name="day_04" class="java.lang.String"/>
+	<field name="costAmount_04" class="java.lang.Double"/>
+	<field name="day_05" class="java.lang.String"/>
+	<field name="costAmount_05" class="java.lang.Double"/>
+	<field name="day_06" class="java.lang.String"/>
+	<field name="costAmount_06" class="java.lang.Double"/>
+	<field name="day_07" class="java.lang.String"/>
+	<field name="costAmount_07" class="java.lang.Double"/>
+	<field name="kindGroupDescription" class="java.lang.String"/>
+	<field name="directIndirectName" class="java.lang.String"/>
+	<field name="quantity_01" class="java.lang.Integer"/>
+	<field name="quantity_02" class="java.lang.Integer"/>
+	<field name="quantity_03" class="java.lang.Integer"/>
+	<field name="quantity_04" class="java.lang.Integer"/>
+	<field name="quantity_05" class="java.lang.Integer"/>
+	<field name="quantity_06" class="java.lang.Integer"/>
+	<field name="quantity_07" class="java.lang.Integer"/>
+	<field name="day_08" class="java.lang.String"/>
+	<field name="costAmount_08" class="java.lang.Double"/>
+	<field name="quantity_08" class="java.lang.Integer"/>
+	<variable name="costamount_01_subtotal" class="java.lang.Number" resetType="Group" resetGroup="subCategoryGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_01}]]></variableExpression>
+	</variable>
+	<variable name="costamount_02_subtotal" class="java.lang.Number" resetType="Group" resetGroup="subCategoryGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_02}]]></variableExpression>
+	</variable>
+	<variable name="costamount_03_subtotal" class="java.lang.Number" resetType="Group" resetGroup="subCategoryGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_03}]]></variableExpression>
+	</variable>
+	<variable name="costamount_04_subtotal" class="java.lang.Number" resetType="Group" resetGroup="subCategoryGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_04}]]></variableExpression>
+	</variable>
+	<variable name="costamount_05_subtotal" class="java.lang.Number" resetType="Group" resetGroup="subCategoryGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_05}]]></variableExpression>
+	</variable>
+	<variable name="costamount_06_subtotal" class="java.lang.Number" resetType="Group" resetGroup="subCategoryGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_06}]]></variableExpression>
+	</variable>
+	<variable name="costamount_07_subtotal" class="java.lang.Number" resetType="Group" resetGroup="subCategoryGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_07}]]></variableExpression>
+	</variable>
+	<variable name="costamount_01_total" class="java.lang.Number" resetType="Group" resetGroup="dayGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_01}]]></variableExpression>
+	</variable>
+	<variable name="costamount_02_total" class="java.lang.Number" resetType="Group" resetGroup="dayGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_02}]]></variableExpression>
+	</variable>
+	<variable name="costamount_03_total" class="java.lang.Number" resetType="Group" resetGroup="dayGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_03}]]></variableExpression>
+	</variable>
+	<variable name="costamount_04_total" class="java.lang.Number" resetType="Group" resetGroup="dayGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_04}]]></variableExpression>
+	</variable>
+	<variable name="costamount_05_total" class="java.lang.Number" resetType="Group" resetGroup="dayGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_05}]]></variableExpression>
+	</variable>
+	<variable name="costamount_06_total" class="java.lang.Number" resetType="Group" resetGroup="dayGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_06}]]></variableExpression>
+	</variable>
+	<variable name="costamount_07_total" class="java.lang.Number" resetType="Group" resetGroup="dayGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_07}]]></variableExpression>
+	</variable>
+	<variable name="costamount_01_category_subtotal" class="java.lang.Number" resetType="Group" resetGroup="categoryGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_01}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="costamount_02_category_subtotal" class="java.lang.Number" resetType="Group" resetGroup="categoryGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_02}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="costamount_03_category_subtotal" class="java.lang.Number" resetType="Group" resetGroup="categoryGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_03}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="costamount_04_category_subtotal" class="java.lang.Number" resetType="Group" resetGroup="categoryGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_04}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="costamount_05_category_subtotal" class="java.lang.Number" resetType="Group" resetGroup="categoryGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_05}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="costamount_06_category_subtotal" class="java.lang.Number" resetType="Group" resetGroup="categoryGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_06}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="costamount_07_category_subtotal" class="java.lang.Number" resetType="Group" resetGroup="categoryGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_07}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="subGroupCategoryColTotal" class="java.lang.Double" resetType="None">
+		<variableExpression><![CDATA[$F{costAmount_01}==null?0.0:$F{costAmount_01}+$F{costAmount_02}+$F{costAmount_03}+$F{costAmount_04}+$F{costAmount_05}+$F{costAmount_06}+$F{costAmount_07}]]></variableExpression>
+	</variable>
+	<variable name="kindGroupCategoryColTotal" class="java.lang.Double" resetType="None">
+		<variableExpression><![CDATA[$V{costamount_01_subtotal}+$V{costamount_02_subtotal}+$V{costamount_03_subtotal}+$V{costamount_04_subtotal}+$V{costamount_05_subtotal}+$V{costamount_06_subtotal}+$V{costamount_07_subtotal}]]></variableExpression>
+	</variable>
+	<variable name="directIndirectColTotal" class="java.lang.Double" resetType="None">
+		<variableExpression><![CDATA[$V{costamount_01_category_subtotal}+$V{costamount_02_category_subtotal}+$V{costamount_03_category_subtotal}+$V{costamount_04_category_subtotal}+$V{costamount_05_category_subtotal}+$V{costamount_06_category_subtotal}+$V{costamount_07_category_subtotal}]]></variableExpression>
+	</variable>
+	<variable name="dailyColTotal" class="java.lang.Double" resetType="None">
+		<variableExpression><![CDATA[$V{costamount_01_total}+$V{costamount_02_total}+$V{costamount_03_total}+$V{costamount_04_total}+$V{costamount_05_total}+$V{costamount_06_total}+$V{costamount_07_total}]]></variableExpression>
+	</variable>
+	<variable name="quantityColTotal" class="java.lang.Double" resetType="None">
+		<variableExpression><![CDATA[$F{quantity_01}+$F{quantity_02}+$F{quantity_03}+$F{quantity_04}+$F{quantity_05}+$F{quantity_06}+$F{quantity_07}]]></variableExpression>
+	</variable>
+	<variable name="costamount_08_subtotal" class="java.lang.Number" resetType="Group" resetGroup="subCategoryGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_08}]]></variableExpression>
+	</variable>
+	<variable name="costamount_08_total" class="java.lang.Number" resetType="Group" resetGroup="dayGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_08}]]></variableExpression>
+	</variable>
+	<variable name="costamount_08_category_subtotal" class="java.lang.Number" resetType="Group" resetGroup="categoryGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount_08}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<group name="dayGroup" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{day_01}]]></groupExpression>
+		<groupFooter>
+			<band height="21">
+				<rectangle>
+					<reportElement uuid="eaffe4ad-805f-4ce9-a975-2420f28887e1" x="0" y="0" width="555" height="20" backcolor="#000000"/>
+				</rectangle>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="56d5f6bf-7ea3-4ca9-9cad-911f6beb7f38" mode="Transparent" x="157" y="0" width="57" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_01_total}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="56d5f6bf-7ea3-4ca9-9cad-911f6beb7f38" mode="Transparent" x="328" y="0" width="57" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_04_total}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="56d5f6bf-7ea3-4ca9-9cad-911f6beb7f38" mode="Transparent" x="430" y="0" width="57" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_06_total}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="ad198462-ba6a-4639-aff5-1fd9ebe0d541" mode="Transparent" x="0" y="0" width="156" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Left">
+						<font isBold="true" isItalic="false"/>
+					</textElement>
+					<text><![CDATA[Daily Total]]></text>
+				</staticText>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="56d5f6bf-7ea3-4ca9-9cad-911f6beb7f38" mode="Transparent" x="499" y="0" width="57" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_07_total}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="56d5f6bf-7ea3-4ca9-9cad-911f6beb7f38" mode="Transparent" x="214" y="0" width="57" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_02_total}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="56d5f6bf-7ea3-4ca9-9cad-911f6beb7f38" mode="Transparent" x="385" y="0" width="57" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_05_total}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="56d5f6bf-7ea3-4ca9-9cad-911f6beb7f38" mode="Transparent" x="271" y="0" width="57" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_03_total}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="categoryGroup">
+		<groupExpression><![CDATA[$F{directIndirectName}]]></groupExpression>
+		<groupFooter>
+			<band height="21">
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="13a1123d-59f5-4620-98c3-704c282f3ccf" positionType="Float" mode="Opaque" x="0" y="0" width="158" height="20" backcolor="#E3E3E3"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{directIndirectName} + " Subtotal"]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="13a1123d-59f5-4620-98c3-704c282f3ccf" positionType="Float" mode="Opaque" x="157" y="0" width="57" height="20" backcolor="#E3E3E3"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_01_category_subtotal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="13a1123d-59f5-4620-98c3-704c282f3ccf" positionType="Float" mode="Opaque" x="271" y="0" width="57" height="20" backcolor="#E3E3E3"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_03_category_subtotal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="13a1123d-59f5-4620-98c3-704c282f3ccf" positionType="Float" mode="Opaque" x="214" y="0" width="57" height="20" backcolor="#E3E3E3"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_02_category_subtotal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="13a1123d-59f5-4620-98c3-704c282f3ccf" positionType="Float" mode="Opaque" x="328" y="0" width="57" height="20" backcolor="#E3E3E3"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_04_category_subtotal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="13a1123d-59f5-4620-98c3-704c282f3ccf" positionType="Float" mode="Opaque" x="385" y="0" width="57" height="20" backcolor="#E3E3E3"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_05_category_subtotal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="13a1123d-59f5-4620-98c3-704c282f3ccf" positionType="Float" mode="Opaque" x="442" y="0" width="57" height="20" backcolor="#E3E3E3"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_06_category_subtotal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="13a1123d-59f5-4620-98c3-704c282f3ccf" positionType="Float" mode="Opaque" x="499" y="0" width="57" height="20" backcolor="#E3E3E3"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_07_category_subtotal}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="subCategoryGroup">
+		<groupExpression><![CDATA[$F{kindGroupDescription}]]></groupExpression>
+		<groupFooter>
+			<band height="25">
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="13a1123d-59f5-4620-98c3-704c282f3ccf" mode="Opaque" x="0" y="3" width="157" height="17" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{kindGroupDescription} + " Subtotal"]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="13a1123d-59f5-4620-98c3-704c282f3ccf" mode="Opaque" x="214" y="3" width="57" height="17" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_02_subtotal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="13a1123d-59f5-4620-98c3-704c282f3ccf" mode="Opaque" x="157" y="3" width="57" height="17" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_01_subtotal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="13a1123d-59f5-4620-98c3-704c282f3ccf" mode="Opaque" x="328" y="3" width="57" height="17" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_04_subtotal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="13a1123d-59f5-4620-98c3-704c282f3ccf" mode="Opaque" x="271" y="3" width="57" height="17" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_03_subtotal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="13a1123d-59f5-4620-98c3-704c282f3ccf" mode="Opaque" x="385" y="3" width="57" height="17" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_05_subtotal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="13a1123d-59f5-4620-98c3-704c282f3ccf" mode="Opaque" x="442" y="3" width="57" height="17" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_06_subtotal}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement uuid="13a1123d-59f5-4620-98c3-704c282f3ccf" mode="Opaque" x="499" y="3" width="57" height="17" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_07_subtotal}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement uuid="2265e916-6903-44f0-a077-03ed171febaf" x="0" y="2" width="556" height="1"/>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="30">
+			<textField>
+				<reportElement uuid="34f58c0e-30cc-46db-aa6e-6dd36f0d9ef1" x="157" y="1" width="57" height="21">
+					<printWhenExpression><![CDATA[$F{costAmount_01} != null && $F{costAmount_01} != ""]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day_01}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4d0e1984-177d-4cb5-b50c-30fd52267520" x="214" y="1" width="57" height="21">
+					<printWhenExpression><![CDATA[$F{costAmount_02} != null && $F{costAmount_02} != ""]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day_02}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3b8bbc43-d389-41ac-933d-529efa011f7e" x="271" y="1" width="57" height="21">
+					<printWhenExpression><![CDATA[$F{costAmount_03} != null && $F{costAmount_03} != ""]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day_03}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f0cac918-d5ca-4982-8888-e5dd4e820076" x="328" y="1" width="57" height="21">
+					<printWhenExpression><![CDATA[$F{costAmount_04} != null && $F{costAmount_04} != ""]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day_04}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4d7c4ab7-ed62-4e16-a882-ed7eb8d76e1a" x="385" y="1" width="57" height="21">
+					<printWhenExpression><![CDATA[$F{costAmount_05} != null && $F{costAmount_05} != ""]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day_05}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8733e6a4-83bd-49ba-bd29-29a0940f9ed6" x="442" y="1" width="57" height="21">
+					<printWhenExpression><![CDATA[$F{costAmount_06} != null && $F{costAmount_06} != ""]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day_06}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="26c8b0ba-6e16-465f-917c-c1d67f40dc23" x="499" y="1" width="57" height="21">
+					<printWhenExpression><![CDATA[$F{costAmount_07} != null && $F{costAmount_07} != ""]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day_07}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="15">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2b47c6d1-8d73-42fb-b969-dbf06286e72f" positionType="FixRelativeToBottom" x="0" y="2" width="156" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subGroupCatDescription}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement uuid="bd90b335-9258-4102-a7a1-d46b63b5d872" positionType="FixRelativeToBottom" x="157" y="2" width="57" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{costAmount_01}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement uuid="bd90b335-9258-4102-a7a1-d46b63b5d872" positionType="FixRelativeToBottom" x="214" y="2" width="57" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{costAmount_02}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement uuid="bd90b335-9258-4102-a7a1-d46b63b5d872" positionType="FixRelativeToBottom" x="271" y="2" width="57" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{costAmount_03}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement uuid="bd90b335-9258-4102-a7a1-d46b63b5d872" positionType="FixRelativeToBottom" x="328" y="2" width="57" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{costAmount_04}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement uuid="bd90b335-9258-4102-a7a1-d46b63b5d872" positionType="FixRelativeToBottom" x="385" y="2" width="57" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{costAmount_05}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement uuid="bd90b335-9258-4102-a7a1-d46b63b5d872" positionType="FixRelativeToBottom" x="442" y="2" width="57" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{costAmount_06}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement uuid="bd90b335-9258-4102-a7a1-d46b63b5d872" positionType="FixRelativeToBottom" x="499" y="2" width="57" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{costAmount_07}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

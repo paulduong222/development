@@ -1,0 +1,199 @@
+<div class="dv-inc-itemcode">
+  <div class="dv-chk-boxes">
+    <form [formGroup]="filterForm">
+      <input formControlName="standard" id="ckStandard" type="checkbox"
+        (input)="onStandardChange($event)"><label>Standard</label>
+      <input formControlName="nonStandard" id="ckNonStandard" type="checkbox"
+        (input)="onNonStandardChange($event)"><label>Non-Standard</label>
+    </form>
+  </div>
+  <div id="dv-itemcode-bar">
+      <div id="dv-itemcode-bar-left" class="w3-left">
+        <app-grid-icon-bar
+          [showFilter]="true"
+          [showExpandRetract]="true"
+          (filterEvent)="this.clearFilter()"
+          (expandRetractEvent)="this.expandRetract()"
+          (refreshEvent)="this.refreshGrid()">
+        </app-grid-icon-bar>
+      </div>
+      <div id="dv-itemcode-bar-right" class="w3-right">
+        <button [class]="buttonClass('add')" (click)="addItemCode()" title="Click to add a new Item Code">Add Item Code</button>
+        <button [class]="buttonClass('edit')" (click)="this.editItemCode()" title="Click to edit Item Code">Edit Item Code</button>
+        <button [class]="buttonClass('delete')" (click)="this.deleteItemCode()" title="Click to delete the Item Code"
+        [disabled]="this.kindVo.standard === true">Delete Item Code</button>
+      </div>
+  </div>
+  <div class="split-example">
+      <as-split direction="horizontal">
+        <as-split-area [size]="splitAreaLeftSize">
+            <div class="dv-inc-itemcode-grid">
+                <app-eis-grid #gridItemCodeRefData
+                  [treeViewMode]="false"
+                  (rowSelectEvent)="this.onSelectGridRow($event)"
+                  (gridReadyEvent)="this.onGridReadyEvent()"
+                  [rowData]="this.kindVosFiltered"
+                  [columnDefs]="this.gridColumnDefs">
+                </app-eis-grid>
+              </div>
+         </as-split-area>
+        <as-split-area [size]="splitAreaRightSize">
+            <div class="dv-inc-itemcode-form">
+                <div class="dv-itemcode-inner">
+                    <form [formGroup]="kindForm" autocomplete="off">
+                    <div class="eis">
+                      <table>
+                        <tr>
+                            <td class="frmlbl"><label class='f1"' for="txItemCode">Item Code</label></td>
+                            <td><label class="ast">*</label></td>
+                            <td>
+                                <app-text-input id="txItemCode" name="txItemCode" width="60"
+                                formControlName="code" maxlength="4" restrict2="a-z,A-Z,0-9"></app-text-input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label class='f1"' for="txDesc">Item Code Description</label></td>
+                            <td><label class="ast">*</label></td>
+                            <td>
+                                <app-text-input id="txDesc" name="txDesc" width="280"
+                                formControlName="description" maxlength="75" restrict2="a-z,A-Z,0-9" allowSpace="true"></app-text-input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label class='f1"' for="ddSectionCode">Section Code</label></td>
+                            <td><label class="ast">*</label></td>
+                            <td>
+                              <app-eis-dropdown id="ddSectionCode" #ddSectionCode width="40"
+                                formControlName="sectionCodeVo"
+                                [selectedDropdownData]="this.sectionTypeDropdownData"
+                                [dropdownData]="this.sectionTypeData"></app-eis-dropdown>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label class='f1"' for="dd209Code">209 Code</label></td>
+                            <td><label class="ast"></label></td>
+                            <td>
+                              <app-eis-dropdown id="dd209Code" #dd209Code width="40"
+                              formControlName="sit209Vo"
+                              [selectedDropdownData]="this.sit209TypeDropdownData"
+                              [dropdownData]="this.sit209TypeData"></app-eis-dropdown>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label class='f1"' for="ddReqCatCode">Request Category Code</label></td>
+                            <td><label class="ast">*</label></td>
+                            <td>
+                              <app-eis-dropdown id="ddReqCatCode" #ddReqCatCode width="40"
+                              formControlName="requestCategoryVo"
+                              [selectedDropdownData]="this.requestCategoryTypeDropdownData"
+                              [dropdownData]="this.requestCategoryTypeData"></app-eis-dropdown>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label class='f1"' for="ckDirect">Direct</label></td>
+                            <td><label class="ast"></label></td>
+                            <td>
+                              <input id="ckDirect" name="ckDirect" type="checkbox"
+                                formControlName="direct">
+                          </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label class='f1"' for="ddDailyFormCode">Daily Form Code</label></td>
+                            <td><label class="ast">*</label></td>
+                            <td>
+                              <app-eis-dropdown id="ddDailyFormCode" #ddDailyFormCode width="40"
+                              formControlName="dailyFormVo"
+                              [selectedDropdownData]="this.dailyFormTypeDropdownData"
+                              [dropdownData]="this.dailyFormTypeData"></app-eis-dropdown>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label class='f1"' for="txUnits">Units</label></td>
+                            <td><label class="ast">*</label></td>
+                            <td>
+                                <app-text-input id="txUnits" name="txUnits" width="60"
+                                formControlName="units" maxlength="3" restrict2="0-9"
+                                ></app-text-input>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label class='f1"' for="txPeople">People</label></td>
+                            <td><label class="ast">*</label></td>
+                            <td>
+                                <app-text-input id="txPeople" name="txPeople" width="60"
+                                formControlName="people" maxlength="4" restrict2="0-9"
+                                ></app-text-input>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label class='f1"' for="ddSubGroup">Cost Sub-Group Category</label></td>
+                            <td><label class="ast">*</label></td>
+                            <td>
+                              <app-eis-dropdown id="ddSubGroup" #ddSubGroup width="40"
+                              formControlName="subGroupCategoryVo"
+                              [selectedDropdownData]="this.subGroupTypeDropdownData"
+                              [dropdownData]="this.subGroupTypeData"></app-eis-dropdown>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label class='f1"' for="ddGroup">Cost Group Category</label></td>
+                            <td><label class="ast">*</label></td>
+                            <td>
+                              <app-eis-dropdown id="ddGroup" #ddGroup width="40"
+                              formControlName="groupCategoryVo"
+                              [width]="50"
+                              [selectedDropdownData]="this.groupTypeDropdownData"
+                              [dropdownData]="this.groupTypeData"></app-eis-dropdown>
+                           </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label class='f1"' for="ckLineOverhead">Line Overhead</label></td>
+                            <td><label class="ast"></label></td>
+                            <td>
+                              <input id="ckLineOverhead" name="ckLineOverhead" type="checkbox"
+                                formControlName="lineOverhead">
+                          </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label class='f1"' for="ckSub">Subordinate</label></td>
+                            <td><label class="ast"></label></td>
+                            <td>
+                              <input id="ckSub" name="ckSub" type="checkbox"
+                                formControlName="subordinate">
+                          </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label class='f1"' for="ckStrike">Strike Team/Task Force</label></td>
+                            <td><label class="ast"></label></td>
+                            <td>
+                              <input id="ckStrike" name="ckStrike" type="checkbox"
+                                formControlName="strikeTeam">
+                          </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label class='f1"' for="txCost">Standard Cost</label></td>
+                            <td><label class="ast"></label></td>
+                            <td>
+                              <!-- <app-text-input id="txCost" name="txCost" width="100" fieldtype="currency"
+                                formControlName="standardCost" maxlength="12" restrict2="0-9,.">
+                              </app-text-input> -->
+                              <app-currency-input id="txCost" name="txCost" width="100" formControlName="standardCost">
+                              </app-currency-input>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    </form>
+                  </div>
+                   <div class="dv-action-bar">
+                      <button id="btnSave" (click)="this.save()" title="Click to save the Item Code"
+                      [disabled]="this.kindVo.standard === true">Save</button>
+                      <button id="btnCancel" (click)="this.cancel()" title="Click to cancel changes"
+                      [disabled]="this.kindVo.standard === true">Cancel</button>
+                  </div>
+            </div>
+        </as-split-area>
+      </as-split>
+    </div>
+ </div>
+ <app-prompt-modal id="promptModalIncItemCode" #promptModalIncItemCode (promptActionEvent)="this.promptActionResultItemCode($event)"></app-prompt-modal>

@@ -1,0 +1,79 @@
+.dv-dt-view {
+    margin-top: 10px;
+    height: 100%;
+    background-color: #dfe4e8;
+    border: 1px solid black;
+}
+
+.dv-inc-view {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
+.dv-dt-bar {
+    width: 100%;
+    height: 32px;
+    background-color: #999999;
+    border: 1px solid lightgray;
+}
+
+.dv-inc-grid {
+    background-color: white;
+    border: 1px solid darkgray;
+    width: 100%;
+    height: 100%;
+    min-width: 300px;
+    display: block;
+    overflow: auto;
+}
+
+.dv-dt-view-sub {
+    height: 50%;
+}
+
+.dv-dt-view-sub-bottom {
+    width: 67%;
+    background-color: #6183A6;
+    padding: 0px 10px;
+    margin: 0px 10px;
+}
+
+.dv-dt-view-sub-bottom button {
+    margin: 0px 10px;
+}
+
+
+.dv-create-box {
+    border: 1px solid black;
+    background-color: white;
+    width: 40%;
+    margin-left: 10px;
+    min-width: 550px;
+}
+
+.dv-create-btn-box {
+    width: 100%;
+    background-color: #6183A6;
+    margin: 10px 0px;
+}
+
+.dv-create-btn-box button {
+    margin-left: 20px;
+} 
+
+p {
+    padding: 0px 5px;
+    margin: 5px 5px;
+}
+
+* {
+    font: 12px Helvetica, Arial, sans-serif;
+}
+
+input[type="checkbox"] {
+    margin-top: -1px;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+}

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CostProjectionTotalSubReport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b852d2ce-0ed7-4a3e-a721-8f7ea00af802">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="directIndirectName" class="java.lang.String"/>
+	<field name="kindGroupDescription" class="java.lang.String"/>
+	<field name="subGroupCatDescription" class="java.lang.String"/>
+	<field name="costToDate" class="java.lang.Double"/>
+	<field name="projectionCost" class="java.lang.Double"/>
+	<variable name="costToDate_ProjectionCost" class="java.lang.Number">
+		<variableExpression><![CDATA[$F{costToDate} + $F{projectionCost}]]></variableExpression>
+	</variable>
+	<variable name="costToDate_Kind" class="java.lang.Number" resetType="Group" resetGroup="kindGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costToDate}]]></variableExpression>
+	</variable>
+	<variable name="projectionCost_Kind" class="java.lang.Number" resetType="Group" resetGroup="kindGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{projectionCost}]]></variableExpression>
+	</variable>
+	<variable name="costToDate_ProjectionCost_Kind" class="java.lang.Number">
+		<variableExpression><![CDATA[$V{costToDate_Kind} + $V{projectionCost_Kind}]]></variableExpression>
+	</variable>
+	<variable name="costToDate_Direct" class="java.lang.Number" resetType="Group" resetGroup="directGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costToDate}]]></variableExpression>
+	</variable>
+	<variable name="projectionCost_Direct" class="java.lang.Number" resetType="Group" resetGroup="directGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{projectionCost}]]></variableExpression>
+	</variable>
+	<variable name="costToDate_ProjectionCost_Direct" class="java.lang.Number">
+		<variableExpression><![CDATA[$V{costToDate_Direct} + $V{projectionCost_Direct}]]></variableExpression>
+	</variable>
+	<variable name="costToDate_Grand" class="java.lang.Number" calculation="Sum">
+		<variableExpression><![CDATA[$F{costToDate}]]></variableExpression>
+	</variable>
+	<variable name="projectionCost_Grand" class="java.lang.Number" calculation="Sum">
+		<variableExpression><![CDATA[$F{projectionCost}]]></variableExpression>
+	</variable>
+	<variable name="costToDate_ProjectionCost_Grand" class="java.lang.Number">
+		<variableExpression><![CDATA[$V{costToDate_Grand} + $V{projectionCost_Grand}]]></variableExpression>
+	</variable>
+	<group name="directGroup">
+		<groupExpression><![CDATA[$F{directIndirectName}]]></groupExpression>
+		<groupFooter>
+			<band height="17">
+				<textField>
+					<reportElement uuid="58c114bf-b78a-4c5d-8215-c31cef1e7e5e" mode="Opaque" x="1" y="0" width="255" height="17" backcolor="#E3E3E3"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{directIndirectName} + " Sub Total"]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement uuid="61b89597-9511-4f95-bfef-15d27c6eba07" mode="Opaque" x="230" y="0" width="74" height="17" backcolor="#E3E3E3"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costToDate_Direct}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement uuid="61b89597-9511-4f95-bfef-15d27c6eba07" mode="Opaque" x="304" y="0" width="102" height="17" backcolor="#E3E3E3"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{projectionCost_Direct}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement uuid="634b4d97-360e-4bf4-9295-a5bbf83a941a" mode="Opaque" x="406" y="0" width="150" height="17" backcolor="#E3E3E3"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costToDate_ProjectionCost_Direct}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="kindGroup">
+		<groupExpression><![CDATA[$F{kindGroupDescription}]]></groupExpression>
+		<groupFooter>
+			<band height="18">
+				<textField>
+					<reportElement uuid="7c56b6b5-838f-431d-bb29-e2bd05407ba2" mode="Transparent" x="0" y="0" width="230" height="17" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{kindGroupDescription} + " Sub Total"]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement uuid="61b89597-9511-4f95-bfef-15d27c6eba07" mode="Transparent" x="230" y="0" width="74" height="17" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costToDate_Kind}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement uuid="61b89597-9511-4f95-bfef-15d27c6eba07" mode="Transparent" x="304" y="0" width="102" height="17" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{projectionCost_Kind}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement uuid="634b4d97-360e-4bf4-9295-a5bbf83a941a" mode="Transparent" x="405" y="0" width="151" height="17" forecolor="#000000" backcolor="#FFFFFF"/>
+					<box>
+						<pen lineColor="#FFFFFF"/>
+						<topPen lineColor="#FFFFFF"/>
+						<leftPen lineColor="#FFFFFF"/>
+						<bottomPen lineColor="#FFFFFF"/>
+						<rightPen lineColor="#FFFFFF"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costToDate_ProjectionCost_Kind}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="21">
+			<staticText>
+				<reportElement uuid="df175798-4023-48a9-a05a-acc730692c41" x="406" y="1" width="150" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ef90e64d-9575-4160-aab0-47ef3da01dc5" x="304" y="1" width="102" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Projection Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2714c89b-ae03-47ba-901d-15ced417d2d6" x="230" y="1" width="74" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Cost to Date]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="603860e5-323f-41f2-b1f5-ef5b11a75e1a" x="0" y="20" width="555" height="1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18">
+			<textField>
+				<reportElement uuid="d70a48a8-78c0-455a-bfbb-afa8d17adfb2" x="0" y="0" width="255" height="17"/>
+				<box>
+					<pen lineColor="#FFFFFF"/>
+					<topPen lineColor="#FFFFFF"/>
+					<leftPen lineColor="#FFFFFF"/>
+					<bottomPen lineColor="#FFFFFF"/>
+					<rightPen lineColor="#FFFFFF"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subGroupCatDescription}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="4dd6db1d-7137-4c53-9281-af0e700c0ef5" x="230" y="0" width="74" height="17"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{costToDate}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="a7d91c29-e4fc-4ff8-8de0-53182fc19b62" x="304" y="0" width="102" height="17"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{projectionCost}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="38b51cfb-97d0-4c09-a186-830848e0eb87" x="406" y="0" width="150" height="17"/>
+				<box>
+					<pen lineColor="#FFFFFF"/>
+					<topPen lineColor="#FFFFFF"/>
+					<leftPen lineColor="#FFFFFF"/>
+					<bottomPen lineColor="#FFFFFF"/>
+					<rightPen lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{costToDate_ProjectionCost}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="193">
+			<line>
+				<reportElement uuid="9fe8af00-f410-4bd5-92a7-dc5aa3b1ef8c" x="0" y="22" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="42abb0ff-3b93-4882-b62f-d0fd34d86371" x="0" y="1" width="555" height="1"/>
+			</line>
+			<rectangle>
+				<reportElement uuid="eaffe4ad-805f-4ce9-a975-2420f28887e1" x="1" y="3" width="555" height="21" backcolor="#000000"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="8ee5c271-9d5a-4a80-ad63-9bee1f925d2b" mode="Transparent" x="1" y="3" width="255" height="20" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grand Total]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement uuid="61b89597-9511-4f95-bfef-15d27c6eba07" mode="Transparent" x="230" y="3" width="74" height="20" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{costToDate_Grand}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="61b89597-9511-4f95-bfef-15d27c6eba07" mode="Transparent" x="304" y="3" width="102" height="20" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{projectionCost_Grand}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="634b4d97-360e-4bf4-9295-a5bbf83a941a" mode="Transparent" x="405" y="3" width="150" height="20" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{costToDate_ProjectionCost_Grand}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

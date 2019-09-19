@@ -1,0 +1,14 @@
+<div class="dv-audit-filter-top-bar eis">
+    <form [formGroup]="filterForm" autocomplete="off">
+      <table>
+        <tr>
+          <td><label for="dtStart">Beginning Date</label></td>
+          <td><input id="dtStart" type="date" formControlName="startDate"></td>
+          <td><label for="dtEnd">Ending Date</label></td>
+          <td><input id="dtEnd" type="date" formControlName="endDate"></td>
+          <td><button class="h22" (click)="this.doFilter()" title="Click to apply filter">Filter</button></td>
+          <td><button class="h22" (click)="this.clearFilter()" title="Click to clear filter">Clear</button></td>
+        </tr>
+      </table>
+    </form>
+  </div>

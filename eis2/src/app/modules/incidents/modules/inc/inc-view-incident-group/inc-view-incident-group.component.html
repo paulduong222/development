@@ -1,0 +1,10 @@
+<div class="dv-module-sub-nav-bar">
+    <div class="btn-group-sub-menu">
+      <button (click)="dataTabSelect('groupinfo')" [class]="getStyle('groupinfo')">Incident Group Info</button>	
+   </div>
+</div>
+<app-inc-group-info-tab
+   #incGroupInfoTab 
+   *ngIf="this.selectedGroupTab === 'groupinfo'"
+   (incGroupInfoTabEvent)="this.incGroupInfoTabEvent($event)"
+   ></app-inc-group-info-tab>

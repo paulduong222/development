@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MissingDaysOfPostingsReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="ee4067b5-f5fd-4995-a9a5-1d7d207b7ea3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\workspace_fs\\isuite-core\\Webroot\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="startDateChar" class="java.lang.String"/>
+	<parameter name="endDateChar" class="java.lang.String"/>
+	<parameter name="reportTitle" class="java.lang.String"/>
+	<parameter name="reportSubTitle" class="java.lang.String"/>
+	<field name="dataSourceSubReportData" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="incidentNumber" class="java.lang.String"/>
+	<group name="inc">
+		<groupExpression><![CDATA[$F{incidentName}+$F{incidentNumber}]]></groupExpression>
+		<groupHeader>
+			<band height="2">
+				<break>
+					<reportElement uuid="a3cd425e-8fe4-4609-a2fc-f4f0277c75fc" x="0" y="0" width="81" height="1" printWhenGroupChanges="inc"/>
+				</break>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="2"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="83">
+			<rectangle>
+				<reportElement uuid="d1c73c50-2ae8-4026-8b19-c46947ef0993" mode="Opaque" x="0" y="0" width="555" height="83" backcolor="#FFFFFF"/>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="e03e1281-ea51-473a-8efc-8b74037eb983" x="156" y="60" width="102" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{startDateChar}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="ed43fb1b-2e42-4e4a-8c6d-7f5a2c296b41" x="274" y="60" width="103" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{endDateChar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6a624ef4-6b8f-4758-b530-7d0af3ac2f26" stretchType="RelativeToBandHeight" x="0" y="1" width="555" height="24"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{reportTitle}+" "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6a624ef4-6b8f-4758-b530-7d0af3ac2f26" stretchType="RelativeToBandHeight" x="0" y="31" width="555" height="24"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{reportSubTitle}+" "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="61834ba1-c3f5-4531-8fb4-e7462ce14f7b" x="254" y="55" width="23" height="27"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ - ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="59" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="ea43770a-455a-4427-8b99-8fc50482dcd2" x="1" y="22" width="41" height="37"/>
+				<dataSourceExpression><![CDATA[$F{dataSourceSubReportData}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "MissingDaysOfPostingsSubReport.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement uuid="a336bc65-87d8-43b2-8d29-61732f31bd0f" mode="Opaque" x="0" y="10" width="555" height="20" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Incident: " + $F{incidentName} + " (" + $F{incidentNumber} +")"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20">
+			<textField>
+				<reportElement uuid="74f3b00d-acf3-4b6c-9c97-9429d93dd70d" x="5" y="0" width="88" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="199ca67e-b426-4a07-b886-476f439eb9f1" x="93" y="0" width="40" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["  " + $V{PAGE_NUMBER} + " "]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement uuid="42ced451-2d75-4d52-8893-17c17a41f4e0" x="453" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

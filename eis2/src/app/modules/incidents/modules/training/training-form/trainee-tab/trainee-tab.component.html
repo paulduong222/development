@@ -1,0 +1,101 @@
+<div class="dv-trainee-tab">
+  <table>
+    <tr>
+      <td>
+        <form [formGroup]="traineeForm">
+        <div>
+          <table>
+            <tr>
+              <td> 
+                <input id="ckInitAssign" formControlName="initialAssignment" type="checkbox">
+                <label class="ml-3" for="ckInitAssign">Initial Assignment</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="dtStart">Assignment Start Date</label>
+                <label class="ast">*</label>
+                <app-eis-datepicker id="dtStart" #dtStart
+                  formControlName="startDate">
+                </app-eis-datepicker>
+                <label class="ml-5" for="dtEnd">Assignment End Date</label>
+                <app-eis-datepicker id="dtEnd" #dtEnd class="ml-3"
+                  formControlName="endDate">
+                </app-eis-datepicker>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong><label tabIndex="0">Prerequisites:</label></strong>  
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input id="ckCard" formControlName="validCard" type="checkbox">
+                <label class="ml-3" for="ckCard">Trainee possesses valid Red Card or Agency Certification Card?</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input id="ckPriorityProgram" formControlName="priorityProgram" type="checkbox">
+                <label class="ml-3" for="ckPriorityProgram">Priority Program</label>
+                <label [class]="getStyle()">*</label>
+                <app-eis-dropdown class="ml-3" id="ddPriorityProgram" #ddPriorityProgram width="180"
+                  formControlName="priorityProgramVo"
+                  [dropdownData]="this.priorityProgramDropdownData"
+                  [selectedDropdownData]="this.selectedPriorityProgramDropdownData"
+                  [dropdownDisabled]="this.isPriorityProgramDisabled()">
+                </app-eis-dropdown>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="radio" id="ckHUTaskbook" formControlName="taskbook" name="taskbook" value="homeUnit">
+                <label class="ml-3" for="ckHUTaskbook">Trainee has CURRENT home unit initiated Position Taskbook?</label>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="radio" id="ckITaskbook" formControlName="taskbook" name="taskbook" value="incident">
+                <label class="ml-3" for="ckITaskbook">Trainee has incident issued Taskbook with concurrence of home unit?</label>  
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="txObj1">Objective 1</label>
+                <app-text-input class="ml-3" formControlName="obj1" id="txObj1" name="txObj1" type="text"
+                  width="462" maxlength="100" allowSpace="true" textTransform="none"></app-text-input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="txObj2">Objective 2</label>
+                <app-text-input class="ml-3" formControlName="obj2" id="txObj2" name="txObj2" type="text"
+                  width="462" maxlength="100" allowSpace="true" textTransform="none"></app-text-input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="txObj3">Objective 3</label>
+                <app-text-input class="ml-3" formControlName="obj3" id="txObj3" name="txObj3" type="text"
+                  width="462" maxlength="100" allowSpace="true" textTransform="none"></app-text-input>
+              </td>
+            </tr>
+          </table>
+        </div>  
+        </form>
+      </td>
+      <td style="border: 1px solid darkgray">
+        <app-home-unit-contact id="homeUnitContact" #homeUnitContact></app-home-unit-contact>
+      </td>
+    </tr>
+  </table>
+  <div class="dv-action-bar">
+      <button id="btnSave" (click)="this.saveTraineeAssignment()" title="Click to save the Trainee Assignment.">Save</button>
+      <button id="btnCancel" (click)="this.cancelTraineeAssignment()" title="Click to cancel the changes.">Cancel</button>
+      <button id="btnAdd" (click)="this.addResourceTrainingAssigment()" title="Click to add a new Trainee Assignment.">Add</button>
+      <button id="btnDelete" (click)="this.deleteTraineeAssignment()" title="Click to delete the selected Trainee Assignment.">Delete</button>
+  </div>
+</div>
+<app-prompt-modal id="promptModalTrainee" #promptModalTrainee (promptActionEvent)="this.promptModalActionResult($event)"></app-prompt-modal>
+

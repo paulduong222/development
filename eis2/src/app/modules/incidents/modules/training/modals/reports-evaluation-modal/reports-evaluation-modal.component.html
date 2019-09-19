@@ -1,0 +1,46 @@
+<app-jw-modal id="reports-evaluation-modal" style="display: none;" class="box-hdr-dv">
+  <div style="width: 500px; height: 200px; padding: 0px;">
+    <div class="w3-container w3-padding-small w3-theme-d2">
+      <div class="w3-left" tabIndex="0">{{ windowTitle }}</div>
+    </div>
+    <div class="eis">
+      <div>
+        <table class="eval-table">
+          <tr *ngIf="showTrainingSpecialistsDD">
+            <td class="frmlbl"><label for="ddTrainingSpecialists">Training Specialist</label></td>
+            <td><label class="ast">*</label></td>
+            <td>
+              <app-eis-dropdown  id="ddTrainingSpecialists" #ddTrainingSpecialists width="260"
+                [dropdownData]="this.trainingSpecialistVos"
+                [selectedDropdownData]="this.selectedTrainingSpecialistVo">
+              </app-eis-dropdown>
+            </td>
+          </tr>
+          <tr *ngIf="showEvaluatorsDD">
+            <td class="frmlbl"><label for="ddEvaluators">Evaluator</label></td>
+            <td><label class="ast">*</label></td>
+            <td>
+              <app-eis-dropdown  id="ddEvaluators" #ddEvaluators width="260"
+                [dropdownData]="this.rscTrainingTrainerVos"
+                [selectedDropdownData]="this.selectedRscTrainingTrainerVo">
+              </app-eis-dropdown>
+            </td>
+          </tr>
+          <tr *ngIf="showEvaluationRecord">
+            <td class="frmlbl"><label for="txEvaluationRecordNumber">Evaluator Record Number</label></td>
+            <td></td>
+            <td>
+              <app-text-input id="txEvaluationRecordNumber" #txEvaluationRecordNumber name="txEvaluationRecordNumber" type="text"
+                width="150" maxlength="20" textTransform="uppercase"></app-text-input>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>  
+    <div class="dv-action-bar w3-small w3-left">
+        <button id="btnPreviewPrint" type="button" (click)="printPreviewReport('reports-evaluation-modal')" title="Click to preview/print the report.">Preview/Print</button>
+        <button id="btnCancel" type="button" (click)="closeModal('reports-evaluation-modal');" title="Click to cancel.">Cancel</button>
+    </div>
+  </div>
+</app-jw-modal>
+<app-prompt-modal id="promptModalTrainingRpts" #promptModalTrainingRpts (promptActionEvent)="this.promptActionResultTrainingRpts()"></app-prompt-modal>

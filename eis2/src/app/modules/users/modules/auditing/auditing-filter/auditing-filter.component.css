@@ -1,0 +1,7 @@
+.dv-audit-filter-top-bar {
+    height: 30px;
+}
+.dv-audit-filter-top-bar input {
+    margin-left: 5px;
+    margin-right: 5px;
+}

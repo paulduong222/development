@@ -1,0 +1,17 @@
+<div class="main-card">
+  <p class="title">Strike Team/Task Force Report</p>
+  <div class="card-body">
+    <p style="font-weight: bold; font-size: 14px">Select Strike Team / Task Force</p>
+    <app-data-table [tableDefinition]="tableDef" [data]="data" [scrollAble]="scrollAble" [indexSelected]="indexSelected" (rowClicked)="getClickedRow($event, 'indexSelected', 'data', 'shiftIndex')"></app-data-table>
+    <button type="button" class="btn btn-default margin-top-10" title="Click to select all" (click)="selectAll()">Select All</button>
+    <button type="button" class="btn btn-default margin-left-10 margin-top-10" title="Click to deselect all" (click)="deSelectAll()">Deselect All</button>
+    <button type="button" class="btn btn-default margin-left-10 margin-top-10" title="Click to refresh grid" (click)="refresh()">Refresh Grid</button>
+  </div>
+  <div style="width: 100%; display: flex; margin: 20px; height: 50px;">
+    <button type="button" class="btn btn-default" (click)="showHideInstruction()"  title="Click to toggle showing the instructions">Show/Hide&nbsp;Instructions</button>
+    <div class="tooltip-box" *ngIf="tooltipBox">
+      <p>Select one or more Strike Teams or Task Forces to include in the report.</p>
+    </div>
+  </div>
+  <button type="button" class="btn btn-default" style="margin: 20px;" (click)="generateReport()"  title="Click to generate Strike Team/Task Force Report">Preview/Print </button>
+</div>

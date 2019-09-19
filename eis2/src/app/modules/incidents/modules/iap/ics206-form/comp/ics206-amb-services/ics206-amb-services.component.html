@@ -1,0 +1,140 @@
+<label class="blk-hdr"><u>Ambulance Services</u></label>
+<div>
+  <form [formGroup]="compForm" autocomplete="off" onsubmit="">
+    <div class="eis">
+      <!--
+
+      <div class="split-example">
+        <as-split direction="vertical">
+          <as-split-area [size]="splitAreaTopSize">
+      -->
+      <div>
+        <table>
+              <tr>
+                <td>
+                  <!-- Column 1 -->
+                  <table>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txName">Name</label></td>
+                        <td><label class="ast">*</label></td>
+                        <td>
+                          <app-text-input id="txName" name="txName"
+                           allowSpace="true" formControlName="name"
+                          width="250" maxlength="100"></app-text-input>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td class="frmlbl"><label class="f1" for="txAddr1">Address Line 1</label></td>
+                      <td><label class="ast"></label></td>
+                      <td>
+                          <app-text-input id="txAddr1" name="txAddr1" type="text"
+                          formControlName="addressLine1"  allowSpace="true"  width="250" maxlength="35" textTransform="uppercase"></app-text-input>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td class="frmlbl"><label class="f1" for="txAddr2">Address Line 2</label></td>
+                      <td><label class="ast"></label></td>
+                      <td>
+                          <app-text-input id="txAddr2" name="txAddr2" type="text"
+                          formControlName="addressLine2"  allowSpace="true"  width="250" maxlength="35" textTransform="uppercase"></app-text-input>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td class="frmlbl"><label class="f1" for="txCity">City</label></td>
+                      <td><label class="ast"></label></td>
+                      <td>
+                          <app-text-input id="txCity" name="txCity" type="text"
+                          formControlName="city" allowSpace="true" width="250" maxlength="30" textTransform="uppercase"></app-text-input>
+                      </td>
+                  </tr>
+
+                  </table>
+                </td>
+                <td>
+                      <!-- Column 2 -->
+                      <table>
+                        <tr>
+                          <td class="frmlbl"><label class="f1" for="ddState">State</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                              <app-eis-dropdown id="ddState" #ddState
+                              formControlName="state"
+                              [width]="40"
+                              [dropdownDisabled]="this.ddStateDisabled"
+                              [selectedDropdownData]="this.selectedStateDropdownData"
+                              [dropdownData]="this.statesDropdownData"></app-eis-dropdown>
+                          </td>
+                      </tr>
+                      <tr>
+                        <td class="frmlbl"><label class="f1" for="txZip">Zip Code</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                            <app-text-input id="txZip" name="txZip" type="text"
+                            formControlName="zip"  width="90" maxlength="10" 
+                            restrict2="0-9,-" textTransform="uppercase"></app-text-input>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="frmlbl"><label class="f1" for="txPhone">Phone</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                            <app-phone-input formControlName="phone" id="txPhone" #txPhone style="width:200px;"></app-phone-input>
+                          </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td>
+                      <!-- Column 3 -->
+                      <table>
+                        <tr>
+                          <td class="frmlbl"><label class="f1" for="txEms">EMS Frequency</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                            <app-text-input id="txEms" name="txEms"
+                             allowSpace="true" formControlName="emsFrequency"
+                            width="200" maxlength="50"></app-text-input>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="frmlbl"><label class="f1" for="rdAls">Advanced Life Support</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                              <input type="radio" formControlName="als" name="als" value="Yes"><label style="margin-left: 3px;">Yes</label>
+                              <br>
+                              <input type="radio" formControlName="als" name="als"  value="No"><label style="margin-left: 3px;">No</label>
+                            </td>
+                      </tr>
+  
+                   </table>
+                  </td>
+                </tr>
+            </table> 
+            </div> 
+  <!--        </as-split-area> 
+          <as-split-area [size]="splitAreaBottomSize" class="scroll-x">
+          -->
+            <div id="dv-block-action-bar" class="w3-small w3-left">
+              <button (click)="this.save()" title="Click to save the Ambulance." [disabled]="this.isFormLocked" type="button">Save</button>
+              <button (click)="this.add()" title="Click to add a new Ambulance." [disabled]="this.isFormLocked" type="button">Add Ambulance</button>
+              <button (click)="this.delete()" title="Click to delete the Ambulance." [disabled]="this.isFormLocked" type="button">Delete</button>
+              <button (click)="this.cancel()" title="Click to cancel changes." [disabled]="this.isFormLocked" type="button">Cancel</button>
+              <button (click)="this.preAddBlankLine()" title="Click to add a blank line." [disabled]="this.isFormLocked" type="button">Add Blank Line</button>
+              <button (click)="this.reorder()" title="Click to re-order Ambulances." [disabled]="this.isFormLocked" type="button">Re-Order Ambulances</button>
+            </div>
+            <div class="w3-left" style="height: 44vh; width: 100%;">
+                  <app-eis-grid #gridAmbulance
+                  [floatingFilter]="false"
+                  [columnDefs]="this.gridColumnDefs"
+                  [rowData]="this.ambulanceList" 
+                  (rowSelectEvent)="onSelectRow($event)">
+                  </app-eis-grid>
+            </div>
+          <!--
+          </as-split-area>
+        </as-split>
+        </div>
+          -->
+    </div>
+ </form>
+</div>
+<app-prompt-modal id="icsForm206AmbPromptModal" #icsForm206AmbPromptModal (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>

@@ -1,0 +1,63 @@
+<div class="main-card">
+    <div class="rpt-lbl">
+        {{ this.title }}
+    </div>
+    <div class="radio-box">
+        <label>
+            <input name="reportType" type="radio" value="isSummaryReport" [(ngModel)]="filterBy">
+            Summary
+        </label>
+        <label>
+            <input name="reportType" type="radio" value="isShiftKindReport" [(ngModel)]="filterBy">
+            By Shift/Item Code
+        </label>
+        <label>
+            <input name="reportType" type="radio" value="isDetailReport" [(ngModel)]="filterBy">
+            Detail
+        </label>
+        <label>
+            <input name="reportType" type="radio" value="isWorkSheetReport" [(ngModel)]="filterBy">
+            Resource Worksheet
+        </label>
+    </div>
+    <div class="rpt-box">
+    <div>
+        <button class="padding-5" type="button" class="btn btn-default" (click)="showHideInstruction()">Show/Hide&nbsp;Instructions</button>
+        <div class="tooltip-box padding-5" *ngIf="tooltipBox">
+            <div *ngIf="filterBy == 'isSummaryReport'" >
+                <p>
+                    This report identifies the Daily Cost for the Shift and<br>
+                    Item Code on the listed dates. It also identifies the<br>
+                    Cost Group percentage allocations of the cost<br>
+                    obligations for the Shift on the listed dates.
+                </p>
+            </div>
+            <div *ngIf="filterBy == 'isShiftKindReport'" >
+                <p>
+                    This report identifies the Daily Cost for the Shift and<br>
+                    Item Code on the listed dates. It also identifies the<br>
+                    Cost Group percentage allocations of the cost<br>
+                    obligations for the Shift and Item Code on the listed dates.
+                </p>
+            </div>
+            <div *ngIf="filterBy == 'isDetailReport'" >
+                <p>
+                    This report contains detailed Cost Apportionment information<br>
+                    for listed Shifts and Resources. This information includes all<br>
+                    Cost Group percentage allocations
+                </p>
+            </div>
+            <div *ngIf="filterBy == 'isWorkSheetReport'" >
+                <p>
+                    This report contains Cost Apportionment information for listed<br>
+                    Resources. This includes all Cost Group percentage allocations.
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div style="width: 100%; margin-top: 10px">
+        <button type="button" class="btn btn-default button-cus" title="Click to Preview/Print the report" (click)="generateReport()">Preview/Print</button>
+    </div>
+</div>
+

@@ -1,0 +1,39 @@
+<div [style.height]="calcHt()">
+	<div id="dv-user-bar">
+		<div id="dv-user-bar-left" class="w3-left">
+			<app-grid-icon-bar
+				[showFilter]="true" 
+				[showExpandRetract]="true"
+				(filterEvent)="this.clearFilter()"
+				(expandRetractEvent)="this.expandRetract()"
+				(refreshEvent)="this.refreshGrid()">
+			</app-grid-icon-bar>
+		</div>
+		<div id="dv-user-bar-right" class="w3-right">
+			<button class="w3-small" (click)="addUser()" title="Click to add new User Account">Add User</button>
+			<button class="w3-small" (click)="this.editUser()" title="Click to edit User Account">Edit User</button>
+			<button class="w3-small" (click)="this.deleteUser()" title="Click to delete the User Account">Delete User</button>
+		</div>
+	</div>
+	<div class="split-example">
+		<as-split direction="horizontal">
+			<as-split-area [size]="splitAreaLeftSize">
+				<div id="dv-user-grid">
+					<app-eis-grid #userGrid 
+						[columnDefs]="this.gridColumnDefs" 
+						[rowData]="userList"
+						(rowSelectEvent)="this.onSelectUser($event)">
+					</app-eis-grid>
+				</div>
+			</as-split-area> 
+			<as-split-area [size]="splitAreaRightSize">
+				<div id="dv-user-form">
+					<app-user-account-form (saveEvent)="this.save($event);" 
+					(processingEvent)="this.userProcessingEvent($event)"
+					(cancelEvent)="this.cancel($event);"></app-user-account-form>
+				</div>
+			</as-split-area>
+		</as-split>
+	</div>
+	<app-prompt-modal #promptModal id="promptModal" (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>
+</div>

@@ -1,0 +1,68 @@
+<div [style.height]="calcHt()">
+  <div id="dv-db-mgmt-bar">
+    <div id="dv-db-mgmt-bar-left" class="w3-left">
+        <app-grid-icon-bar
+          [showFilter]="true" 
+          [showExpandRetract]="true"
+          (expandRetractEvent)="this.expandRetract()"
+          (filterEvent)="this.clearFilters()"
+          (refreshEvent)="this.gridRefresh()">
+      </app-grid-icon-bar>
+    </div>
+    <div id="dv-db-mgmt-bar-right" class="w3-right">
+          <button [class]="buttonClass('new')" (click)="buttonSelect('new')" title="Click to create a new database">Create New DB</button>
+          <button [class]="buttonClass('copy')" (click)="buttonSelect('copy')" title="Click to copy a database">Copy DB</button>
+          <button [class]="buttonClass('edit')" (click)="buttonSelect('edit')" title="Click to edit a database">Edit DB</button>
+          <button [class]="buttonClass('manual')" (click)="buttonSelect('manual')" title="Click to do a manual backup">Manual Backup</button>
+          <button [class]="buttonClass('restore')" (click)="buttonSelect('restore')" title="Click to restore a database">Restore DB</button>
+          <button [class]="buttonClass('remove')" (click)="buttonSelect('remove')" title="Click to remove a database">Remove DB</button>
+          <button [class]="buttonClass('recover')" (click)="buttonSelect('recover')" title="Click to recover a database password">Recover DB Password</button>
+    </div>
+  </div>
+    <div class="split-example">
+      <as-split direction="horizontal">
+        <as-split-area [size]="splitAreaLeftSize">
+          <div id="dv-db-mgmt-grid">
+              <app-eis-grid #dbGrid 
+                  [columnDefs]="this.gridColumnDefs" 
+                  [rowData]="this.dbAvailVoList"
+                  (rowSelectEvent)="this.onRowSelected($event)">
+              </app-eis-grid>
+              <!--
+              <app-database-mgmt-grid></app-database-mgmt-grid>
+              -->
+            </div>
+        </as-split-area>
+        <as-split-area [size]="splitAreaRightSize">
+            <div id="dv-db-mgmt-form">
+              <app-db-add-edit #dbAddEdit 
+                [dbAvailVo]="this.selectedDbAvailVo" 
+                [dbAvailVoOrig]="this.selectedDbAvailVo" 
+                [intervals]="this.intervals" 
+                (actionEvent)="this.actionEvent($event)"
+                *ngIf="this._selectedButton === 'new' || this._selectedButton === 'edit'"></app-db-add-edit>
+              <app-db-copy #dbCopy 
+                [intervals]="this.intervals" 
+                [dblist]="this.dbAvailVoList"
+                (actionEvent)="this.actionEvent($event)"
+                *ngIf="this._selectedButton === 'copy'"></app-db-copy>
+              <app-db-manual-backup #dbBackup
+                [dbAvailVo]="this.selectedDbAvailVo" 
+                (actionEvent)="this.actionEvent($event)"
+                *ngIf="this._selectedButton === 'manual'"></app-db-manual-backup>
+              <app-db-restore #dbRestore 
+                (actionEvent)="this.actionEvent($event)"
+                *ngIf="this._selectedButton === 'restore'"></app-db-restore>
+              <app-db-remove #dbRemove 
+                [dbAvailVo]="this.selectedDbAvailVo" 
+                (actionEvent)="this.actionEvent($event)"
+                *ngIf="this._selectedButton === 'remove'"></app-db-remove>
+              <app-db-recover-password 
+                (actionEvent)="this.actionEvent($event)"
+                *ngIf="this._selectedButton === 'recover'"></app-db-recover-password>
+          </div>
+        </as-split-area>
+      </as-split>
+    </div>
+    <app-prompt-modal id="promptModal" #promptModal (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>
+</div>

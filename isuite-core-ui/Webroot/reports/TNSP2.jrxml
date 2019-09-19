@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TNSP2" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="315101fb-53a4-42fa-809a-0fe58a03d5ec">
+	<property name="ireport.zoom" value="1.3310000000000026"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="startDate" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="endDate" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
+	<field name="incidentGroupName" class="java.lang.String"/>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="subReportDatasource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="subReportTnspDatasource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="field1" class="java.lang.String"/>
+	<variable name="date_range" class="java.lang.String">
+		<variableExpression><![CDATA[new SimpleDateFormat("MM/dd/yyyy").format($P{startDate}) + " - " + new SimpleDateFormat("MM/dd/yyyy").format($P{endDate})]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="9269faaa-88a0-4257-b27e-74e6e2b2e4c2" mode="Transparent" x="0" y="0" width="752" height="25"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INCIDENT TRAINING ASSIGNMENTS LIST]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="d6077e65-9971-4be6-8108-63a59848a51a" x="0" y="25" width="752" height="20"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{incidentGroupName} != null && $F{incidentGroupName}!= "" ?$F{incidentGroupName}:($F{incidentName} != null && $F{incidentName} != "" ?$F{incidentName}:""))]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="29" splitType="Prevent">
+			<subreport>
+				<reportElement uuid="7b0e85cc-3f5c-41ac-bc56-5a84ab4bdbc3" x="0" y="0" width="752" height="29"/>
+				<dataSourceExpression><![CDATA[$F{subReportTnspDatasource}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "TNSP2_Tnspsubreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="49" splitType="Prevent">
+			<subreport>
+				<reportElement uuid="e3d79e16-fc3f-4805-965b-f75bc79107f0" mode="Transparent" x="0" y="30" width="752" height="19" isPrintWhenDetailOverflows="true" backcolor="#CCCCCC"/>
+				<subreportParameter name="groupByClause"/>
+				<dataSourceExpression><![CDATA[$F{subReportDatasource}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "TNSP2_subreport.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="0" y="0" width="142" height="30" backcolor="#E3E3E3"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Trainee]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="142" y="0" width="46" height="30" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Req. #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="189" y="0" width="45" height="30" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Item Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="235" y="0" width="60" height="30" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Asgmt Start]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="296" y="0" width="58" height="30" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Asgmt End]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="354" y="0" width="50" height="30" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Agency]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="405" y="0" width="49" height="30" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Home Unit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="455" y="0" width="130" height="30" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Trainer / Evaluator]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="586" y="0" width="40" height="30" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Recom *1-2-3-4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="627" y="0" width="40" height="30" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[PTB %]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="668" y="0" width="84" height="30" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Section]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="142" y="0" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="188" y="0" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="234" y="1" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="295" y="1" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="354" y="0" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="404" y="0" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="454" y="0" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="585" y="0" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="626" y="0" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="667" y="0" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement uuid="aa6b05b9-da66-4cff-8ac0-763c88450030" x="0" y="0" width="752" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" stretchType="RelativeToBandHeight" x="0" y="0" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" stretchType="RelativeToBandHeight" x="752" y="0" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement uuid="aa6b05b9-da66-4cff-8ac0-763c88450030" x="0" y="30" width="752" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="93">
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Transparent" x="0" y="0" width="509" height="10" backcolor="#FFFFFF"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial" size="8" isBold="false"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[*Key:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Transparent" x="10" y="10" width="742" height="60" backcolor="#FFFFFF"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial" size="8" isBold="false"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[1. The trainee has successfully performed all tasks in the PTB for the position. The final evaluator has completed the final evaluator's verification section and recommended the trainee be considered for agency certification.
+2. The tasks have been performed in a satisfactory manner. However, opportunities were not available for all tasks (or all uncompleted tasks) to be performed and evaluated on this assignment. An additional assignment is needed to complete the evaluation.
+3. The trainee did not complete certain tasks in the PTB in a satisfactory manner and additional training, guidance, or experience is recommended.
+4. The individual is severely deficient in the performance of tasks in the PTB for the position and additional training, guidance, or experience is recommended prior to another training assignment.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6fd41066-7585-41dc-a3db-a4069c7314fe" x="642" y="75" width="100" height="18" forecolor="#999999"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TNSP-2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f95a7889-9254-439b-aab5-7572c6a62cd5" x="125" y="76" width="33" height="15" forecolor="#999999"/>
+				<textElement/>
+				<text><![CDATA[Time:]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement uuid="39e25133-d063-4743-9200-b80c1fc0492c" x="33" y="76" width="91" height="15" forecolor="#999999"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement uuid="e7b12f99-e449-4f23-97ec-f90966d7bc3d" x="157" y="76" width="91" height="17" forecolor="#999999"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9c76ee1c-6b4d-43bd-a62d-13210cfb2fa0" x="0" y="76" width="33" height="15" forecolor="#999999"/>
+				<textElement/>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

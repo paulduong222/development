@@ -1,0 +1,44 @@
+<label class="blk-hdr"><u>Prepared By</u></label>
+<div class="eis" style="height: 61vh;">
+  <div>
+    <table>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="txName">Name</label></td>
+          <td><label class="ast"></label></td>
+          <td>
+            <app-text-input id="txName" name="txName"
+             width="300"></app-text-input>
+          </td>
+      </tr>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="txPosTitle">Position Title</label></td>
+          <td><label class="ast"></label></td>
+          <td>
+            <app-text-input id="txPosTitle" name="txPosTitle"
+             width="300"></app-text-input>
+          </td>
+      </tr>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="dtDate">Date</label></td>
+          <td><label class="ast"></label></td>
+          <td>
+              <app-eis-datepicker #dtDate
+                id="dtDate">
+              </app-eis-datepicker>
+          </td>
+      </tr>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="txTime">Time</label></td>
+          <td><label class="ast"></label></td>
+          <td>
+            <app-text-input id="txTime" name="txTime" maxlength="4" restrict2="0-9"
+             width="50"></app-text-input>
+          </td>
+     </tr>
+    </table>
+  </div>
+</div>
+<div id="dv-block-action-bar" class="w3-small w3-left">
+    <button (click)="this.save()" title="Click to save the block changes.">Save</button>
+    <button (click)="this.cancel()" title="Click to cancel changes">Cancel</button>
+</div>

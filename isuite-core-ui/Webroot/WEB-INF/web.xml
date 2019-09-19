@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ENTERPRISE -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    id="isuite" version="2.5">
+    
+	<display-name>ISuite</display-name>
+	
+	<welcome-file-list>
+		<welcome-file>/ui/index.html</welcome-file>
+	</welcome-file-list>
+
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>classpath:log4j.properties</param-value>
+    </context-param>
+	
+   	
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+
+    <!-- ########################################################################## -->
+    <!--   hibernate filter that keeps a session open to allow for lazy loading     -->
+    <!-- ########################################################################## -->
+	<filter>
+		<filter-name>sessionFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+	</filter>
+
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+
+	<filter>
+    	<filter-name>securityContextAwareFilter</filter-name>
+    	<filter-class>org.springframework.security.wrapper.SecurityContextHolderAwareRequestFilter</filter-class>
+	</filter>
+
+	<!--  I added this myself cause the above mentioned filter was failing. 
+   	(I'll ask the hibernate expert later) -->
+	<filter-mapping>
+		<filter-name>sessionFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+    	<filter-name>securityContextAwareFilter</filter-name>
+    	<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>REQUEST</dispatcher>   
+    </filter-mapping>
+	
+	<filter>
+	  	<filter-name>cors</filter-name>
+	  	<filter-class>gov.nwcg.isuite.core.controllers.CorsFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	  	<filter-name>cors</filter-name>
+	  	<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+    <!-- ################################################################# -->
+    <!-- Spring buisness rules integration                                 -->
+    <!-- this loads the application context in the web container           -->
+    <!-- ################################################################# -->
+     <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+    <!-- 
+ 	<listener>
+		<listener-class>flex.messaging.HttpFlexSession</listener-class>
+	</listener>
+     -->
+	<listener>
+  		<listener-class>org.springframework.security.ui.session.HttpSessionEventPublisher</listener-class>
+	</listener>
+    <!--
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+  	-->
+  	
+  	<!-- Flex Servlets -->
+  	
+  	<!-- MessageBroker Servlet -->
+
+	<!-- BlazeDS Mapping --> 
+
+<!-- 	     <init-param>
+	         <param-name>contextConfigLocation</param-name>
+	         <param-value>classpath:servlet-context.xml</param-value>
+	     </init-param>
+
+ -->
+	<servlet>
+		<servlet-name>ross-file-servlet</servlet-name>
+		<servlet-class>gov.nwcg.isuite.core.servlet.RossFileUploadServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>db-file-servlet</servlet-name>
+		<servlet-class>gov.nwcg.isuite.core.servlet.db.DatabaseUploadServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>dt-import-servlet</servlet-name>
+		<servlet-class>gov.nwcg.isuite.core.servlet.dtimport.DataTransferImportServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>dt-users-servlet</servlet-name>
+		<servlet-class>gov.nwcg.isuite.core.servlet.dtusers.DataTransferGetDsUsersServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>dt-filelist-servlet</servlet-name>
+		<servlet-class>gov.nwcg.isuite.core.servlet.dtfilelist.DataTransferGetFileListServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>dt-export-servlet</servlet-name>
+		<servlet-class>gov.nwcg.isuite.core.servlet.dtexport.DataTransferGetFileServlet</servlet-class>
+	</servlet>
+	
+    <!-- ################################################################# -->
+	<!--                      spring-ws servlet                            -->
+	<!--                                                                   -->
+	<!-- since the name of the servlet is 'spring-ws'                      -->
+	<!-- the name of the spring config file for the servlet must be        -->
+	<!--  spring-ws-servlet.xml                                            -->
+	<!--                                                                   -->
+    <!-- ################################################################# -->
+	<servlet>
+		<servlet-name>spring-ws</servlet-name>
+		<servlet-class>org.springframework.ws.transport.http.MessageDispatcherServlet</servlet-class>
+	</servlet>
+	
+	<!-- REST Servlet -->
+	<servlet>
+		<servlet-name>rest</servlet-name>
+		<servlet-class>	org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+ 	<!-- REST Servlet Mapping-->
+	<servlet-mapping>
+		<servlet-name>rest</servlet-name>
+		<url-pattern>/service/*</url-pattern>
+	</servlet-mapping>
+	
+
+	<servlet-mapping>
+	    <servlet-name>ross-file-servlet</servlet-name>
+	    <url-pattern>/servlet/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+	    <servlet-name>db-file-servlet</servlet-name>
+	    <url-pattern>/servlet/db/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+	    <servlet-name>dt-import-servlet</servlet-name>
+	    <url-pattern>/servlet/dtimport/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+	    <servlet-name>dt-users-servlet</servlet-name>
+	    <url-pattern>/servlet/dtusers/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+	    <servlet-name>dt-export-servlet</servlet-name>
+	    <url-pattern>/servlet/dtexport/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+	    <servlet-name>dt-filelist-servlet</servlet-name>
+	    <url-pattern>/servlet/dtfilelist/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>spring-ws</servlet-name>
+		<url-pattern>/ws/*</url-pattern>
+	</servlet-mapping>
+
+	<resource-env-ref>
+		<description>JMS Connection Factory</description>
+		<resource-env-ref-name>jms/flex/TopicConnectionFactory</resource-env-ref-name>
+		<resource-env-ref-type>org.apache.activemq.ActiveMQConnectionFactory</resource-env-ref-type>
+	</resource-env-ref>
+	
+	<resource-env-ref>
+		<description>Session killing JMS topic</description>
+		<resource-env-ref-name>jms/flex/session-k-topic</resource-env-ref-name>
+		<resource-env-ref-type>org.apache.activemq.command.ActiveMQTopic</resource-env-ref-type>
+	</resource-env-ref>
+  
+  <resource-env-ref>
+    <description>User Id JMS topic</description>
+    <resource-env-ref-name>jms/flex/user-id-topic</resource-env-ref-name>
+    <resource-env-ref-type>org.apache.activemq.command.ActiveMQTopic</resource-env-ref-type>
+  </resource-env-ref>
+
+  <session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+  
+</web-app>

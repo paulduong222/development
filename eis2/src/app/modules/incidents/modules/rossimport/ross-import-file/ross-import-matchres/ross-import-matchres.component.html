@@ -1,0 +1,84 @@
+<div class="dv-module-sub-nav-bar">
+  <div class="btn-group-sub-menu">
+    <button (click)="dataTabSelect('reqnumbername')" [class]="getStyle('reqnumbername')">Request Number and Name</button>	
+    <button (click)="dataTabSelect('reqnumber')" [class]="getStyle('reqnumber')">Request Number</button>
+    <button (click)="dataTabSelect('resnameitemname')" [class]="getStyle('resnameitemname')">Resource Name and Item Name</button>	
+    <button (click)="dataTabSelect('user')" [class]="getStyle('user')">User Matches</button>	
+    <button (click)="dataTabSelect('unmatched')" [class]="getStyle('unmatched')">Unmatched Resources</button>	
+  </div>
+</div>
+<div [class]="getActiveTab('reqnumbername')" style="width:100%;height:100%;">
+      <div id="dv-tab-info">
+        <div><label>The following resources in the ROSS Import file have Resource Names and Request Numbers that match existing resources in the e-ISuite System. The system has automatically matched these resources.</label></div>
+        <div><label>Review the matches and make sure they are correct. If a match was made that was incorrect, select the resource in the grid and click the No Match button.</label></div>
+     </div>
+  <div style="width:100%;height:100%;">
+    <app-match-resource-grid1></app-match-resource-grid1>
+  </div>
+  <div></div>
+     <div class="w3-center">
+        <div class="btn-group-sub-menu">
+          <button>No Match</button>
+        </div>
+     </div>
+</div>
+<div [class]="getActiveTab('reqnumber')" style="width:100%;height:100%;">
+      <div id="dv-tab-info">
+        <div><label>The following resources in the ROSS Import file have Resource Names and Request Numbers that match existing resources in the e-ISuite System. The system has automatically matched these resources.</label></div>
+        <div><label>Review the matches and make sure they are correct. If a match was made that was incorrect, select the resource in the grid and click the No Match button.</label></div>
+     </div>
+  <div style="width:100%;height:100%;">
+    <app-match-resource-grid1></app-match-resource-grid1>
+  </div>
+  <div></div>
+     <div class="w3-center">
+        <div class="btn-group-sub-menu">
+          <button>No Match</button>
+        </div>
+     </div>
+</div>
+<div [class]="getActiveTab('resnameitemname')" style="width:100%;height:100%;">
+      <div id="dv-tab-info">
+        <div><label>The following resources in the ROSS Import file have Resource Names and Request Numbers that match existing resources in the e-ISuite System. The system has automatically matched these resources.</label></div>
+        <div><label>Review the matches and make sure they are correct. If a match was made that was incorrect, select the resource in the grid and click the No Match button.</label></div>
+     </div>
+  <div style="width:100%;height:100%;">
+    <app-match-resource-grid1></app-match-resource-grid1>
+  </div>
+  <div></div>
+     <div class="w3-center">
+        <div class="btn-group-sub-menu">
+          <button>No Match</button>
+        </div>
+     </div>
+</div>
+<div [class]="getActiveTab('user')" style="width:100%;height:100%;">
+      <div id="dv-tab-info">
+        <div><label>The following resources in the ROSS Import file have Resource Names and Request Numbers that match existing resources in the e-ISuite System. The system has automatically matched these resources.</label></div>
+        <div><label>Review the matches and make sure they are correct. If a match was made that was incorrect, select the resource in the grid and click the No Match button.</label></div>
+     </div>
+  <div style="width:100%;height:100%;">
+    <app-match-resource-grid1></app-match-resource-grid1>
+  </div>
+  <div></div>
+     <div class="w3-center">
+        <div class="btn-group-sub-menu">
+          <button>No Match</button>
+        </div>
+     </div>
+</div>
+<div [class]="getActiveTab('unmatched')" style="width:100%;height:100%;">
+      <div id="dv-tab-info">
+        <div><label>The following resources in the ROSS Import file have Resource Names and Request Numbers that match existing resources in the e-ISuite System. The system has automatically matched these resources.</label></div>
+        <div><label>Review the matches and make sure they are correct. If a match was made that was incorrect, select the resource in the grid and click the No Match button.</label></div>
+     </div>
+  <div style="width:100%;height:100%;">
+    <app-match-resource-grid1></app-match-resource-grid1>
+  </div>
+  <div></div>
+     <div class="w3-center">
+        <div class="btn-group-sub-menu">
+          <button>No Match</button>
+        </div>
+     </div>
+</div>

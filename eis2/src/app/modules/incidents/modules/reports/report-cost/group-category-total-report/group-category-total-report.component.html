@@ -1,0 +1,210 @@
+<div class="main-card">
+    <div class="rpt-lbl">
+        Group Category Total
+    </div>
+    <div class="radio-box">
+        <label>
+            <input name="groupCatSum" type="radio" value="isReportOnly" [(ngModel)]="filterBy">
+            Reports Only
+        </label>
+        <label>
+            <input name="groupCatSum" type="radio" value="isGraphOnly" [(ngModel)]="filterBy">
+            Graph Only
+        </label>
+        <label>
+            <input name="groupCatSum" type="radio" value="isReportAndGraph" [(ngModel)]="filterBy">
+            Reports And Graph
+        </label>
+    </div>
+    <div class="rpt-box">
+        <div class="rpt-lbl" *ngIf="filterBy !== 'isGraphOnly'">
+            Reports
+        </div>
+        <div>
+            Report Grouping
+            <span class="required">* </span>
+            <select [(ngModel)]="groupCategoryTotalReportFilter.selectedReportGroup"  (change)="setDataList()">
+                <option value="Accounting Code">ACCOUNTING CODE</option>
+                <option value="Agency">AGENCY</option>
+                <option value="Payment Agency">PAYMENT AGENCY</option>
+                <option value="Cost Group">COST GROUP</option>
+                <option value="Unit ID">UNIT ID</option>
+                <option value="Incident">INCIDENT</option>
+            </select>
+            <br>
+            <div class="row-padding" style="height: 35px">
+                <ng-container *ngIf="filterBy !== 'isReportOnly'">
+                    Graphic Grouping
+                    <label class="ast">*</label>
+                    <select [(ngModel)]="groupCategoryTotalReportFilter.selectedGraphGroup">
+                        <option value="Direct/Indirect">Direct/Indirect</option>
+                        <option value="Cost Sub-Group Category">Cost Sub-Group Category</option>
+                        <option value="Cost Group Category">Cost Group Category</option>
+                    </select>
+                </ng-container>
+            </div>
+            <label>
+                <input type="checkbox" [(ngModel)]="groupCategoryTotalReportFilter.isDateRangeSelected">
+                Select Date Range
+            </label>
+            <div [style.opacity]="groupCategoryTotalReportFilter.isDateRangeSelected ? 1.0 : 0.35">
+            Date Range 
+            <label class="ast">*</label><app-eis-datepicker #dtStart [disabled]="!groupCategoryTotalReportFilter.isDateRangeSelected"></app-eis-datepicker>
+            <label class="ast">*</label><app-eis-datepicker #dtEnd [disabled]="!groupCategoryTotalReportFilter.isDateRangeSelected"></app-eis-datepicker>
+            </div>
+        </div>
+        <div class="rpt-lbl">
+            Additional Filters
+        </div>
+        <div>
+            <!-- <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Unit ID'">
+                <label>
+                    <input type="checkbox">
+                    Local Unit ID Only
+                </label>
+            </div> -->
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Cost Group'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="includeAllCostGroup" [(ngModel)]="additionalFilter">
+                    Include All
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Accounting Code'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="includeAllAccountingCode" [(ngModel)]="additionalFilter">
+                    Include All
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Agency'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="includeAllAgency" [(ngModel)]="additionalFilter">
+                    Include All
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Payment Agency'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="includeAllPaymentAgency" [(ngModel)]="additionalFilter">
+                    Include All
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Unit ID'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="includeAllUnitID" [(ngModel)]="additionalFilter">
+                    Include All
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Incident'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="includeAllItemCode" [(ngModel)]="additionalFilter">
+                    Include All
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Cost Group'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="includeAllCostGroup" [(ngModel)]="additionalFilter">
+                    Include All
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Accounting Code'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="includeAllAccountingCode" [(ngModel)]="additionalFilter">
+                    Include All
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Agency'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="includeAllAgency" [(ngModel)]="additionalFilter">
+                    Include All
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Payment Agency'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="includeAllPaymentAgency" [(ngModel)]="additionalFilter">
+                    Include All
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Unit ID'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="includeAllUnitID" [(ngModel)]="additionalFilter">
+                    Include All
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Incident'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="includeAllItemCode" [(ngModel)]="additionalFilter">
+                    Include All
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Payment Agency'">
+                <label >
+                    <input type="radio" name="additionalFilter" value="resourcesWherePaymentAgencyIsBlank" [(ngModel)]="additionalFilter">
+                    Resources where Payment Agency is Blank
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Payment Agency'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="resourcesWherePaymentAgencyasEntry" [(ngModel)]="additionalFilter">
+                    Resources where Payment Agency has entry
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Cost Group'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="resourcesWhereCostGroupIsBlank" [(ngModel)]="additionalFilter">
+                    Resources where Cost Group is Blank
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Cost Group'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="resourcesWhereCostGroupHasEntry" [(ngModel)]="additionalFilter">
+                    Resources where Cost Group has entry
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Accounting Code'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="selectiveAccountingCode" [(ngModel)]="additionalFilter">
+                    Select Accounting Codes
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Agency'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="selectiveAgency" [(ngModel)]="additionalFilter">
+                    Select Agencies
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Payment Agency'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="selectivePaymentAgencies" [(ngModel)]="additionalFilter">
+                    Select Payment Agencies
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Cost Group'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="selectiveCostGroups" [(ngModel)]="additionalFilter">
+                    Select Cost Groups
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Unit ID'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="selectiveHomeUnits" [(ngModel)]="additionalFilter">
+                    Select Unit ID's
+                </label>
+            </div>
+            <div *ngIf="groupCategoryTotalReportFilter.selectedReportGroup == 'Incident'">
+                <label>
+                    <input type="radio" name="additionalFilter" value="subCategory" [(ngModel)]="additionalFilter">
+                    Select Cost Sub-Group Category
+                </label>
+            </div>
+            <div class="checkbox-box" *ngIf="listCheckBox && listCheckBoxAble.includes(additionalFilter)">
+                <label *ngFor="let row of listCheckBox" style="display: block;">
+                    <input type="checkbox" (click)="handleCheckbox(row.label)">
+                    {{row.label}}
+                </label>
+            </div>
+
+        </div>
+    </div>
+    <div style="width: 100%; margin-top: 10px">
+        <button type="button" class="btn btn-default button-cus" title="Click to Preview/Print the report" (click)="generateReport()">Preview/Print</button>
+    </div>
+</div>

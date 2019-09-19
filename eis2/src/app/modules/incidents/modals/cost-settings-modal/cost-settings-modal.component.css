@@ -1,0 +1,21 @@
+#dv-cost-set-action-bar {
+    padding-right: 5px;
+	background-color: #6183A6;
+    width: 100%;
+    height:30px;
+}
+#dv-cost-set-action-bar button {
+    margin-top: 3px;
+    height:22px;
+}
+.dv-form-hours {
+    font: 12px Helvetica,Arial,sans-serif;
+}
+.dv-form-costrun {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.dv-form-costrun label {
+    font: 12px Helvetica,Arial,sans-serif;
+    padding-left: 5px;
+}

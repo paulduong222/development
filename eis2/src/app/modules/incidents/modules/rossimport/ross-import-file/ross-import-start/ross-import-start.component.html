@@ -1,0 +1,21 @@
+<div class="">
+  <div class="w3-left">
+    Left Area
+  </div>
+  <div class="w3-right">
+    Right Area
+  </div>
+</div>
+<br>
+<div>
+  <div class="dv-module-sub-nav-bar">
+    <div class="btn-group-sub-menu">
+      <button (click)="dataTabSelect('matchresources')" [class]="getStyle('matchresources')">Match Resources</button>	
+      <button (click)="dataTabSelect('excluderesources')" [class]="getStyle('excluderesources')">Exclude Resources</button>	
+      <button (click)="dataTabSelect('reviewandcomplete')" [class]="getStyle('reviewandcomplete')">Review And Complete</button>	
+    </div>
+  </div>
+</div>
+<div [class]="getActiveTab('matchresources')" [style.height]="calcHt()">
+  <app-ross-import-matchres></app-ross-import-matchres>
+</div>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EmergencyFirefighterCommissaryReport_subreport12a" language="groovy" pageWidth="790" pageHeight="300" orientation="Landscape" columnWidth="790" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="5463a649-d926-427b-9280-8730c25c9910">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="492"/>
+	<property name="ireport.y" value="0"/>
+	<field name="purchaseDate" class="java.util.Date"/>
+	<field name="categoryName" class="java.lang.String"/>
+	<field name="item" class="java.lang.String"/>
+	<field name="amount" class="java.lang.Double"/>
+	<field name="day" class="java.lang.String"/>
+	<field name="month" class="java.lang.String"/>
+	<field name="accountingCode" class="java.lang.String"/>
+	<variable name="AMOUNT" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{amount}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="5ea06174-abb5-4180-8a23-f4903b8be95f" x="123" y="5" width="84" height="15"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{categoryName}=="QUARTERS/LODGING"?"QTR/LODG":$F{categoryName})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="fd17f27e-57c0-4a6c-8c8c-3eea40af0e97" x="195" y="5" width="273" height="15"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{item}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00; (¤ #,##0.00)" isBlankWhenNull="true">
+				<reportElement uuid="4430fa47-9db4-49b5-8bc4-fe819f2fafee" x="470" y="5" width="68" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{amount}>0?$F{amount}:"")]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="ebb9c701-89b6-4025-b16f-5f3fd3e0ee76" x="0" y="20" width="750" height="1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="5ea06174-abb5-4180-8a23-f4903b8be95f" x="690" y="5" width="100" height="15"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{accountingCode}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="5ea06174-abb5-4180-8a23-f4903b8be95f" x="5" y="5" width="49" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="5ea06174-abb5-4180-8a23-f4903b8be95f" x="66" y="5" width="49" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00; (¤ #,##0.00)" isBlankWhenNull="true">
+				<reportElement uuid="4430fa47-9db4-49b5-8bc4-fe819f2fafee" x="546" y="6" width="68" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{amount}<0?$F{amount}:"")]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

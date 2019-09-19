@@ -1,0 +1,9 @@
+<div id="dv-user-accounts-history">
+    <app-auditing-filter #userAccountsHistoryFilter
+        (filterEvent)="this.doFilter($event)"></app-auditing-filter>
+    <app-eis-grid #userAccountsHistoryGrid
+        [treeViewMode]="false"
+        [columnDefs]="this.columnDefs"
+        [rowData]="this.gridData">
+    </app-eis-grid>
+  </div>

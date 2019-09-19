@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://isuite.nwcg.gov/MasterFrequency"
+		    xmlns:mfq="http://isuite.nwcg.gov/MasterFrequency"
+		    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		    elementFormDefault="qualified"
+		    attributeFormDefault="unqualified"
+		    version="1.0">
+
+	<xsd:complexType name="MasterFrequencyType">
+		<xsd:annotation>
+			<xsd:documentation>Used to express a master frequency record.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Show" type="xsd:string" />
+			<xsd:element name="ZoneGroup" type="xsd:string" />
+			<xsd:element name="Channel" type="xsd:string" />
+			<xsd:element name="Function" type="xsd:string" />
+			<xsd:element name="Assignment" type="xsd:string" />
+			<xsd:element name="Remarks" type="xsd:string" />
+			<xsd:element name="ChannelNameRadioTalkgroup" type="xsd:string" />
+			<xsd:element name="RXFreq" type="xsd:string" />
+			<xsd:element name="RXTone" type="xsd:string" />
+			<xsd:element name="TXFreq" type="xsd:string" />
+			<xsd:element name="TXTone" type="xsd:string" />
+			<xsd:element name="Mode" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="MasterFrequency">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Frequency" type="mfq:MasterFrequencyType" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>	
+		</xsd:complexType>
+	</xsd:element>		    
+</xsd:schema>

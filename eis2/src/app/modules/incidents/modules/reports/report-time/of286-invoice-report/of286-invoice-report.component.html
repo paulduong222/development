@@ -1,0 +1,69 @@
+<div class="main-card">
+  <h5 style="font-weight: 600; padding-left: 10px; font-size: 19px">Emergency Equipment - Use Invoice and Itemized Deductions</h5>
+  <div class="card-body">
+    <div class="radio-box">
+      <label><input type="radio" name="selectBy" value="selectByRequestNumber" [(ngModel)]="selectBy" (click)="changeSelectBy($event)">Select Request Number</label>
+      <label><input type="radio" name="selectBy" value="selectByResourceName" [(ngModel)]="selectBy" (click)="changeSelectBy($event)">Select Resource</label>
+    </div>
+    <div>
+      <span class="label-input" *ngIf="selectBy==='selectByRequestNumber'">Request Number </span>
+      <span class="label-input" *ngIf="selectBy==='selectByResourceName'">Resource </span>
+      <select class="resource-input" type="text" [(ngModel)]="resourceIdSelected" (change)="selectedChange()">
+        <option *ngFor="let option of requestNumbers" value="{{option.incidentResourceId}}">{{option.label}}</option>
+      </select>
+    </div>
+    <div class="datetime-box">
+      <span class="label-input">Actual Release Date and Time </span>
+      <app-eis-datepicker class="time-input" #actualReleaseDate></app-eis-datepicker>
+      <input class="resource-input" type="text" [(ngModel)]="of286TimeInvoiceReportFilter.actualReleaseTimeAsString">
+      <button type="button" class="btn btn-default" title="Save the actual release date and time">Save Release Date/Time</button>
+    </div>
+    <div style="margin-top: 10px;display: flex; align-items: center;">
+      <span class="label-input">Last Date To Include On Invoice <label class="ast">*</label></span>
+      <app-eis-datepicker class="time-input" #lastDateToIncludeOnReport></app-eis-datepicker>
+      <input type="checkbox" class="checkbox" value="true" [(ngModel)]="of286TimeInvoiceReportFilter.finalInvoice"><label>Final Invoice</label>
+    </div>
+    <div class="left-box">
+      <label class="label-header">Print Options</label>
+      <label><input type="radio" name="printOption" value="printDraftInvoice" [(ngModel)]="printOption">Preview/Print DRAFT Invoice</label>
+      <label><input type="radio" name="printOption" value="printOriginalInvoice" [(ngModel)]="printOption">Generate ORIGINAL Invoice</label>
+      <label><input type="radio" name="printOption" value="printDuplicateOriginalInvoice" [(ngModel)]="printOption">Preview/Print DUPLICATE ORIGINAL Invoice</label>
+    </div>
+    <div class="right-box" *ngIf="printOption == 'printDraftInvoice'">
+      <label class="label-header">Report Options</label>
+      <label><input type="radio" name="reportOption" value="printDeductionsAndInvoice" [(ngModel)]="reportOption">OF-286 Invoice and Adjustments</label>
+      <label><input type="radio" name="reportOption" value="printInvoiceOnly" [(ngModel)]="reportOption">OF-286 Invoice Only</label>
+      <label><input type="radio" name="reportOption" value="printItemizedDeductionsOnly" [(ngModel)]="reportOption">OF-286 Adjustments Only</label>
+    </div>
+    <div class="right-box-table" *ngIf="printOption == 'printDuplicateOriginalInvoice'">
+        <app-data-table [tableDefinition]="tableDef" [data]="data" [scrollAble]="scrollAble" [indexSelected]="indexSelected" (rowClicked)="getClickedRow($event, 'indexSelected', 'data', 'shiftIndex')"></app-data-table>
+    </div>
+    <div class="btn-box">
+      <button type="button" class="btn btn-default" (click)="generateReport()" title="Click to Open Invoice">Open Invoice</button>
+      <button type="button" class="btn btn-default" title="Click to Delete the Last Invoice" (click)="deleteModalOpen()">Delete Last Invoice</button>
+    </div>
+  </div>
+</div>
+<app-prompt-modal id="promptModal" #promptModal  (promptActionEvent)="promptActionResult($event)"></app-prompt-modal>
+<app-prompt-modal id="promptModal1" #promptModal1  (promptActionEvent)="promptActionResult1($event)"></app-prompt-modal>
+<app-jw-modal id="addReason" style="display: none;" >
+  <div class="w3-container dv-md">
+      <div class="w3-container w3-padding-small w3-theme-d2 w3-medium">
+          <div class="w3-left" tabindex="0"><label>Reason To Delete Time Invoice</label></div>
+          <div class="w3-right"></div>
+      </div>
+      <div style="padding: 10px;" class="w3-container">
+        <div class="w3-left">
+          Enter Reason: <span class="ast">*</span>
+        </div>
+        <div class="w3-right">
+            <textarea [(ngModel)]="timeReportFilter.reasonForDelete"></textarea>
+        </div>
+      </div>
+      <div style="padding-top: 20px;" class="w3-left w3-container">
+          <button class="w3-small" (click)="deleteLastTimeInvoice()" [disabled]="!timeReportFilter.reasonForDelete" style="margin-right: 3px;">Ok</button>
+          <button class="w3-small" (click)="cancelAddReason()" style="margin-right: 3px;">Cancel</button>
+      </div>
+  </div>
+</app-jw-modal>
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://isuite.nwcg.gov/DataTransfer"
+		    xmlns:user="http://isuite.nwcg.gov/DataTransfer"
+		    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		    xmlns:nwcgLib2="http://isuite.nwcg.gov/lib2"
+		    elementFormDefault="qualified"
+		    attributeFormDefault="unqualified"
+		    version="1.0">
+	<xsd:import namespace="http://isuite.nwcg.gov/lib2" schemaLocation="eisuite_lib2.xsd"/>
+	<xsd:element name="DataTransfer">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Password" type="xsd:string" minOccurs="1"/>
+				<xsd:element name="Source" type="xsd:string" minOccurs="1"/>
+				<xsd:element name="SourceRevisionLevel" type="xsd:string" minOccurs="1"/>
+				<xsd:element name="ExportDate" type="xsd:string" minOccurs="1"/>
+				<xsd:element name="Incident" type="nwcgLib2:IncidentType" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>	
+		</xsd:complexType>
+	</xsd:element>		    
+</xsd:schema>

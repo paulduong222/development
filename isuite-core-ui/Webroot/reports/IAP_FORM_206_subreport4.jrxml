@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IAP_FORM_206_subreport4" language="groovy" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d5649d49-9aac-46a5-9823-f580d329c5ec">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="medicalIncidentRow" class="java.lang.String"/>
+	<group name="medicalIncidentGroup">
+		<groupExpression><![CDATA[$F{medicalIncidentRow}]]></groupExpression>
+		<groupHeader>
+			<band height="29">
+				<staticText>
+					<reportElement uuid="e6334cb2-2e4f-47f1-b3a9-f6fb08936c72" x="0" y="2" width="572" height="13"/>
+					<textElement>
+						<font size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[FOR ALL MEDICAL EMERGENCCIES:  IDENTIFY ON SCENE INCIDENT COMMANDER BY NAME AND POSITION AND ANNOUNCE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="e6334cb2-2e4f-47f1-b3a9-f6fb08936c72" x="0" y="15" width="572" height="13"/>
+					<textElement>
+						<font size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA["MEDICAL EMERGENCY" TO INITIATE RESPONSE FROM IMT COMMUNICATIONS/DISPATCH.]]></text>
+				</staticText>
+				<line>
+					<reportElement uuid="33e2e33f-7c26-48cd-ae95-3e3a2f8a1ea0" x="0" y="28" width="572" height="1"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<detail>
+		<band height="700" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="10b42714-898d-4cb6-a437-9714bef80643" x="0" y="0" width="572" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Medical Incident Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="025bde57-252b-4250-b133-4644d8f8e9c6" x="0" y="20" width="382" height="16"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Use items one through nine to communicate situation to communications/dispatch.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b39d9e45-85b5-4c78-b4fe-fb32ff1f3bf5" x="5" y="36" width="338" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[1. CONTACT COMMUNICATIONS/DISPATCH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b39d9e45-85b5-4c78-b4fe-fb32ff1f3bf5" x="5" y="74" width="100" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2. INCIDENT STATUS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b39d9e45-85b5-4c78-b4fe-fb32ff1f3bf5" x="5" y="166" width="139" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3. INITIAL PATIENT ASSESSMENT:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b39d9e45-85b5-4c78-b4fe-fb32ff1f3bf5" x="5" y="258" width="338" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[4. SEVERITY OF EMERGENCY, TRANSPORT PRIORITY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b39d9e45-85b5-4c78-b4fe-fb32ff1f3bf5" x="5" y="319" width="338" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[5. TRANSPORT PLAN:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b39d9e45-85b5-4c78-b4fe-fb32ff1f3bf5" x="5" y="374" width="338" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[6. ADDITION RESOURCES/EQUIPMENT NEEDS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b39d9e45-85b5-4c78-b4fe-fb32ff1f3bf5" x="5" y="457" width="338" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[7. COMMUNICATIONS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b39d9e45-85b5-4c78-b4fe-fb32ff1f3bf5" x="5" y="544" width="338" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[8. EVACUATION LOCATION:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b39d9e45-85b5-4c78-b4fe-fb32ff1f3bf5" x="5" y="606" width="338" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[9. CONTINGENCY:]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

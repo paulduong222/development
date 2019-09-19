@@ -1,0 +1,98 @@
+<div class="eis" >
+  <div class="dv-training-form">
+    <form>
+      <table>
+        <tr>
+          <td>
+            <table>
+              <tr>
+                <label tabIndex="0"><strong>{{ requestNumberLabel }}</strong></label>
+                <label class="ml-10" tabIndex="0"><strong>{{ resourceNameLabel }}</strong></label>
+              </tr>
+              <tr>
+                <label tabIndex="0"><strong>Incident Assignment:</strong></label>
+                <label class="ml-10" tabIndex="0"><strong>{{ itemCodeDescLabel }}</strong></label>
+                <input class="ml-10" id="ckTrainee" type="checkbox" [checked]="this.trainee">
+                <label class="ml-3" for="ckTrainee">Trainee</label>
+              </tr>
+              <tr>
+                <label>Trainee Assignment</label>
+                <label class="ast ml-5">*</label>
+                <app-eis-dropdown id="ddKind" #ddKind class="ml-5"  width="60"
+                  [dropdownData]="this.incidentSelectorService.tnspKindTypeData"
+                  [selectedDropdownData]="this.selectedKindDropdownData"
+                  (dropdownSelect)="this.kindSelectEvent($event)">
+                </app-eis-dropdown> 
+                <label class="ml-10" tabIndex="0">Functional Area:</label>
+                <label class="ml-10" tabIndex="0"><strong>{{ functionalLabel }}</strong></label>  
+              </tr>
+              <tr>
+                <app-eis-grid #traineeAssignGrid class="w3-left dv-trainee-assign-grid"
+                  [columnDefs]="this.aGridColumnDefs" 
+                  [rowData]="resourceTrainingVos"
+                  (rowSelectEvent)="this.onSelectTrainingAssign($event)"
+                  [floatingFilter]="false">
+                </app-eis-grid> 
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table class="training-form-table-right">
+              <tr>
+                <td></td>
+                <td>
+                  <div class="w3-right">
+                    <label tabIndex="0"><strong>Trainee Total:</strong></label> 
+                    <label class="ml-10" tabIndex="0"><strong>{{ traineeTotal }}</strong></label>
+                    <label class="ml-10" tabIndex="0"><strong>Priority Trainees:</strong></label>
+                    <label class="ml-10" tabIndex="0"><strong>{{ priorityTrainees }}</strong></label> 
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <div class="w3-right">
+                    <button id="btnQuals" type="button" (click)="openQualsModal();" title="Click to open View Quals.">View Quals</button>  
+                  </div>
+                </td>     
+              </tr>
+              <tr>
+              </tr>
+              <tr>
+                <!--
+                <td colspan="2">
+                  <app-eis-grid #qualsGrid class="w3-right ml-20 dv-quals-grid"
+                    [columnDefs]="this.qGridColumnDefs" 
+                    [rowData]="this.otherQuals"
+                    [floatingFilter]="false">
+                  </app-eis-grid>  
+                </td>
+                -->
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </form>
+    <div class="dv-module-sub-nav-bar">
+      <div class="btn-group-sub-menu">
+        <button (click)="dataTabSelect('trainee')" [class]="getStyle('trainee')" title="Click to go to Trainee Data tab.">Trainee Data</button>	
+        <button (click)="dataTabSelect('evaluator')" [class]="getStyle('evaluator')" title="Click to go to Evaluator Data tab.">Evaluator Data</button>
+      </div>
+    </div>
+    <div [class]="getTabClass('trainee')">
+      <app-trainee-tab id="traineeTab" #traineeTab
+          (saveResourceTrainingEvent)="this.saveResourceTrainingEvent($event)"
+          (cancelResourceTrainingEvent)="this.cancelResourceTrainingEvent($event)"
+          (addResourceTrainingEvent)="this.addResourceTrainingEvent()"
+          (deleteResourceTrainingEvent)="this.deleteResourceTrainingEvent()">
+      </app-trainee-tab>
+    </div>
+    <div [class]="getTabClass('evaluator')">
+      <app-evaluator-tab id="evaluatorTab" #evaluatorTab></app-evaluator-tab>
+    </div>
+  </div>
+</div>
+<app-quals-modal #qualsModal></app-quals-modal>
+

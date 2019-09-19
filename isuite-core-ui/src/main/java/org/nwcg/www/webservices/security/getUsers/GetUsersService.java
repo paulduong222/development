@@ -1,0 +1,16 @@
+/**
+ * GetUsersService.java
+ *
+ * This file was auto-generated from WSDL
+ * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
+ */
+
+package org.nwcg.www.webservices.security.getUsers;
+
+public interface GetUsersService extends javax.xml.rpc.Service {
+	public java.lang.String getGetUsersSoap11Address();
+
+	public org.nwcg.www.webservices.security.getUsers.GetUsers getGetUsersSoap11() throws javax.xml.rpc.ServiceException;
+
+	public org.nwcg.www.webservices.security.getUsers.GetUsers getGetUsersSoap11(java.net.URL portAddress) throws javax.xml.rpc.ServiceException;
+}

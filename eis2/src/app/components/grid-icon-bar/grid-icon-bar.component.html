@@ -1,0 +1,16 @@
+<div id="dv-icon-bar-left" class="w3-left">
+    <img *ngIf="this.showCustomize === true" src="assets/images/action-conf-column.png" (click)="this.customize()" title="Click to customize columns">
+    <img src="assets/images/action-refresh.png" style="padding-top:2px;" (click)="this.refresh()" title="Click to refresh grid">
+    <img *ngIf="this.showFilter" src="assets/images/filter-delete-icon.png" style="padding-top:1px;" (click)="this.clear()" title="Click to clear filters">
+    <img *ngIf="this.showExpandRetract" src="assets/images/expand_retract.png" (click)="this.expandRetract()" title="Click to expand/retract grid">
+      <!--
+  <img *ngIf="this.showCustomize === true" src="assets/images/action-conf-column.png" (click)="this.customize()">
+  <img src="assets/images/action-refresh.png" style="padding-top:2px;" (click)="this.refresh()">
+  <img *ngIf="this.showFilter" src="assets/images/filter-delete-icon.png" style="padding-top:1px;" (click)="this.clear()">
+  <img *ngIf="this.showExpandRetract" src="assets/images/expand_retract.png" (click)="this.expandRetract()">
+    <img *ngIf="this.showCustomize === true" src="assets/images/customize-dataview-48.png" (click)="this.customize()" title="Customize Columns">
+    <img src="assets/images/refresh-48.png" style="padding-top:2px;" (click)="this.refresh()" title="Refresh Grid">
+    <img *ngIf="this.showFilter" src="assets/images/clear-filters-48.png" style="padding-top:1px;" (click)="this.clear()" title="Clear Filters">
+    <img *ngIf="this.showExpandRetract" src="assets/images/expand-collapse-48.png" (click)="this.expandRetract()" title="Expand Retract Grid">
+  -->
+</div>

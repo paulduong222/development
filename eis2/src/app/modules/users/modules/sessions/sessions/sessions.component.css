@@ -1,0 +1,19 @@
+#dv-sessions-bar {
+	background-color: #999999;
+	width: 100%;
+	height: 25px;
+}
+#dv-sessions-bar-left {
+	vertical-align: middle;
+	padding-left: 3px;
+}
+#dv-sessions-bar-left img {
+	height: 24px;
+	width: 24px;
+}
+#dv-sessions-bar-right {
+	padding-right: 3px;
+}
+#dv-sessions-bar-right button{
+	height:22px;
+}

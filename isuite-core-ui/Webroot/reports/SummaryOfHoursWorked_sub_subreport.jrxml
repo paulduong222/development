@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SummaryOfHoursWorked_sub_subreport" pageWidth="720" pageHeight="555" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="720" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="1b1a28f1-64ea-480e-ab80-63e1432252dd">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="row_conditional_style" backcolor="#FFFFFF">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}%2==0)]]></conditionExpression>
+			<style mode="Opaque" backcolor="#CCCCCC"/>
+		</conditionalStyle>
+	</style>
+	<field name="firstName" class="java.lang.String"/>
+	<field name="hoursWorkedDate1" class="java.lang.Double"/>
+	<field name="hoursWorkedDate2" class="java.lang.Double"/>
+	<field name="requestNumber" class="java.lang.String"/>
+	<field name="itemCode" class="java.lang.String"/>
+	<field name="status" class="java.lang.String"/>
+	<field name="hoursWorkedDate3" class="java.lang.Double"/>
+	<field name="hoursWorkedDate4" class="java.lang.Double"/>
+	<field name="hoursWorkedDate5" class="java.lang.Double"/>
+	<field name="hoursWorkedDate6" class="java.lang.Double"/>
+	<field name="hoursWorkedDate7" class="java.lang.Double"/>
+	<field name="total" class="java.lang.Double"/>
+	<field name="lastName" class="java.lang.String"/>
+	<variable name="totalHours" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{hoursWorkedDate1} + $F{hoursWorkedDate2} + $F{hoursWorkedDate3} + $F{hoursWorkedDate4} + $F{hoursWorkedDate5} + $F{hoursWorkedDate6} + $F{hoursWorkedDate7}]]></variableExpression>
+		<initialValueExpression><![CDATA[0.0]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="48151f95-45b2-4f0f-a4a0-66750dadbfba" style="row_conditional_style" stretchType="RelativeToTallestObject" x="48" y="0" width="160" height="20" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{lastName} + ", " + $F{firstName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="595b190f-9579-488c-beec-9504197fc23d" style="row_conditional_style" stretchType="RelativeToTallestObject" x="0" y="0" width="48" height="20" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{requestNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="55a47246-087a-40c8-b5b7-c970996cf45d" style="row_conditional_style" stretchType="RelativeToTallestObject" x="208" y="0" width="44" height="20" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{itemCode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="324ef182-eb6e-4f48-afeb-9724998dc3f2" style="row_conditional_style" stretchType="RelativeToTallestObject" x="252" y="0" width="36" height="20" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="9f3b93dc-b75b-4dbf-a3e2-03d858053f90" style="row_conditional_style" stretchType="RelativeToTallestObject" x="396" y="0" width="54" height="20" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{hoursWorkedDate3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="4ad264bf-a764-4353-96a5-36bac038db13" style="row_conditional_style" stretchType="RelativeToTallestObject" x="450" y="0" width="54" height="20" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{hoursWorkedDate4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="91cf973b-3ed8-4db5-8bb0-9a1d2b88b46f" style="row_conditional_style" stretchType="RelativeToTallestObject" x="558" y="0" width="54" height="20" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{hoursWorkedDate6}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="94403c7e-0b84-4dd6-b350-72e8b0cb886e" style="row_conditional_style" stretchType="RelativeToTallestObject" x="504" y="0" width="54" height="20" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{hoursWorkedDate5}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="eaf71297-75e0-4c01-bd15-9d45eecf17fe" style="row_conditional_style" stretchType="RelativeToTallestObject" x="612" y="0" width="54" height="20" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{hoursWorkedDate7}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="7fd9da38-9255-47a3-a5d6-bfd4718c5695" style="row_conditional_style" stretchType="RelativeToTallestObject" x="288" y="0" width="54" height="20" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{hoursWorkedDate1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="bc5359cf-2123-40f9-81f0-00ea7bf071b7" style="row_conditional_style" stretchType="RelativeToTallestObject" x="342" y="0" width="54" height="20" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{hoursWorkedDate2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="55603961-a570-4493-8022-d59f9adb0cf0" style="row_conditional_style" stretchType="RelativeToTallestObject" x="666" y="0" width="54" height="20" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{total} == 0 ? "":$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="5">
+			<line>
+				<reportElement uuid="6a5a2911-c5cf-45e8-a5e3-5cf232637103" mode="Transparent" x="0" y="4" width="720" height="1" forecolor="#FFFFFF"/>
+			</line>
+		</band>
+	</columnFooter>
+	<summary>
+		<band/>
+	</summary>
+	<noData>
+		<band height="20">
+			<staticText>
+				<reportElement uuid="017e0a41-01c4-4f9c-9229-aef391721356" x="0" y="0" width="253" height="20"/>
+				<textElement/>
+				<text><![CDATA[No resource found in the selected date range.]]></text>
+			</staticText>
+		</band>
+	</noData>
+</jasperReport>

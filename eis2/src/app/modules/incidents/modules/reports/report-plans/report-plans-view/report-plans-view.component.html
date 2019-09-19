@@ -1,0 +1,43 @@
+<div class="dv-module-sub-nav-bar">
+  <div class="btn-group-sub-menu">
+    <button routerLink="/incidents/reports/plans" class="btn-selected">Plans Reports</button>
+    <button *ngIf="timeRole" routerLink="/incidents/reports/time">Time Reports</button>
+    <button *ngIf="costRole" routerLink="/incidents/reports/cost" >Cost Reports</button>
+    <button routerLink="/incidents/reports/training" title="Click to access the Training Specialist Reports area.">Training Specialist Reports</button>
+    <button routerLink="/incidents/reports/custom" >Custom Reports</button>
+  </div>
+</div>
+<div style="display: flex" id="dv-mod-view">
+  <div id="dv-plans-rpt-left" class="w3-left">
+    <label class="lbl-hdr">Resource Reports</label>
+    <div><button (click)="selectReport('all-resources');" [class]="buttonClass('all-resources')">All Resources</button></div>
+    <div><button (click)="selectReport('ics');" [class]="buttonClass('ics')">ICS-209 Resource Count</button></div>
+    <div><button (click)="selectReport('qual');" [class]="buttonClass('qual')">Qualifications</button></div>
+    <div><button (click)="selectReport('st-tf');" [class]="buttonClass('st-tf')">Strike Team/Task Force</button></div>
+    <label class="lbl-hdr">Demob Reports</label>
+    <div><button (click)="selectReport('check-out-form');" [class]="buttonClass('check-out-form')">Check-Out Form</button></div>
+    <div><button (click)="selectReport('demob-planning');" [class]="buttonClass('demob-planning')">Demob Planning</button></div>
+    <div><button (click)="selectReport('tentative-poster');" [class]="buttonClass('tentative-poster')">Tentative Poster</button></div>
+    <div><button (click)="selectReport('avail-for-release');" [class]="buttonClass('avail-for-release')">Available For Release</button></div>
+    <div><button (click)="selectReport('air-travel-req');" [class]="buttonClass('air-travel-req')">Air Travel Request</button></div>
+    <div><button (click)="selectReport('last-work-day');" [class]="buttonClass('last-work-day')">Last Work Day</button></div>
+    <div><button (click)="selectReport('actual-demob');" [class]="buttonClass('actual-demob')">Actual Demob</button></div>
+    <div><button (click)="selectReport('ground-support');" [class]="buttonClass('ground-support')">Ground Support</button></div>
+    <div><button (click)="selectReport('glide-path');" [class]="buttonClass('glide-path')">Glidepath</button></div>
+  </div>
+  <div id="dv-plans-rpt-rht" class="w3-left">
+    <app-all-resources-report *ngIf="this._selectedReport === 'all-resources'"></app-all-resources-report>
+    <app-ics-report *ngIf="this._selectedReport === 'ics'"></app-ics-report>
+    <app-qual-report *ngIf="this._selectedReport === 'qual'"></app-qual-report>
+    <app-st-tf-report *ngIf="this._selectedReport === 'st-tf'"></app-st-tf-report>
+    <app-check-out-form-report *ngIf="this._selectedReport === 'check-out-form'"></app-check-out-form-report>
+    <app-demob-planning-report *ngIf="this._selectedReport === 'demob-planning'"></app-demob-planning-report>
+    <app-tentative-poster-report *ngIf="this._selectedReport === 'tentative-poster'"></app-tentative-poster-report>
+    <app-avail-for-release-report *ngIf="this._selectedReport === 'avail-for-release'"></app-avail-for-release-report>
+    <app-air-travel-req-report *ngIf="this._selectedReport === 'air-travel-req'"></app-air-travel-req-report>
+    <app-last-work-day-report *ngIf="this._selectedReport === 'last-work-day'"></app-last-work-day-report>
+    <app-actual-demob-report *ngIf="this._selectedReport === 'actual-demob'"></app-actual-demob-report>
+    <app-ground-support-report *ngIf="this._selectedReport === 'ground-support'"></app-ground-support-report>
+    <app-glide-path-report *ngIf="this._selectedReport === 'glide-path'"></app-glide-path-report>
+  </div>
+</div>

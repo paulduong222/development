@@ -1,0 +1,79 @@
+.dv-md {
+    padding: 0px;
+    min-width: 240px;
+    min-height: 150px;
+}
+.dv-md button {
+    height: 26px;
+}
+.dv-md-msg {
+    padding: 20px 10px 20px 10px;
+	font: 14px Helvetica,Arial,sans-serif;
+}
+.data-table {
+    border-collapse: collapse;
+    font-size: 11px;
+    padding: 2px;
+}
+.data-table th {
+  background-color: #FAFAFA;
+}
+.data-table th input {
+  display: block;
+  margin-top: 15px;
+  width: 100%;
+}
+.data-table td, .data-table th {
+    border: 1px solid #a7a7a7;
+}
+.data-table tr:nth-child(even){background-color: #B7C6CD;}
+
+.data-table tr:hover {background-color: #6183A6 !important;}
+
+table .header {
+  text-align: center !important
+}
+
+table {
+    margin: 0px auto;
+    width: 100%;
+    border: 1px solid #D7D7D9;
+    table-layout: fixed;
+  }
+
+  table thead {
+    display: block;
+    width: 100%;
+  }
+
+  table thead tr {
+    margin: 0px 0px 5px;
+    height: 60px;
+  }
+
+  table thead tr th {
+    padding: 7px 0px 3px 0px;
+    width: 10%;
+  }
+
+  table tbody {
+    display: block;
+    overflow-x: hidden;
+  }
+  .scroll-y {
+    overflow-y: scroll;
+    height: 180px;
+  }
+
+  table tbody tr td {
+    width: 235px;
+    height: 23px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+  }
+
+  .selected {
+    background-color: #FFFF99 !important;
+  }

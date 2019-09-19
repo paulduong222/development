@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (C) 2008 Cognos ULC, an IBM Company. All rights reserved.
+    Cognos (R) is a trademark of Cognos ULC, (formerly Cognos Incorporated).
+-->
+<xs:schema xmlns:d="http://developer.cognos.com/schemas/xmldata/1/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://developer.cognos.com/schemas/xmldata/1/" elementFormDefault="qualified">
+	<xs:element name="dataset">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="metadata" type="d:metadataType"/>
+				<xs:element name="data" type="d:dataType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="metadataType">
+		<xs:sequence>
+			<xs:element name="item" type="d:itemType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="itemType">
+		<xs:attribute name="name" type="xs:token" use="required"/>
+		<xs:attribute name="type" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="xs:ENTITIES"/>
+					<xs:enumeration value="xs:ENTITY"/>
+					<xs:enumeration value="xs:ID"/>
+					<xs:enumeration value="xs:IDREF"/>
+					<xs:enumeration value="xs:IDREFS"/>
+					<xs:enumeration value="xs:NCName"/>
+					<xs:enumeration value="xs:NMTOKEN"/>
+					<xs:enumeration value="xs:NMTOKENS"/>
+					<xs:enumeration value="xs:NOTATION"/>
+					<xs:enumeration value="xs:Name"/>
+					<xs:enumeration value="xs:QName"/>
+					<xs:enumeration value="xs:anyURI"/>
+					<xs:enumeration value="xs:base64Binary"/>
+					<xs:enumeration value="xs:boolean"/>
+					<xs:enumeration value="xs:byte"/>
+					<xs:enumeration value="xs:date"/>
+					<xs:enumeration value="xs:dateTime"/>
+					<xs:enumeration value="xs:decimal"/>
+					<xs:enumeration value="xs:double"/>
+					<xs:enumeration value="xs:duration"/>
+					<xs:enumeration value="xs:float"/>
+					<xs:enumeration value="xs:gDay"/>
+					<xs:enumeration value="xs:gMonth"/>
+					<xs:enumeration value="xs:gMonthDay"/>
+					<xs:enumeration value="xs:gYear"/>
+					<xs:enumeration value="xs:gYearMonth"/>
+					<xs:enumeration value="xs:hexBinary"/>
+					<xs:enumeration value="xs:int"/>
+					<xs:enumeration value="xs:integer"/>
+					<xs:enumeration value="xs:language"/>
+					<xs:enumeration value="xs:long"/>
+					<xs:enumeration value="xs:negativeInteger"/>
+					<xs:enumeration value="xs:nonNegativeInteger"/>
+					<xs:enumeration value="xs:nonPositiveInteger"/>
+					<xs:enumeration value="xs:normalizedString"/>
+					<xs:enumeration value="xs:positiveInteger"/>
+					<xs:enumeration value="xs:short"/>
+					<xs:enumeration value="xs:string"/>
+					<xs:enumeration value="xs:time"/>
+					<xs:enumeration value="xs:token"/>
+					<xs:enumeration value="xs:unsignedByte"/>
+					<xs:enumeration value="xs:unsignedInt"/>
+					<xs:enumeration value="xs:unsignedLong"/>
+					<xs:enumeration value="xs:unsignedShort"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="length" type="xs:int" use="optional"/>
+		<xs:attribute name="scale" type="xs:int" use="optional"/>
+		<xs:attribute name="precision" type="xs:int" use="optional"/>
+		<!--precision is usually tied to decimal type (xs:decimal), but it is also used specify the interval qualifier for interval type (xs:duration).  In this case the following values represent different interval qualifier: 0 for unknown, 1 for second, 2 for minute, 3 for minute to second, 4 for hour, 6 for hour to minute, 7 for hour to second, 8 for day, 12 for day to hour, 14 for day to minute, 15 for day to second, 16 for month, 32 for year, 48 for year to month.-->
+	</xs:complexType>
+	<xs:complexType name="dataType">
+		<xs:sequence>
+			<xs:element ref="d:row" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="row">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="value" nillable="true" maxOccurs="unbounded">
+					<xs:complexType mixed="true">
+						<xs:attribute name="currency"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

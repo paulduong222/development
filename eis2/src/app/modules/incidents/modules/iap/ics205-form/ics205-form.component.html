@@ -1,0 +1,33 @@
+<div id="dv-ics205">
+  <div class="w3-left">
+    <button [class]="getBtnClass('block4')" (click)="this.openTab('block4')" title="Click to edit Block 4. Basic Radio Channel Use.">4. Basic Radio Channel Use</button>
+    <button [class]="getBtnClass('block5')" (click)="this.openTab('block5')" title="Click to edit 5. Special Instructions.">5. Special Instructions</button>
+    <button [class]="getBtnClass('block6')" (click)="this.openTab('block6')" title="Click to edit 6. Prepared By.">6. Prepared By</button>
+  </div>
+  <br>
+	<!-- Block 4 -->
+  <div id="dv-block4" [class]="getDivBlockClass('block4')">
+    <label class="blk-hdr"><u>Basic Radio Channel Use</u></label>
+    <app-ics205-bas-rad-channel-use #ics205BasRadChannelUse
+     [incidentId]="this.incidentId"
+     [incidentGroupId]="this.incidentGroupId"
+    (frequenciesUpdateEvent)="this.frequenciesUpdateEvent()"
+    (ics205ReorderOpenEvent)="this.ics205ReorderOpenEvent($event)"></app-ics205-bas-rad-channel-use>
+  </div>  
+	<!-- Block 5 -->
+  <div id="dv-block5" [class]="getDivBlockClass('block5')">
+      <label class="blk-hdr"><u>Special Instructions</u></label>
+      <app-ics205-spec-instr #ics205SpecInstr></app-ics205-spec-instr>
+  </div>
+	<!-- Block 6 -->
+  <div id="dv-block6" [class]="getDivBlockClass('block6')">
+      <app-ics205-prep-by #ics205PrepBy></app-ics205-prep-by>
+  </div>
+  <div id="dv-block-action-bar" *ngIf="this.tabName !== 'block4'" class="w3-small w3-left">
+      <button (click)="this.save(false)" [disabled]="this.isFormLocked" title="Click to save the block changes.">Save</button>
+      <button (click)="this.save(true)" [disabled]="this.isFormLocked"  title="Click to save the block and move to next block.">Save/Next Block</button>
+      <button (click)="this.cancel()" [disabled]="this.isFormLocked"  title="Click to cancel changes.">Cancel</button>
+  </div>
+</div>
+<app-iap-reorder-window #reorderWindow
+  (saveOrderEvent)="this.saveOrderEvent($event)"></app-iap-reorder-window>

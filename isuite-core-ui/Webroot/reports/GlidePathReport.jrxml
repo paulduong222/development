@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="GlidePathReport" language="groovy" pageWidth="1015" pageHeight="999999999" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="1015" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="63d517d4-92c0-4145-bf7b-db5599489520">
+	<property name="ireport.zoom" value="0.7513148009015781"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.style.evaluation.time.enabled" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.rows" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.columns" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.wrap.text" value="true"/>
+	<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.collapse.row.span" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.ignore.cell.border" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
+	<parameter name="incidentName" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="incidentTag" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="startingDate" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="numberOfDays" class="java.lang.Integer" isForPrompting="false"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\workspaces\\e-isuite\\isuite-core\\Webroot\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="sectionName" class="java.lang.String"/>
+	<field name="resourceDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="summaryDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<group name="worksheet">
+		<groupExpression><![CDATA[$F{sectionName}]]></groupExpression>
+		<groupFooter>
+			<band height="1" splitType="Immediate">
+				<line>
+					<reportElement uuid="bf79ebb1-b260-426c-94f5-ce2caf35b68a" mode="Transparent" x="0" y="0" width="1" height="1" isPrintWhenDetailOverflows="true" forecolor="#FFFFFF">
+						<property name="net.sf.jasperreports.export.xls.break.after.row" value="true"/>
+					</reportElement>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<detail>
+		<band height="83" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{sectionName}.equalsIgnoreCase("SUMMARY")]]></printWhenExpression>
+			<subreport>
+				<reportElement uuid="fc275977-c403-439f-beb5-67486faba336" mode="Transparent" x="0" y="0" width="1015" height="83"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="incidentTag">
+					<subreportParameterExpression><![CDATA[$P{incidentTag}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="incidentName">
+					<subreportParameterExpression><![CDATA[$P{incidentName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="startingDate">
+					<subreportParameterExpression><![CDATA[$P{startingDate}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="numberOfDays">
+					<subreportParameterExpression><![CDATA[$P{numberOfDays}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="sectionName">
+					<subreportParameterExpression><![CDATA[$F{sectionName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$F{summaryDataSource}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "GlidePathReport_summarysheet.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="83">
+			<printWhenExpression><![CDATA[!($F{sectionName}.equalsIgnoreCase("SUMMARY"))]]></printWhenExpression>
+			<subreport>
+				<reportElement uuid="fc275977-c403-439f-beb5-67486faba336" mode="Transparent" x="0" y="0" width="1015" height="83"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="incidentTag">
+					<subreportParameterExpression><![CDATA[$P{incidentTag}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="incidentName">
+					<subreportParameterExpression><![CDATA[$P{incidentName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="startingDate">
+					<subreportParameterExpression><![CDATA[$P{startingDate}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="numberOfDays">
+					<subreportParameterExpression><![CDATA[$P{numberOfDays}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="sectionName">
+					<subreportParameterExpression><![CDATA[$F{sectionName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$F{resourceDataSource}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "GlidePathReport_sectionsheet.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

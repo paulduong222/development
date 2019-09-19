@@ -1,0 +1,20 @@
+  <a (click)="openModal('logout-modal');">Logout</a>
+<app-jw-modal id="logout-modal" style="display: none;" class="box-hdr-dv">
+  <div style="width: 300px; height: 185px;padding: 0px;">
+      <div class="w3-container w3-padding-small w3-theme-d2">
+          <div class="w3-left">e-ISuite</div>
+          <div class="w3-right"></div>
+      </div>
+      <div style="height: 100px;">
+        <div class="w3-center" style="padding-top: 30px;padding-bottom: 30px;">
+          <div>Are you sure you want to logout?</div>
+        </div>
+        </div>
+      <div class="w3-center">
+				<div class="w3-bar">
+				  <button class="w3-small w3-padding-small" (click)="doLogout();" style="margin-right: 3px;">Yes</button>
+				  <button class="w3-small w3-padding-small" (click)="closeModal('logout-modal');">No</button>
+				</div>
+			</div> 
+  </div>
+</app-jw-modal>

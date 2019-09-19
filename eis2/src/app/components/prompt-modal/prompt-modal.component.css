@@ -1,0 +1,16 @@
+.dv-md {
+    padding: 0px;
+    min-width: 240px;
+    min-height: 150px;
+}
+.dv-md button {
+    height: 24px;
+}
+.dv-md-msg {
+    padding: 20px 10px 20px 10px;
+	font: 12px Helvetica,Arial,sans-serif;
+}
+.lbl-alert {
+    color: red;
+	font: 14px Helvetica,Arial,sans-serif;
+}

@@ -1,0 +1,30 @@
+<div class="rpt-main">
+    <div class="rpt-body">
+      <div>
+          <label tabindex="0" class="header-title">Training Assignments List</label>
+      </div>
+      <div class="table-box">
+        <h4 style="font-weight: 600; font-size: 14px">Report Sorts</h4>
+        <div style="display: flex; flex-direction: row; margin-top: 10px">
+          <div class="left-box">
+            <h5 class="title">Available</h5>
+            <app-data-table [noHeader]="noHeader" [bodyStyle]="bodyStyle" [tableDefinition]="tableDef" [data]="data" [filter]="filter" (rowClicked)="getClickedRow($event, 'indexSelected', 'data' , 'shiftIndex')" [scrollAble]="scrollAble" [indexSelected]="indexSelected" [extraStyle]="extraStyle"></app-data-table>
+          </div>
+          <div class="center-box">
+            <div class="icon" (click)="moveSelected('data', 'dataSelected', 'indexSelected', 'shiftIndex')"><img src="assets/images/arrow_right.png" title="Add Selected Item"></div>
+            <div class="icon" (click)="moveSelected('dataSelected', 'data', 'indexSelectedCopy', 'shiftIndexCopy')"><img src="assets/images/arrow_left.png" title="Remove Selected Item"></div>
+            <div class="icon" (click)="moveAll('data', 'dataSelected', 'indexSelected', 'shiftIndex')"><img src="assets/images/arrow_right_double.png" title="Add All Items"></div>
+            <div class="icon" (click)="moveAll('dataSelected', 'data', 'indexSelectedCopy', 'shiftIndexCopy')"><img src="assets/images/arrow_left_double.png" title="Remove All Items"></div>
+          </div>
+          <div class="right-box">
+            <h5 class="title">Selected</h5>
+            <app-data-table [noHeader]="noHeader" [bodyStyle]="bodyStyle" [tableDefinition]="tableDef" [data]="dataSelected" (rowClicked)="getClickedRow($event, 'indexSelectedCopy', 'dataSelected', 'shiftIndexCopy')" [scrollAble]="scrollAble" [indexSelected]="indexSelectedCopy" [extraStyle]="extraStyle"></app-data-table>
+          </div>
+        </div>
+      </div>
+      <div>
+          <button type="button" (click)="generateReport(false)" title="Click to generate Training Assignments List Report">Preview/Print</button>
+          <button type="button" class="ml-10" (click)="generateReport(true)" title="Click to export Training Assignments List Report to Excel">Export to Excel</button>
+      </div> 
+    </div>
+</div>

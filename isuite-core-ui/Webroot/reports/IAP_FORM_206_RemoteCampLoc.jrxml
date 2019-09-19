@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IAP_FORM_206_RemoteCampLoc" language="groovy" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="3fc86443-053a-4803-8600-aa515855293d">
+	<property name="ireport.zoom" value="1.9487171000000014"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="location" class="java.lang.String"/>
+	<field name="emsResponders" class="java.lang.String"/>
+	<field name="capability" class="java.lang.String"/>
+	<field name="pointOfContact" class="java.lang.String"/>
+	<field name="airEta" class="java.lang.String"/>
+	<field name="groundEta" class="java.lang.String"/>
+	<field name="heliLat" class="java.lang.String"/>
+	<field name="heliLong" class="java.lang.String"/>
+	<field name="availEquipment" class="java.lang.String"/>
+	<field name="emergencyChannel" class="java.lang.String"/>
+	<detail>
+		<band height="163" splitType="Stretch">
+			<line>
+				<reportElement uuid="698b099e-8f63-4bc9-8864-2c4f21f52087" x="0" y="162" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="5eda5569-1555-4309-a601-da3f11af2494" x="281" y="0" width="1" height="162"/>
+			</line>
+			<staticText>
+				<reportElement uuid="fd51a1fb-d102-4bff-b26d-bceda5fd79b4" x="123" y="0" width="156" height="16"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Point Of Contact:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fd51a1fb-d102-4bff-b26d-bceda5fd79b4" x="123" y="32" width="156" height="16"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Equipment Available on Scene:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fd51a1fb-d102-4bff-b26d-bceda5fd79b4" x="123" y="16" width="156" height="16"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[EMS Responders & Capability]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fd51a1fb-d102-4bff-b26d-bceda5fd79b4" x="123" y="48" width="156" height="16"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Medical Emergency Channel:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fd51a1fb-d102-4bff-b26d-bceda5fd79b4" x="123" y="64" width="156" height="16"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ETA for Ambulance To Scene:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fd51a1fb-d102-4bff-b26d-bceda5fd79b4" x="119" y="80" width="160" height="16"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[         Air:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fd51a1fb-d102-4bff-b26d-bceda5fd79b4" x="119" y="96" width="160" height="16"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[         Ground:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fd51a1fb-d102-4bff-b26d-bceda5fd79b4" x="123" y="112" width="156" height="16"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Approved Helispot:]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="698b099e-8f63-4bc9-8864-2c4f21f52087" positionType="Float" x="118" y="16" width="455" height="1" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="698b099e-8f63-4bc9-8864-2c4f21f52087" positionType="Float" x="118" y="31" width="455" height="1" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="698b099e-8f63-4bc9-8864-2c4f21f52087" positionType="Float" x="118" y="47" width="455" height="1" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="698b099e-8f63-4bc9-8864-2c4f21f52087" positionType="Float" x="118" y="63" width="455" height="1" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="698b099e-8f63-4bc9-8864-2c4f21f52087" positionType="Float" x="118" y="79" width="455" height="1" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="698b099e-8f63-4bc9-8864-2c4f21f52087" positionType="Float" x="118" y="95" width="455" height="1" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="698b099e-8f63-4bc9-8864-2c4f21f52087" positionType="Float" x="118" y="111" width="455" height="1" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="698b099e-8f63-4bc9-8864-2c4f21f52087" positionType="Float" x="118" y="129" width="455" height="1" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="698b099e-8f63-4bc9-8864-2c4f21f52087" positionType="Float" x="118" y="146" width="455" height="1" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<staticText>
+				<reportElement uuid="fd51a1fb-d102-4bff-b26d-bceda5fd79b4" positionType="Float" x="119" y="130" width="160" height="16" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[         Lat:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="17c3bbfa-6a2f-436c-8c95-de48862496cc" x="285" y="0" width="285" height="16" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pointOfContact}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="17c3bbfa-6a2f-436c-8c95-de48862496cc" x="285" y="16" width="285" height="16" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{emsResponders}==null?"":($F{emsResponders}+" ") + $F{capability}==null?"":$F{capability}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="17c3bbfa-6a2f-436c-8c95-de48862496cc" x="285" y="32" width="285" height="16" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{availEquipment}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="17c3bbfa-6a2f-436c-8c95-de48862496cc" x="285" y="48" width="285" height="16" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{emergencyChannel}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="17c3bbfa-6a2f-436c-8c95-de48862496cc" x="285" y="80" width="285" height="16" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{airEta}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="17c3bbfa-6a2f-436c-8c95-de48862496cc" x="285" y="96" width="285" height="16" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{groundEta}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="17c3bbfa-6a2f-436c-8c95-de48862496cc" x="285" y="130" width="285" height="16" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{heliLat}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="fd51a1fb-d102-4bff-b26d-bceda5fd79b4" positionType="Float" x="119" y="146" width="160" height="16" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[         Long:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="17c3bbfa-6a2f-436c-8c95-de48862496cc" x="285" y="146" width="285" height="16" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{heliLong}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="e77e53a4-e497-444c-bc06-4e8e43fae0be" x="4" y="11" width="112" height="36"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="5eda5569-1555-4309-a601-da3f11af2494" x="117" y="0" width="1" height="162"/>
+			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="e77e53a4-e497-444c-bc06-4e8e43fae0be" x="4" y="47" width="112" height="36"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{location}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

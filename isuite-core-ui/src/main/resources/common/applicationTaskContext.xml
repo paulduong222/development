@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:security="http://www.springframework.org/schema/security"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.5.xsd">
+
+
+	<context:component-scan base-package="gov.nwcg.isuite.core.task"/>
+
+    <bean id="transactionTaskTarget" class="gov.nwcg.isuite.framework.core.task.impl.TransactionTaskImpl">
+    </bean>
+    
+	<bean id="transactionTask"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="target" ref="transactionTaskTarget" />
+		<property name="transactionAttributes">
+			<props>
+            <prop key="*">
+               PROPAGATION_REQUIRED, -TaskException
+            </prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean name="checkUserPasswordExpirationTask" 
+   			parent="transactionTaskTarget" 
+   				class="gov.nwcg.isuite.core.task.CheckUserPasswordExpirationTask">
+	</bean>
+ 	
+	<bean name="runDailyCostTask" 
+   			parent="transactionTaskTarget" 
+   				class="gov.nwcg.isuite.core.task.RunDailyCostTask">
+		  <aop:scoped-proxy/>
+	</bean>
+	
+	<bean name="importRossResInvTask" 
+   			parent="transactionTaskTarget" 
+   				class="gov.nwcg.isuite.core.task.ImportRossResourceInventoryTask3">
+		  <aop:scoped-proxy/>
+	</bean>
+	
+	<bean name="irwinTask" 
+   			parent="transactionTaskTarget" 
+   				class="gov.nwcg.isuite.core.task.IrwinTask">
+		  <aop:scoped-proxy/>
+	</bean>
+	
+</beans>

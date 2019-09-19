@@ -1,0 +1,31 @@
+<div class="rpt-main">
+    <div class="rpt-body">
+      <div class="eis">
+        <div>
+          <label class="header-title" tabindex="0">Incident Training Summary</label>
+        </div>
+        <div class="mt-20">
+          <label for="dtStart">Start Date</label>
+          <label class="ast ml-5">*</label>
+          <app-eis-datepicker class="ml-3" #dtStart id="dtStart"></app-eis-datepicker>
+          <label class="ml-20" for="dtEnd">End Date</label>
+          <label class="ast ml-5">*</label>
+          <app-eis-datepicker class="ml-3" #dtEnd id="dtEnd"></app-eis-datepicker> 
+        </div>
+        <div class="mt-20">
+          <label id="note" tabindex="0">NOTE:</label>
+        </div>
+        <div>
+          <p id="pNote" tabindex="0">
+            The counts in the Incident Personnel Ordered as Trainees and all Trainees Assigned to Incident totals only include those resources
+            with Check-In Dates that fall on or before the End Date of the defined date range.  All resources must have a Check-In Date.
+          </p>
+          <label tabindex="0"></label>
+        </div>
+      </div>
+      <div>
+          <button type="button" (click)="generateReport()" title="Click to generate Incident Training Summary Report">Preview/Print</button>
+      </div> 
+    </div>
+</div>
+<app-prompt-modal id="promptModal" #promptModal (promptActionEvent)="this.promptModalActionResult()"></app-prompt-modal>

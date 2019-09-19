@@ -1,0 +1,9 @@
+<div id="dv-rob-history">
+  <app-auditing-filter #robHistoryFilter
+    (filterEvent)="this.doFilter($event)"></app-auditing-filter>
+  <app-eis-grid #robHistoryGrid
+      [treeViewMode]="false"
+      [columnDefs]="this.columnDefs"
+      [rowData]="this.gridData">
+  </app-eis-grid>
+</div>

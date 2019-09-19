@@ -1,0 +1,24 @@
+<div class="rpt-main">
+  <div class="rpt-body">
+    <div>
+      <label tabindex="0" class="header-title">Home Unit Contact Labels</label>
+      <label tabindex="0" class="header-title ml-10">(Formatted for use with Avery 5160 Labels)</label>
+    </div>
+    <div>
+        <button type="button" (click)="selectAll()" title="Click to select all.">Select All</button>
+        <button class="ml-10" type="button" (click)="selectNone()" title="Click to deselect all.">Select None</button>
+        <button class="ml-10" type="button" (click)="refreshGrid()" title="Click to refresh grid.">Refresh Grid</button>
+    </div>
+    <div class="dv-home-unit-grid">
+      <app-eis-grid2 #homeUnitGrid class="w3-left home-unit-grid"
+          [columnDefs]="this.huGridColumnDefs" 
+          [rowData]="this.homeUnitContactVos">
+      </app-eis-grid2>  
+    </div>
+    <div style="width: 100%;" class="w3-left">
+      <button type="button" (click)="generateReport(false)" title="Click to generate Home Unit Contact Labels Report">Preview/Print</button>
+      <button type="button" class="ml-10" (click)="generateReport(true)" title="Click to export Home Unit Contact Labels to Excel">Export to Excel</button>
+    </div>
+  </div>
+</div>
+<app-prompt-modal id="promptModal" #promptModal (promptActionEvent)="this.promptModalActionResult()"></app-prompt-modal>

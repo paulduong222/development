@@ -1,0 +1,6 @@
+<button class="w3-small" type="button" (click)="generateReport('Data Form')" title="Click to generate the Data Form">Data Form</button>
+<button class="w3-small" type="button" (click)="generateReport('Evaluation Record')" title="Click to generate the Evaluation Record">Evaluation Record</button>
+<button class="w3-small" type="button" (click)="generateReport('Performance Evaluation')" title="Click to generate the Performance Evaluation">Performance Evaluation</button>
+<button class="w3-small" type="button" (click)="generateReport('Home Unit Letter')" title="Click to generate the Home Unit Letter">Home Unit Letter</button>
+<button class="w3-small" type="button" (click)="generateReport('Exit Interview')" title="Click to generate the Exit Interview">Exit Interview</button>
+<app-reports-evaluation-modal #reportsEvaluationModal (previewPrintEvent)="this.previewPrintEvent($event)"></app-reports-evaluation-modal>

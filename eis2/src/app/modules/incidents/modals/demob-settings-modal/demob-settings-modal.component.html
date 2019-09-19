@@ -1,0 +1,182 @@
+<app-jw-modal id="demob-settings-modal" style="display: none;" class="box-hdr-dv">
+   <div style="width: 700px; height: 560px;padding: 0px;">
+        <div class="w3-container w3-padding-small w3-theme-d2">
+            <div class="w3-left">{{ windowLabel }}</div>
+        </div>
+        <div class="eis">
+                <div id="dv-hdr-info" class="w3-padding-small">
+                    <label><strong>{{ incidentTypeLabel }}</strong></label>
+                    <label><strong>{{ incidentNameLabel }}</strong></label>
+                </div>
+                <div class="dv-module-sub-nav-bar">
+                        <div class="btn-group-sub-menu">
+                          <button (click)="dataTabSelect('checkoutform')" [class]="getStyle('checkoutform')">Customize Check-Out Form</button>	
+                          <button (click)="dataTabSelect('airtravelquestions')" [class]="getStyle('airtravelquestions')">Air Travel Questions</button>
+                        </div>
+                </div>
+        </div>
+        <div  [class]="getActiveTab('checkoutform')" >
+            <Label style="padding-left: 5px;" class="tablbl"><strong>Customize Check-Out Form (ICS-221)</strong></Label>
+            <div class="dv-checkout-form">
+                <div class="dv-checkout-section-left">
+                    <Label class="tablbl"><strong>Logistics Section</strong></Label>
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="dv-checkout-list">
+                                    <ul class="ul-list">
+                                        <li *ngFor="let item of logisticsPrefs; let i = index;"
+                                        [class.selected]="item === selectedItem"
+                                        (click)="onSelectItem(item)">
+                                            <input type="checkbox" [checked]="item.selected"
+                                            (change)="setItemChecked('LOGISTICS', i, $event)"><label style="margin-left: 3px; font-size: 12px;">{{ item.fieldLabel }}</label>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </td>
+                            <td>
+                               <button (click)="this.moveUp('LOGISTICS')" title="Click to move item up">Move Up</button>
+                               <button (click)="this.moveDown('LOGISTICS')" title="Click to move item down">Move Down</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="dv-checkout-section-right">
+                    <Label class="tablbl"><strong>Finance Section</strong></Label>
+                    <table>
+                            <tr>
+                                <td>
+                                    <div class="dv-checkout-list">
+                                        <ul class="ul-list">
+                                            <li *ngFor="let item of financePrefs; let i = index;"
+                                            [class.selected]="item === selectedItem"
+                                            (click)="onSelectItem(item)">
+                                                <input type="checkbox" [checked]="item.selected"
+                                                (change)="setItemChecked('FINANCE', i, $event)"><label style="margin-left: 3px; font-size: 12px;">{{ item.fieldLabel }}</label>
+                                            </li>
+                                        </ul>
+    
+                                    </div>
+                                </td>
+                                <td>
+                                    <button (click)="this.moveUp('FINANCE')" title="Click to move item up">Move Up</button>
+                                    <button (click)="this.moveDown('FINANCE')" title="Click to move item down">Move Down</button>
+                                </td>
+                            </tr>
+                        </table>
+                </div>
+                <div class="dv-checkout-section-left" style="margin-top: 20px;">
+                    <Label class="tablbl"><strong>Planning Section</strong></Label>
+                    <table>
+                            <tr>
+                                <td>
+                                    <div class="dv-checkout-list">
+                                        <ul class="ul-list">
+                                            <li *ngFor="let item of planningPrefs; let i = index;"
+                                            [class.selected]="item === selectedItem"
+                                            (click)="onSelectItem(item)">
+                                                <input type="checkbox" [checked]="item.selected"
+                                                 (change)="setItemChecked('PLANNING', i, $event)"><label style="margin-left: 3px; font-size: 12px;">{{ item.fieldLabel }}</label>
+                                            </li>
+                                        </ul>
+    
+                                    </div>
+                                </td>
+                                <td>
+                                    <button (click)="this.moveUp('PLANNING')" title="Click to move item up">Move Up</button>
+                                    <button (click)="this.moveDown('PLANNING')" title="Click to move item down">Move Down</button>
+                                </td>
+                            </tr>
+                        </table>
+                </div>
+                <div class="dv-checkout-section-right" style="margin-top: 20px;">
+                   <Label class="tablbl"><strong>Other Section</strong></Label>
+                   <table>
+                    <tr>
+                        <td>
+                            <div class="dv-checkout-list">
+                                <ul class="ul-list">
+                                    <li *ngFor="let item of otherPrefs; let i = index;"
+                                            [class.selected]="item === selectedItem"
+                                            (click)="onSelectItem(item)">
+                                        <input *ngIf="item.fieldLabel === 'Security Unit'" type="checkbox" [checked]="item.selected"
+                                         (change)="setItemChecked('OTHER_LABEL', i, $event)">
+                                         <label *ngIf="item.fieldLabel === 'Security Unit'" style="margin-left: 3px; font-size: 12px;">{{ item.fieldLabel }}</label>
+                                         <input *ngIf="item.fieldLabel !== 'Security Unit'" type="checkbox" [checked]="item.selected"
+                                         (change)="setItemChecked('OTHER_LABEL', i, $event)">
+                                         <input *ngIf="item.fieldLabel !== 'Security Unit'" type="text" style="margin-left: 3px; font-size: 12px;"
+                                          [value]="item.fieldLabel" (change)="setItemValue('OTHER_LABEL', i, $event)"
+                                          maxlength="30">
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </td>
+                        <td>
+                            <button (click)="this.moveUp('OTHER_LABEL')" title="Click to move item up">Move Up</button>
+                            <button (click)="this.moveDown('OTHER_LABEL')" title="Click to move item down">Move Down</button>
+                        </td>
+                    </tr>
+                </table>
+                </div>
+            </div>
+        </div>
+        <div  [class]="getActiveTab('airtravelquestions')" >
+            <div class="dv-air-travel">
+                <div id="dv-demob-top-bar">
+                    <div class="w3-left w3-small" style="padding-left: 10px;">
+                        <button (click)="this.addQuestion()" [class]="getQuestionBtnStyle('add')" title="Click to add a new question">Add</button>
+                        <button (click)="this.deleteQuestion()" title="Click to delete the selected question">Delete</button>
+                    </div>
+                </div>
+                <div class="dv-air-travel-section" style="margin-top: 10px;">
+                    <table>
+                        <tr>
+                            <td>
+                                <div  style="width:540px;height: 280px;">
+                                    <app-eis-grid #gridQuestions 
+                                    [treeViewMode]="false"
+                                    [floatingFilter]="false"
+                                    [columnDefs]="this.gridColumnDefs" 
+                                    [rowData]="airTravelQuestionVos"
+                                    (rowSelectEvent)="this.onSelectQuestion($event)"
+                                    >
+                                </app-eis-grid>
+                            </div>
+                        </td>
+                            <td>
+                                <button (click)="this.moveQuestionUp()" title="Click to move question up">Move Up</button>
+                                <button (click)="this.moveQuestionDown()" title="Click to move question down">Move Down</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div style="height:60px; padding-left: 10px;">
+                    <br>
+                    <Label class="tablbl"><strong>Add/Edit Question</strong></Label>
+                    <br>
+                    <label style="font-size: 14px;">Yes/No Question?</label>
+                    <br>
+                    <form [formGroup]="questionsForm" autocomplete="off">
+                        <app-text-input width="500" textTransform="" maxlength="65" allowSpace="true"
+                            formControlName="question"></app-text-input>
+                        <input type="checkbox" style="margin-left: 10px;"
+                            formControlName="visible">
+                        <label style="font-size: 14px; margin-left: 5px;">Display</label>
+                    </form>
+            </div>
+        </div>
+        <br>
+        <div id="dv-demob-action-bar">
+                <div class="w3-center w3-small">
+                    <button (click)="this.save()" title="Click to save the settings">Save</button>
+                    <button (click)="this.cancel()" title="Click to cancel changes">Cancel</button>
+                    <button (click)="closeModal('demob-settings-modal');" title="Click to close window">Close</button>
+                </div>
+            </div>
+        </div>
+</app-jw-modal>
+<app-prompt-modal id="promptModalDemobSettings" #promptModalDemobSettings (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>
+

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CostShareApportionmenDetailSubReport" pageWidth="840" pageHeight="188" orientation="Landscape" columnWidth="838" leftMargin="0" rightMargin="2" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="3e676d0f-a25c-4f7a-91a2-697adb566dc7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="itemCode" class="java.lang.String"/>
+	<field name="activityDateChar" class="java.lang.String"/>
+	<field name="category1a" class="java.lang.String"/>
+	<field name="shift" class="java.lang.String"/>
+	<field name="costGroup" class="java.lang.String"/>
+	<field name="resourceName" class="java.lang.String"/>
+	<field name="agency" class="java.lang.String"/>
+	<field name="dailyCost" class="java.lang.Double"/>
+	<field name="federalCost" class="java.lang.Double"/>
+	<field name="stateCost" class="java.lang.Double"/>
+	<field name="fsCost" class="java.lang.Double"/>
+	<field name="federalCostPercentage" class="java.lang.Double"/>
+	<field name="stateCostPercentage" class="java.lang.Double"/>
+	<field name="fsCostPercentage" class="java.lang.Double"/>
+	<field name="otherCost" class="java.lang.Double"/>
+	<field name="otherCostPercentage" class="java.lang.Double"/>
+	<variable name="vAvgCost" class="java.lang.Double" resetType="Group" resetGroup="itemcategory" calculation="Average">
+		<variableExpression><![CDATA[$F{averageCost}]]></variableExpression>
+	</variable>
+	<variable name="vStdCost" class="java.lang.Double" resetType="Group" resetGroup="itemcategory" calculation="Average">
+		<variableExpression><![CDATA[$F{standardCost}]]></variableExpression>
+	</variable>
+	<variable name="vDiff" class="java.lang.Double" resetType="Group" resetGroup="itemcategory" calculation="Average">
+		<variableExpression><![CDATA[$F{difference}]]></variableExpression>
+	</variable>
+	<group name="itemcategory">
+		<groupExpression><![CDATA[$F{itemCodeCategory}]]></groupExpression>
+		<groupHeader>
+			<band height="19"/>
+		</groupHeader>
+		<groupFooter>
+			<band height="38">
+				<staticText>
+					<reportElement uuid="6da4e996-3747-4cde-8b34-354bc72997e4" x="-11" y="17" width="229" height="20"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[AVERAGE BY SUB-GROUP CATEGORY]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="ab132574-362d-464f-9526-9922089fcda6" x="228" y="17" width="101" height="20"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{vAvgCost}]]></textFieldExpression>
+					<patternExpression><![CDATA["¤ #,##0.00"]]></patternExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="1df36e03-b1de-4a81-8584-4f5aeb0085ea" x="385" y="17" width="136" height="20"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{vStdCost}]]></textFieldExpression>
+					<patternExpression><![CDATA["¤ #,##0.00"]]></patternExpression>
+				</textField>
+				<textField pattern="¤ #,##0.00;(¤ #,##0.00)">
+					<reportElement uuid="227a0086-2793-49d8-b6f1-8d748f66e8f7" x="602" y="17" width="100" height="20"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{vDiff}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement uuid="c97b16e9-f840-4651-82f7-83e48d3c5520" x="0" y="35" width="802" height="1"/>
+					<graphicElement>
+						<pen lineWidth="1.0"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="20" splitType="Immediate">
+			<staticText>
+				<reportElement uuid="0b0eecf9-f830-432d-9340-e42dc6c89920" mode="Opaque" x="412" y="0" width="74" height="20" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Daily Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc0e7079-edb6-4081-a11f-fddf14b4e0c2" mode="Opaque" x="499" y="-12" width="56" height="32" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Federal Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d8eb0b3-6d2d-4c17-bdfb-8c1a96d38b2d" mode="Opaque" x="73" y="0" width="44" height="20" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Shift]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="c97b16e9-f840-4651-82f7-83e48d3c5520" x="0" y="19" width="802" height="1"/>
+				<graphicElement>
+					<pen lineWidth="3.0"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="4d8eb0b3-6d2d-4c17-bdfb-8c1a96d38b2d" mode="Opaque" x="17" y="0" width="48" height="20" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d8eb0b3-6d2d-4c17-bdfb-8c1a96d38b2d" mode="Opaque" x="134" y="-12" width="44" height="32" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cost Group]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc0e7079-edb6-4081-a11f-fddf14b4e0c2" mode="Opaque" x="575" y="-12" width="58" height="32" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[State Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc0e7079-edb6-4081-a11f-fddf14b4e0c2" mode="Opaque" x="735" y="-13" width="41" height="32" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Other Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc0e7079-edb6-4081-a11f-fddf14b4e0c2" mode="Opaque" x="668" y="-13" width="36" height="32" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[FS Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc0e7079-edb6-4081-a11f-fddf14b4e0c2" mode="Opaque" x="780" y="0" width="22" height="16" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc0e7079-edb6-4081-a11f-fddf14b4e0c2" mode="Opaque" x="702" y="0" width="22" height="16" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc0e7079-edb6-4081-a11f-fddf14b4e0c2" mode="Opaque" x="633" y="0" width="22" height="16" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc0e7079-edb6-4081-a11f-fddf14b4e0c2" mode="Opaque" x="550" y="0" width="22" height="16" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d8eb0b3-6d2d-4c17-bdfb-8c1a96d38b2d" mode="Opaque" x="199" y="0" width="63" height="20" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Resource]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d8eb0b3-6d2d-4c17-bdfb-8c1a96d38b2d" mode="Opaque" x="285" y="-1" width="44" height="20" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Agency]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d8eb0b3-6d2d-4c17-bdfb-8c1a96d38b2d" mode="Opaque" x="354" y="0" width="44" height="20" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Item]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<textField pattern="¤ #,##0.00;(¤ #,##0.00)" isBlankWhenNull="true">
+				<reportElement uuid="16030ff1-a477-456c-8aa0-e916310356eb" mode="Transparent" x="602" y="1" width="100" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{difference}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="5b143a77-3f9c-496e-8622-dba5f6c4275e" stretchType="RelativeToBandHeight" mode="Transparent" x="385" y="1" width="136" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{standardCost}]]></textFieldExpression>
+				<patternExpression><![CDATA["¤ #,##0.00"]]></patternExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="360d6c06-a203-48d9-afcb-ea09942e709d" stretchType="RelativeToBandHeight" mode="Transparent" x="2" y="1" width="53" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{activityDateChar}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="360d6c06-a203-48d9-afcb-ea09942e709d" stretchType="RelativeToBandHeight" mode="Transparent" x="398" y="0" width="67" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{averageCost}]]></textFieldExpression>
+				<patternExpression><![CDATA["¤ #,##0.00"]]></patternExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="360d6c06-a203-48d9-afcb-ea09942e709d" stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" mode="Transparent" x="5" y="-16" width="121" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{category1a}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="360d6c06-a203-48d9-afcb-ea09942e709d" stretchType="RelativeToBandHeight" mode="Transparent" x="125" y="1" width="53" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{itemCode}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="360d6c06-a203-48d9-afcb-ea09942e709d" stretchType="RelativeToBandHeight" mode="Transparent" x="72" y="0" width="53" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{itemCode}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="360d6c06-a203-48d9-afcb-ea09942e709d" stretchType="RelativeToBandHeight" mode="Transparent" x="178" y="0" width="86" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{itemCode}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="360d6c06-a203-48d9-afcb-ea09942e709d" stretchType="RelativeToBandHeight" mode="Transparent" x="276" y="1" width="53" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{itemCode}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="360d6c06-a203-48d9-afcb-ea09942e709d" stretchType="RelativeToBandHeight" mode="Transparent" x="345" y="0" width="53" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{itemCode}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

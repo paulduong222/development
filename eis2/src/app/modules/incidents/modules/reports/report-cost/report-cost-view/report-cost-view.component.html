@@ -1,0 +1,54 @@
+<div class="dv-module-sub-nav-bar">
+  <div class="btn-group-sub-menu">
+    <button routerLink="/incidents/reports/plans">Plans Reports</button>
+    <button routerLink="/incidents/reports/time">Time Reports</button>
+    <button routerLink="/incidents/reports/cost" class="btn-selected">Cost Reports</button>
+    <button routerLink="/incidents/reports/training"
+      title="Click to access the Training Specialist Reports area.">Training Specialist Reports</button>
+    <button routerLink="/incidents/reports/custom">Custom Reports</button>
+  </div>
+</div>
+<div id="dv-mod-view" style="display: flex;">
+  <div class="dv-cost-rpt">
+    <div class="warning">Cost Report Totals may vary due to rounding.</div>
+    <div style="display: flex">
+      <div id="dv-cost-rpt-left" class="w3-left">
+        <div class="dv-cost-rpt">
+          <div><button (click)="selectReport('group-category-summary');"
+              [class]="buttonClass('group-category-summary')">Group Category Summary</button></div>
+          <div><button (click)="selectReport('summary-by-resource');"
+              [class]="buttonClass('summary-by-resource')">Summary by Resource</button></div>
+          <div><button (click)="selectReport('summary-for-current-day');"
+              [class]="buttonClass('summary-for-current-day')">Summary for Current Day</button></div>
+          <div><button (click)="selectReport('detail-by-resource-report');"
+              [class]="buttonClass('detail-by-resource-report')">Detail By Resource</button></div>
+          <div><button (click)="selectReport('group-category-total');"
+              [class]="buttonClass('group-category-total')">Group Category Total</button></div>
+          <div><button (click)="selectReport('aircraft-detail');" [class]="buttonClass('aircraft-detail')">Aircraft
+              Detail</button></div>
+        </div>
+        <div class="dv-cost-rpt">
+          <div><button (click)="selectReport('analysis');" [class]="buttonClass('analysis')">Analysis</button></div>
+          <div><button (click)="selectReport('cost-share');" [class]="buttonClass('cost-share')">Cost Share</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="dv-cost-rpt-rht" class="w3-left">
+        <app-group-category-summary-report *ngIf="this._selectedReport === 'group-category-summary'">
+        </app-group-category-summary-report>
+        <app-summary-by-resource-report *ngIf="this._selectedReport === 'summary-by-resource'">
+        </app-summary-by-resource-report>
+        <app-summary-for-current-day-report *ngIf="this._selectedReport === 'summary-for-current-day'">
+        </app-summary-for-current-day-report>
+        <app-detail-by-resource-report *ngIf="this._selectedReport === 'detail-by-resource-report'">
+        </app-detail-by-resource-report>
+        <app-group-category-total-report *ngIf="this._selectedReport === 'group-category-total'">
+        </app-group-category-total-report>
+        <app-aircraft-detail-report *ngIf="this._selectedReport === 'aircraft-detail'"></app-aircraft-detail-report>
+        <app-analysis-report *ngIf="this._selectedReport === 'analysis'"></app-analysis-report>
+        <app-cost-share-report *ngIf="this._selectedReport === 'cost-share'"></app-cost-share-report>
+      </div>
+    </div>
+  </div>
+</div>

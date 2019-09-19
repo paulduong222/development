@@ -1,0 +1,93 @@
+<div class="dv-action-bar w3-small">
+    <button (click)="this.add()" title="Click to add an Incident Accounting Code">Add</button>
+    <button (click)="this.delete()" title="Click to delete the Incident Accounting Code">Delete</button>
+ </div>
+ <div class="eis">
+    <br>
+    <form [formGroup]="acctCodeForm" autocomplete="off">
+    <div id="dv-acct-code-form">
+      <table>
+        <tr>
+          <td>
+            <table>
+              <tr>
+                  <td class="frmlbl"><label class="f1" for="ckDefault">Incident Default</label></td>
+                  <td><label class="ast"></label></td>
+                  <td>
+                    <input id="ckDefault" name="ckDefault" type="checkbox"
+                       formControlName="incidentDefault">
+                  </td>
+              </tr>
+              <tr>
+                  <td class="frmlbl"><label class="f1" for="cbAgency">Agency</label></td>
+                  <td><label class="ast">*</label></td>
+                  <td>
+                    <app-eis-dropdown id="ddAgencyType" #ddAgencyType
+                      formControlName="agencyVo"
+                      [width]="50"
+                      (dropdownSelect)="this.agencySelectEvent($event)"
+                      [selectedDropdownData]="this.agencyTypeDropdownData"
+                      [dropdownData]="this.agencyTypeData"></app-eis-dropdown>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="frmlbl"><label class="f1" for="txAcctCode">Accounting Code</label></td>
+                  <td><label class="ast">*</label></td>
+                  <td>
+                      <app-text-input formControlName="accountCode" id="txAcctCode" name="txAcctCode" type="text"
+                        width="150" restrict="a-z,A-Z,0-9" [maxlength]="this.maxCodeLength" textTransform="uppercase"></app-text-input>
+                  </td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table>
+              <tr><!-- blank area--></tr>
+             <!--
+             <tr *ngIf="this.ddAgencyType.selectedValue.code === 'FED' || this.ddAgencyType.selectedValue.code === 'USFS'">
+             --> 
+              <tr>
+                  <td class="frmlbl"><label class="f1" for="cbAccrualCode">Accrual Accounting Code</label></td>
+                  <td><label class="ast"></label></td>
+                  <td>
+                      <app-eis-dropdown id="ddAccrualCode" #ddAccrualType
+                      formControlName="accrualCodeVo"
+                      [width]="100"
+                      [dropdownDisabled]="this.isDropdownDisabled('ddAccrualCode')"
+                      [selectedDropdownData]="this.accrualTypeDropdownData"
+                      [dropdownData]="this.accrualTypeData"></app-eis-dropdown>
+                    </td>
+              </tr>
+              <tr>
+                  <td class="frmlbl"><label class="f1" for="ddRegionType">Forest Service Region/Unit</label></td>
+                  <td><label class="ast"></label></td>
+                  <td>
+                    <app-eis-dropdown id="ddRegionType" #ddRegionType
+                    formControlName="regionVo"
+                    [width]="70"
+                    [dropdownDisabled]="this.isDropdownDisabled('ddRegionType')"
+                    [selectedDropdownData]="this.regionTypeDropdownData"
+                    [dropdownData]="this.regionTypeData"></app-eis-dropdown>
+                  </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <div class="dv-action-bar w3-small">
+        <button (click)="this.save(false)" title="Click to save the Incident Accounting Code">Save</button>
+        <button (click)="this.cancel()" title="Click to cancel the changes">Cancel</button>
+      </div>
+    </form>
+  </div>
+   <div id="dv-acct-code2">
+    <app-eis-grid #acctCodeGrid 
+      [treeViewMode]="false"
+      [columnDefs]="gridColumnDefs2" 
+      [rowData]="incidentAccountingCodeGridVos"
+      (rowSelectEvent)="this.onSelectAccountingCode($event)">
+    </app-eis-grid>
+  </div>
+  <app-prompt-modal id="promptModalIncAcctCode" #promptModalIncAcctCode (promptActionEvent)="this.promptActionResultAcctCode($event)"></app-prompt-modal>

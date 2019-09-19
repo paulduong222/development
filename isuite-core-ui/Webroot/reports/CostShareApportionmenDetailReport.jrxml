@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CostShareApportionmenDetailReport" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="ee4067b5-f5fd-4995-a9a5-1d7d207b7ea3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\workspace_fs\\isuite-core\\Webroot\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="reportSubTitle" class="java.lang.String"/>
+	<parameter name="reportTitle" class="java.lang.String"/>
+	<parameter name="reportSubTitle2" class="java.lang.String"/>
+	<field name="dataSourceSubReportData" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="incidentNumber" class="java.lang.String"/>
+	<group name="inc">
+		<groupExpression><![CDATA[$F{incidentName}+$F{incidentNumber}]]></groupExpression>
+		<groupHeader>
+			<band height="2">
+				<break>
+					<reportElement uuid="a3cd425e-8fe4-4609-a2fc-f4f0277c75fc" x="0" y="0" width="100" height="1" printWhenGroupChanges="inc"/>
+				</break>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="2"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="83">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="e03e1281-ea51-473a-8efc-8b74037eb983" x="0" y="60" width="802" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{reportSubTitle2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6a624ef4-6b8f-4758-b530-7d0af3ac2f26" stretchType="RelativeToBandHeight" x="0" y="1" width="802" height="24"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{reportTitle}+" "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="44c99209-7bd7-4f6a-92b0-24b94bc7eede" x="698" y="11" width="100" height="16"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[I-Suite Cost Report]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement uuid="62dd177c-a379-4e23-bdab-dfeeb9d61e89" x="744" y="27" width="54" height="18"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement uuid="724a4f7e-16d7-45f9-9663-753e1ba19671" x="744" y="44" width="54" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9ff71e67-5ec4-463c-9114-16701222ac4e" x="698" y="27" width="46" height="18"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Printed:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="e03e1281-ea51-473a-8efc-8b74037eb983" x="0" y="31" width="802" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{reportSubTitle}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="59" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="ea43770a-455a-4427-8b99-8fc50482dcd2" x="1" y="22" width="41" height="37"/>
+				<dataSourceExpression><![CDATA[$F{dataSourceSubReportData}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CostShareApportionmenDetailSubReport.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement uuid="a336bc65-87d8-43b2-8d29-61732f31bd0f" mode="Opaque" x="0" y="10" width="802" height="20" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Incident: " + $F{incidentName} + " (" + $F{incidentNumber} +")"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20">
+			<textField>
+				<reportElement uuid="ec7628b8-3e32-4046-a959-73062d725b6a" x="675" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="a30d2b55-4735-4067-ac04-ebb89d27f747" x="755" y="0" width="40" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

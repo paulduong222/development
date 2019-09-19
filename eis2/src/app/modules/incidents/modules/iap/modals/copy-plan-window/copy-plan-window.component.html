@@ -1,0 +1,100 @@
+<app-jw-modal id="copy-plan-modal" style="display: none;" class="box-hdr-dv">
+   <div style="width: 750px; height: 550px;padding: 0px;">
+      <div class="w3-container w3-padding-small w3-theme-d2">
+         <div class="w3-left">{{ this.windowLabel }}</div>
+      </div>
+      <div class="dv-copy-plan-box">
+         <label class="form-type">Copy From</label><br />
+         <div class="row">
+            <label class="f1" for="copy-from">Select Plan</label>
+            &nbsp;
+            <select name="copy-from">
+               <option>Test Value</option>
+            </select>
+         </div>
+      </div>
+      <div class="dv-copy-plan-box">
+         <label class="form-type">Copy To</label>
+         <div class="row">
+            <div class="cols-6">
+               <label>Incident Name</label>
+               <label class="ast">*</label>         
+               <app-text-input id="txName" name="txName" type="text"
+                  width="250" maxlength="200" allowSpace="true" textTransform="uppercase">
+               </app-text-input>
+            </div>
+            <div class="cols-6">
+               <label>Operational Period</label>
+               <label class="ast"></label>
+               <app-text-input id="txName" name="txName" type="text"
+                  width="150" maxlength="200" allowSpace="true" textTransform="uppercase">
+               </app-text-input>
+            </div>
+         </div>
+         <div class="row">
+            <div class="cols-6">
+               <label class="f1" for="dtDateFrom">Date From</label>
+               <label class="ast">*</label>
+               <app-eis-datepicker #dtDateFrom id="dtDateFrom">
+               </app-eis-datepicker>
+            </div>
+            <div class="cols-6">
+               <label class="f1" for="txTimeFrom">Time From</label>
+               <label class="ast">*</label>
+               <app-text-input id="txTimeFrom" name="txTimeFrom" maxlength="4" restrict2="0-9" width="50">
+               </app-text-input>
+            </div>
+         </div>
+         <div class="row">
+            <div class="cols-6">
+               <label class="f1" for="dtDateTo">Date To</label>
+               <label class="ast">*</label>
+               <app-eis-datepicker #dtDateTo id="dtDateTo">
+               </app-eis-datepicker>
+            </div>
+            <div class="cols-6">
+               <label class="f1" for="txTimeTo">Time To</label>
+               <label class="ast">*</label>
+               <app-text-input id="txTimeTo" name="txTimeTo" maxlength="4" restrict2="0-9" width="50">
+               </app-text-input>
+            </div>
+         </div>
+         <div class="row">
+            <div style="display: flex; flex-direction: row; margin-top: 10px; justify-content: space-evenly">
+               <div class="left-box">
+                  <h5 class="title">Available</h5>
+                  <app-data-table [noHeader]="noHeader" [bodyStyle]="bodyStyle" [tableDefinition]="tableDef"
+                     [data]="data" [filter]="filter"
+                     (rowClicked)="getClickedRow($event, 'indexSelected', 'data' , 'shiftIndex')"
+                     [scrollAble]="scrollAble" [indexSelected]="indexSelected" [extraStyle]="extraStyle">
+                  </app-data-table>
+               </div>
+               <div class="center-box">
+                  <div class="icon" (click)="moveSelected('data', 'dataSelected', 'indexSelected', 'shiftIndex')">
+                     <img src="assets/images/arrow_right.png" title="Add Selected Item"></div>
+                  <div class="icon"
+                     (click)="moveSelected('dataSelected', 'data', 'indexSelectedCopy', 'shiftIndexCopy')"><img
+                        src="assets/images/arrow_left.png" title="Remove Selected Item"></div>
+                  <div class="icon" (click)="moveAll('data', 'dataSelected', 'indexSelected', 'shiftIndex')">
+                     <img src="assets/images/arrow_right_double.png" title="Add All Items"></div>
+                  <div class="icon" (click)="moveAll('dataSelected', 'data', 'indexSelectedCopy', 'shiftIndexCopy')">
+                     <img src="assets/images/arrow_left_double.png" title="Remove All Items"></div>
+               </div>
+               <div class="right-box">
+                  <h5 class="title">Selected</h5>
+                  <app-data-table [noHeader]="noHeader" [bodyStyle]="bodyStyle" [tableDefinition]="tableDef"
+                     [data]="dataSelected"
+                     (rowClicked)="getClickedRow($event, 'indexSelectedCopy', 'dataSelected', 'shiftIndexCopy')"
+                     [scrollAble]="scrollAble" [indexSelected]="indexSelectedCopy" [extraStyle]="extraStyle">
+                  </app-data-table>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="dv-plan-action-bar" class="w3-small">
+         <button (click)="this.save()" title="Click to save the Plan.">Save</button>
+         <button (click)="this.cancel()" title="Click to cancel changes.">Cancel</button>
+         <button (click)="this.closeModal();" title="Click to cancel changes and close window">Close</button>
+      </div>
+   </div>
+</app-jw-modal>

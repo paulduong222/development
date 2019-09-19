@@ -1,0 +1,80 @@
+<div style="height: 21vh;" class="eis">
+    <label style="margin-left: 10px;"><strong>{{ this.resourceLabel }}</strong></label>
+    <form [formGroup]="timePostForm" autocomplete="off">
+    <div>
+      <table>
+        <tr>
+            <td class="frmlbl"><label>Accounting Code</label></td>
+            <td><label class="ast">*</label></td>
+            <td>
+              <app-eis-dropdown id="ddIncAcctCode" #ddIncAcctCode width="120"
+                [selectedDropdownData]="this.selectedIncidentAccountCode"
+                [dropdownData]="this.incidentSelectorService.resourceIncAcctCodeTypeData"
+              ></app-eis-dropdown>
+            </td>
+            <td>
+              <div class="dv-post-bar w3-small ml-20">
+                <button [class]="getPostingModeBtnClass('Primary')" 
+                        (click)="setPostingMode('Primary')"
+                        type="button"
+                        title="Click to post Primary posting">Primary</button>
+                <button [class]="getPostingModeBtnClass('Special')" 
+                        (click)="setPostingMode('Special')"
+                        type="button"
+                        title="Click to post Special posting">Special</button>
+                <button [class]="getPostingModeBtnClass('Both')" 
+                        (click)="this.setPostingMode('Both')"
+                        type="button"
+                        title="Click to post Both posting">Both</button>
+                <button [class]="getPostingModeBtnClass('Guarantee')" 
+                        (click)="this.setPostingMode('Guarantee')"
+                        type="button"
+                        title="Click to post Guarantee posting">Guarantee</button>
+              </div>
+            </td>
+        </tr>
+      </table>
+      <!-- Primary Posting Table -->
+      <table>
+        <tr>
+          <td>
+            <!-- type label -->
+          </td>
+          <td>
+            <!-- dropdown -->
+            <label>TIME UOM    Rate    Guarantee     Description</label>
+          </td>
+          <td>
+            <!-- form fields -->
+          </td>
+        </tr>
+        <tr>
+            <td>
+              <!-- type label -->
+            </td>
+            <td>
+              <!-- dropdown -->
+            </td>
+            <td>
+              <!-- form fields -->
+            </td>
+          </tr>
+        </table>
+    </div>
+  </form>
+  <div class="dv-action-bar w3-small">
+      <button (click)="this.save()" title="Click to save the Time Posting">Save</button>
+      <button (click)="this.cancel()" title="Click to cancel changes">Cancel</button>
+      <button (click)="this.clear()" title="Click to add new Time Posting">Clear</button>
+    </div>
+</div>
+<div style="height: 53vh;">
+    <app-eis-grid #gridContractor 
+    [floatingFilter]="false"
+    [columnDefs]="this.gridColumnDefs" 
+    [rowData]="timePostingList"></app-eis-grid>
+</div>
+<div class="dv-action-bar w3-small">
+    <button (click)="this.edit()" title="Click to edit the selected Time Posting">Edit</button>
+    <button (click)="this.delete()" title="Click to delete the selected Time Posting">Delete</button>
+</div>

@@ -1,0 +1,19 @@
+<app-jw-modal id="download-modal" style="display: none;" >
+  <div class="w3-container dv-md">
+      <div class="w3-container w3-padding-small w3-theme-d2 w3-medium">
+          <div class="w3-left" tabindex="0"><label>{{ promptTitle }}</label></div>
+          <div class="w3-right"></div>
+      </div>
+      <div>
+        <div class="w3-center dv-md-msg" tabindex="0">
+         <div><input #fileName placeholder="Filename"></div>
+        </div>
+        </div>
+      <div class="w3-center">
+				<div class="w3-bar">
+				  <button class="w3-small w3-padding-small" (click)="buttonClick(fileName.value)" style="margin-right: 3px;">{{ button1Label }}</button>
+				  <button class="w3-small w3-padding-small" (click)="closeModal()" style="margin-right: 3px;">{{ button2Label }}</button>
+				</div>
+			</div>
+  </div>
+</app-jw-modal>

@@ -1,0 +1,41 @@
+<ag-grid-angular
+      style="width: 100%; height: 100%;"
+      id="resGrid" #resGrid
+      enableFilter
+      class="ag-theme-balham"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      [autoGroupColumnDef]="autoGroupColumnDef"
+      [components]="{checkboxRenderer: checkboxRenderer}"
+      [enableColResize]="true"
+      [floatingFilter]="floatingFilter"
+      rowSelection="single"
+      rowModelType="serverSide"
+      treeData="true"
+      [gridOptions]="gridOptions"
+      [isServerSideGroup]="isServerSideGroup"
+      [getServerSideGroupKey]="getServerSideGroupKey"
+      (gridReady)="onGridReady($event)"
+      (selectionChanged)="onSelectionChanged()"
+    ></ag-grid-angular>
+<!--
+<app-eis-grid2 #resGrid id="grdResources"
+                    [treeViewMode]="true"
+                    [columnDefs]="this.columnDefs"
+                    [rowModelType]="serverSide" 
+                    [rowData]="rowData"
+                    (rowSelectEvent)="this.onSelectResourceRow($event)"
+                    >
+</app-eis-grid2>
+<ag-grid-angular 
+    style="width: 100%; height: 100%;" 
+    class="ag-theme-balham"
+    rowSelection="single"
+    rowHeight="24"
+    [enableFilter]="true"
+    [enableColResize]="true"
+    [rowData]="rowData" 
+    [columnDefs]="columnDefs"
+    >
+</ag-grid-angular>
+-->

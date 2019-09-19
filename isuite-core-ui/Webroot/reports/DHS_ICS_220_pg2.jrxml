@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DHS_ICS_220_pg2" language="groovy" pageWidth="612" pageHeight="513" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d3d20692-0eef-441a-8199-5f45fd554d56">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="720"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Workspace\\isuite-core\\Webroot\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="field" class="java.lang.String"/>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="fromDate" class="java.util.Date"/>
+	<field name="toDate" class="java.util.Date"/>
+	<field name="fromTime" class="java.lang.String"/>
+	<field name="toTime" class="java.lang.String"/>
+	<field name="sunrise" class="java.lang.String"/>
+	<field name="sunset" class="java.lang.String"/>
+	<background>
+		<band height="473" splitType="Stretch">
+			<line>
+				<reportElement uuid="9ba874b3-2dc2-4a38-9f63-d3290dcbee28" x="0" y="18" width="1" height="451"/>
+			</line>
+			<line>
+				<reportElement uuid="f123cb80-bb61-4ff1-a8e8-6ca69cc39b99" x="572" y="18" width="1" height="451"/>
+			</line>
+			<line>
+				<reportElement uuid="0690f969-0fb2-4adf-a2fa-1d1eed81a532" x="100" y="73" width="2" height="361"/>
+			</line>
+			<line>
+				<reportElement uuid="0690f969-0fb2-4adf-a2fa-1d1eed81a532" x="320" y="73" width="2" height="361"/>
+			</line>
+			<line>
+				<reportElement uuid="0690f969-0fb2-4adf-a2fa-1d1eed81a532" x="385" y="73" width="2" height="361"/>
+			</line>
+			<line>
+				<reportElement uuid="0690f969-0fb2-4adf-a2fa-1d1eed81a532" x="475" y="73" width="2" height="361"/>
+			</line>
+			<line>
+				<reportElement uuid="36d9d003-9698-404f-910a-0e1c9656278d" x="1" y="126" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="36d9d003-9698-404f-910a-0e1c9656278d" x="1" y="144" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="36d9d003-9698-404f-910a-0e1c9656278d" x="0" y="162" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="36d9d003-9698-404f-910a-0e1c9656278d" x="0" y="180" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="36d9d003-9698-404f-910a-0e1c9656278d" x="0" y="198" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="36d9d003-9698-404f-910a-0e1c9656278d" x="0" y="216" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="36d9d003-9698-404f-910a-0e1c9656278d" x="0" y="234" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="36d9d003-9698-404f-910a-0e1c9656278d" x="0" y="252" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="36d9d003-9698-404f-910a-0e1c9656278d" x="0" y="270" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="36d9d003-9698-404f-910a-0e1c9656278d" x="0" y="288" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="36d9d003-9698-404f-910a-0e1c9656278d" x="0" y="306" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="36d9d003-9698-404f-910a-0e1c9656278d" x="0" y="324" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="36d9d003-9698-404f-910a-0e1c9656278d" x="0" y="342" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="36d9d003-9698-404f-910a-0e1c9656278d" x="0" y="360" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="36d9d003-9698-404f-910a-0e1c9656278d" x="0" y="378" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="36d9d003-9698-404f-910a-0e1c9656278d" x="0" y="396" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="36d9d003-9698-404f-910a-0e1c9656278d" x="0" y="414" width="572" height="1"/>
+			</line>
+		</band>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="57" splitType="Stretch">
+			<line>
+				<reportElement uuid="79795ec8-ea46-49f9-afee-d8b574779e32" x="0" y="18" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="423aa1bb-83c4-4010-9eba-bbf52907249d" x="165" y="18" width="1" height="39"/>
+			</line>
+			<line>
+				<reportElement uuid="f6da8d8c-a463-4a8d-ae69-5f72ccc74aa7" x="409" y="18" width="1" height="39"/>
+			</line>
+			<staticText>
+				<reportElement uuid="6e05f540-19fc-40c4-9c5b-2739edc66969" x="0" y="0" width="572" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AIR OPERATIONS SUMMARY (ICS 220)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4a94e297-b3fc-456e-967d-eca9d3a00238" x="3" y="18" width="100" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[1. Incident Name:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b463c899-1104-418a-bc07-aabb52d15311" x="168" y="19" width="102" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2. Operational Period:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="17eb0e56-1c16-49df-8986-06b903340cb0" x="168" y="31" width="54" height="13"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Date From:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7a3e67d1-d78d-4f2a-8d27-c3728b78d1d1" x="168" y="44" width="54" height="13"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Time From:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cbae0e30-2c91-4631-8e98-c3578b40069b" x="284" y="31" width="43" height="13"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Date To:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f664255a-cd2b-4973-a49c-a0d917b9ee7c" x="284" y="44" width="43" height="13"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Time To:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bd1e482f-b835-4337-ac2b-4324493afebe" x="413" y="19" width="54" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3. Sunrise:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="016f8bb5-b325-4f33-a420-e0e6106dafe9" x="488" y="19" width="54" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sunset:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="69634efd-d640-4148-ae83-5c52c47caedb" x="5" y="32" width="158" height="24"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incidentName}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM/dd/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="c7b18315-c532-48c8-a49e-a69121f3dfde" x="213" y="31" width="71" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fromDate}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="7a3500a0-1a28-4070-8142-03c7ebeaede2" x="213" y="43" width="71" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fromTime}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM/dd/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="833c23bf-fd5f-4380-a3b9-d2d956f32caa" x="319" y="30" width="71" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{toDate}]]></textFieldExpression>
+			</textField>
+			<textField pattern="mm" isBlankWhenNull="true">
+				<reportElement uuid="3189f44b-1823-4981-88d7-5a84ac5a33ba" x="319" y="43" width="71" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{toTime}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="d0e8c280-6801-4faf-8512-65d333d89f5f" x="414" y="35" width="53" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sunrise}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="be406cb4-01b7-448f-afaf-494e3bfcd1e5" x="488" y="35" width="58" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sunset}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="53" splitType="Stretch">
+			<line>
+				<reportElement uuid="d49b03df-910c-4623-a534-fd078769098e" x="0" y="0" width="572" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="4a94e297-b3fc-456e-967d-eca9d3a00238" x="3" y="1" width="125" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[12. Task/Mission/Assignment]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4a94e297-b3fc-456e-967d-eca9d3a00238" x="132" y="1" width="434" height="13"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[(category/kind/type and function includes: air tactical, reconnaissance, personnel transport, search and rescue, etc.):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="0" y="18" width="103" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Category/Kind/Type]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="d49b03df-910c-4623-a534-fd078769098e" x="0" y="15" width="572" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="103" y="18" width="221" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Name of Personnel or Cargo (if applicable)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="324" y="18" width="56" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Mission]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="467" y="31" width="105" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fly To]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="380" y="31" width="88" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fly From]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="0" y="31" width="103" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[and Function]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="103" y="31" width="221" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[or Instructions for Tactical Aircraft]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="324" y="31" width="56" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Start]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="328" splitType="Stretch">
+			<line>
+				<reportElement uuid="d49b03df-910c-4623-a534-fd078769098e" x="0" y="0" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="d49b03df-910c-4623-a534-fd078769098e" x="0" y="323" width="572" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement uuid="1549a3f6-d280-4df3-868a-496b9ed8af08" x="99" y="12" width="123" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="aee4a7a2-6569-4118-819d-18b37a43a686" x="284" y="11" width="114" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="0b5081c8-1313-4b50-8b36-e32f03ad1596" x="444" y="12" width="122" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="e2f255ff-c659-4d43-a383-e2c2b49eef59" x="284" y="26" width="282" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="8503f593-ce08-42e8-93b1-79dc48fb74b9" x="223" y="15" width="1" height="15"/>
+			</line>
+			<staticText>
+				<reportElement uuid="5d3fc7b5-9d4d-487c-80f7-4ca5ab9efc36" x="3" y="2" width="64" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[11. Prepared by:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="25718ccd-d359-48d9-ba11-31c46ed31fc8" x="68" y="2" width="46" height="13"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Name:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bbea1304-0824-47e4-9230-25070a39698c" x="231" y="2" width="53" height="13"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Position/Title:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4f41c427-168e-4c7c-9c61-e65f29a7ae6e" x="403" y="2" width="41" height="13"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Signature:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a842237c-87d6-4fa2-ad38-b84c2542e65a" x="4" y="17" width="77" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ICS 220, Page 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="76b9b25d-9b94-4496-9fb3-a58041248387" x="231" y="16" width="53" height="13"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Date/Time:]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="9cf1bb60-0dcd-4d05-ba58-6fc69f6b29f3" x="0" y="15" width="223" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="ebf6bd6a-ee9c-4239-81cd-b2b8f821bb9b" x="0" y="30" width="572" height="1"/>
+			</line>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="abcf55dc-d62a-460c-8e31-1a51452b1175" x="99" y="2" width="125" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="550adcea-ba1c-46e2-a1f3-d29cd5f4b9b5" x="286" y="1" width="125" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="f77bd98f-9741-41c6-bc4d-53e66410bbc4" x="286" y="16" width="125" height="13"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

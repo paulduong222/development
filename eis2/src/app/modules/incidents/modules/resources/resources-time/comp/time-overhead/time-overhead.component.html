@@ -1,0 +1,157 @@
+<div style="height: 21vh;" class="eis">
+    <label style="margin-left: 10px;"><strong>{{ this.resourceLabel }}</strong></label>
+    <form [formGroup]="timePostForm" autocomplete="off">
+    <div>
+        <table>
+          <tr>
+              <td>
+                  <!-- column 1-->
+                  <table>
+                    <tr>
+                        <td class="frmlbl"><label>Accounting Code</label></td>
+                        <td><label class="ast">*</label></td>
+                        <td>
+                          <app-eis-dropdown id="ddIncAcctCode" #ddIncAcctCode width="100"
+                            [selectedDropdownData]="this.selectedIncidentAccountCode"
+                            [dropdownData]="this.incidentSelectorService.resourceIncAcctCodeTypeData"
+                          ></app-eis-dropdown>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label>Date</label></td>
+                        <td><label class="ast">*</label></td>
+                        <td>
+                          <app-eis-datepicker #dtPostDate
+                            formControlName="postDate"
+                             width="100"></app-eis-datepicker>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label>Special</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                          <app-eis-dropdown id="ddSpecialPay" #ddSpecialPay width="150"
+                          [selectedDropdownData]="this.selectedSpecialPay"
+                          [dropdownData]="this.specialPayData">
+                          </app-eis-dropdown>
+                        </td>
+                    </tr>
+                </table>
+              </td>
+              <td>
+                  <!-- column 2-->
+                  <table>
+                    <tr [class]="getStartStopClass()">
+                        <td class="frmlbl"><label>Start</label></td>
+                        <td><label class="ast">*</label></td>
+                        <td>
+                          <app-eis-dropdown #ddStart width="60"
+                          [selectedDropdownData]="this.selectedStartTime"
+                          [dropdownData]="this.timeData"
+                          ></app-eis-dropdown>
+                        </td>
+                    </tr>
+                    <tr [class]="getStartStopClass()">
+                        <td class="frmlbl"><label>Stop</label></td>
+                        <td><label class="ast">*</label></td>
+                        <td>
+                          <app-eis-dropdown #ddStop width="60"
+                          [selectedDropdownData]="this.selectedStopTime"
+                          [dropdownData]="this.timeData"
+                          ></app-eis-dropdown>
+                        </td>
+                      </tr>
+                    <tr>
+                        <td class="frmlbl"><label>Hours</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                          <app-text-input 
+                            formControlName="quantity" width="60"></app-text-input>
+                        </td>
+                    </tr>
+                  </table>
+              </td>
+              <td [class]="getOtherFieldsClass()">
+                <table>
+                  <tr>
+                       <td class="frmlbl"><label>Other Rate</label></td>
+                       <td><label class="ast"></label></td>
+                       <td>
+                          <app-text-input 
+                            formControlName="otherRate" restrict2="0-9,." width="60"></app-text-input>
+                       </td>
+                  </tr>
+                </table>
+              </td>
+              <td [class]="getAdFieldsClass()">
+                  <table>
+                      <tr>
+                          <td class="frmlbl"><label>Class</label></td>
+                          <td><label class="ast">*</label></td>
+                          <td>
+                              <app-eis-dropdown id="ddAdRate" #ddAdRate width="60"
+                              [selectedDropdownData]="this.selectedAdRate"
+                              (dropdownSelect)="this.onAdClassSelect($event)"
+                              [dropdownData]="this.rateClassRateData">
+                          </app-eis-dropdown>
+                          </td>
+                     </tr>
+                     <tr>
+                         <td class="frmlbl"><label>Rate</label></td>
+                         <td><label class="ast"></label></td>
+                         <td>
+                            <app-text-input 
+                            formControlName="adRate" restrict2="0-9,." width="60"></app-text-input>
+                         </td>
+                    </tr>
+                  </table>
+                </td>
+                <td>
+                  <!-- column 4-->
+                 <table>
+                   <tr>
+                        <td class="frmlbl"><label>Item Code</label></td>
+                        <td><label class="ast">*</label></td>
+                        <td>
+                            <app-eis-dropdown id="ddItemCode" #ddItemCode width="100"
+                            [selectedDropdownData]="this.selectedItemCode"
+                            [dropdownData]="this.incidentSelectorService.resourceKindTypeData"
+                          ></app-eis-dropdown>
+                        </td>
+                   </tr>
+                   <tr>
+                      <td class="frmlbl"><label>Trainee</label></td>
+                      <td><label class="ast"></label></td>
+                      <td>
+                        <input type="checkbox" formControlName="trainee">
+                      </td>
+                   </tr>
+                   <tr>
+                      <td class="frmlbl"><label>Post Start Time Only</label></td>
+                      <td><label class="ast"></label></td>
+                      <td>
+                        <input type="checkbox" formControlName="postStartTimeOnly">
+                      </td>
+                   </tr>
+                 </table>
+              </td>
+         </tr>
+      </table>
+    </div>
+  </form>
+  <div class="dv-action-bar w3-small">
+      <button (click)="this.save()" title="Click to save the Time Posting">Save</button>
+      <button (click)="this.cancel()" title="Click to cancel changes">Cancel</button>
+      <button (click)="this.clear()" title="Click to add new Time Posting">Clear</button>
+    </div>
+</div>
+<div style="height: 53vh;">
+    <app-eis-grid #gridOverhead 
+    [floatingFilter]="false"
+    [columnDefs]="this.gridColumnDefs" 
+    [rowData]="timePostingList"></app-eis-grid>
+</div>
+<div class="dv-action-bar w3-small">
+    <button (click)="this.edit()" title="Click to edit the selected Time Posting">Edit</button>
+    <button (click)="this.delete()" title="Click to delete the selected Time Posting">Delete</button>
+</div>

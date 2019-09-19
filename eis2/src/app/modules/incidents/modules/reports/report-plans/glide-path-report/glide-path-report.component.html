@@ -1,0 +1,57 @@
+<div class="main-card">
+  <p class="title">Glidepath</p>
+  <div class="card-body">
+    <div class="bx-body">
+      <div class="date-box">
+        <div>
+          <div class="label-input">Start Date <label class="ast">*</label></div>
+          <app-eis-datepicker #dtStart></app-eis-datepicker>
+        </div>
+        <div>
+          <div class="label-input">Number Of Days <label class="ast">*</label></div>
+          <input class="date-input" type="number" min="7" max="30" [(ngModel)]="glidePathReportFilter.numberOfDays" (change)="changeNumberOfDay()">
+        </div>
+      </div>
+    </div>
+    <div class="full-box">
+      <div class="left-box">
+        <h4>Options</h4>
+        <label><input type="radio" name="optionLeft" value="optionAll" [(ngModel)]="optionLeft" (change)="changeLeftOption($event)"> Include All</label>
+        <label><input type="radio" name="optionLeft" value="optionSections" [(ngModel)]="optionLeft" (change)="changeLeftOption($event)"> Select Sections/Categories</label>
+        <label><input type="radio" name="optionLeft" value="optionSummaryOnly" [(ngModel)]="optionLeft" (change)="changeLeftOption($event)"> Summary Only</label>
+        <div class="option-box" [hidden]="optionLeft != 'optionSections'" *ngIf="sectionCategories">
+          <ng-container *ngFor="let section of sectionCategories">
+            <label>
+              <img *ngIf="!section.collapse" src="assets/images/triangleRight.jpg" (click)="collapseOption($event, section)">
+              <img *ngIf="section.collapse" src="assets/images/triangleDown.jpg" (click)="collapseOption($event, section)">
+              <input type="checkbox" name="sections" [checked]="section.checked" value="{{section.value}}" (click)="handleCheckboxSection(section, '')"> {{section.label}}
+            </label>
+            <ng-container *ngIf="section.collapse">
+              <ng-container *ngFor="let section2 of section.children">
+                  <label class="section-lv2"><img src="assets/images/triangleRight.jpg"><input type="checkbox" name="sections" [checked]="section2.checked" value="{{section2.value}}" (click)="handleCheckboxSection(section2, section)"> {{section2.label}}</label>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+      <div class="right-box">
+        <label><input type="checkbox" name="state" (change)="optionIncludeSTComponents = !optionIncludeSTComponents" value="optionIncludeSTComponents" (click)="handleCheckbox($event)"> Include Strike Team Components</label>
+        <h4>Sort By</h4>
+        <div *ngIf="!optionIncludeSTComponents">
+          <label><input type="radio" name="state" value="sortByItemCodeDemobDate" [(ngModel)]="sortBy"> Item Code/Demob Date</label>
+          <label><input type="radio" name="state" value="sortByItemCodeRequestNumber" [(ngModel)]="sortBy"> Item Code/Request Number</label>
+          <label><input type="radio" name="state" value="sortByDemobDateRequestNumber" [(ngModel)]="sortBy"> Demob Date/Request Number</label>
+          <label><input type="radio" name="state" value="sortByDemobDateResourceName" [(ngModel)]="sortBy"> Demob Date/Resource Name</label>
+        </div>
+        <div *ngIf="optionIncludeSTComponents">
+            <label><input type="radio" name="state" value="sortByDemobDateRequestNumber2" [(ngModel)]="sortBy"> Demob Date/Request Number</label>
+            <label><input type="radio" name="state" value="sortByDemobDateResourceName2" [(ngModel)]="sortBy"> Demob Date/Resource Name</label>
+            <label><input type="radio" name="state" value="sortByRequestNumberDemobDate2" [(ngModel)]="sortBy"> Request Number/Demob Date</label>
+        </div>
+      </div>
+    </div>
+    <button [hidden]="optionLeft != 'optionSections'" type="button" class="btn btn-default" title="Check All" (click)="checkAll()">Check All </button>
+    <button [hidden]="optionLeft != 'optionSections'" class="btn btn-default" title="Clear All" (click)="clearAll()">Clear All </button>
+    <button type="button" class="btn btn-default" style="display: block" (click)="generateReport()"  title="Click to generate Glidepath Report">Export to Excel</button>
+  </div>
+</div>

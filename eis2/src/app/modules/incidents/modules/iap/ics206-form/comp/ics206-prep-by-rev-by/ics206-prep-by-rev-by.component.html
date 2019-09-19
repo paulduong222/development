@@ -1,0 +1,73 @@
+<label class="blk-hdr"><u>Prepared By</u></label>
+<form [formGroup]="compForm" autocomplete="off">
+<div class="eis">
+  <div>
+    <table>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="txPrepBy">Prepared By</label></td>
+          <td><label class="ast"></label></td>
+          <td>
+            <app-text-input id="txPrepBy" name="txPrepBy"
+            formControlName="preparedBy" allowSpace="true"
+            width="300" maxlength="50"></app-text-input>
+          </td>
+      </tr>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="dtPrepDate">Date</label></td>
+          <td><label class="ast"></label></td>
+          <td>
+              <app-eis-datepicker #dtPrepDate
+              formControlName="preparedDate"
+              id="dtPrepDate">
+            </app-eis-datepicker>
+         </td>
+      </tr>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="txPrepTime">Time</label></td>
+          <td><label class="ast"></label></td>
+          <td>
+            <app-text-input id="txPrepTime" name="txPrepTime"
+            formControlName="preparedTime" restrict2="0-9"
+            width="80" maxlength="4"></app-text-input>
+          </td>
+      </tr>
+    </table>  
+  </div>
+</div>
+<br>
+<label class="blk-hdr"><u>Reviewed By</u></label>
+<div class="eis">
+    <div>
+        <table>
+            <tr>
+                <td class="frmlbl"><label class="f1" for="txRevBy">Reviewed By</label></td>
+                <td><label class="ast"></label></td>
+                <td>
+                  <app-text-input id="txRevBy" name="txRevBy"
+                  formControlName="reviewedBy" allowSpace="true"
+                  width="300" maxlength="50"></app-text-input>
+                </td>
+            </tr>
+            <tr>
+                <td class="frmlbl"><label class="f1" for="dtRevDate">Date</label></td>
+                <td><label class="ast"></label></td>
+                <td>
+                    <app-eis-datepicker #dtRevDate
+                    formControlName="reviewedDate"
+                    id="dtRevDate">
+                  </app-eis-datepicker>
+                </td>
+            </tr>
+            <tr>
+                <td class="frmlbl"><label class="f1" for="txRevTime">Time</label></td>
+                <td><label class="ast"></label></td>
+                <td>
+                  <app-text-input id="txRevTime" name="txPRevTime"
+                  formControlName="reviewedTime" restrict2="0-9"
+                  width="80" maxlength="4"></app-text-input>
+                </td>
+            </tr>
+       </table>
+    </div>
+</div>
+</form>

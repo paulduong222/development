@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SummaryByResourceReport" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5254c3a5-e4b7-4575-b66b-18957fb64949">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="608"/>
+	<property name="ireport.y" value="27"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="reportDateRange" class="java.lang.String"/>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="incidentNumber" class="java.lang.String"/>
+	<field name="groupingName" class="java.lang.String"/>
+	<field name="incidentId" class="java.lang.Long"/>
+	<field name="dataSourceReportDataByGroup" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="startDate" class="java.util.Date"/>
+	<field name="endDate" class="java.util.Date"/>
+	<field name="incidentGroupId" class="java.lang.Number"/>
+	<field name="incidentGroupName" class="java.lang.String"/>
+	<field name="isNonOH" class="java.lang.Boolean"/>
+	<field name="dataSourceReportDataByDate" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<group name="incidentGroup" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{incidentName}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="231a527a-8395-469a-9478-3b32f4ffae5b" x="0" y="20" width="572" height="19"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(($F{incidentGroupName} != "" && $F{incidentGroupName} != null) ? "Incident Group: " + $F{incidentGroupName} : "Incident: " + $F{incidentName} + " (" + $F{incidentNumber} +")") + $P{reportDateRange}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true" hyperlinkType="LocalAnchor" bookmarkLevel="1">
+				<reportElement uuid="2931ec0e-fe10-4f3a-bedf-613627ac98a6" x="0" y="0" width="572" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Summary by Resource " + ($F{isNonOH} ? " Non-" : " ") + "OH by " + $F{groupingName}]]></textFieldExpression>
+				<anchorNameExpression><![CDATA[$V{PAGE_NUMBER} + " - " + $F{incidentName} + " (" + $F{incidentNumber} +")"]]></anchorNameExpression>
+			</textField>
+			<line>
+				<reportElement uuid="0c417b8e-25aa-415e-9e92-00cbd7999a6e" x="0" y="38" width="572" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<printWhenExpression><![CDATA[($F{incidentGroupName} != "" && $F{incidentGroupName} != null)]]></printWhenExpression>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="c8436d54-0b1f-40a2-94a2-819ee91bac18" mode="Opaque" x="0" y="0" width="572" height="16" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{incidentGroupName} != "" && $F{incidentGroupName} != null) ? "Incident: " + $F{incidentName} + " (" + $F{incidentNumber} +")" : null]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="44" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="c1c66ead-097b-4f98-bdd2-e35cffd3959b" x="0" y="2" width="38" height="38" isRemoveLineWhenBlank="true"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="groupingName">
+					<subreportParameterExpression><![CDATA[$F{groupingName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$F{dataSourceReportDataByDate}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "SummaryByResourceByDateSubReport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="41" splitType="Stretch">
+			<printWhenExpression><![CDATA[!($F{groupingName}.equalsIgnoreCase("Incident"))]]></printWhenExpression>
+			<subreport>
+				<reportElement uuid="0d5c75ad-212e-42a8-8670-45a42de6c565" x="0" y="3" width="38" height="38"/>
+				<subreportParameter name="groupingName">
+					<subreportParameterExpression><![CDATA[$F{groupingName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$F{dataSourceReportDataByGroup}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "SummaryByResourceByGroupSubReport.jasper"]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement uuid="c84ca052-3a35-451c-9183-59e54d0d998e" x="0" y="1" width="100" height="1">
+					<printWhenExpression><![CDATA[$F{dataSourceReportDataByGroup}.getRecordCount() > 0]]></printWhenExpression>
+				</reportElement>
+			</break>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17" splitType="Stretch">
+			<line>
+				<reportElement uuid="d4a15c9b-8a50-4a90-be55-9d3b0131af88" x="0" y="0" width="572" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField pattern="yyyy.MMMMM.dd GGG hh:mm aaa">
+				<reportElement uuid="c467b3a2-ba56-4d0e-87af-a3df7c1a3d7c" x="0" y="1" width="99" height="16"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="SansSerif" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("MM/dd/yyyy HHmm").format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d11acb87-3ad9-431f-b08b-d31ada72d9ea" x="474" y="1" width="80" height="16"/>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="1d612d07-7257-4d5c-8afd-b6bbf8a542c3" x="554" y="1" width="40" height="16"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

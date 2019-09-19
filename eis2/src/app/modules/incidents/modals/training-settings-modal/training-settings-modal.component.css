@@ -1,0 +1,22 @@
+.dv-priority-grid {
+	background-color: white;
+	border: 1px solid darkgray;
+	min-width: 388px;
+    height: 260px;
+    float: left;
+}
+.dv-all-resources-grid {
+	background-color: white;
+	border: 1px solid darkgray;
+	min-width: 1094px;
+    height: 178px;
+    float: left;
+}
+.dv-training-spec-grid {
+	background-color: white;
+	border: 1px solid darkgray;
+	min-width: 1094px;
+    height: 178px;
+	float: left;
+	margin-bottom: 20px;
+}

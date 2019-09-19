@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DailyCostComparisonRESRSubReport" pageWidth="612" pageHeight="792" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="1" bottomMargin="0" isIgnorePagination="true" uuid="3e676d0f-a25c-4f7a-91a2-697adb566dc7">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1" forecolor="#000000" backcolor="#FFFFFF">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" forecolor="#000000" backcolor="#F0F0F0"/>
+		</conditionalStyle>
+	</style>
+	<field name="itemCode" class="java.lang.String"/>
+	<field name="itemCodeCategory" class="java.lang.String"/>
+	<field name="averageCost" class="java.lang.Double"/>
+	<field name="standardCost" class="java.lang.Double"/>
+	<field name="difference" class="java.lang.Double"/>
+	<field name="requestNumber" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="agencyCode" class="java.lang.String"/>
+	<field name="assignDateChar" class="java.lang.String"/>
+	<group name="itemcategory">
+		<groupExpression><![CDATA[$F{itemCodeCategory}]]></groupExpression>
+		<groupHeader>
+			<band height="19">
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="360d6c06-a203-48d9-afcb-ea09942e709d" stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" mode="Opaque" x="0" y="1" width="572" height="18" backcolor="#E3E3E3"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="9" isBold="true" isItalic="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{itemCodeCategory}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="5">
+				<line>
+					<reportElement uuid="c97b16e9-f840-4651-82f7-83e48d3c5520" x="0" y="4" width="572" height="1"/>
+					<graphicElement>
+						<pen lineWidth="1.0"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="35" splitType="Immediate">
+			<staticText>
+				<reportElement uuid="0b0eecf9-f830-432d-9340-e42dc6c89920" mode="Opaque" x="302" y="0" width="58" height="31" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Average Daily Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc0e7079-edb6-4081-a11f-fddf14b4e0c2" mode="Opaque" x="376" y="0" width="61" height="32" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Standard Daily Cost]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d8eb0b3-6d2d-4c17-bdfb-8c1a96d38b2d" mode="Opaque" x="9" y="0" width="38" height="32" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Item Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc0e7079-edb6-4081-a11f-fddf14b4e0c2" mode="Opaque" x="456" y="11" width="52" height="20" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Difference]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="c97b16e9-f840-4651-82f7-83e48d3c5520" x="0" y="34" width="572" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="4d8eb0b3-6d2d-4c17-bdfb-8c1a96d38b2d" mode="Opaque" x="139" y="11" width="57" height="20" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d8eb0b3-6d2d-4c17-bdfb-8c1a96d38b2d" mode="Opaque" x="56" y="11" width="41" height="20" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Req #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d8eb0b3-6d2d-4c17-bdfb-8c1a96d38b2d" mode="Opaque" x="243" y="0" width="53" height="31" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Agency Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc0e7079-edb6-4081-a11f-fddf14b4e0c2" mode="Opaque" x="523" y="0" width="47" height="31" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Assign Date]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="4d667cd0-17f8-4d75-a9a8-0f083b72bad3" style="style1" stretchType="RelativeToBandHeight" x="523" y="2" width="49" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{assignDateChar}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d61ee732-e65f-4f1a-b3f5-8c2a3e1a28bf" style="style1" stretchType="RelativeToBandHeight" x="59" y="2" width="30" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{requestNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d61ee732-e65f-4f1a-b3f5-8c2a3e1a28bf" style="style1" stretchType="RelativeToBandHeight" x="93" y="2" width="156" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d61ee732-e65f-4f1a-b3f5-8c2a3e1a28bf" style="style1" stretchType="RelativeToBandHeight" x="253" y="2" width="37" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{agencyCode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d61ee732-e65f-4f1a-b3f5-8c2a3e1a28bf" style="style1" stretchType="RelativeToBandHeight" x="0" y="2" width="55" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{itemCode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d61ee732-e65f-4f1a-b3f5-8c2a3e1a28bf" style="style1" stretchType="RelativeToBandHeight" x="294" y="2" width="72" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{averageCost}]]></textFieldExpression>
+				<patternExpression><![CDATA["¤#,##0"]]></patternExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="d61ee732-e65f-4f1a-b3f5-8c2a3e1a28bf" style="style1" stretchType="RelativeToBandHeight" x="370" y="2" width="72" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{standardCost}]]></textFieldExpression>
+				<patternExpression><![CDATA["¤#,##0"]]></patternExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="¤#,##0;(¤#,##0)" isBlankWhenNull="true">
+				<reportElement uuid="d61ee732-e65f-4f1a-b3f5-8c2a3e1a28bf" style="style1" stretchType="RelativeToBandHeight" x="446" y="2" width="73" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{difference}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

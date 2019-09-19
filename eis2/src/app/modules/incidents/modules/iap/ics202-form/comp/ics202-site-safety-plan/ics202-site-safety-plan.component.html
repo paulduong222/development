@@ -1,0 +1,28 @@
+<div class="eis">
+  <form [formGroup]="compForm" autocomplete="off">
+    <div>
+      <br>
+    <table>
+      <tr>
+          <td>
+              <div class="dv-iap-chk">
+                 <input type="checkbox"
+                 formControlName="safetyPlanRequired"><label>Site Safety Plan Required</label>
+               </div>
+           </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="txPlanLoc">Approved Site Safety Plan(s) Located at</label></td>
+          <td><label class="ast"></label></td>
+          <td>
+            <app-text-input id="txPlanLoc" name="txPlanLoc"
+            formControlName="safetyPlanLocation"
+             width="300"></app-text-input>
+          </td>
+      </tr>
+    </table>
+  </div>
+  </form>
+</div>

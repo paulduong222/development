@@ -1,0 +1,58 @@
+<app-jw-modal id="copy-form-modal" style="display: none;" class="box-hdr-dv">
+    <div style="width: 750px; height: 500px;padding: 0px;">
+      <div class="w3-container w3-padding-small w3-theme-d2">
+         <div class="w3-left">{{ this.windowLabel }}</div>
+      </div>
+      <div class="dv-box">
+         <div>
+            <label>Copy Form From</label>
+            &nbsp;
+            <select>
+               <option>Temp Val</option>
+            </select>
+         </div>
+         <div style="display: flex; flex-direction: row; margin-top: 10px; justify-content: space-evenly">
+            <div class="left-box">
+               <h5 class="title">Available</h5>
+               <app-data-table [noHeader]="noHeader" [bodyStyle]="bodyStyle" [tableDefinition]="tableDef"
+                  [data]="data" [filter]="filter"
+                  (rowClicked)="getClickedRow($event, 'indexSelected', 'data' , 'shiftIndex')"
+                  [scrollAble]="scrollAble" [indexSelected]="indexSelected" [extraStyle]="extraStyle">
+               </app-data-table>
+            </div>
+            <div class="center-box">
+               <div class="icon" (click)="moveSelected('data', 'dataSelected', 'indexSelected', 'shiftIndex')">
+                  <img src="assets/images/arrow_right.png" title="Add Selected Item"></div>
+               <div class="icon"
+                  (click)="moveSelected('dataSelected', 'data', 'indexSelectedCopy', 'shiftIndexCopy')"><img
+                     src="assets/images/arrow_left.png" title="Remove Selected Item"></div>
+               <div class="icon" (click)="moveAll('data', 'dataSelected', 'indexSelected', 'shiftIndex')">
+                  <img src="assets/images/arrow_right_double.png" title="Add All Items"></div>
+               <div class="icon" (click)="moveAll('dataSelected', 'data', 'indexSelectedCopy', 'shiftIndexCopy')">
+                  <img src="assets/images/arrow_left_double.png" title="Remove All Items"></div>
+            </div>
+            <div class="right-box">
+               <h5 class="title">Selected</h5>
+               <app-data-table [noHeader]="noHeader" [bodyStyle]="bodyStyle" [tableDefinition]="tableDef"
+                  [data]="dataSelected"
+                  (rowClicked)="getClickedRow($event, 'indexSelectedCopy', 'dataSelected', 'shiftIndexCopy')"
+                  [scrollAble]="scrollAble" [indexSelected]="indexSelectedCopy" [extraStyle]="extraStyle">
+               </app-data-table>
+            </div>
+         </div>
+         <div style="margin-top:10px;">
+            <label>Copy Form To</label>
+            &nbsp;
+            <select>
+               <option>Temp Val</option>
+            </select>
+         </div>
+      </div>
+      <div id="dv-plan-action-bar" class="w3-small w3-left">
+         <button (click)="this.save()" title="Click to save the Plan.">Save</button>
+         <button (click)="this.cancel()" title="Click to cancel changes.">Cancel</button>
+         <button (click)="this.closeModal();" title="Click to cancel changes and close window">Close</button>
+      </div>
+   </div>
+   
+</app-jw-modal>

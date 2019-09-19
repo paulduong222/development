@@ -1,0 +1,21 @@
+<div class="dv-eval-tab">
+  <div class="dv-eval">
+      <button id="btnAdd" type="button" (click)="this.addEvaluator()" title="Click to add an Evaluator"
+      >Add Evaluator</button>
+  </div>
+  <div>
+      <app-eis-grid #grdEvaluators class="dv-eval-grid w3-left"
+      [columnDefs]="this.evalGridColumnDefs" 
+      [rowData]="resourceTrainingVo.rscTrainingTrainerVos"
+      (rowSelectEvent)="this.onSelectEvaluator($event)">
+    </app-eis-grid>
+  </div>
+  <div class="dv-action-bar w3-left">
+      <button id="btnEdit" type="button" (click)="this.editEvaluator()" title="Click to edit an Evaluator"
+      >Edit</button>
+      <button id="btnDelete" type="button" (click)="this.deleteEvaluator()" title="Click to delete an Evaluator"
+      >Delete</button>
+  </div>
+</div>
+<app-evaluator-modal #evaluatorModal (saveEvaluatorEvent)="this.saveEvaluatorEvent($event)"></app-evaluator-modal>
+<app-prompt-modal id="promptModal" #promptModal (promptActionEvent)="this.promptModalActionResult($event)"></app-prompt-modal>

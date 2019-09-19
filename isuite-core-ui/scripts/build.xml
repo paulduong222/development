@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+
+<!-- File for deploying isuite-applications. -->
+<project name="e-isuite" default="usage" basedir=".">
+  
+  <!-- Globally used variables -->
+  <!-- Application Root directory. -->
+  <property name="root.dir" value="../.." />
+  <property environment="env" />
+  <property name="scripts.dir" value="." />
+
+  <property name="lib.dir" value="../Webroot/WEB-INF/lib"/>
+  
+  <!-- Separate property file used to override values in this build file -->
+  <property file="deployment.properties" />
+  <property file="db.properties" />
+  
+  <!-- SQL settings for database installation -->
+  <property name="p6spy.driver.location" value="../lib/p6spy-1.3.jar" />
+  <property name="pgsql.driver" value="org.postgresql.Driver" />
+  <property name="pgsql.url" value="jdbc:postgresql://localhost/isuite_site" />
+  <property name="pgsql.enterprise.url" value="jdbc:postgresql://localhost/isuite_enterprise" />
+  <property name="pgsql.sitemaster.url" value="jdbc:postgresql://localhost/isuite_site_master" />
+  <property name="pgsql.driver.location" value="${lib.dir}/postgresql-8.3-603.jdbc3.jar" />
+  <property name="oracle.driver" value="oracle.jdbc.driver.OracleDriver" />
+  <property name="oracle.url" value="jdbc:oracle:thin:@192.168.0.123:1521:ORCL" />
+  <property name="oracle.driver.location" value="${lib.dir}/oracle-ojdbc14-10.2.0.jar" />
+  <property name="oracle.username" value="DBOSWELL" />
+  <property name="oracle.password" value="DBOSWELL1" />
+  <property name="sql.path" value="sql/ddl" />
+  <property name="sql.common.path" value="${sql.path}/common" />
+  <property name="sql.oracle.path" value="${sql.path}/oracle" />
+  <property name="sql.postgres.path" value="${sql.path}/postgres" />
+  
+  <property name="build" location="../build"/>
+  
+  <property name="src" location="../src/main/java"/>
+  <property name="src.resources" location="../src/main/resources"/>
+   <property name="src.resources.common2" location="../src/main/resources/common2"/>
+  <property name="src.resources.deploydefaults.site" location="../src/main/resources/deploydefaults/site"/>
+  <property name="src.resources.postgres" location="../src/main/resources/postgres"/>
+  <property name="src.resources.site" location="../src/main/resources/site"/>
+  <property name="src.resources.nonversioned" location="../src/main/resources/nonversioned"/>
+  <property name="src.test" location="../src/test"/>
+  <property name="src.test.data" location="../src/test/framework/dbunit/data"/>
+  <property name="src.test.resources" location="../src/test/framework/dbunit/resources"/>
+  <property name="src.test.data" location="../src/test/framework/dbunit/data"/>
+  <property name="src.webroot" location="../Webroot"/>
+  <property name="src.pgpatches" location="../scripts/sql/sc/postgres/psql"/>
+  <property name="src.utilwin7" location="../scripts/utilities/win7"/>
+  <property name="src.utilwin7_32" location="../scripts/utilities/win7_32"/>
+  <property name="src.utilwinxp" location="../scripts/utilities/winxp"/>
+  <property name="src.trainingfiles" location="../scripts/training"/>
+  <property name="src.ent.help" location="../Webroot/help/ent"/>
+  <property name="src.site.help" location="../Webroot/help/site"/>
+
+  <property name="src.flex.enterprise.ssl" location="../Webroot/WEB-INF/flex/beta"/>
+  <property name="src.flex.site.nonssl" location="../Webroot/WEB-INF/flex/devel"/>
+	
+  <path id="classpath">
+    <fileset dir="${lib.dir}" includes="**/*.jar"/>
+  </path>
+
+
+	<target name="compile" depends="clean">
+    <copy todir="${build}">
+      <fileset dir="${src.resources.common}"/>
+    </copy>
+    
+    <!-- suppress warnings not working? -->
+    <javac destdir="${build}" 
+	   srcdir="${src}:${src.resources.common}:${src.resources.enterprise}:${src.resources.site}"
+	   nowarn="on">
+      <classpath refid="classpath"/>
+    </javac>
+  </target>
+
+  <target name="clean">
+    <mkdir dir="${build}"/>
+    <delete includeemptydirs="true">
+      <fileset dir="${build}" includes="**/*"/>
+    </delete>
+    <mkdir dir="${build}"/>
+    <mkdir dir="${build}/dist"/>
+    <mkdir dir="${build.test}"/>
+  </target>
+  
+  <target name="prepareBuild" depends="">
+    <delete includeemptydirs="true">
+      <fileset dir="${build}" includes="**/*"/>
+    </delete>
+    
+    <mkdir dir="${build}/dist"/>			
+    <mkdir dir="${build}/webimage"/>			
+    <mkdir dir="${build}/warimage"/>			
+    <mkdir dir="${build}/webimage/ui"/>			
+    <mkdir dir="${build}/webimage/rossfiles"/>
+    <mkdir dir="${build}/webimage/datatransferfiles"/>
+    <mkdir dir="${build}/webimage/reports"/>	
+    <mkdir dir="${build}/webimage/reportsoutput"/>
+  	<mkdir dir="${build}/webimage/META-INF"/>
+    <mkdir dir="${build}/webimage/WEB-INF"/>		
+    <mkdir dir="${build}/webimage/WEB-INF/classes"/>
+    <mkdir dir="${build}/webimage/WEB-INF/lib"/>
+    <mkdir dir="${build}/webimage/WEB-INF/messages"/>
+
+  	<!--
+  	<copy todir="${build}/webimage/META-INF">
+  		<fileset dir="${src.resources.common2}">
+  			<include name="context.xml"/>
+  		</fileset>
+  	</copy>
+  	-->
+  	
+    <copy todir="${build}/webimage/WEB-INF/lib">
+      <fileset dir="${src.webroot}/WEB-INF/lib">
+		<exclude name="dbunit-2.2.jar"/>
+		<!--exclude name="derby-10.1.1.0.jar"/-->
+		<exclude name="easymock-2.2.jar"/>
+		<exclude name="easymockclassextension-2.2.jar"/>
+		<exclude name="hamcrest-all-1.1.jar"/>
+		<exclude name="junit*"/>
+		<exclude name="ldap*"/>
+		<exclude name="p6spy*.jar"/>
+		<exclude name="javaee.jar"/>
+		<exclude name="ant-contrib-1.0b3.jar"/>
+      </fileset>
+    </copy>
+
+    <copy todir="${build}/webimage/WEB-INF">
+      <fileset dir="${src.webroot}/WEB-INF">
+		<include name="*.xsd"/>
+		<include name="*.xml"/>
+      </fileset>
+    </copy>
+
+  	<copy todir="${build}/webimage/WEB-INF">
+      <fileset dir="${src.resources.common2}/xsd">
+		<include name="*.xsd"/>
+      </fileset>
+    </copy>
+    
+    <copy todir="${build}/webimage/WEB-INF/classes">
+      <fileset dir="${src.resources.common2}/xsd">
+		<include name="*.xsd"/>
+      </fileset>
+    </copy>
+ 	
+    <mkdir dir="${build}/webimage/ui"/>			
+  	
+    <copy todir="${build}/webimage/ui">
+      <fileset dir="../build-staging-ui">
+      </fileset>
+    </copy>
+
+    <copy todir="${build}/webimage/WEB-INF/messages">
+      <fileset dir="${src.webroot}/WEB-INF/messages"/>
+    </copy>
+  </target>
+	
+  <target name="buildSiteWa2r" depends="prepareBuild">
+	    <mkdir dir="${build}/webimage/utilities"/>
+	    <mkdir dir="${build}/webimage/utilities/db"/>
+	    <mkdir dir="${build}/webimage/utilities/sqlprocessed"/>
+	    <mkdir dir="${build}/webimage/utilities/sqlqueue"/>
+	    <mkdir dir="${build}/webimage/utilities/win7"/>
+	    <mkdir dir="${build}/webimage/utilities/win7_32"/>
+	    <mkdir dir="${build}/webimage/utilities/winxp"/>
+	    <mkdir dir="${build}/webimage/patches"/>
+	    <mkdir dir="${build}/webimage/training"/>
+	    <mkdir dir="${build}/webimage/help"/>
+	    <mkdir dir="${build}/webimage/help/site"/>
+  
+	    <!-- copy the enterprise resources -->
+	    <copy todir="${build}">
+	      <fileset dir="${src.resources.deploydefaults.site}"/>
+	    </copy>
+
+	    <!-- copy the common resources -->
+	    <copy todir="${build}">
+	      <fileset dir="${src.resources.common2}">
+	      	<exclude name="context.xml"/>
+	      	<exclude name="log4j.properties"/>
+	      </fileset>
+	    </copy>
+	    
+	    <!-- suppress warnings not working? -->
+	    <javac destdir="${build}" 
+		   srcdir="${src}:${src.resources.common2}:${src.resources.postgres}"
+		   nowarn="on">
+	      <classpath refid="classpath"/>
+	    </javac>
+	    
+	    <jar destfile="${build}/dist/isuite-core-enterprise.jar"
+	       	 basedir="${build}"
+	       	 includes="gov/nwcg/isuite/**,org/nwcg/**,*.properties,*.xml,xsd/**"
+	       	 excludes="**/site/**, test/**"
+		 />				
+	  	
+	    <copy todir="${build}/webimage/WEB-INF/lib">
+	      <fileset dir="${build}/dist">
+			<include name="isuite-core-enterprise.jar"/>
+	      </fileset>
+	    </copy>
+
+	    <copy todir="${build}/webimage/reports">
+	      <fileset dir="${src.webroot}/reports">
+	      	<include name="**/*.jrxml"/>
+	      	<exclude name="**/*.jasper"/>
+	      </fileset>
+	    </copy>
+	  	
+	    <copy todir="${build}/webimage/patches">
+	      <fileset dir="${src.pgpatches}">
+	      	<include name="**/*.sql"/>
+	      	<exclude name="**/*.xml"/>
+	      	<exclude name="**/*.properties"/>
+	      </fileset>
+	    </copy>
+
+	    <copy todir="${build}/webimage/utilities/win7">
+	      <fileset dir="${src.utilwin7}">
+	      	<include name="**/*.bat"/>
+	      </fileset>
+	    </copy>
+	  	
+	    <copy todir="${build}/webimage/utilities/win7_32">
+	      <fileset dir="${src.utilwin7_32}">
+	      	<include name="**/*.bat"/>
+	      </fileset>
+	    </copy>
+
+	    <copy todir="${build}/webimage/utilities/winxp">
+	      <fileset dir="${src.utilwinxp}">
+	      	<include name="**/*.bat"/>
+	      </fileset>
+	    </copy>
+	  	
+	    <copy todir="${build}/webimage/training">
+	      <fileset dir="${src.trainingfiles}">
+	      	<include name="**/*"/>
+	      </fileset>
+	    </copy>
+
+		    <copy todir="${build}/webimage/help/site">
+		      <fileset dir="${src.site.help}">
+		      	<include name="**/*"/>
+		      </fileset>
+		    </copy>
+
+	  	<jar destfile="${build}/dist/isuite2.war" basedir="${build}/webimage">
+	    </jar>	
+	    
+    <delete includeemptydirs="true">
+      <fileset dir="../build-7zip/isuite2" includes="**/*"/>
+    </delete>
+    
+	    <mkdir dir="../build-7zip/isuite2"/>
+	    
+		    <copy todir="../build-7zip/isuite2">
+		      <fileset dir="${build}/webimage">
+		      	<include name="**/*"/>
+		      </fileset>
+		    </copy>
+  </target>
+
+</project>

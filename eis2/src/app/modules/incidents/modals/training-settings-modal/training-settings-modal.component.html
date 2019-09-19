@@ -1,0 +1,229 @@
+<app-jw-modal id="training-settings-modal" style="display: none;" class="box-hdr-dv">
+    <div style="width: 1134px; height: 440px;padding: 0px;">
+        <div class="w3-container w3-padding-small w3-theme-d2">
+            <div class="w3-left">Training Specialist Settings</div>
+            <div class="w3-right"></div>
+        </div>
+        <div class="eis">
+            <div class="dv-module-sub-nav-bar">
+                <div class="btn-group-sub-menu">
+                    <button (click)="dataTabSelect('incidentSettings')" [class]="getStyle('incidentSettings')">Incident Settings</button>	
+                    <button (click)="dataTabSelect('trainingContact')" [class]="getStyle('trainingContact')">Training Specialist Contact Information</button>
+                    <button (click)="dataTabSelect('priorityProgram')" [class]="getStyle('priorityProgram')">Trainee Priority Program</button>	
+                </div>
+            </div>
+            <div [class]="getTabClass('incidentSettings')">
+                <!--  <div *ngIf="this.selectedTab === 'incidentSettings'"> -->
+                <form [formGroup]="incSettingsForm">
+                <div class="p-20">
+                    <table>
+                        <tr [class]="getApplyToAllIncidentsClass()" >
+                            <td class="frmlbl"><label for="ckAllIncidents" tabIndex="0">Apply to All Incidents in Group</label></td>
+                            <td></td>
+                            <td>
+                                <div>
+                                    <div>
+                                        <input id="ckAllIncidents" formControlName="isAllIncidents" type="checkbox"(change)="this.setAllIncidents($event);">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr [class]="getIncidentSelectorClass()">
+                            <td class="frmlbl"><label for="ddIncidents">Select Incident</label></td>
+                            <td><label class="ast">*</label></td>
+                            <td>
+                                <app-eis-dropdown id="ddIncidents" #ddIncidents width="180"
+                                    formControlName="incidentVo"
+                                    [dropdownData]="this.incidentDropdownData"
+                                    [selectedDropdownData]="this.selectedIncidentDropdownData"
+                                ></app-eis-dropdown>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label for="ddComplexity">Complexity</label></td>
+                            <td></td>
+                            <td class="ml-5">
+                                <app-eis-dropdown id="ddComplexity" #ddComplexity width="180"
+                                    formControlName="complexityVo"
+                                    [dropdownData]="this.complexityData"
+                                    [selectedDropdownData]="this.complexityTypeDropdownData"
+                                    [viewportWidth]="390"
+                                ></app-eis-dropdown>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label for="txAcres">Acres</label></td>
+                            <td></td>
+                            <td class="ml-5"> 
+                                <app-text-input id="txAcres" formControlName="acres" name="txAcres" 
+                                    type="text" width="80" maxlength="10" restrict2="0-9">
+                                </app-text-input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label tabIndex="0">Fuel Types</label></td>
+                            <td></td>
+                            <td>
+                                <div class="ml-5">
+                                    <div><input id="ckBrush" formControlName="isBrush" type="checkbox"><label class="pl-10" for="ckBrush">B - BRUSH GROUP</label></div>
+                                    <div><input id="ckGrass" formControlName="isGrass" type="checkbox"><label class="pl-10" for="ckGrass">G - GRASS GROUP</label></div>
+                                    <div><input id="ckSlash" formControlName="isSlash" type="checkbox"><label class="pl-10" for="ckSlash">S - SLASH GROUP</label></div>
+                                    <div><input id="ckTimber" formControlName="isTimber" type="checkbox"><label class="pl-10" for="ckTimber">T - TIMBER GROUP</label></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                </form>
+                <div class="dv-action-bar">
+                    <button id="btnSave" (click)="this.save()" title="Click to save">Save</button>
+                    <button id="btnCancel" (click)="this.cancel()" title="Click to cancel the changes">Cancel</button>
+                    <button (click)="closeModal('training-settings-modal');" title="Click to close window">Close</button>
+                </div>
+            </div>
+            <div [class]="getTabClass('trainingContact')">
+            <!--  *ngIf="this.selectedTab === 'trainingContact'"> -->
+                <div class="eis">
+                    <div>
+                        <div class="ml-20 mt-5">
+                            <label class="tablbl" tabIndex="0"><strong>All Resources</strong></label>
+                        </div>
+                        <div class="ml-20">
+                            <app-eis-grid #grdAllResources class="dv-all-resources-grid mt-5"
+                                [treeViewMode]="false"
+                                [columnDefs]="this.resGridColumnDefs" 
+                                [rowData]="resTrainingContactVos"
+                                (rowSelectEvent)="this.onSelectAllResourcesGrid($event)">
+                            </app-eis-grid>
+                        </div>
+                        <div class="ml-20 mt-5" style="float: left">
+                                <div class="w3-left">
+                                    <label tabIndex="0"><strong>{{this.resourceName}}</strong></label>
+                                    <label class="ml-10" tabIndex="0"><strong>{{this.requestNumber}}</strong></label>
+                                </div>
+                            <form [formGroup]="tcForm">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td class="frmlbl"><label for="ckActive">Active</label></td>
+                                                    <td><input id="ckActive" formControlName="active" type="checkbox"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="frmlbl"><label for="txAddr">Address</label></td>
+                                                    <td>
+                                                        <app-text-input id="txAddr" name="txAddr" type="text" formControlName="addressLine"
+                                                        allowSpace="true" width="270" maxlength="35" textTransform="uppercase"></app-text-input>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="frmlbl"><label for="txCity">City</label></td>
+                                                    <td>
+                                                        <app-text-input id="txCity" name="txCity" type="text" formControlName="city"
+                                                          allowSpace="true" width="230" maxlength="30" textTransform="uppercase"></app-text-input>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="frmlbl"><label for="ddState">State</label></td>
+                                                    <td>
+                                                        <app-eis-dropdown id="ddState" #ddState width="50"
+                                                            formControlName="countryCodeSubdivisionVo"
+                                                            [selectedDropdownData]="this.stateTypeDropdownData"
+                                                            [dropdownData]="this.incidentSelectorService.stateTypeData"></app-eis-dropdown>
+                                                    </td>        
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td style="white-space: nowrap" class="frmlbl"><label for="txZip">Zip Code</label></td>
+                                                    <td> 
+                                                        <app-text-input formControlName="zip" id="txZip" name="txZip" type="text"
+                                                        width="100" maxlength="10" restrict2="0-9,-"></app-text-input>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="frmlbl"><label for="txPhone" Ariafor="txPhone">Phone</label></td>
+                                                    <td>
+                                                        <app-phone-input formControlName="phone" id="txPhone" name="txPhone" 
+                                                        restrict2="0-9"></app-phone-input>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="frmlbl"><label for="txEmail">Email</label></td>
+                                                    <td>
+                                                        <app-text-input formControlName="email" id="txEmail" name="txEmail" type="text"
+                                                        width="300" maxlength="50" textTransform="uppercase"></app-text-input>
+                                                    </td>
+                                                    </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                
+                            </form>
+                        </div>
+                        <div>
+                            <div class="dv-action-bar" style="float: left; margin-top: 0px; padding-top: 0px;"> 
+                                <button id="btnSave" type="button" (click)="this.saveTrainingContact()" title="Click to save">Save</button>
+                                <button id="btnCancel" type="button" (click)="this.cancelTrainingContact()" title="Click to cancel the changes">Cancel</button>
+                                <button id="btnClear" type="button" (click)="this.addTrainingContact()" title="Click to clear">Clear</button>
+                                <button id="btnDelete" type="button" (click)="this.deleteTrainingContact()" title="Click to delete">Delete</button>
+                                <button (click)="closeModal('training-settings-modal');" title="Click to close window">Close</button>
+                            </div>   
+                        </div>
+                        <div class="ml-20 mt-5" style="float: left;">
+                            <label class="tablbl" tabIndex="0"><strong>Training Specialists</strong></label>
+                        </div>
+                        <div class="ml-20">
+                            <app-eis-grid #grdTrainingSpecialists class="dv-training-spec-grid mt-5"
+                                [treeViewMode]="false"
+                                [columnDefs]="this.tsGridColumnDefs" 
+                                [rowData]="tsTrainingContactVos"
+                                (rowSelectEvent)="this.onSelectTrainingSpecialistsGrid($event)">
+                            </app-eis-grid>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div [class]="getTabClass('priorityProgram')">
+                <!--    <div *ngIf="this.selectedTab === 'priorityProgram'"> -->
+                <div class="eis">
+                <form [formGroup]="ppForm">
+                    <div>
+                        <div class="ml-20 mt-20">
+                            <label for="txPriorityProgram">Priority Program</label>
+                            <label class="ast">*</label>
+                            <app-text-input id="txPriorityProgram" formControlName="priorityProgramCode" name="txPriorityProgram" 
+                                allowSpace="true" type="text" width="378" maxlength="40">
+                            </app-text-input>
+                        </div>
+                        <div>
+                            <div class="dv-action-bar">
+                                <button id="btnSave" type="button" (click)="this.savePriorityProgram(false)" title="Click to save">Save</button>
+                                <button id="btnCancel" type="button" (click)="this.cancelPriorityProgram()" title="Click to cancel the changes">Cancel</button>
+                                <button id="btnClear" type="button" (click)="this.addPriorityProgram()" title="Click to clear">Clear</button>
+                                <button id="btnDelete" type="button" (click)="this.deletePriorityProgram()" title="Click to delete">Delete</button>
+                                <button (click)="closeModal('training-settings-modal');" title="Click to close window">Close</button>
+                            </div>   
+                        </div>
+                        <div class="ml-20">
+                            <app-eis-grid #grdPriority class="dv-priority-grid mt-10"
+                                [treeViewMode]="false"
+                                [columnDefs]="this.pGridColumnDefs" 
+                                [rowData]="priorityProgramVos"
+                                [floatingFilter]="false"
+                                (rowSelectEvent)="this.onSelectPriorityProgram($event)">
+                            </app-eis-grid>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-jw-modal>
+<app-prompt-modal id="promptModalTrainingSettings" #promptModalTrainingSettings (promptActionEvent)="this.promptActionResultTrainingSettings($event)"></app-prompt-modal>
+

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="GroundSupportReport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="40b2a741-4855-4ed6-b4ee-1a8b4d4950d5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="incidentNumber" class="java.lang.String"/>
+	<field name="resourceName" class="java.lang.String"/>
+	<field name="leaveTime" class="java.lang.String"/>
+	<field name="airport" class="java.lang.String"/>
+	<field name="airline" class="java.lang.String"/>
+	<field name="flightTime" class="java.lang.String"/>
+	<field name="incidentId" class="java.lang.String"/>
+	<field name="tentativeReleaseDate" class="java.util.Date"/>
+	<variable name="RESOURCE_NAME" class="java.lang.String"/>
+	<group name="Incident" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{incidentId}]]></groupExpression>
+	</group>
+	<group name="TentativeReleaseDate" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{tentativeReleaseDate}.getDate()]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="143" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="cec86023-bfad-4dd4-bff9-52a542438cbd" x="170" y="0" width="214" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GROUND SUPPORT REPORT]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement uuid="f8b4902f-393d-4f6b-8eaa-23996d5a1621" x="25" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3e960d25-6124-46b4-8706-8229dc3e136b" x="0" y="0" width="25" height="20"/>
+				<textElement/>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1bbd1a51-b3dd-4fe1-863d-bc627bbdc590" x="2" y="57" width="133" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TO:  GROUND SUPPORT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="71b9c640-9a11-42d4-9091-9de4e5f4a985" x="2" y="77" width="133" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FROM:  DEMOB]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0aa4d669-3c99-4d6e-9f90-7c916d1da705" x="2" y="113" width="331" height="19"/>
+				<textElement/>
+				<text><![CDATA[The following persons need ground support transportation on ]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="4dbead54-2d9a-4e4e-b328-8820708b2d21" x="346" y="131" width="142" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="e4baf3e4-e403-4abc-aa64-6a78b93d11b8" x="166" y="20" width="223" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{incidentName} + " " + $F{incidentNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="96f24bb4-754b-49e0-bc8b-17a926e0bd44" x="488" y="0" width="67" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM/dd/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="fb593ddb-f03a-49c2-897d-d493d87882c4" x="346" y="111" width="142" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tentativeReleaseDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="50">
+			<staticText>
+				<reportElement uuid="ab79687c-2e26-4aa7-8578-7f90c13c6ae2" mode="Transparent" x="2" y="10" width="214" height="40" backcolor="#FFFFFF"/>
+				<box leftPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ad99f7a2-0251-4bd9-bf57-6d159acddeaa" mode="Transparent" x="216" y="10" width="78" height="40" backcolor="#FFFFFF"/>
+				<box leftPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[LEAVE ICP TIME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="88c0ec78-75af-4b3f-9cb3-e792ba849fcd" mode="Transparent" x="294" y="10" width="100" height="40" backcolor="#FFFFFF"/>
+				<box leftPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" markup="none"/>
+				<text><![CDATA[AIRPORT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="59151bdd-78ef-439e-8137-f05bbb25e056" mode="Transparent" x="394" y="10" width="106" height="40" backcolor="#FFFFFF"/>
+				<box leftPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" markup="none"/>
+				<text><![CDATA[AIRLINE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ba68bf4b-22e3-484c-b995-ee5c825c4823" mode="Transparent" x="500" y="10" width="55" height="40" backcolor="#FFFFFF"/>
+				<box leftPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" markup="none"/>
+				<text><![CDATA[FLIGHT TIME]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="f3939b82-414f-46de-9332-2af00b48f17b" x="2" y="0" width="214" height="20"/>
+				<box leftPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{resourceName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement uuid="98498659-8974-47f1-9d31-3c0d3949fb1d" x="216" y="0" width="78" height="20"/>
+				<box leftPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{leaveTime}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="6bdd8512-f1ca-49fc-a348-da63618784bf" x="294" y="0" width="100" height="20"/>
+				<box leftPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{airport}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="1452bd55-7bd3-4331-bed4-4e500ec075e8" x="394" y="0" width="106" height="20"/>
+				<box leftPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{airline}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="f6a5d8e0-775d-490a-9916-7aa5834380d2" x="500" y="0" width="55" height="20"/>
+				<box leftPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{flightTime}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

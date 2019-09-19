@@ -1,0 +1,170 @@
+* {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+}
+.main-card {
+  border: 1px solid gray;
+  height: 83vh;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+.card-body {
+  padding: 0 20px 20px 20px;
+  margin-left: 20px;
+  min-width: 800px;
+}
+.pl-10 {
+  padding-left: 10px;
+}
+.bx-hdr {
+  height: 30px;
+  padding: 5px;
+  background-color: #dfdfdf;
+  font-weight: 550;
+}
+.bx-hdr-date-box {
+  height: 30px;
+  padding: 5px;
+  font-weight: 550;
+}
+.bx-hdr-sort {
+  height: 30px;
+  padding: 5px 35px;
+  font-weight: 550;
+}
+.bx-hdr-dv {
+  border: 1px solid darkgray;
+  height: 220px;
+}
+.bx-body {
+  padding: 5px;
+}
+.left-box {
+  height: 150px;
+  width: 35%;
+  font-size: 11px;
+  color: black;
+  text-align: center;
+  border: 1px solid #a7a7a7;
+  display: inline-block;
+}
+.left-box .title {
+  font-size: 12px;
+  font-weight: 550;
+  background-color: #dedede;
+  line-height: 30px;
+  border-radius: 2px;
+}
+
+.center-box {
+  height: 150px;
+  width: 80px;
+  font-size: 11px;
+  color: black;
+  text-align: center;
+  border: 1px solid #a7a7a7;
+  background-color: #dedede;
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.center-box p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.right-box {
+  height: 150px;
+  width: 35%;
+  font-size: 11px;
+  color: black;
+  text-align: center;
+  border: 1px solid #a7a7a7;
+  display: inline-block;
+}
+.right-box .title {
+  font-size: 12px;
+  font-weight: 550;
+  background-color: #dedede;
+  line-height: 30px;
+  border-radius: 2px;
+}
+.icon {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.td-width {
+  width: 250px;
+}
+.td-width .bx-body div {
+  padding-top: 5px;
+}
+.td-width label {
+  font-size: 12px;
+}
+.report-sort {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.radio-box {
+  height: 140px;
+  width: 350px;
+  font-size: 12px;
+  padding-left: 5px;
+}
+input[type="checkbox"] {
+  margin-top: -1px;
+  vertical-align: middle;
+  width: 18px;
+  height: 18px;
+}
+input[type="radio"] {
+  margin-top: -1px;
+  vertical-align: middle;
+  width: 18px;
+  height: 18px;
+}
+.padding-5 {
+  margin: 5px;
+}
+.tooltip-box {
+  width: 400px;
+  height: 70px;
+  border: 1px solid gray;
+  border-radius: 8px;
+  background-color: #ccffff;
+  font-size: 14px;
+  font-weight: 550;
+  display: inline-table;
+}
+.button-cus {
+  height: 25px;
+  font-size: 12px;
+}
+.title {
+  font-weight: 600;
+  font-size: 16px;
+}
+button {
+  font-weight: 600;
+}
+.date-input {
+  width: 100px;
+}
+.label-input {
+  width: 75px;
+  font-size: 12px;
+  display: inline-block;
+  padding-right: 20px;
+  text-align: right;
+}
+.td-date-box .date-box {
+  height: 120px;
+  border: 1px solid darkgray;
+  width: 250px;
+}

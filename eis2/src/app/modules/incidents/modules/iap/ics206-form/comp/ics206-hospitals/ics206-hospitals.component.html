@@ -1,0 +1,187 @@
+<label class="blk-hdr"><u>Hospitals</u></label>
+<div>
+  <form [formGroup]="compForm" autocomplete="off" onsubmit="">
+    <div class="eis">
+      <!--
+
+      <div class="split-example">
+        <as-split direction="vertical">
+          <as-split-area [size]="splitAreaTopSize">
+      -->
+      <div>
+        <table>
+              <tr>
+                <td>
+                  <!-- Column 1 -->
+                  <table>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txName">Name</label></td>
+                        <td><label class="ast">*</label></td>
+                        <td>
+                          <app-text-input id="txName" name="txName"
+                           allowSpace="true" formControlName="name"
+                          width="250" maxlength="200"></app-text-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txAddr1">Address Line 1</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                            <app-text-input id="txAddr1" name="txAddr1"
+                            allowSpace="true" formControlName="addressLine1"
+                           width="250" maxlength="35"></app-text-input>
+                         </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txAddr2">Address Line 2</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                            <app-text-input id="txAddr2" name="txAddr2"
+                            allowSpace="true" formControlName="addressLine2"
+                           width="250" maxlength="35"></app-text-input>
+                         </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txCity">City</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                            <app-text-input id="txCity" name="txCity"
+                            allowSpace="true" formControlName="city"
+                           width="250" maxlength="30"></app-text-input>
+                         </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="ddState">State</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                            <app-eis-dropdown id="ddState" #ddState
+                            formControlName="state"
+                            [width]="40"
+                            [dropdownDisabled]="this.ddStateDisabled"
+                            [selectedDropdownData]="this.selectedStateDropdownData"
+                            [dropdownData]="this.statesDropdownData"></app-eis-dropdown>
+                       </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txZip">Zip</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                            <app-text-input id="txZip" name="txZip" type="text"
+                            formControlName="zip"  width="90" maxlength="10" 
+                            restrict2="0-9,-" textTransform="uppercase"></app-text-input>
+                         </td>
+                    </tr>
+                  </table>
+                </td>
+                <td>
+                      <!-- Column 2 -->
+                      <table>
+                          <tr>
+                              <td class="frmlbl"><label class="f1" for="txPhone">Phone</label></td>
+                              <td><label class="ast"></label></td>
+                              <td>
+                                  <app-phone-input formControlName="phone" id="txPhone" #txPhone style="width:150px;"></app-phone-input>
+                                </td>
+                          </tr>
+                          <tr>
+                          <td class="frmlbl"><label class="f1" for="txTravel1">Travel Time Air</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                              <app-text-input id="txTravel1" name="txTravel1"
+                              allowSpace="true" formControlName="airTravelTime"
+                             width="150" maxlength="15"></app-text-input>
+                            </td>
+                      </tr>
+                      <tr>
+                          <td class="frmlbl"><label class="f1" for="txTravel2">Travel Time Ground</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                              <app-text-input id="txTravel2" name="txTravel2"
+                              allowSpace="true" formControlName="groundTravelTime"
+                             width="150" maxlength="15"></app-text-input>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="frmlbl"><label class="f1" for="txHeli1">Helipad</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                              <input type="radio" formControlName="helipad" name="helipad" value="Yes"><label style="margin-left: 3px;">Yes</label>
+                              <br>
+                              <input type="radio" formControlName="helipad" name="helipad"  value="No"><label style="margin-left: 3px;">No</label>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="frmlbl"><label class="f1" for="txLcf">Level of Care Facility</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                              <app-text-input id="txTravel1" name="txTravel1"
+                              allowSpace="true" formControlName="levelOfCare"
+                             width="150" maxlength="100"></app-text-input>
+                          </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td>
+                      <!-- Column 3 -->
+                      <table>
+                          <tr>
+                              <td class="frmlbl"><label class="f1" for="txLat">Lattitude</label></td>
+                              <td><label class="ast"></label></td>
+                              <td>
+                                <app-text-input id="txLat" name="txLat"
+                                allowSpace="true" formControlName="latitude"
+                                width="150" maxlength="50"></app-text-input>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="frmlbl"><label class="f1" for="txLong">Longitude</label></td>
+                              <td><label class="ast"></label></td>
+                              <td>
+                                  <app-text-input id="txLong" name="txLong"
+                                  allowSpace="true" formControlName="longitude"
+                                  width="150" maxlength="50"></app-text-input>
+                                </td>
+                          </tr>
+                          <tr>
+                              <td class="frmlbl"><label class="f1" for="txVhf">VHF</label></td>
+                              <td><label class="ast"></label></td>
+                              <td>
+                                  <app-text-input id="txVhf" name="txVhf"
+                                  allowSpace="true" formControlName="vhf"
+                                  width="150" maxlength="50"></app-text-input>
+                                </td>
+                          </tr>
+    
+                      </table>
+                  </td>
+                </tr>
+            </table> 
+            </div> 
+  <!--        </as-split-area> 
+          <as-split-area [size]="splitAreaBottomSize" class="scroll-x">
+          -->
+            <div id="dv-block-action-bar" class="w3-small w3-left">
+              <button (click)="this.save()" title="Click to save the Hospital." [disabled]="this.isFormLocked" type="button">Save</button>
+              <button (click)="this.add()" title="Click to add a new Hospital." [disabled]="this.isFormLocked" type="button">Add Hospital</button>
+              <button (click)="this.delete()" title="Click to delete the Hospital." [disabled]="this.isFormLocked" type="button">Delete</button>
+              <button (click)="this.cancel()" title="Click to cancel changes." [disabled]="this.isFormLocked" type="button">Cancel</button>
+              <button (click)="this.preAddBlankLine()" title="Click to add a blank line." [disabled]="this.isFormLocked" type="button">Add Blank Line</button>
+              <button (click)="this.reorder()" title="Click to re-order Area Hospitals." [disabled]="this.isFormLocked" type="button">Re-Order Hospitals</button>
+            </div>
+            <div class="w3-left" style="height: 37vh; width: 100%;">
+                  <app-eis-grid #gridHospital
+                  [floatingFilter]="false"
+                  [columnDefs]="this.gridColumnDefs"
+                  [rowData]="this.hospitalList" 
+                  (rowSelectEvent)="onSelectRow($event)">
+                  </app-eis-grid>
+            </div>
+          <!--
+          </as-split-area>
+        </as-split>
+        </div>
+          -->
+    </div>
+ </form>
+</div>
+<app-prompt-modal id="icsForm206HospPromptModal" #icsForm206HospPromptModal (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>

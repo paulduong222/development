@@ -1,0 +1,69 @@
+<app-jw-modal id="contractor-rate-window-modal" style="display: none;" class="box-hdr-dv">
+  <div style="width: 330px; height: 210px;padding: 0px;">
+     <div class="w3-container w3-padding-small w3-theme-d2">
+        <div class="w3-left">{{ this.windowLabel }}</div>
+     </div>
+     <br>
+     <div class="eis">
+       <form [formGroup]="rateForm" autocomplete="off">
+       <div>
+         <table>
+           <tr>
+              <td class="frmlbl"><label class="f1" for="ddRateType">Rate Type</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                  <app-eis-dropdown id="ddRateType" #ddRateType
+                    [width]="100"
+                    (dropdownSelect)="this.onRateTypeSelect($event)"
+                    [selectedDropdownData]="this.selectedRateType"
+                    [dropdownData]="this.rateTypeData"></app-eis-dropdown>
+              </td>
+           </tr>
+           <tr>
+              <td class="frmlbl"><label class="f1" for="ddTimeUom">Time UOM</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                  <app-eis-dropdown id="ddTimeUom" #ddTimeUom
+                    [width]="100"
+                    (dropdownSelect)="this.onTimeUomSelect($event)"
+                    [selectedDropdownData]="this.selectedTimeUom"
+                    [dropdownData]="this.timeUomData"></app-eis-dropdown>
+              </td>
+           </tr>
+           <tr>
+              <td class="frmlbl"><label class="f1" for="txRate">Rate</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                <app-text-input id="txRate" #txRate restrict2="0-9,."
+                formControlName="rate"
+                width="80" maxlength="10"></app-text-input>
+              </td>
+           </tr>
+           <tr>
+              <td class="frmlbl"><label class="f1" for="txGuarantee">Guarantee</label></td>
+              <td><label class="ast"></label></td>
+              <td>
+                <app-text-input id="txGuarantee" #txGuarantee restrict2="0-9,."
+                formControlName="guarantee"
+                width="80" maxlength="10"></app-text-input>
+              </td>
+           </tr>
+           <tr>
+              <td class="frmlbl"><label class="f1" for="txDesc">Description</label></td>
+              <td><label class="ast"></label></td>
+              <td>
+                  <app-text-input id="txDesc" #txDesc allowSpace="true"
+                  formControlName="description"
+                  width="200" maxlength="128"></app-text-input>
+              </td>
+           </tr>
+        </table>
+       </div>
+      </form>
+    </div>
+ </div>
+ <div class="dv-action-bar w3-small w3-center">
+   <button (click)="this.save()" title="Click to save the Contractor Rate">Save</button>
+   <button (click)="this.closeModal();" title="Click to cancel changes and close window">Close</button>
+ </div>
+</app-jw-modal>

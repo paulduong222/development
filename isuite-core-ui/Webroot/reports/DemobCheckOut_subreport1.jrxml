@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DemobCheckOut_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="2c6a3164-5699-499d-b2ce-e7f32123eb48">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="sectionName" class="java.lang.String"/>
+	<field name="label" class="java.lang.String"/>
+	<field name="position" class="java.lang.String"/>
+	<field name="selected" class="java.lang.Boolean"/>
+	<group name="Section" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{sectionName}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement uuid="b2682f13-f1d4-4247-86c6-f8509743219b" x="26" y="0" width="316" height="20"/>
+					<textElement>
+						<font size="8" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[($F{sectionName} == "LOGISTICS") ? "LOGISTICS SECTION" : (
+    ($F{sectionName} == "PLANNING") ? "PLANNING SECTION" : (
+        ($F{sectionName} == "FINANCE") ? "FINANCE/ADMINISTRATION SECTION" : (
+            ($F{sectionName} == "OTHER_LABEL" ? "OTHER" :  $F{sectionName} )
+         )
+     )
+ )]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="12"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement uuid="67051132-de02-43a4-8caa-5ecc277ded28" x="49" y="0" width="168" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{label}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="34675482-36f4-4fb5-9707-0016bb49d964" x="230" y="10" width="280" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="f270cf3a-46bf-4986-86f5-1ae6ce940e1c" x="26" y="0" width="23" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $F{selected} ? "[X]" : "[  ]" )]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,51 @@
+<div id="dv-ics203">
+    <div class="w3-left">
+      <button [class]="getBtnClass('block3')" (click)="this.openTab('block3')" title="Click to edit Block 3. Commander.">3. Commander</button>
+      <button [class]="getBtnClass('block4')" (click)="this.openTab('block4')" title="Click to edit Block 4. Agency/Org Reps.">4. Agency/Org Reps</button>
+      <button [class]="getBtnClass('block5')" (click)="this.openTab('block5')" title="Click to edit 5. Planning.">5. Planning</button>
+      <button [class]="getBtnClass('block6')" (click)="this.openTab('block6')" title="Click to edit 6. Logistics.">6. Logistics</button>
+      <button [class]="getBtnClass('block7')" (click)="this.openTab('block7')" title="Click to edit 7. Operations.">7. Operations</button>
+      <button [class]="getBtnClass('block7a')" (click)="this.openTab('block7a')" title="Click to edit Block 7a. Branch/Divisions.">7a. Branch/Divisions</button>
+      <button [class]="getBtnClass('block7b')" (click)="this.openTab('block7b')" title="Click to edit Block 7b. Air Operation Branch.">7b. Air Operation Branch</button>
+      <button [class]="getBtnClass('block8')" (click)="this.openTab('block8')" title="Click to edit Block 8. Finance/Admin.">8. Finance/Admin</button>
+      <button [class]="getBtnClass('block9')" (click)="this.openTab('block9')" title="Click to edit Block 9. Prepared By.">9. Prepared By</button>
+  </div>
+    <br>
+    <!-- Block 3 -->
+    <div id="dv-block3" [class]="getDivBlockClass('block3')">
+        <app-ics203-commanders></app-ics203-commanders>
+    </div>  
+    <!-- Block 4 -->
+    <div id="dv-block4" [class]="getDivBlockClass('block4')">
+        <app-ics203-agency-org-reps></app-ics203-agency-org-reps>
+    </div>
+    <!-- Block 5 -->
+    <div id="dv-block5" [class]="getDivBlockClass('block5')">
+        <app-ics203-planning></app-ics203-planning>
+    </div>
+    <!-- Block 6 -->
+    <div id="dv-block6" [class]="getDivBlockClass('block6')">
+        <app-ics203-logistics></app-ics203-logistics>
+    </div>
+    <!-- Block 7 -->
+    <div id="dv-block7" [class]="getDivBlockClass('block7')">
+        <app-ics203-operations></app-ics203-operations>
+    </div>
+    <!-- Block 7a -->
+    <div id="dv-block7a" [class]="getDivBlockClass('block7a')">
+        <app-ics203-branches></app-ics203-branches>
+    </div>
+    <!-- Block 7b -->
+    <div id="dv-block7b" [class]="getDivBlockClass('block7b')">
+        <app-ics203-air-op-branch></app-ics203-air-op-branch>
+    </div>
+    <!-- Block 8 -->
+    <div id="dv-block8" [class]="getDivBlockClass('block8')">
+        <app-ics203-finance></app-ics203-finance>
+    </div>
+    <!-- Block 9 -->
+    <div id="dv-block7b" [class]="getDivBlockClass('block9')">
+        <app-ics203-prepared-by></app-ics203-prepared-by>
+    </div>
+  </div>
+  

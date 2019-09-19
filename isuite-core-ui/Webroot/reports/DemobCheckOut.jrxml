@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DemobCheckOut" language="groovy" pageWidth="595" pageHeight="842" columnWidth="523" leftMargin="36" rightMargin="36" topMargin="36" bottomMargin="36" uuid="e95c005f-1b4a-457f-af2c-dc7bad20c9fe">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="6fa15dc1-5879-4f2a-99dd-1f672058548d"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\ISWeb\\isuite-core\\Webroot\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="incidentNumber" class="java.lang.String"/>
+	<field name="tentativeReleaseDate" class="java.util.Date"/>
+	<field name="requestNumber" class="java.lang.String"/>
+	<field name="kindCode" class="java.lang.String"/>
+	<field name="resourceName" class="java.lang.String"/>
+	<field name="leaderName" class="java.lang.String"/>
+	<field name="travelMethod" class="java.lang.String"/>
+	<field name="actualReleaseDate" class="java.util.Date"/>
+	<field name="demobCity" class="java.lang.String"/>
+	<field name="demobState" class="java.lang.String"/>
+	<field name="releaseRemarks" class="java.lang.String"/>
+	<field name="dataSourceSectionData" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="numberPersonnel" class="java.lang.String"/>
+	<field name="agency" class="java.lang.String"/>
+	<field name="resourceId" class="java.lang.String"/>
+	<field name="destination" class="java.lang.String"/>
+	<field name="unitId" class="java.lang.String"/>
+	<field name="eta" class="java.lang.String"/>
+	<field name="ron" class="java.lang.String"/>
+	<group name="resource" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{resourceId}]]></groupExpression>
+		<groupHeader>
+			<band height="704">
+				<staticText>
+					<reportElement uuid="61302516-c49b-443e-a07c-52d6066397a4" x="471" y="0" width="52" height="24"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[ICS-221]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="80098c1d-3fe7-4b83-9268-399eb1bc28c6" x="0" y="24" width="227" height="24"/>
+					<box topPadding="2" leftPadding="2">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[1. INCIDENT NAME/NUMBER]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="1e26d366-8dca-4856-81ec-1058e2f093f2" x="227" y="24" width="140" height="24"/>
+					<box topPadding="2" leftPadding="2">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[2. DATE/TIME]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="d29f810f-46ac-4611-b846-9b0cd20e2903" x="367" y="24" width="156" height="24"/>
+					<box topPadding="2" leftPadding="2">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[3. DEMOB NO.]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="533fe60d-dad6-4104-a394-df26d1408d2f" x="0" y="24" width="227" height="24"/>
+					<box leftPadding="4">
+						<pen lineWidth="0.0"/>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement verticalAlignment="Bottom"/>
+					<textFieldExpression><![CDATA[$F{incidentName} + " " + $F{incidentNumber}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="4811e6c6-75dd-4a1c-8f8c-a7250c5acf4c" x="0" y="48" width="523" height="24"/>
+					<box topPadding="2" leftPadding="2">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[4. UNIT/PERSONNEL RELEASED]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="fc64159e-c6da-4244-b479-5e80d4f5e8ab" x="0" y="48" width="523" height="24"/>
+					<box leftPadding="4"/>
+					<textElement verticalAlignment="Bottom"/>
+					<textFieldExpression><![CDATA[$F{resourceName}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="d1117f87-5e1c-41a6-8480-e85c7e12da96" x="367" y="24" width="156" height="24"/>
+					<box leftPadding="4"/>
+					<textElement verticalAlignment="Bottom"/>
+					<textFieldExpression><![CDATA[$F{requestNumber}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="1c51ce63-5f16-4170-86c6-9379726a8c96" x="411" y="48" width="112" height="24"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+					<textFieldExpression><![CDATA[($F{numberPersonnel} == "0" ? null : $F{numberPersonnel})]]></textFieldExpression>
+				</textField>
+				<textField pattern="MM/dd/yyyy" isBlankWhenNull="true">
+					<reportElement uuid="a7f1513d-1140-4862-8155-60322423d98d" x="227" y="24" width="77" height="24"/>
+					<box leftPadding="0"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+					<textFieldExpression><![CDATA[$F{tentativeReleaseDate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="04e14c78-7e9c-4942-8bd5-ad2236ab2e5c" x="0" y="0" width="523" height="24"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="16" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DEMOBILIZATION CHECKOUT]]></text>
+				</staticText>
+				<textField pattern="HH:mm" isBlankWhenNull="true">
+					<reportElement uuid="98508e92-e731-41c1-a6f1-7b24d2ee5080" x="314" y="28" width="53" height="20"/>
+					<textElement verticalAlignment="Bottom"/>
+					<textFieldExpression><![CDATA[$F{tentativeReleaseDate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="4bc9c424-35a4-46ec-bf2a-413a884a88ff" x="0" y="72" width="523" height="24"/>
+					<box topPadding="2" leftPadding="2">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[5. TRANSPORTATION TYPE/NO.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="7e131df5-1f76-4728-8a6a-601f05c287c5" x="0" y="96" width="284" height="36"/>
+					<box topPadding="2" leftPadding="2">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[6. ACTUAL RELEASE DATE/TIME]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="2c2d62d6-8c7c-4f46-8dc1-123cac17dfdf" x="284" y="96" width="239" height="36"/>
+					<box topPadding="2" leftPadding="2">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[7. MANIFEST YES NO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="b1ba015e-2f04-43e2-bbdf-99c11acad4db" x="0" y="132" width="284" height="48"/>
+					<box topPadding="2" leftPadding="2">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[8. DESTINATION]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="0c8930c0-78d8-4076-a78f-2fb51a854cf4" x="284" y="132" width="239" height="48"/>
+					<box topPadding="2" leftPadding="2">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[9. AREA/AGENCY/REGION NOTIFIED]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="bf64dcb7-80b6-4ce6-89df-1fdbcd9ac28f" x="285" y="112" width="238" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[NUMBER]]></text>
+				</staticText>
+				<line>
+					<reportElement uuid="a0c367ce-aef2-4576-918c-d57ba97e8bbe" x="320" y="125" width="192" height="1"/>
+				</line>
+				<staticText>
+					<reportElement uuid="5b46752b-ad88-40ec-853a-d329fab8f287" x="285" y="164" width="238" height="16"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[DATE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="90eb32aa-d28d-4ac0-8e1b-e8c77e9e81d9" x="285" y="148" width="238" height="16"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[NAME]]></text>
+				</staticText>
+				<line>
+					<reportElement uuid="eb72e43a-f670-4bf6-92a7-055716fb93f4" x="13" y="157" width="249" height="1"/>
+				</line>
+				<line>
+					<reportElement uuid="eee7f0d3-1061-4179-a781-a910cb0e2443" x="308" y="156" width="204" height="1"/>
+				</line>
+				<line>
+					<reportElement uuid="afab82fa-ce44-468d-8827-81f93d847322" x="308" y="170" width="204" height="1"/>
+				</line>
+				<staticText>
+					<reportElement uuid="1cfcfbdc-3b8a-456e-97f0-949b983d9c2c" x="0" y="180" width="523" height="24"/>
+					<box topPadding="2" leftPadding="2">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[10. UNIT LEADER RESPONSIBLE FOR COLLECTING PERFORMANCE RATING]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="b61d7e58-7d71-44ab-bdc1-7f70472698f0" x="0" y="588" width="523" height="64"/>
+					<box topPadding="2" leftPadding="2">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[12. REMARKS]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="0807ddfe-676d-4c67-bd1e-21136f77401b" x="0" y="588" width="523" height="88"/>
+					<box topPadding="20" leftPadding="20">
+						<pen lineWidth="0.0"/>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement>
+						<font size="9" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{releaseRemarks}]]></textFieldExpression>
+				</textField>
+				<subreport>
+					<reportElement uuid="b0a08018-bda0-453d-a704-ff865ea2478a" x="0" y="237" width="523" height="351"/>
+					<dataSourceExpression><![CDATA[$F{dataSourceSectionData}]]></dataSourceExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "DemobCheckOut_subreport1.jasper"]]></subreportExpression>
+				</subreport>
+				<staticText>
+					<reportElement uuid="43d9a1d1-7caa-4e2e-a65f-a06f20e998a7" x="0" y="204" width="523" height="384"/>
+					<box topPadding="2" leftPadding="2">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[11. UNIT PERSONNEL     YOU AND YOUR RESOURCES HAVE BEEN RELEASED SUBJECT TO SIGNOFF FROM THE FOLLOWING:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="f9aa6a1b-d87c-454a-96dd-f3ee60ed2e1d" x="89" y="217" width="332" height="20"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[(DEMOB UNIT LEADER CHECK APPROPRIATE BOX)]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="7306ac7c-d12d-4fc5-a527-592e6a35c613" x="0" y="72" width="523" height="24"/>
+					<box leftPadding="4"/>
+					<textElement verticalAlignment="Bottom"/>
+					<textFieldExpression><![CDATA[($F{travelMethod} == "AR" ? "A/R" : $F{travelMethod})]]></textFieldExpression>
+				</textField>
+				<textField pattern="MM/dd/yyyy" isBlankWhenNull="true">
+					<reportElement uuid="75eba173-df5e-4c00-8c99-f546920e6ea5" x="0" y="112" width="137" height="20"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+					<textFieldExpression><![CDATA[$F{actualReleaseDate}]]></textFieldExpression>
+				</textField>
+				<textField pattern="HH:mm" isBlankWhenNull="true">
+					<reportElement uuid="99a67fcf-529e-4e5f-83d0-76f7a80ffaf3" x="147" y="112" width="137" height="20"/>
+					<textElement verticalAlignment="Bottom"/>
+					<textFieldExpression><![CDATA[$F{actualReleaseDate}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="33b9534e-7b1a-4892-8166-bb0b0b3c44c4" x="13" y="138" width="249" height="20"/>
+					<textElement verticalAlignment="Bottom"/>
+					<textFieldExpression><![CDATA[$F{destination}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="04cbe046-0e43-4fc2-a84c-91c97cc1dd51" x="304" y="136" width="208" height="20"/>
+					<box leftPadding="4"/>
+					<textElement verticalAlignment="Bottom"/>
+					<textFieldExpression><![CDATA[$F{agency}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="49c091c6-4bee-4f50-a171-da97800abc48" x="0" y="676" width="523" height="24"/>
+					<box leftPadding="10">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[221 ICS 1/83]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+</jasperReport>

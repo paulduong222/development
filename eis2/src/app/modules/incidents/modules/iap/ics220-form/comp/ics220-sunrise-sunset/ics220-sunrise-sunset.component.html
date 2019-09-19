@@ -1,0 +1,38 @@
+<label class="blk-hdr"><u>Sunrise/Sunset</u></label>
+<br>
+<br>
+<form [formGroup]="compForm" autocomplete="off">
+<div class="eis">
+  <div>
+    <table>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="txSunrise">Sunrise</label></td>
+          <td><label class="ast"></label></td>
+          <td>
+            <app-text-input id="txSunrise" name="txSunrise"
+            formControlName="sunrise" restrict2="0-9" 
+            width="80" maxlength="4"></app-text-input>
+          </td>
+      </tr>
+      <tr>
+        <td class="frmlbl"><label class="f1" for="txSunset">Sunset</label></td>
+        <td><label class="ast"></label></td>
+        <td>
+          <app-text-input id="txSunset" name="txSunset"
+          formControlName="sunset" restrict2="0-9" 
+          width="80" maxlength="4"></app-text-input>
+        </td>
+      </tr>
+    </table>  
+  </div>
+</div>
+<br>
+<label class="blk-hdr"><u>Remarks</u></label>
+<label style="margin-left: 10px;">( Safety Notes, Hazards, Air Operations Special Equipment, etc. )</label>
+<br>
+<br>
+<textarea id="txRemarks" name="txRemarks" 
+allowSpace="true" maxlength="560"
+formControlName="remarks"
+style="width:90%;height:200px;resize: none;margin-left: 10px;"></textarea>
+</form>

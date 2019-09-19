@@ -1,0 +1,33 @@
+<div class="eis">
+    <div>
+        <label for="showAll" class="frmlbl">
+            <input id="showAll" type="radio" name="selection" checked (click)="clearFilter()">
+            Show All
+        </label>
+        <label for="showSelected" class="frmlbl">
+            <input id="showSelected" type="radio" name="selection" (click)="filterSelected()">
+            Show Selected
+        </label>
+    </div>
+</div>
+<ag-grid-angular
+    style="width: 100%; height: 100%;"
+    class="ag-theme-balham"
+    rowHeight="24"
+    enableFilter
+    rowSelection="multiple"
+    suppressRowClickSelection="true"
+    [id]="id"
+    [treeData]="false"
+    [gridOptions]="gridOptions"
+    [enableColResize]="true"
+    [columnDefs]="columnDefs"
+    [rowData]="rowData"
+    [rowDataSelected]="rowDataSelected"
+    [compareField]="compareField"
+    [checkboxFieldIndex]="checkboxFieldIndex"
+    [allowSorting]="allowSorting"
+    (gridReady)="onGridReady($event)"
+    (rowSelected)="onRowSelected($event)"
+    >
+</ag-grid-angular>

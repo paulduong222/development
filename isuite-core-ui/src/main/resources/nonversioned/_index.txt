@@ -1,0 +1,44 @@
+This file contains the names of the files in the "nonversioned" 
+(/isuite-core/src/main/resources/nonversioned) folder and the path where those files 
+need to be copied to in a developer's workspace. 
+
+--> Why is this index required? 
+
+This index is required because the destination files are NOT 
+part of the version control system. All updates to such files should be made by updating the file in the 
+"nonversioned" folder, after which, the development team should be informed about updating their workspace 
+with the new or updated file, using THIS index file as a reference.
+
+--> Impact on deployments:
+
+During deployment, the files mentioned below will be copied from the "nonversioned" folder into its respective Destination folder.   
+
+
+File Name 				|	Destination Project	|	Destination Folder
+------------------------|-----------------------|----------------------------		
+index.template.html		|	Flex				|	/html-template
+popupblockertester.js	|	Core				|	/Webroot/fx
+popuptesterwindow.html	|	Core				|	/Webroot/fx
+						|						|		
+						|						|	
+						|						|	
+						|						|	
+						|						|	
+						|						|	
+						|						|	
+						|						|	
+						|						|	
+						|						|	
+						|						|	
+						|						|	
+						|						|	
+						|						|	
+						|						|	
+						|						|	
+						|						|	
+						|						|	
+						|						|	
+						|						|	
+						|						|	
+						|						|	
+	

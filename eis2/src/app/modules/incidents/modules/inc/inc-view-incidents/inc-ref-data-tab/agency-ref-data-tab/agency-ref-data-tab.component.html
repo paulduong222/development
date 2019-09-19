@@ -1,0 +1,89 @@
+<div class="dv-inc-agency">
+      <div class="dv-chk-boxes">
+        <form [formGroup]="filterForm">
+          <input formControlName="standard" id="ckStandard" type="checkbox"
+            (input)="onStandardChange($event)"><label>Standard</label>
+          <input formControlName="nonStandard" id="ckNonStandard" type="checkbox"
+            (input)="onNonStandardChange($event)"><label>Non-Standard</label>
+        </form>
+      </div>
+      <div id="dv-agency-bar">
+          <div id="dv-agency-bar-left" class="w3-left">
+            <app-grid-icon-bar
+              [showFilter]="true" 
+              [showExpandRetract]="false"
+              (filterEvent)="this.clearFilter()"
+              (refreshEvent)="this.refreshGrid()">
+            </app-grid-icon-bar>
+          </div>
+          <div id="dv-agency-bar-right" class="w3-right">
+            <button [class]="buttonClass('add')" (click)="addAgency()" title="Click to add a new Agency">Add Agency</button>
+            <button [class]="buttonClass('edit')" (click)="this.editAgency()" title="Click to edit the Agency">Edit Agency</button>
+            <button [class]="buttonClass('delete')" (click)="this.deleteAgency()" title="Click to delete the Agency"
+              [disabled]="this.agencyVo.standard">Delete Agency</button>
+          </div>
+      </div>
+      <div class="dv-inc-agency-grid">
+          <app-eis-grid #gridAgencyRefData
+            [treeViewMode]="false"
+            (rowSelectEvent)="this.onSelectGridRow($event)"
+            [rowData]="this.agencyVosFiltered"
+            [columnDefs]="this.gridColumnDefs">
+          </app-eis-grid>
+      </div>
+  <div class="dv-inc-agency-form">
+    <div class="dv-agency-inner">
+      <form [formGroup]="agencyForm" autocomplete="off">
+      <div class="eis">
+        <table>
+          <tr>
+              <td class="frmlbl"><label class='f1"' for="txAgencyCode">Agency Code</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                  <app-text-input id="txAgencyCode" name="txAgencyCode" width="60" restrict2="a-z,A-Z,0-9"
+                    formControlName="agencyCode" maxlength="4" textTransform="uppercase"></app-text-input>
+              </td>
+          </tr>
+          <tr>
+              <td class="frmlbl"><label class='f1"' for="txAgencyDesc">Agency Description</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                  <app-text-input id="txAgencyDesc" name="txAgencyDesc" width="280"
+                    formControlName="agencyName" restrict2="a-z,A-Z,0-9,-" allowSpace="true" maxlength="75" textTransform="uppercase"></app-text-input>
+                </td>
+          </tr>
+          <tr>
+              <td class="frmlbl"><label class='f1"' for="ddAgencyGroup">Agency Group</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                  <app-eis-dropdown id="ddAgencyGroup" #ddAgencyGroup
+                  formControlName="agencyGroupVo"
+                  [width]="50"
+                  [selectedDropdownData]="this.agencyGroupTypeDropdownData"
+                  [dropdownData]="this.agencyGroupTypeData"></app-eis-dropdown>
+            </td>
+          </tr>
+          <tr>
+              <td class="frmlbl"><label class='f1"' for="ddRateGroup">Rate Group</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                  <app-eis-dropdown id="ddRateGroup" #ddRateGroup
+                    formControlName="rateGroupVo"
+                    [width]="50"
+                    [selectedDropdownData]="this.rateGroupTypeDropdownData"
+                    [dropdownData]="this.rateGroupTypeData"></app-eis-dropdown>
+            </td>
+          </tr>
+        </table>
+      </div>
+      </form>
+    </div>
+    <div class="dv-action-bar">
+        <button id="btnSave" (click)="this.save()" title="Click to save the Agency"
+          [disabled]="this.agencyVo.standard">Save</button>
+        <button id="btnCancel" (click)="this.cancel()" title="Click to cancel changes"
+          [disabled]="this.agencyVo.standard">Cancel</button>
+    </div>
+  </div>
+</div>
+<app-prompt-modal id="promptModalIncAgency" #promptModalIncAgency (promptActionEvent)="this.promptActionResultAgency($event)"></app-prompt-modal>

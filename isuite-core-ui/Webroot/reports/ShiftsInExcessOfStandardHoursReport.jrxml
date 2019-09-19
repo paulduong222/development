@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ShiftsInExcessOfStandardHoursReport" language="groovy" pageWidth="612" pageHeight="792" orientation="Landscape" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e8734d54-15e0-4353-bb3c-4157c14d24bf">
+	<property name="ireport.zoom" value="0.9982500000000003"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1" backcolor="#CCCCCC"/>
+	<parameter name="headerTitle" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="headerSubTitle" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\workspaces\\e-isuite\\isuite-core\\Webroot\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="incidentTag" class="java.lang.String"/>
+	<field name="reportPrintedDate" class="java.util.Date"/>
+	<field name="firstDateToInclude" class="java.util.Date"/>
+	<field name="lastDateToInclude" class="java.util.Date"/>
+	<field name="standardHours" class="java.lang.Double"/>
+	<field name="dataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="80" splitType="Stretch">
+			<line>
+				<reportElement uuid="001ef611-d745-4fdf-be9c-82a9b30e332b" x="0" y="46" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="7b435439-addc-41bb-9c48-1989ace96d0c" x="0" y="79" width="80" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="1bd74891-76fe-421c-be9e-e199801171d7" x="94" y="79" width="97" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="38c9c458-828c-4966-8c53-8b4c74578ed1" x="202" y="79" width="95" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="f2a90479-4dae-4ad0-a6f1-4ac42a07482f" x="325" y="79" width="110" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="7715e0f5-8825-4353-aa02-1cf71deb2264" x="451" y="79" width="106" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="007ef958-fc6f-4d24-90c3-c02619e9da1a" x="123" y="0" width="329" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SHIFTS IN EXCESS OF STANDARD HOURS]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="a95660ab-81a9-4c9c-a721-bb5c58dc78a1" x="471" y="0" width="52" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{reportPrintedDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="HH:mm" isBlankWhenNull="true">
+				<reportElement uuid="921d4b4c-8436-4b5a-9f59-668108ce4971" x="528" y="0" width="44" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{reportPrintedDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ebc07dfa-badc-412e-9335-fb5d72862074" x="175" y="15" width="74" height="16"/>
+				<textElement textAlignment="Left">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Incident Name: ]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="2ea77e1f-04d7-4c14-9dc0-f2d0643bf96a" x="260" y="15" width="268" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{incidentName} + " (" + $F{incidentTag} + ")"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a2348574-4e8c-4ede-9a70-c3289207ef43" x="175" y="31" width="27" height="15"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Start:]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="bc931106-e82b-4f7e-8cad-d95b3f7d8127" x="202" y="31" width="85" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{firstDateToInclude}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b7de81cb-cabd-4b16-bfed-8085b8519f02" x="330" y="31" width="26" height="15"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Stop:]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="6ef474b3-e95f-4942-8859-955335f1c4b0" x="356" y="31" width="85" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{lastDateToInclude}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ef039687-af65-483f-ac26-b042bb2abcc3" x="204" y="47" width="85" height="16"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Standard Hours:]]></text>
+			</staticText>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement uuid="741d513d-61a3-4319-b3ee-336824e5a2bd" x="308" y="47" width="93" height="16"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{standardHours}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="bff1f0ff-d120-44d6-b02e-3e5de2b877b9" x="0" y="63" width="69" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Request #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c5a31269-c2ed-4a8f-bee1-8a7f783fcd8f" x="94" y="63" width="42" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="54b56f87-6f71-4318-80b4-2c5017447335" x="205" y="63" width="84" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Shift End Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e6fbc19e-afa3-4623-8783-b6cdaf1ffedd" x="330" y="63" width="110" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Shift Hours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="15c8eaec-aa95-46ef-b48a-521a7df625df" x="456" y="63" width="109" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount Excess]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="640" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="3249674f-a49b-4aff-b1f6-eeab308da33f" x="0" y="0" width="572" height="640"/>
+				<dataSourceExpression><![CDATA[$F{dataSource}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ShiftsInExcessOfStandardHoursReport_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2fd2f889-214e-4f08-a5a1-e8234f60b0e1" x="0" y="5" width="42" height="27"/>
+				<textElement/>
+				<text><![CDATA[NOTE: ]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="bbb0b5ac-d0eb-476b-8d31-1b6df0dd7652" x="0" y="0" width="572" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="07957af1-d112-4c00-b705-af38b3e7010f" x="42" y="5" width="346" height="27"/>
+				<textElement/>
+				<text><![CDATA[For this report, a shift may span more than 1 Day. End of shift is defined when there is a break in posted time of 120 minutes or more.]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="cac22b33-6d8b-4a5d-9b9b-11e9bad5e7e8" x="455" y="5" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="0d6d260e-e3e0-43c2-b105-9127b1548dac" x="535" y="5" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

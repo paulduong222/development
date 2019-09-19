@@ -1,0 +1,23 @@
+<div class="eis">
+    <div id="dv-inc-grouup-form" class="eis bg-white dv-inc-group-form">
+      <form [formGroup]="igForm">
+          <table>
+              <tr></tr>
+              <tr>
+                <td class="frmlbl"><label class='f1"' for="txGroupName">Group Name</label></td>
+                <td><label class="ast">*</label></td>
+                <td>
+                  <app-text-input formControlName="groupName" id="txGroupName" name="txGroupName" type="text" 
+                    width="400" maxlength="65"
+                    (input)="this.incidentGroupVo.groupName = $event.target.value"></app-text-input>
+                </td>
+              </tr>
+              <tr></tr>
+          </table>
+      </form>
+    </div>
+    <div class="dv-action-bar">
+        <button (click)="save()" title="Click to save Incident Group">Save</button>
+        <button (click)="cancel()" title="Click to cancel changes">Cancel</button>
+    </div>
+</div>

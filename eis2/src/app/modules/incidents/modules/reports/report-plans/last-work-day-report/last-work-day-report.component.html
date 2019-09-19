@@ -1,0 +1,128 @@
+<div class="main-card">
+    <div class="card-body">
+    <label class="title">Last Work Day</label>
+    <table style="display: block; height: 230px; width: 1000px;">
+      <tr>
+        <td class="td-width">
+          <div class="bx-hdr-dv">
+            <div class="bx-hdr">
+              <div><label class="w3-small">Grouping</label></div>
+            </div>
+            <div class="bx-body">
+              <div><input type="radio" name="groupBy" value="groupByDateResourceCategory" [(ngModel)]="groupBy"><label class="pl-10">Date, Resource Category</label></div>
+              <div><input type="radio" name="groupBy" value="groupBySectionDate" [(ngModel)]="groupBy"><label class="pl-10">Section, Date</label></div>
+              <div><input type="radio" name="groupBy" value="groupBySectionResourceCategoryDate" [(ngModel)]="groupBy"><label class="pl-10">Section, Resource Category, Date</label></div>
+            </div>
+          </div>
+        </td>
+        <td class="td-width">
+          <div class="bx-hdr-dv">
+            <div class="bx-hdr">
+              <div><label class="w3-small">Show Sections</label></div>
+            </div>
+            <div class="bx-body">
+              <div><input type="checkbox" value="allSections" (click)="handleCheckbox($event)" [checked]="lastWorkDayReportFilter.allSections"><label class="pl-10">All Sections</label></div>
+              <div><input type="checkbox" value="operations" (click)="handleCheckbox($event)" [checked]="lastWorkDayReportFilter.operations"><label class="pl-10">Operations</label></div>
+              <div><input type="checkbox" value="command" (click)="handleCheckbox($event)"  [checked]="lastWorkDayReportFilter.command"><label class="pl-10">Command</label></div>
+              <div><input type="checkbox" value="logistics" (click)="handleCheckbox($event)"  [checked]="lastWorkDayReportFilter.logistics"><label class="pl-10">Logistics</label></div>
+              <div><input type="checkbox" value="plans" (click)="handleCheckbox($event)"  [checked]="lastWorkDayReportFilter.plans"><label class="pl-10">Plans</label></div>
+              <div><input type="checkbox" value="finance" (click)="handleCheckbox($event)"  [checked]="lastWorkDayReportFilter.finance"><label class="pl-10">Finance</label></div>
+              <div><input type="checkbox" value="externalResources" (click)="handleCheckbox($event)"  [checked]="lastWorkDayReportFilter.externalResources"><label class="pl-10">External</label></div>
+            </div>
+          </div>
+        </td>
+        <td class="td-date-box">
+          <div style="border: none" class="bx-hdr-dv">
+            <div style="padding: 0 0 20px 10px">
+              <label><input type="checkbox" name="state" value="includeAllDates" [checked]="lastWorkDayReportFilter.includeAllDates" (click)="handleCheckbox($event)"> Include All Dates<br></label>
+            </div>
+            <div class="date-box">
+                <div class="bx-hdr-date-box">
+                    <div><label class="w3-small">Date Range</label></div>
+                  </div>
+                  <div class="eis">
+                <div>
+                  <table>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" style="top: 5px;" for="dtStart">Start Date</label></td>
+                        <td><label *ngIf="!lastWorkDayReportFilter.includeAllDates" class="ast">*</label></td>
+                        <td>
+                            <app-eis-datepicker #dtStart></app-eis-datepicker>
+                          </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl" ><label class="f1" style="margin-top: 10px;" for="dtEnd">End Date</label></td>
+                        <td><label *ngIf="!lastWorkDayReportFilter.includeAllDates" class="ast">*</label></td>
+                        <td>
+                            <app-eis-datepicker #dtEnd></app-eis-datepicker>
+                          </td>
+                    </tr>
+                  </table>                  
+                </div>
+              </div>
+              <!--
+
+              <div class="bx-hdr-date-box">
+                <div><label class="w3-small">Date Range</label></div>
+              </div>
+              <div style="text-align: left" class="bx-body">
+                <div style="margin-top: 5px">
+                  <div class="label-input">Start Date <label class="ast" *ngIf="!lastWorkDayReportFilter.includeAllDates">*</label></div>
+                  <app-eis-datepicker #dtStart></app-eis-datepicker>
+                </div>
+                <div style="margin-top: 7px">
+                  <div class="label-input">End Date <label class="ast" *ngIf="!lastWorkDayReportFilter.includeAllDates">*</label></div>
+                  <app-eis-datepicker #dtEnd></app-eis-datepicker>
+                </div>
+              </div>
+                            -->
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <table style="display: block">
+      <tr>
+        <td style="width: 450px">
+          <div style="height: 210px" class="bx-hdr-dv">
+            <div class="bx-hdr-sort">
+              <div><label class="w3-small">Report Sorts</label></div>
+            </div>
+            <div style="padding: 0 10px 0 10px" class="report-sort">
+              <div class="left-box">
+                <h5 class="title">Available</h5>
+                <app-data-table [noHeader]="noHeader" [bodyStyle]="bodyStyle" [tableDefinition]="tableDef" [data]="data" [filter]="filter" (rowClicked)="getClickedRow($event, 'indexSelected', 'data', 'shiftIndex')" [scrollAble]="scrollAble" [indexSelected]="indexSelected" [extraStyle]="extraStyle"></app-data-table>
+              </div>
+              <div class="center-box">
+                <div class="title icon" (click)="moveSelected('data', 'dataSelected', 'indexSelected', 'shiftIndex')"><img src="assets/images/arrow_right.png" title="Add Selected Item"></div>
+                <div class="title icon" (click)="moveSelected('dataSelected', 'data', 'indexSelectedCopy', 'shiftIndexCopy')"><img src="assets/images/arrow_left.png" title="Remove Selected Item"></div>
+                <div class="title icon" (click)="moveAll('data', 'dataSelected', 'indexSelected', 'shiftIndex')"><img src="assets/images/arrow_right_double.png" title="Add All Items"></div>
+                <div class="title icon" (click)="moveAll('dataSelected', 'data', 'indexSelectedCopy', 'shiftIndexCopy')"><img src="assets/images/arrow_left_double.png" title="Remove All Items"></div>
+              </div>
+              <div class="right-box">
+                <h5 class="title">Selected</h5>
+                <app-data-table [noHeader]="noHeader" [bodyStyle]="bodyStyle" [tableDefinition]="tableDef" [data]="dataSelected" (rowClicked)="getClickedRow($event, 'indexSelectedCopy', 'dataSelected', 'shiftIndexCopy')" [scrollAble]="scrollAble" [indexSelected]="indexSelectedCopy" [extraStyle]="extraStyle"></app-data-table>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td style="vertical-align: top;">
+          <div class="radio-box">
+            <button class="padding-5" type="button" class="btn btn-default" (click)="showHideInstruction()" title="Click to toggle showing the instructions">Show/Hide&nbsp;Instructions</button>
+            <div class="tooltip-box padding-5" *ngIf="tooltipBox">
+              <p>Select the Groupings, enter the Date Range and</p>
+              <p>select the Sections to include in the report.</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <div style="width: 100%; margin-top: 10px">
+      <div style="padding-bottom: 10px">
+        <label><input type="checkbox" name="state" value="includeSTTFComponents" (click)="handleCheckbox($event)" [checked]="lastWorkDayReportFilter.includeSTTFComponents"> Include Strike Team/Task Force Components<br></label>
+      </div>
+      <button type="button" class="btn btn-default button-cus" (click)="generateReport()" title="Click to generate Last Work Day Report">Preview/Print</button>
+      <button type="button" class="btn btn-default button-cus" style="margin-left: 10px" title="Click to restore defaults" (click)="restoreDefault()">Restore Defaults</button>
+    </div>
+  </div>
+</div>

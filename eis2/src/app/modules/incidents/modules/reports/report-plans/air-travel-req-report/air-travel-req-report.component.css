@@ -1,0 +1,39 @@
+* {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+.main-card {
+    border: 1px solid gray;
+    height: 83vh;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+.card-body {
+    padding: 0 20px 20px 20px;
+    margin-left: 20px;
+    display: flex;
+    min-width: 800px;
+}
+.tooltip-box {
+    width: 500px;
+    height: 200px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    background-color: #ccffff;
+    font-size: 14px;
+    font-weight: 550;
+    margin-top: 5px;
+}
+.bottom-box {
+    padding: 0 20px 20px 50px;
+}
+button {
+    font-weight: 550;
+    font-size: 13px;
+}
+.title {
+    font-weight: bold;
+    padding-left: 20px;
+    font-size: 18px;
+}

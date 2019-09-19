@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EmergencyEquipmentDandAReport" language="groovy" pageWidth="620" pageHeight="792" columnWidth="580" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ce61435e-e43f-450a-83a5-bbc8c0a034d4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\workspace\\isuite-core\\Webroot\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="reportType" class="java.lang.String"/>
+	<field name="reportTypeHeader" class="java.lang.String"/>
+	<field name="postStartDate" class="java.util.Date"/>
+	<field name="postStopDate" class="java.util.Date"/>
+	<field name="identificationNumber" class="java.lang.String"/>
+	<field name="officialNumber" class="java.lang.String"/>
+	<field name="equipmentDetail" class="java.lang.Object"/>
+	<field name="dataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="reportPrintedDate" class="java.util.Date"/>
+	<variable name="deductions" class="java.lang.Double"/>
+	<variable name="additions" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="86a6d93f-2cfc-4e74-95bc-8ae749e196e0" x="0" y="30" width="316" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Emergency Equipment Deductions and Additions]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="74f1801c-93df-4f03-964e-a303a57b4387" x="0" y="45" width="316" height="11"/>
+				<textElement>
+					<font size="7" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(For use with OF-286 Blocks 26 and 27 - Deductions and Additions Statement)]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0ec96c8e-0386-4c46-bb55-364bd728a624" x="0" y="0" width="580" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reportTypeHeader}]]></textFieldExpression>
+			</textField>
+			<textField pattern="( MM/dd/yyyy">
+				<reportElement uuid="0543ef3d-36a8-43d5-b7cf-3ed9edbd2d74" x="208" y="17" width="80" height="14"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{postStartDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="23825fb6-6371-4633-8e93-601dc21978f3" x="287" y="17" width="19" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy )" isBlankWhenNull="true">
+				<reportElement uuid="fbf5d3e7-922a-489b-9628-30e042a598ef" x="306" y="17" width="80" height="14"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{postStopDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b1bd9985-b976-4ee6-a5a2-8700024869a6" x="393" y="44" width="171" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{officialNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c0047dfa-0da1-4df7-a738-c20ae66ec6a6" x="393" y="30" width="172" height="14"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reportType}=="DRAFT ONLY - NOT FOR PAYMENT"?"Assigned When Original is Printed":$F{identificationNumber}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a9bde8b1-5ac3-4592-8183-84e50f03d386" x="346" y="44" width="47" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Official #: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ce679d58-534f-4da7-aec9-e811d9f4300f" x="346" y="30" width="47" height="14"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Invoice #: ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="673" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="105fa476-70b4-4b56-8c83-c9b6ae14bb0b" x="0" y="0" width="580" height="673"/>
+				<subreportParameter name="reportTime">
+					<subreportParameterExpression><![CDATA[$F{reportPrintedDate}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="equipmentDetail">
+					<subreportParameterExpression><![CDATA[$F{equipmentDetail}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$F{dataSource}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "EmergencyEquipmentDandAReport_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="18" splitType="Stretch">
+			<textField>
+				<reportElement uuid="3b092d95-f60d-49ac-b755-7aca0506ab02" x="224" y="3" width="80" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="6f8635a3-445f-44d2-a989-7ddfb394dfb7" x="304" y="3" width="40" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,128 @@
+<app-jw-modal id="evaluator-modal" style="display: none;" class="box-hdr-dv">
+    <div style="width: 660px; height: 370px; padding: 0px;">
+      <div class="w3-container w3-padding-small w3-theme-d2">
+        <div class="w3-left" tabIndex="0">Add Evaluator</div>
+      </div>
+      <div class="eis">
+        <div class="ml-20 mt-20">
+          <div>
+            <app-eis-grid #grdEvaluators class="dv-eval-grid"
+              [columnDefs]="this.evaluatorGridColumnDefs" 
+              [rowData]="this.rscTrainingTrainerVos"
+              (rowSelectEvent)="this.onSelectEvaluator($event)">
+            </app-eis-grid>
+          </div>
+          <form [formGroup]="evaluatorForm">
+            <table style="padding-top: 10px; padding-left: 20px;" class="tbl pl-20">
+              <tr>
+                <td class="frmlbl"><label for="txName">Name</label></td>
+                <td><label class="ast">*</label></td>
+                <td>
+                  <app-text-input id="txName" name="txName" type="text" formControlName="resourceName"
+                    width="300" allowSpace="true" maxlength="65"></app-text-input>
+                </td>
+              </tr>
+              <tr>
+                <td class="frmlbl"><label for="ddUnitCode">Unit ID</label></td>
+                <td></td>
+                <td>
+                  <app-eis-dropdown  id="ddUnitCode" #ddUnitCode width="70"
+                    formControlName="unitVo"
+                    (dropdownSelect)="this.unitSelectEvent($event)"
+                    [dropdownData]="this.incidentSelectorService.tnspUnitTypeData"
+                    [selectedDropdownData]="this.selectedUnitDropdownData"
+                    [viewportWidth]="600">
+                  </app-eis-dropdown>
+                </td>
+              </tr>
+              <tr>
+                <td class="frmlbl"><label for="txUnitDesc">Unit Description</label></td>
+                <td></td>
+                <td>
+                  <app-text-input id="txUnitDesc" name="txUnitDesc" type="text" formControlName="unitDesc"
+                    width="300" enabled="false"></app-text-input>
+                </td>
+              </tr>
+              <tr>
+                <td class="frmlbl"><label for="ddItemCode">Item Code</label></td>
+                <td></td>
+                <td>
+                  <app-eis-dropdown id="ddKind" #ddKind width="70"
+                    formControlName="kindVo"
+                    (dropdownSelect)="this.kindSelectEvent($event)"
+                    [dropdownData]="this.incidentSelectorService.tnspKindTypeData"
+                    [selectedDropdownData]="this.selectedKindDropdownData"
+                    [viewportWidth]="580">
+                  </app-eis-dropdown>
+                </td>
+              </tr>
+              <tr>
+                <td class="frmlbl"><label for="txItemDesc">Item Description</label></td>
+                <td></td>
+                <td>
+                  <app-text-input id="txItemDesc" name="txItemDesc" type="text" formControlName="itemDesc"
+                    width="300" enabled="false"></app-text-input>
+                </td>
+              </tr>
+              <tr>
+                <td class="frmlbl"><label for="txAddressLine1">Address</label></td>
+                <td></td>
+                <td>
+                  <app-text-input id="txAddressLine1" formControlName="addressLine1" name="txAddressLine1" type="text" 
+                    width="260" allowSpace="true" maxlength="35"></app-text-input>
+                </td>
+              </tr>
+              <tr>
+                <td class="frmlbl"><label for="txCity">City</label></td>
+                <td></td>
+                <td>
+                  <app-text-input id="txCity" formControlName="city" name="txCity" type="text"
+                    width="260" allowSpace="true" maxlength="30"></app-text-input>
+                </td>
+              </tr>
+              <tr>
+                <td class="frmlbl"><label class="f1" for="ddState">State</label></td>
+                <td></td>
+                <td>
+                  <app-eis-dropdown id="ddState" #ddState width="50"
+                    formControlName="countryCodeSubdivisionVo"
+                    [selectedDropdownData]="this.selectedStateDropdownData"
+                    [dropdownData]="this.incidentSelectorService.stateTypeData">
+                  </app-eis-dropdown>
+                </td>
+              </tr>
+              <tr>
+                <td class="frmlbl"><label class="f1" for="txZip">Zip Code</label></td>
+                <td></td>
+                <td>
+                  <app-text-input formControlName="zip" id="txZip" name="txZip" type="text"
+                    width="100" maxlength="10" restrict2="0-9,-"></app-text-input>
+                </td>
+              </tr>
+              <tr>
+                <td class="frmlbl"><label class="f1" for="txPhone">Phone</label></td>
+                <td></td>
+                <td>
+                  <app-phone-input formControlName="phone" id="txPhone" name="txPhone"></app-phone-input>
+                </td>
+              </tr>
+              <tr>
+                <td class="frmlbl"><label for="txEmail">Email</label></td>
+                <td></td>
+                <td>
+                  <app-text-input formControlName="email" id="txEmail" name="txEmail" type="text"
+                    width="260" maxlength="50" textTransform="uppercase"></app-text-input>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+      <div class="dv-action-bar w3-small w3-left">
+          <button id="btnSave" type="button" (click)="save()" title="Click to save.">Save</button>
+          <button id="btnCancel" type="button" (click)="addEvaluator()" title="Click to add Evaluator.">Add</button>
+          <button id="btnClose" type="button" (click)="closeModal('evaluator-modal');" title="Click to close.">Close</button>
+      </div>
+    </div>
+  </app-jw-modal>
+  <app-prompt-modal id="promptModalEvaluator" #promptModalEvaluator></app-prompt-modal>

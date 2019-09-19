@@ -1,0 +1,16 @@
+#dv-contr-form {
+    padding-top: 5px;
+    height: 200px;
+    font: 12px Helvetica,Arial,sans-serif;
+}
+#dv-contractor-action-bar {
+    padding-left:5px;
+	background-color: #6183A6;
+    width: 100%;
+    height:30px;
+}
+#dv-contractor-action-bar button {
+    margin-top: 3px;
+    margin-left: 4px;
+    height:22px;
+}

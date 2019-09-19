@@ -1,0 +1,86 @@
+<div class="dv-inc-unitcode">
+  <div class="dv-chk-boxes">
+    <form [formGroup]="filterForm">
+      <input formControlName="standard" id="ckStandard" type="checkbox"
+        (input)="onStandardChange($event)"><label>Standard</label>
+      <input formControlName="nonStandard" id="ckNonStandard" type="checkbox"
+        (input)="onNonStandardChange($event)"><label>Non-Standard</label>
+    </form>
+  </div>
+  <div id="dv-unitcode-bar">
+      <div id="dv-unitcode-bar-left" class="w3-left">
+        <app-grid-icon-bar
+          [showFilter]="true" 
+          [showExpandRetract]="false"
+          (filterEvent)="this.clearFilter()"
+          (refreshEvent)="this.refreshGrid()">
+        </app-grid-icon-bar>
+      </div>
+      <div id="dv-unitcode-bar-right" class="w3-right">
+        <button [class]="buttonClass('add')" (click)="addUnitCode()" title="Click to add a new Unit ID">Add Unit ID</button>
+        <button [class]="buttonClass('edit')" (click)="this.editUnitCode()" title="Click to edit Unit ID">Edit Unit ID</button>
+        <button [class]="buttonClass('delete')" (click)="this.deleteUnitCode()" title="Click to delete the Unit ID"
+          [disabled]="this.organizationVo.standard === true">Delete Unit ID</button>
+      </div>
+    </div>
+    <div class="dv-inc-unitcode-grid">
+      <app-eis-grid #gridUnitCodeRefData
+        [treeViewMode]="false"
+        (rowSelectEvent)="this.onSelectGridRow($event)"
+        [rowData]="this.organizationVosFiltered"
+        [columnDefs]="this.gridColumnDefs">
+      </app-eis-grid>
+    </div>
+    <div class="dv-inc-unitcode-form">
+      <div class="dv-unitcode-inner">
+        <form [formGroup]="organizationForm" autocomplete="off">
+          <div class="eis">
+          <table>
+            <tr>
+                <td class="frmlbl"><label class='f1"' for="txUnitCode">Unit ID</label></td>
+                <td><label class="ast">*</label></td>
+                <td>
+                    <app-text-input id="txUnitCode" name="txUnitCode"
+                      formControlName="unitCode" maxlength="7" restrict2="a-z,A-Z,0-9,-"
+                      textTransform="uppercase"></app-text-input>
+                </td>
+            </tr>
+            <tr>
+                <td class="frmlbl"><label class='f1"' for="txDesc">Unit Description</label></td>
+                <td><label class="ast">*</label></td>
+                <td>
+                    <app-text-input id="txDesc" name="txDesc"
+                      formControlName="desc" maxlength="255" allowSpace="true" width="280" textTransform="uppercase"></app-text-input>
+                </td>
+            </tr>
+            <tr>
+                <td class="frmlbl"><label class='f1"' for="ddAgencyCode">Agency Code</label></td>
+                <td><label class="ast">*</label></td>
+                <td>
+                  <app-eis-dropdown id="ddAgencyCode" #ddAgencyCode
+                    formControlName="agencyVo"
+                    [width]="50"
+                    [selectedDropdownData]="this.agencyTypeDropdownData"
+                    [dropdownData]="this.incidentSelectorService.agencyTypeData"></app-eis-dropdown>
+              </td>
+            </tr>
+            <tr>
+              <td class="frmlbl"><label class='f1"' for="ckLocal">Local</label></td>
+              <td><label class="ast"></label></td>
+              <td>
+                <input id="ckLocal" name="ckLocal" style="margin-top: 2px;" type="checkbox" formControlName="local">
+              </td>
+            </tr>
+        </table>
+        </div>
+        </form>
+      </div>
+      <div class="dv-action-bar">
+          <button id="btnSave" (click)="this.save()" title="Click to save the Unit Code"
+          >Save</button>
+          <button id="btnCancel" (click)="this.cancel()" title="Click to cancel changes"
+          >Cancel</button>
+      </div>
+    </div>
+</div>
+<app-prompt-modal id="promptModalIncOrg" #promptModalIncOrg (promptActionEvent)="this.promptActionResultUnitCode($event)"></app-prompt-modal>

@@ -1,0 +1,961 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:security="http://www.springframework.org/schema/security"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.5.xsd">
+
+
+    <bean id="transactionServiceTarget" class="gov.nwcg.isuite.framework.core.service.impl.TransactionServiceImpl">
+    </bean>
+    
+	<bean id="transactionService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="target" ref="transactionServiceTarget" />
+		<property name="transactionAttributes">
+			<props>
+            <prop key="*">
+               PROPAGATION_REQUIRED, -PersistenceException
+            </prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean name="accountCodeService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.AccountCodeServiceImpl" 
+   					scope="request">
+      <constructor-arg> <ref bean="accountCodeDao" /> </constructor-arg>
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+	</bean>
+ 	
+	 <bean name="adminOfficeService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.AdminOfficeServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   	</bean>
+   	
+	 <bean name="adminOfficeService2" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.AdminOfficeService2Impl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   	</bean>
+
+	
+   <bean name="agencyService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.AgencyServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+   <bean name="agencyService2" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.AgencyService2Impl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+	<bean name="agencyGroupService" 
+	  			parent="transactionServiceTarget" 
+	  				class="gov.nwcg.isuite.core.service.impl.AgencyGroupServiceImpl" 
+	  					init-method="initialization"
+	  						scope="request">
+	     <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+	</bean>
+
+	<bean name="agencyGroupService2" 
+	  			parent="transactionServiceTarget" 
+	  				class="gov.nwcg.isuite.core.service.impl.AgencyGroupService2Impl" 
+	  					init-method="initialization"
+	  						scope="request">
+	     <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+	</bean>
+	
+	<bean name="authenticationService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.AuthenticationServiceImpl" 
+   					scope="request">
+        <constructor-arg index="0"> <ref bean="userDao"/> </constructor-arg>
+        <property name="ldapProperties" ref="ldapProperties"/>
+		<aop:scoped-proxy/>
+	</bean>
+
+   <bean name="contractorAgreementService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.ContractorAgreementServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="contractorRateService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.ContractorRateServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="contractorService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.ContractorServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="contractorService2" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.ContractorService2Impl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+   <bean name="costAccrualService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.CostAccrualServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+   	<bean name="costProjectionService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.CostProjectionServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+   <bean name="costGroupService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.CostGroupServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+	<bean name="countrySubdivisionService" 
+	  			parent="transactionServiceTarget" 
+	  				class="gov.nwcg.isuite.core.service.impl.CountrySubdivisionServiceImpl" 
+	  					init-method="initialization"
+	  						scope="request">
+	     <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+	</bean>
+	
+	<bean name="customReportService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.CustomReportServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+	
+	<bean name="glidePathReportService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.GlidePathReportServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+	<bean name="dataAuditTrackingService" 
+	  			parent="transactionServiceTarget" 
+	  				class="gov.nwcg.isuite.core.service.impl.DataAuditTrackingServiceImpl" 
+	  					init-method="initialization"
+	  						scope="request">
+	     <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+	</bean>
+   
+	<bean name="databaseMgmtService" 
+	  			parent="transactionServiceTarget" 
+	  				class="gov.nwcg.isuite.core.service.impl.DatabaseMgmtServiceImpl" 
+	  					init-method="initialization"
+	  						scope="request">
+	     <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+	</bean>
+
+	<bean name="dataTransferService" 
+	  			parent="transactionServiceTarget" 
+	  				class="gov.nwcg.isuite.core.service.impl.DataTransferServiceImpl" 
+	  					init-method="initialization"
+	  						scope="request">
+	     <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+	</bean>
+	
+	<bean name="financialExportService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.FinancialExportServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+	
+   <bean name="gridColumnService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.GridColumnServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="gridColumnUserService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.GridColumnUserServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="groupCategoryService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.GroupCategoryServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+	<bean name="helpDeskService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.HelpDeskServiceImpl" 
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   	</bean>
+   
+	<bean name="iapService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.IapServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   	</bean>
+	
+	<bean name="iapPlanService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.IapPlanServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   	</bean>
+
+	<bean name="iapReportService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.IapReportServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   	</bean>
+	
+	<bean name="iapCopyService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.IapCopyServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   	</bean>
+   	
+	<bean name="incidentCostRateService" parent="transactionServiceTarget"
+	      class="gov.nwcg.isuite.core.service.impl.IncidentCostRateServiceImpl"
+	          scope="request">
+        <property name="userSessionVo" ref="userSessionVo" />
+		<aop:scoped-proxy/>
+	</bean>	
+	
+   <bean name="incidentService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.IncidentServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+   <bean name="incidentSelectorService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.IncidentSelectorServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+   <bean name="incidentService2" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.IncidentService2Impl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="incidentAccountCodeService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.IncidentAccountCodeServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="incidentGroupService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.IncidentGroupServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+    <bean name="incidentGroupService2" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.IncidentGroupService2Impl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="incidentResourceDailyCostService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.IncidentResourceDailyCostServiceImpl" 
+   				 init-method="initialization"
+   					scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="incidentResourceService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.IncidentResourceServiceImpl" 
+   				 init-method="initialization"
+   					scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="incidentResource2Service" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.IncidentResource2ServiceImpl" 
+   				 init-method="initialization"
+   					scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="messageService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.MessageServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="otherResourceCostService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.OtherResourceCostServiceImpl" 
+   				 init-method="initialization"
+   					scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+   
+   <bean name="organizationService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.OrganizationServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+   <bean name="organizationService2" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.OrganizationService2Impl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="pickListService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.PicklistServiceImpl" 
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+   <bean name="questionService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.QuestionServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+   <bean name="quickStatsService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.QuickStatsServiceImpl" 
+   					init-method="initialization"
+	   					scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="quickStatsService2" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.QuickStatsService2Impl" 
+				scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="rateClassRateService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.RateClassRateServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   	</bean>
+   
+   <bean name="reportService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.ReportServiceImpl" 
+   					scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="reportService2" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.ReportService2Impl" 
+   					scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="reportTimeService" 
+        parent="transactionServiceTarget" 
+          class="gov.nwcg.isuite.core.service.impl.ReportTimeServiceImpl" 
+            scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+    <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="reportCostService" 
+        parent="transactionServiceTarget" 
+          class="gov.nwcg.isuite.core.service.impl.ReportCostServiceImpl" 
+          	init-method="initialization"
+            scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+    <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="resourceService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.ResourceServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="resourceInventoryService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.ResourceInventoryServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="rossImportService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.RossImportServiceImpl"
+   					init-method="initialization"
+   						scope="request">
+        <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+   <bean name="rossResourceImportService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.RossResourceImportServiceImpl"
+   					init-method="initialization"
+   						scope="request">
+        <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="subGroupCategoryService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.SubGroupCategoryServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+	<bean name="sysCostRateService" parent="transactionServiceTarget"
+	      class="gov.nwcg.isuite.core.service.impl.SysCostRateServiceImpl"
+	          scope="request">
+        <property name="userSessionVo" ref="userSessionVo" />
+		<aop:scoped-proxy/>
+	</bean>	
+
+	
+	<bean name="systemModulePermService" parent="transactionServiceTarget"
+	      class="gov.nwcg.isuite.core.service.impl.SystemModulePermServiceImpl"
+	        init-method="initialization"
+	          scope="request">
+        <property name="userSessionVo" ref="userSessionVo" />
+		<aop:scoped-proxy/>
+	</bean>	
+	
+	
+	<bean name="systemRoleService" parent="transactionServiceTarget"
+	      class="gov.nwcg.isuite.core.service.impl.SystemRoleServiceImpl"
+	        init-method="initialization"
+	          scope="request">
+        <property name="userSessionVo" ref="userSessionVo" />
+		<aop:scoped-proxy/>
+	</bean>	
+	
+	<bean name="systemRolePermService" parent="transactionServiceTarget"
+	      class="gov.nwcg.isuite.core.service.impl.SystemRolePermServiceImpl"
+	        init-method="initialization"
+	          scope="request">
+        <property name="userSessionVo" ref="userSessionVo" />
+		<aop:scoped-proxy/>
+	</bean>	
+	
+	<bean name="systemParameterService" parent="transactionServiceTarget"
+	      class="gov.nwcg.isuite.core.service.impl.SystemParameterServiceImpl"
+	        init-method="initialization"
+	          scope="request">
+        <property name="userSessionVo" ref="userSessionVo" />
+		<aop:scoped-proxy/>
+	</bean>	
+
+	<bean name="taskQueueService" parent="transactionServiceTarget"
+	      class="gov.nwcg.isuite.core.service.impl.TaskQueueServiceImpl"
+	        init-method="initialization"
+	          scope="request">
+        <property name="userSessionVo" ref="userSessionVo" />
+		<aop:scoped-proxy/>
+	</bean>	
+
+   <bean name="testDateService" 
+        parent="transactionServiceTarget" 
+          class="gov.nwcg.isuite.core.service.impl.TestDateServiceImpl" 
+            scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+    <aop:scoped-proxy/>
+   </bean>
+
+   <bean name="timePostService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.TimePostServiceImpl" 
+   				 init-method="initialization"
+   					scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+   </bean>
+	
+   <bean name="timePostAdjustmentService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.TimePostAdjustmentServiceImpl" 
+   				 init-method="initialization"
+   					scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="trainingSpecialistService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.TrainingSpecialistServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="trainingSpecialistReportService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.TrainingSpecialistReportServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="trainingSpecialistSettingsService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.TrainingSpecialistSettingsServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+   <bean name="userService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.UserServiceImpl" 
+   					init-method="initialization"
+   					  scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+	<bean name="userService2" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.UserService2Impl" 
+   					init-method="initialization"
+   					  scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+	<bean name="userSessionManagementService" 
+		parent="transactionServiceTarget"
+		class="gov.nwcg.isuite.core.service.impl.UserSessionManagementServiceImpl"
+		scope="request">
+		<aop:scoped-proxy/>
+	</bean>
+
+	<bean name="userSessionManagementService2" 
+			parent="transactionServiceTarget"
+				class="gov.nwcg.isuite.core.service.impl.UserSessionManagementService2Impl"
+					init-method="initialization"
+						scope="request">
+			   <property name="sysRunMode" value="SITE" />
+		<aop:scoped-proxy/>
+	</bean>
+   
+   <bean name="userPreferencesService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.UserPreferencesServiceImpl" 
+   					init-method="initialization"
+   					  scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+	<bean name="userGroupService" parent="transactionServiceTarget"
+	      class="gov.nwcg.isuite.core.service.impl.UserGroupServiceImpl"
+	        init-method="initialization"
+	          scope="request">
+        <property name="userSessionVo" ref="userSessionVo" />
+		<aop:scoped-proxy/>
+	</bean>
+
+	<bean name="userGroupService2" parent="transactionServiceTarget"
+	      class="gov.nwcg.isuite.core.service.impl.UserGroupService2Impl"
+	        init-method="initialization"
+	          scope="request">
+        <property name="userSessionVo" ref="userSessionVo" />
+		<aop:scoped-proxy/>
+	</bean>
+
+	<bean name="rateClassService" parent="transactionServiceTarget"
+	      class="gov.nwcg.isuite.core.service.impl.RateClassServiceImpl"
+	        init-method="initialization"
+	          scope="request">
+        <property name="userSessionVo" ref="userSessionVo" />
+		<aop:scoped-proxy/>
+	</bean>
+
+   <bean name="sit209Service" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.Sit209ServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="sit209Service2" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.Sit209Service2Impl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+   <bean name="jetPortService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.JetPortServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+   <bean name="jetPortService2" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.JetportService2Impl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="incidentPrefsService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.IncidentPrefsServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+   <bean name="kindService2" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.KindService2Impl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+   
+   <bean name="kindGroupService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.KindGroupServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="systemService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.SystemServiceImpl" 
+   					scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+   </bean>
+
+   <bean name="systemSupportService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.SystemSupportServiceImpl" 
+   					scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+   </bean>
+	
+  	<bean name="workAreaService" 
+          parent="transactionServiceTarget" 
+          class="gov.nwcg.isuite.core.service.impl.WorkAreaServiceImpl" 
+          scope="request">
+      <constructor-arg> <ref bean="workAreaDao" /> </constructor-arg>
+      <constructor-arg> <ref bean="workAreaUserDao" /> </constructor-arg>
+      <constructor-arg> <ref bean="organizationDao" /> </constructor-arg>
+      <constructor-arg> <ref bean="incidentDao" /> </constructor-arg>
+      <constructor-arg> <ref bean="resourceDao" /> </constructor-arg>
+      <constructor-arg> <ref bean="userDao" /> </constructor-arg>
+      <constructor-arg> <ref bean="userGroupUserDao" /> </constructor-arg>
+      <property name="userSessionVo" ref="userSessionVo" />
+   <aop:scoped-proxy/>
+   </bean>
+
+   <bean name="workAreaResourceService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.WorkAreaResourceServiceImpl" 
+   					scope="request">
+      <constructor-arg> <ref bean="workAreaDao" /> </constructor-arg>
+      <constructor-arg> <ref bean="resourceDao" /> </constructor-arg>
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+	  <aop:scoped-proxy/>
+   </bean>
+   
+    <bean name="irwinService" 
+   			parent="transactionServiceTarget" 
+   				class="gov.nwcg.isuite.core.service.impl.IrwinServiceImpl" 
+   					init-method="initialization"
+   						scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+	  <aop:scoped-proxy/>
+   	</bean>
+
+	<bean id="entryDataConverter" 
+        class="gov.nwcg.isuite.core.service.impl.EntryDataConverterImpl">
+	</bean>
+
+	<bean name="dailyTimePost" 
+          class="gov.nwcg.isuite.core.financial.posts.DailyTimePostImpl" 
+          scope="request">
+    <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="of286ReportGenerator" 
+          class="gov.nwcg.isuite.core.reports.generator.OF286ReportGeneratorImpl" 
+          scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+    <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="of288ReportGenerator" 
+          class="gov.nwcg.isuite.core.reports.generator.OF288ReportGeneratorImpl" 
+          scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+    <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="personnelTimeReportGenerator" 
+          class="gov.nwcg.isuite.core.reports.generator.PersonnelTimeReportGeneratorImpl" 
+          scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+    <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="shiftsInExcessReportGenerator2" 
+          class="gov.nwcg.isuite.core.reports.generator.ShiftsInExcessReportGeneratorImpl2" 
+          scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+    <aop:scoped-proxy/>
+   </bean>
+
+   <bean name="shiftsInExcessReportGenerator2Alt" 
+          class="gov.nwcg.isuite.core.reports.generator.ShiftsInExcessReportGeneratorImpl2Alt" 
+          scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+    <aop:scoped-proxy/>
+   </bean>
+
+   
+   <bean name="workRestRatioReportGenerator" 
+          class="gov.nwcg.isuite.core.reports.generator.WorkRestRatioReportGeneratorImpl" 
+          scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+    <aop:scoped-proxy/>
+   </bean>
+   
+   <bean name="workRestRatioReportGenerator2Alt" 
+          class="gov.nwcg.isuite.core.reports.generator.WorkRestRatioReportGeneratorImpl2Alt" 
+          scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+    <aop:scoped-proxy/>
+   </bean>
+
+   <bean name="vendorResourceSummaryReportGenerator" 
+          class="gov.nwcg.isuite.core.reports.generator.VendorResourceSummaryReportGeneratorImpl" 
+          scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+    <aop:scoped-proxy/>
+   </bean>
+   
+    <bean name="summaryHoursWorkedReportGenerator" 
+          class="gov.nwcg.isuite.core.reports.generator.SummaryHoursWorkedReportGeneratorImpl" 
+          scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+    <aop:scoped-proxy/>
+   </bean>
+   
+    <bean name="summaryHoursWorkedReportGenerator2" 
+          class="gov.nwcg.isuite.core.reports.generator.SummaryHoursWorkedReportGenerator2Impl" 
+          scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+    <aop:scoped-proxy/>
+   </bean>
+
+   <bean name="crewRosterReportGenerator" 
+          class="gov.nwcg.isuite.core.reports.generator.CrewRosterReportGeneratorImpl" 
+          scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+    <aop:scoped-proxy/>
+   </bean>
+  
+   <bean name="groupCategoryTotalReportGenerator" 
+          class="gov.nwcg.isuite.core.reports.generator.GroupCategoryTotalReportGeneratorImpl" 
+          scope="request">
+      <property name="userSessionVo" ref="userSessionVo" />
+      <property name="loggingInterceptor" ref="loggingInterceptor" />
+    <aop:scoped-proxy/>
+   </bean> 
+   
+</beans>

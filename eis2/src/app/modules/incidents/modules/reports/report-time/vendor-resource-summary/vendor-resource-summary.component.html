@@ -1,0 +1,27 @@
+<div class="main-card">
+  <h5 style="font-weight: 600; padding-left: 10px; font-size: 19px">Vendor Resource Summary</h5>
+  <div class="card-body">
+    <div style="display: flex">
+      <div class="option-box">
+        <label class="label-header">Group By</label>
+        <label><input type="radio" name="groupBy" [(ngModel)]="groupBy" value="groupByNone">None</label>
+        <label><input type="radio" name="groupBy" [(ngModel)]="groupBy" value="groupByItemCode">Item Code</label>
+        <label><input type="radio" name="groupBy" [(ngModel)]="groupBy" value="groupByVendor">Vendor</label>
+        <label><input type="radio" name="groupBy" [(ngModel)]="groupBy" value="groupByHireDate">Hire Date</label>
+      </div>
+      <div class="option-box">
+        <label class="label-header">Sort By</label>
+        <label><input type="radio" name="sortBy" [(ngModel)]="sortBy" value="sortByRequestNumber">Request Number</label>
+        <label><input type="radio" name="sortBy" [(ngModel)]="sortBy" value="sortByItemCode">Item Code</label>
+        <label><input type="radio" name="sortBy" [(ngModel)]="sortBy" value="sortByVendor">Vendor</label>
+        <label><input type="radio" name="sortBy" [(ngModel)]="sortBy" value="sortByHireDate">Hire Date</label>
+      </div>
+    </div>
+    <div style="display: flex;align-items: center; margin-top: 10px">
+      <label class="chckbox-lbl"><input type="checkbox" class="chckbox" checked> Exclude Demob/Reassigned</label>
+    </div>
+    <div class="btn-box">
+      <button type="button" class="btn btn-default" (click)="generateReport()" title="Preview Report">Preview/Print</button>
+    </div>
+  </div>
+</div>

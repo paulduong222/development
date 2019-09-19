@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PersonnelTimeReport_export_excel" language="groovy" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4320b2c2-62d3-4348-8222-032c1e157cb5">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="headerTitle" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="headerSubTitle" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\workspaces\\e-isuite\\isuite-core\\Webroot\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="incidentNumber" class="java.lang.String"/>
+	<field name="postStartDate" class="java.util.Date"/>
+	<field name="postStopDate" class="java.util.Date"/>
+	<field name="faxNumber" class="java.lang.String"/>
+	<field name="timeUnitLeaderName" class="java.lang.String"/>
+	<field name="timeUnitLeaderPhoneNumber" class="java.lang.String"/>
+	<field name="dataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="114" splitType="Stretch">
+			<line>
+				<reportElement uuid="c012d477-551e-493d-8f00-536423c63c8d" x="0" y="111" width="572" height="1"/>
+			</line>
+			<rectangle>
+				<reportElement uuid="ee4b2d60-630e-42be-bcaf-f20e7ae9213d" x="13" y="0" width="267" height="70"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="305a09f2-0b40-4f53-b985-9f8cdd1dcdca" x="13" y="4" width="267" height="15"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Report Of Personnel Time For]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ce156cda-fde5-407a-8faf-fe80d1252deb" x="13" y="19" width="267" height="15"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incidentName} + "   " + $F{incidentNumber}]]></textFieldExpression>
+			</textField>
+			<textField pattern="M/d/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="7f5fe6cb-3264-48e1-aa3c-f255c4059e10" x="33" y="34" width="86" height="15"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{postStartDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="08ec1696-8651-4601-9c95-f9a9d6ca0edc" x="126" y="34" width="49" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[through]]></text>
+			</staticText>
+			<textField pattern="M/d/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="798c0a75-9774-4a2c-8e40-f41d536af0e8" x="177" y="34" width="79" height="15"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{postStopDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="83ca3294-a1a0-4520-8f45-f14d4212d93b" x="43" y="49" width="112" height="15"/>
+				<textElement/>
+				<text><![CDATA[For Timekeeper at FAX:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="c85c430f-849b-4bc9-bf8a-03627c1c9cd3" x="155" y="49" width="91" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{faxNumber}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="86fe227d-c0cc-4a24-a113-18520a4b284e" x="13" y="76" width="171" height="15"/>
+				<textElement/>
+				<text><![CDATA[Questions? Contact Time Unit Leader:]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="1d9208c6-4a0e-4508-b08c-c12b7e8ec51a" isPrintRepeatedValues="false" x="192" y="76" width="114" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{timeUnitLeaderName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c21808c5-ba0a-48d0-b41b-a51a0719a4b7" x="311" y="76" width="14" height="15"/>
+				<textElement/>
+				<text><![CDATA[at]]></text>
+			</staticText>
+			<textField pattern="(000) 000-0000" isBlankWhenNull="true">
+				<reportElement uuid="7eb7d0b9-e70a-4ad7-b75a-2dc2a298c03a" x="325" y="76" width="211" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{timeUnitLeaderPhoneNumber}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="8a78b5e1-5008-4d4f-9b09-0eca5bc8e1d6" x="0" y="95" width="572" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="f7c06533-0a3d-4658-ae4b-d95be1b1c86f" x="124" y="96" width="31" height="15"/>
+				<textElement/>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="81677f70-6e0e-411f-8561-dd447e066872" x="210" y="96" width="80" height="15"/>
+				<textElement/>
+				<text><![CDATA[Accounting Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cbf0c515-225f-4f82-b20b-27227b39d435" x="335" y="96" width="57" height="15"/>
+				<textElement/>
+				<text><![CDATA[Start Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5be16a5b-7a4a-4ca4-b1c4-2f8a728222cd" x="406" y="96" width="57" height="15"/>
+				<textElement/>
+				<text><![CDATA[Stop Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f2e63f9b-6c69-4166-a7c4-9b1631565f22" x="475" y="96" width="34" height="15"/>
+				<textElement/>
+				<text><![CDATA[Hours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3061fb0b-9728-4a00-b317-47844191def1" x="524" y="96" width="48" height="15"/>
+				<textElement/>
+				<text><![CDATA[Premium]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="592" splitType="Immediate">
+			<subreport>
+				<reportElement uuid="dbbcbe1f-ae1e-4a9f-9ec5-b14bb1010135" x="1" y="0" width="572" height="592"/>
+				<dataSourceExpression><![CDATA[$F{dataSource}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "PersonnelTimeReport_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="46" splitType="Stretch">
+			<line>
+				<reportElement uuid="ac97a2fd-8ade-4f8c-a9d7-47ad90f07f4f" x="0" y="0" width="572" height="1"/>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

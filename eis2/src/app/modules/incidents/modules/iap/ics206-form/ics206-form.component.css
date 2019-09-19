@@ -1,0 +1,39 @@
+#dv-ics206 {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+#dv-ics206 button {
+    height: 22px;
+}
+.dv-block {
+    width: 99%;
+    height: 61vh;
+    margin: 3px 3px 3px 3px;
+    padding-left: 5px;
+    border: 1px solid darkgray;
+}
+.dv-block-not-8 {
+    width: 99%;
+    height: 69vh;
+    margin: 3px 3px 3px 3px;
+    padding-left: 5px;
+    border: 1px solid darkgray;
+}
+
+#dv-block-action-bar {
+    margin: 3px 3px 3px 3px;
+    padding-left:5px;
+	background-color: #6183A6;
+    width: 99%;
+    height: 26px;
+}
+#dv-block-action-bar button {
+    margin-top: 2px;
+    margin-left: 4px;
+    height:22px;
+}
+.blk-hdr {
+    margin-left: 3px;
+    margin-top: 5px;
+}

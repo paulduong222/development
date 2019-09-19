@@ -1,0 +1,64 @@
+<app-jw-modal id="agreement-window-modal" style="display: none;" class="box-hdr-dv">
+    <div style="width: 480px; height: 290px;padding: 0px;">
+       <div class="w3-container w3-padding-small w3-theme-d2">
+          <div class="w3-left">{{ this.windowLabel }}</div>
+       </div>
+       <br>
+       <div class="eis">
+          <div>
+          <form [formGroup]="agreementForm" autocomplete="off">
+              <table>
+                  <tr>
+                      <td class="frmlbl"><label class="f1" for="txAgreement">Contract/Agreement #</label></td>
+                      <td><label class="ast">*</label></td>
+                      <td>
+                          <app-text-input id="txAgreement" name="txAgreement" type="text"
+                          formControlName="agreementNumber"  width="200" maxlength="30" 
+                          textTransform="uppercase"></app-text-input>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="frmlbl"><label class="f1" for="dtStart">Beginning Date</label></td>
+                      <td><label class="ast"></label></td>
+                      <td>
+                          <app-eis-datepicker #dtStart
+                            formControlName="startDate"
+                            id="dtStart">
+                        </app-eis-datepicker>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="frmlbl"><label class="f1" for="dtEnd">Expiration Date</label></td>
+                      <td><label class="ast"></label></td>
+                      <td>
+                          <app-eis-datepicker #dtEnd
+                            formControlName="endDate"
+                            id="dtEnd">
+                        </app-eis-datepicker>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="frmlbl"><label class="f1" for="ddAdminOffice">Admin Office For Payment</label></td>
+                      <td><label class="ast"></label></td>
+                      <td>
+                          <app-eis-dropdown id="ddAdminOffice" #ddAdminOffice
+                          [width]="200"
+                          [selectedDropdownData]="this.selectedAdminOffice"
+                          [dropdownData]="this.adminOfficeData"></app-eis-dropdown>
+                      </td>
+                      <td class="w3-small">
+                          <button (click)="openAdminOfficeWindow()" title="Click to add a new Admin Office" style="height:20px;">+</button>
+                      </td>
+                  </tr>
+              </table>
+            </form>
+            </div>
+       </div>
+   </div>
+   <div class="dv-action-bar w3-small w3-center">
+     <button (click)="this.save()" title="Click to save the Contractor Agreement">Save</button>
+     <button (click)="this.closeModal();" title="Click to cancel changes and close window">Close</button>
+   </div>
+</app-jw-modal>
+<app-admin-office-window #adminOfficeWindow
+  (saveAdminOfficeEvent)="this.saveAdminOfficeEvent($event)"></app-admin-office-window>

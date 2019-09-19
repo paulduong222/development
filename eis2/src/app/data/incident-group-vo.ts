@@ -1,0 +1,42 @@
+import { AbstractVo } from './abstract-vo';
+import { AgencyVo } from './agency-vo';
+import { OrganizationVo } from './organization-vo';
+import { JetPortVo } from './jet-port-vo';
+import { KindVo } from './kind-vo';
+import { IncidentGroupQuestionVo } from './incident-group-question-vo';
+
+export interface IncidentGroupVo extends AbstractVo {
+    groupName: string;
+    primaryIncidentId: number;
+    incidentVos: object;
+    incidentRemoveVos: object;
+    incidentGroupUsers: object;
+    airTravelQuestions: IncidentGroupQuestionVo[];
+    checkInQuestions: object;
+    incidentGroupQSKindVos: object;
+    checkOutLogisticsVos: object;
+    checkOutPlanningVos: object;
+    checkOutFinanceVos: object;
+    checkOutOtherVos: object;
+    createDate: Date;
+    incidentPrefsOtherFieldsVo: object;
+    incidentAccountCodeVos: object;
+    incidentGroupCostDefaultHours: number;
+    costAutoRun: boolean;
+    iapPersonNameOrder: string;
+    includeFilled: string;
+    iapResourceToDisplayFrom: string;
+    iapTreeviewDisplay: string;
+    byDate: Date;
+    nbrOfDaysPrior: number;
+    nbrOfDaysPriorString: string;
+    iapMasterFrequencyVos: object;
+    iapPositionItemCodeVos: object;
+    branchSettingVos: object;
+    iap204PrefsVos: object;
+    agencyVos: AgencyVo[];
+    organizationVos: OrganizationVo[];
+    jetPortVos: JetPortVo[];
+    kindVos: KindVo[];
+    isSiteManaged: boolean;
+}

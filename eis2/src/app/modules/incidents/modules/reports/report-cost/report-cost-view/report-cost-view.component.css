@@ -1,0 +1,42 @@
+#dv-cost-rpt-left {
+    min-width: 280px;
+    height: 80vh;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid darkgray;
+}
+
+#dv-cost-rpt-rht {
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: wrap;
+    /* width: 72vw; */
+    width: 100%;
+    min-height: 580px;
+    padding: 10px;
+}
+
+#dv-cost-rpt-left button {
+    margin: 2px;
+    text-align: center;
+    /* width: 20vw; */
+    width: 100%;
+    font-weight: bold;
+}
+
+.dv-cost-rpt {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid darkgray;
+    /* background-color: #e6e6e6; */
+    overflow: auto;
+    width: 100%;
+}
+
+.warning{
+    color:red;
+    /* background-color: #e6e6e6; */
+    font-size: 12px;
+    font-weight: 400;
+    margin-left: 10px;
+}

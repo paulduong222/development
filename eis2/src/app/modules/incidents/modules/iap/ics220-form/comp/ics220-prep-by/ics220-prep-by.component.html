@@ -1,0 +1,48 @@
+<label class="blk-hdr"><u>Prepared By</u></label>
+<br>
+<br>
+<form [formGroup]="compForm" autocomplete="off">
+  <div class="eis">
+  <div>
+    <table>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="txName">Name</label></td>
+          <td><label class="ast"></label></td>
+          <td>
+            <app-text-input id="txName" name="txName"
+            formControlName="preparedBy" allowSpace="true" 
+            width="250" maxlength="50"></app-text-input>
+          </td>
+      </tr>
+      <tr>
+        <td class="frmlbl"><label class="f1" for="txPosition">Position/Title</label></td>
+        <td><label class="ast"></label></td>
+        <td>
+          <app-text-input id="txPosition" name="txPosition"
+          formControlName="preparedByPosition" allowSpace="true" 
+          width="250" maxlength="50"></app-text-input>
+        </td>
+      </tr>
+      <tr>
+        <td class="frmlbl"><label class="f1" for="dtPrepDate">Date</label></td>
+        <td><label class="ast"></label></td>
+        <td>
+          <app-eis-datepicker #dtPrepDate
+          formControlName="preparedDateString"
+          id="dtPrepDate">
+        </app-eis-datepicker>
+      </td>
+      </tr>
+      <tr>
+        <td class="frmlbl"><label class="f1" for="txTime">Time</label></td>
+        <td><label class="ast"></label></td>
+        <td>
+          <app-text-input id="txTime" name="txTime"
+          formControlName="preparedDateTime" restrict2="0-9" 
+          width="80" maxlength="4"></app-text-input>
+        </td>
+      </tr>
+    </table>  
+  </div>
+</div>
+</form>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SummaryOfHoursWorkedReport" language="groovy" pageWidth="760" pageHeight="842" columnWidth="720" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="89b3fa4f-df7b-45b5-a0da-25efae9e9132">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Workspace\\isuite-core\\Webroot\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="jrGroupDateDataList" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="incidentId" class="java.lang.Long"/>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="incidentNumber" class="java.lang.String"/>
+	<field name="startDate" class="java.lang.String"/>
+	<field name="endDate" class="java.lang.String"/>
+	<group name="incidentGroup" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{incidentId}]]></groupExpression>
+		<groupHeader>
+			<band height="36">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="42aa8163-1651-4e9d-8dac-c1da2c5d86f2" x="150" y="0" width="440" height="18"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{incidentId} + " " + $F{incidentName} + " (" + $F{incidentNumber} + ")"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="e2423270-a3aa-4a13-a847-f0bff89356dd" x="150" y="18" width="440" height="18"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA["Starting Date: " + $F{startDate} + "  Ending Date:" + $F{endDate}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="c640a499-b2d0-4c13-be0b-61981c5d46cb" mode="Transparent" x="620" y="0" width="100" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[e-ISuite Report Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d8ee90bf-ac54-4d98-8d64-6812340a3e50" positionType="Float" mode="Transparent" x="150" y="0" width="440" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Summary of Hours Worked]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="55ba00b1-08cb-4888-b697-3a5c769ef880" mode="Transparent" x="0" y="0" width="720" height="40"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$F{jrGroupDateDataList}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "SummaryOfHoursWorked_subreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement uuid="6fde5851-ed1b-4491-ac97-b75138aa0ca9" x="644" y="0" width="60" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="881db029-8850-4b4d-a7a8-3ccbecc74b2e" x="704" y="0" width="16" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

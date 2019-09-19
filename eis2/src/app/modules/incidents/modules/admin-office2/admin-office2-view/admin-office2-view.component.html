@@ -1,0 +1,47 @@
+<div [style.height]="calcHt()">
+    <div id="dv-adminoffice-bar">
+      <div id="dv-adminoffice-bar-left" class="w3-left">
+      </div>
+      <div id="dv-adminoffice-bar-right" class="w3-right">
+        <button [class]="getBtnClass('add')" (click)="addAdminOffice()" title="Click to add a new Admin Office">Add Admin Office</button>
+        <button [class]="getBtnClass('edit')" (click)="this.editAdminOffice()" title="Click to edit Admin Office">Edit Admin Office</button>
+        <button class="w3-small" (click)="this.deleteAdminOffice()" title="Click to delete the Admin Office">Delete AdminOffice</button>
+        <button class="w3-small" (click)="navTo('/incidents/resources', 'time', 'timeview')" title="Click to navigate to Time Post">Time Post</button>
+        <button class="w3-small" (click)="navTo('/incidents/resources', 'timeadj', 'timeadjview')" title="Click to navigate to Time Adjustments">Time Adjustments</button>
+      </div>
+    </div>
+    <div class="split-example">
+      <as-split direction="vertical">
+          <as-split-area [size]="splitAreaTopSize">
+              <div id="dv-adminoffice-form">
+                <app-admin-office2-form
+                  #adminOfficeForm
+                  (saveEvent)="this.saveEvent($event)"
+                  (cancelEvent)="this.cancelEvent($event)">
+                </app-admin-office2-form>
+              </div>
+            </as-split-area>
+            <as-split-area [size]="splitAreaBottomSize">
+              <div style="height: 93%; width: 100%;">
+                  <div id="dv-adminoffice2-bar">
+                      <app-grid-icon-bar
+                        [showFilter]="true" 
+                        [showExpandRetract]="false"
+                        (filterEvent)="this.clearFilter()"
+                        (expandRetractEvent)="this.expandRetract()"
+                        (refreshEvent)="this.refreshGrid()">
+                  </app-grid-icon-bar>
+                  </div>
+              <div id="dv-adminoffice-grid">
+                  <app-eis-grid #adminOfficeGrid 
+                [columnDefs]="this.gridColumnDefs" 
+                [rowData]="adminOfficeList"
+                (rowSelectEvent)="this.onSelectAdminOffice($event)">
+              </app-eis-grid>
+                </div>
+          </div>
+        </as-split-area> 
+      </as-split>
+    </div>
+    </div>
+    <app-prompt-modal id="promptModal" #promptModal (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>

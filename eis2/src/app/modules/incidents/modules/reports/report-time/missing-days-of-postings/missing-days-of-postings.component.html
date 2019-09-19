@@ -1,0 +1,55 @@
+<div class="main-card">
+  <h5 style="font-weight: 600; padding-left: 10px; font-size: 19px">Missing Days of Postings</h5>
+  <div class="card-body">
+    <div class="date-box">
+      <label class="label-header">Select Date Range</label>
+      <span class="label-input">Start Date <span class="ast">*</span></span>
+      <app-eis-datepicker class="time-input" #startDate></app-eis-datepicker>
+      <span class="label-input">End Date <span class="ast">*</span></span>
+      <app-eis-datepicker class="time-input" #endDate></app-eis-datepicker>
+    </div>
+    <div class="radio-box">
+      <label><input type="radio" name="personnelOrVendor" [(ngModel)]="this.missingDaysOfPostingsReportFilter.personnelOrVendor" value="Personnel">Personnel</label>
+      <label><input type="radio" name="personnelOrVendor" [(ngModel)]="this.missingDaysOfPostingsReportFilter.personnelOrVendor" value="Vendor">Vendor</label>
+    </div>
+    <div *ngIf="this.missingDaysOfPostingsReportFilter.personnelOrVendor == 'Personnel'">
+      <div class="dropdown-box">
+          <span class="label-input">Agency</span>
+          <app-eis-dropdown [dropdownData]="dropdownData"(dropdownSelect)="setAgencyName($event)"></app-eis-dropdown>
+          <span class="label-input">Employment Code</span>
+          <select style="height: 23px;" [(ngModel)]="this.missingDaysOfPostingsReportFilter.employmentCode">
+            <option value="ALL">ALL</option>
+            <option value="AD">AD</option>
+            <option value="FED">FED</option>
+            <option value="OTHER">OTHER</option>
+          </select>
+      </div>
+      <div style="display: flex">
+        <div class="option-box">
+          <label class="label-header">Group By</label>
+          <label><input type="radio" name="groupBy" [(ngModel)]="this.missingDaysOfPostingsReportFilter.noneOrAgency" value="None">None</label>
+          <label><input type="radio" name="groupBy" [(ngModel)]="this.missingDaysOfPostingsReportFilter.noneOrAgency" value="Agency">Agency</label>
+        </div>
+        <div style="height: 150px" class="option-box">
+          <label class="label-header">Sort By</label>
+          <label><input type="radio" name="sortBy" [(ngModel)]="this.missingDaysOfPostingsReportFilter.reqNumOrResNameOrAgencyOrCode" value="Request Number">Request Number</label>
+          <label><input type="radio" name="sortBy" [(ngModel)]="this.missingDaysOfPostingsReportFilter.reqNumOrResNameOrAgencyOrCode" value="Resource name">Resource Name</label>
+          <label><input type="radio" name="sortBy" [(ngModel)]="this.missingDaysOfPostingsReportFilter.reqNumOrResNameOrAgencyOrCode" value="Agency">Agency</label>
+          <label><input type="radio" name="sortBy" [(ngModel)]="this.missingDaysOfPostingsReportFilter.reqNumOrResNameOrAgencyOrCode" value="Employment Code">Employment Code</label>
+        </div>
+      </div>
+    </div>
+    <div style="height: 150px" class="option-box" *ngIf="this.missingDaysOfPostingsReportFilter.personnelOrVendor == 'Vendor'">
+      <label class="label-header">Sort By</label>
+      <label><input type="radio" name="sortBy" [(ngModel)]="this.missingDaysOfPostingsReportFilter.reqNumOrResName" value="Request Number">Request Number</label>
+      <label><input type="radio" name="sortBy" [(ngModel)]="this.missingDaysOfPostingsReportFilter.reqNumOrResName" value="Resource name">Resource Name</label>
+    </div>
+    <div style="display: flex;align-items: center; margin-top: 10px">
+      <label class="chckbox-lbl"><input type="checkbox" class="chckbox" [(ngModel)]="this.missingDaysOfPostingsReportFilter.excludeDemobReassigned"> Exclude Demob/Reassigned</label>
+    </div>
+    <div class="btn-box">
+      <button type="button" class="btn btn-default" (click)="generateReport()"  title="Click to generate Missing Days of Postings Report">Preview/Print</button>
+    </div>
+  </div>
+</div>
+<app-prompt-modal id="promptModal" #promptModal  (promptActionEvent)="promptActionResult($event)"></app-prompt-modal>

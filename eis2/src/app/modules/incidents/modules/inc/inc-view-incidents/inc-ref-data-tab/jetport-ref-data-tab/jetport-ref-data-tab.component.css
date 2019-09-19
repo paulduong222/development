@@ -1,0 +1,55 @@
+.dv-jetport-ref-data {
+    width: 100%;
+    height: 100%;
+    border: 1px solid darkgray;
+}
+.dv-chk-boxes {
+    padding-left: 10px;
+    margin-bottom: 5px;
+    font: 12px Helvetica,Arial,sans-serif;
+}
+.dv-chk-boxes input {
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.dv-chk-boxes label {
+    padding-right: 10px;
+}
+#dv-jetport-bar {
+	background-color: #999999;
+	width: 100%;
+	height: 27px;
+}
+#dv-jetport-bar-left {
+	vertical-align: middle;
+	padding-left: 3px;
+}
+#dv-jetport-bar-left img {
+	height: 24px;
+	width: 24px;
+}
+#dv-jetport-bar-right {
+	padding-right: 3px;
+    padding-top: 3px;
+}
+#dv-jetport-bar-right button{
+	height:22px;
+}
+.dv-inc-jetport {
+    width: 100%;
+    height: 90%;
+}
+.dv-inc-jetport-grid {
+    width: 60%;
+     height: 100%;
+    float: left;
+}
+.dv-inc-jetport-form {
+    width: 40%;
+    height: 100%;
+    float: left;
+}
+.dv-jetport-inner {
+    height: 58vh;
+}

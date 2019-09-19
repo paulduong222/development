@@ -1,0 +1,45 @@
+.rpt-lbl {
+    font-weight: 550;
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+
+.rpt-box{
+    border:1px solid darkgrey;
+    padding: 10px;
+}
+
+.required{
+    color:red;
+    /* background-color: #e6e6e6; */
+    font-size: 12px;
+    font-weight: 550;
+    margin-left: 10px;
+}
+
+* {
+    /* margin: 5px 0px; */
+    font-size: 13px;
+}
+
+label {
+    margin-right: 5px;
+}
+
+.tooltip-box {
+    width: 500px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    background-color: #ccffff;
+    font-size: 12px;
+    font-weight: 550;
+}
+
+p {
+    margin-left: 10px;
+}
+
+input[type="number"]{
+    margin: 0px 10px;
+    height: 1.5em;
+}

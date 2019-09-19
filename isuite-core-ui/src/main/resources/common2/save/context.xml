@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context> 
+	<Resource name="jms/flex/TopicConnectionFactory"
+		type="org.apache.activemq.ActiveMQConnectionFactory"
+		description="Session Management JMS Connection Factory"
+		factory="org.apache.activemq.jndi.JNDIReferenceFactory"
+		brokerURL="vm://localhost:61616"
+		brokerName="ActiveMQBroker"/>
+	<Resource name="jms/flex/session-k-topic"
+		type="org.apache.activemq.command.ActiveMQTopic"
+		description="session killing topic"
+		factory="org.apache.activemq.jndi.JNDIReferenceFactory"
+		physicalName="session-k-topic"/>
+  <Resource name="jms/flex/user-id-topic"
+    type="org.apache.activemq.command.ActiveMQTopic"
+    description="userId targeted topic"
+    factory="org.apache.activemq.jndi.JNDIReferenceFactory"
+    physicalName="user-id-topic"/>
+</Context>

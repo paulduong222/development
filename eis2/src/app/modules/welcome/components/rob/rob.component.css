@@ -1,0 +1,24 @@
+#dv-rob-wrapper {
+	border:1px solid darkgray;
+	max-width: 900px;
+    min-height: 610px;
+}
+#dv-rob {
+	min-width: 900px;
+    min-height: 600px;
+	border:1px solid darkgray;
+	padding: 5px 5px 30px 5px;	
+	background-color: whitesmoke;
+	font-size:12px;	
+	display: block;
+}
+#dv-rob-btn-bar {
+	min-width: 900px;
+	height: 40px;
+	padding-top:5px;
+	vertical-align:middle;
+	border:1px solid gray;
+}
+#rob-error {
+    text-align: center;
+}

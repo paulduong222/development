@@ -1,0 +1,98 @@
+<div>
+  <form [formGroup]="compForm" autocomplete="off" onsubmit="">
+    <div class="eis">
+      <!--
+
+      <div class="split-example">
+        <as-split direction="vertical">
+          <as-split-area [size]="splitAreaTopSize">
+      -->
+      <div>
+        <table>
+              <tr>
+                <td>
+                  <!-- Column 1 -->
+                  <table>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txCatKindType">Category/Kind/Type and Function</label></td>
+                        <td><label class="ast">*</label></td>
+                        <td>
+                          <app-text-input id="txCatKindType" name="txCatKindType"
+                           allowSpace="true" formControlName="type"
+                          width="250" maxlength="50"></app-text-input>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td class="frmlbl"><label class="f1" for="txName">Name of Personnel or Cargo</label></td>
+                      <td><label class="ast"></label></td>
+                      <td>
+                        <app-text-input id="txName" name="txName"
+                         allowSpace="true" formControlName="name"
+                        width="250" maxlength="50"></app-text-input>
+                      </td>
+                  </tr>
+                  </table>
+                </td>
+                <td>
+                      <!-- Column 2 -->
+                      <table>
+                          <tr>
+                              <td class="frmlbl"><label class="f1" for="txStartTime">Mission Start Time</label></td>
+                              <td><label class="ast"></label></td>
+                              <td>
+                                <app-text-input id="txStartTime" name="txStartTime"
+                                formControlName="startTime" restrict2="0-9"
+                                 width="80" maxlength="4" ></app-text-input>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="frmlbl"><label class="f1" for="txFlyFrom">Fly From</label></td>
+                              <td><label class="ast"></label></td>
+                              <td>
+                                <app-text-input id="txFlyFrom" name="txFlyFrom"
+                                formControlName="flyFrom" allowSpace="true"
+                                 width="200" maxlength="50" ></app-text-input>
+                              </td>
+                          </tr>
+                          <tr>
+                            <td class="frmlbl"><label class="f1" for="txFlyTo">Fly To</label></td>
+                            <td><label class="ast"></label></td>
+                            <td>
+                              <app-text-input id="txFlyTo" name="txFlyTo"
+                              formControlName="flyTo" allowSpace="true"
+                               width="200" maxlength="50" ></app-text-input>
+                            </td>
+                        </tr>
+                    </table>
+                  </td>
+                </tr>
+            </table> 
+            </div> 
+  <!--        </as-split-area> 
+          <as-split-area [size]="splitAreaBottomSize" class="scroll-x">
+          -->
+            <div id="dv-block-action-bar" class="w3-small w3-left">
+              <button (click)="this.save()" title="Click to save the Task." [disabled]="this.isFormLocked" type="button">Save</button>
+              <button (click)="this.add()" title="Click to add a new Task." [disabled]="this.isFormLocked" type="button">Add Task</button>
+              <button (click)="this.delete()" title="Click to delete the Task." [disabled]="this.isFormLocked" type="button">Delete</button>
+              <button (click)="this.cancel()" title="Click to cancel changes." [disabled]="this.isFormLocked" type="button">Cancel</button>
+              <button (click)="this.preAddBlankLine()" title="Click to add a blank line." [disabled]="this.isFormLocked" type="button">Add Blank Line</button>
+              <button (click)="this.reorder()" title="Click to re-order Tasks." [disabled]="this.isFormLocked" type="button">Re-Order Tasks</button>
+            </div>
+            <div class="w3-left" style="height: 40vh; width: 100%;">
+                  <app-eis-grid #gridTask
+                  [floatingFilter]="false"
+                  [columnDefs]="this.gridColumnDefs"
+                  [rowData]="this.taskList" 
+                  (rowSelectEvent)="onSelectTaskRow($event)">
+                  </app-eis-grid>
+            </div>
+          <!--
+          </as-split-area>
+        </as-split>
+        </div>
+          -->
+    </div>
+ </form>
+</div>
+<app-prompt-modal id="icsForm220TaskPromptModal" #icsForm220TaskPromptModal (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>

@@ -1,0 +1,139 @@
+<h4 class="w3-theme-l3 w3-center mb-20" style="margin-left: 10px; margin-right:10px;">
+    <strong>{{mainLabel}}</strong>
+  </h4>
+  
+  <div class="fs-12 ml-20 mb-10 mt-0"> 
+  <form [formGroup]="dbForm">
+    <div class="mb-10">
+      <strong>
+        Database Information
+      </strong>
+    </div>
+  
+    <div class="border-solid-dkg-1 vw-98-p p-10 mb-10">
+        <table class="mb-10">
+          <tr>
+            <td class="frmlbl"><label for="ckAutoBackup">Automatic Backup</label></td>
+            <td></td>
+            <td>
+              <input formControlName="autoBackup" id="ckAutoBackup" (change)="this.onChangeBackup($event)" type="checkbox"/>
+            </td>
+          </tr>
+          <tr>
+            <td class="frmlbl"><label for="txDName">Database Name</label></td>
+            <td><label class="ast">*</label></td>
+            <td>
+                <app-text-input formControlName="databaseName" id="txDName" name="txDName" type="text" 
+                  width="200" maxlength="64" restrict2="a-z,A-Z,_,0-9"
+                  (input)="this.dbAvailVo.databaseName = $event.target.value"></app-text-input>
+              </td>
+            <td class="frmlbl"><label>(Database Name MUST begin with an Alpha character.)</label></td>
+          </tr>
+          <tr *ngIf="this.addEditMode === 'add'">
+            <td class="frmlbl"><label for="txDPassword">Database Password</label></td>
+            <td><label class="ast">*</label></td>
+            <td>
+              <app-text-input formControlName="dpassword" id="txDPassword" name="txDPassword" type="password" 
+                  width="200" maxlength="55" 
+                  (input)="this.dbAvailVo.password = $event.target.value"></app-text-input>
+            </td>
+          </tr>
+          <tr *ngIf="this.addEditMode === 'add'">
+            <td class="frmlbl"><label for="txVPassword">Verify Password</label></td>
+            <td><label class="ast">*</label></td>
+            <td>
+              <app-text-input formControlName="vpassword" id="txVPassword" name="txVPassword" type="password" 
+                width="200" maxlength="55" 
+                (input)="this.dbAvailVo.confirmPassword = $event.target.value"></app-text-input>
+            </td>
+          </tr>
+          <tr *ngIf="this.addEditMode === 'edit'">
+              <td class="frmlbl"><label for="ckChangePwd">Change Password</label></td>
+              <td></td>
+              <td>
+                <input formControlName="isChangePassword" id="ckChangePwd"
+                     (change)="this.onChangePassword($event)" type="checkbox"/>
+              </td>
+            </tr>
+            <tr *ngIf="this.addEditMode === 'edit'">
+              <td class="frmlbl"><label for="txCurPassword">Current Password</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                <app-text-input formControlName="curpassword" id="txCurPassword" name="txCurPassword" type="password" 
+                  width="200" maxlength="55" 
+                  (input)="this.dbAvailVo.currentPassword = $event.target.value"></app-text-input>
+              </td>
+            </tr>
+            <tr *ngIf="this.addEditMode === 'edit'">
+                <td class="frmlbl"><label for="txNewPassword">New Password</label></td>
+                <td><label class="ast">*</label></td>
+                <td>
+                 <app-text-input formControlName="newpassword" id="txNewPassword" name="txMewPassword" type="password" 
+                    width="200" maxlength="55" 
+                    (input)="this.dbAvailVo.changePassword = $event.target.value"></app-text-input>
+              </td>
+              </tr>
+              <tr *ngIf="this.addEditMode === 'edit'">
+                  <td class="frmlbl"><label for="txVerPassword">Verify Password</label></td>
+                  <td><label class="ast">*</label></td>
+                  <td>
+                    <app-text-input formControlName="confpassword" id="txVerPassword" name="txVerPassword" type="password" 
+                      width="200" maxlength="55" 
+                      (input)="this.dbAvailVo.confirmChangePassword = $event.target.value"></app-text-input>
+                  </td>
+                </tr>
+          </table>
+    </div>
+  
+    <div class="mb-10">
+      <strong>
+        Autobackup Information
+      </strong>
+    </div>
+  
+    <div class="border-solid-dkg-1 vw-98-p p-10 mb-10">
+      <table>
+        <tr>
+          <td class="frmlbl"><label for="cbIntervals">Intervals</label></td>
+          <td><label class="ast">*</label></td>
+          <td>
+            <select formControlName="interval" id="cbIntervals" style="width:100px;" (change)="this.dbAvailVo.backupInterval = this.intervals[$event.target.selectedIndex].hours">
+                <option *ngFor="let v of this.intervals" [ngValue]="v.hours" >{{ v['desc'] }}</option>
+              </select>
+          </td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label for="txDDestination">Default Destination</label></td>
+          <td></td>
+          <td>
+            <input formControlName="defaultDestination" id="txDDestination" name="txDDestination" type="text" style="width:330px;" value="C:\PROGRAMDATA\E-ISUITE\NWCG-BACKUPS\"/>
+          </td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label for="txADestination">Additional Destination</label></td>
+          <td></td>
+          <td>
+           <app-text-input formControlName="additionalDestination" id="txADestination" name="txADestination" type="text" 
+              width="330" maxlength="55"  restrict2="a-z,A-Z,_,0-9,:,slash,-"
+              (input)="this.dbAvailVo.additionalBackupDestination = $event.target.value"></app-text-input>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><label>Note: Use 2 backslashes as seperator ( ex: C:\\OtherBackupFolder\\ )</label></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+  
+    <div class="button-action-bar">
+      <strong>
+        <button (click)="this.save()" title="Click to save the record">Save</button>
+        <button (click)="this.cancel()" title="Click to cancel changes">Cancel</button>
+      </strong>
+    </div>
+  </form>
+  </div>
+  
+  

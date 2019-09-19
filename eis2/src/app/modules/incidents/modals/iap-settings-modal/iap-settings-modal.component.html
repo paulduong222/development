@@ -1,0 +1,55 @@
+<app-jw-modal id="iap-settings-modal" style="display: none;" class="box-hdr-dv">
+    <div style="width: 1030px; height: 310px">
+        <div class="w3-container w3-padding-small w3-theme-d2">
+            <div class="w3-left">IAP Settings</div>
+            <div class="w3-right"></div>
+        </div>
+        <div class="eis">
+            <div class="dv-module-sub-nav-bar">
+                <div class="btn-group-sub-menu">
+                    <button (click)="dataTabSelect('options')" [class]="getStyle('options')">Options</button>	
+                    <button >ICS-203 Template</button>
+                    <button >ICS-204 Template</button>	
+                    <button >Master Frequency List</button>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="this.selectedTab === 'options'" class="main-box border-box">
+                <div class="left-box border-box">
+                    <table class="border-box">
+                        <th>Persons Order</th>
+                        <tbody>
+                            <tr><td><input type="radio" checked><label>Last Name, First Name</label></td></tr>
+                            <tr><td><input type="radio"><label>First Name, Last Name</label></td></tr>
+                        </tbody>
+                    </table>
+                    <div><label><input type="checkbox">Include Filled Resources</label></div>
+                    <table class="border-box">
+                        <th>Resources to Disply From</th>
+                        <tbody>
+                            <tr><td><input type="radio" checked><label>Selected Incident</label></td></tr>
+                            <tr><td><input type="radio"><label>All Incidents</label></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="right-box border-box">
+                    <table class="border-box">
+                        <th>Treeview Display</th>
+                        <tbody>
+                            <tr><td><input name="treeviewDisplay" type="radio" checked (click)="treeviewDisplaySelect(true, false, false)"><label>Show All</label></td></tr>
+                            <tr><td><input name="treeviewDisplay" type="radio" (click)="treeviewDisplaySelect(false, true, false)"><label>By Date (Shows Plans that have a Start Date newer than the User Defined Date)</label><app-eis-datepicker [disabled]="!this.byDate"></app-eis-datepicker></td></tr>
+                            <tr><td><input name="treeviewDisplay" type="radio" (click)="treeviewDisplaySelect(false, false, true)"><label>By Number of Days (Shows Plans with a Start Date within the User Defined number of days prior to the System Date)</label><app-eis-datepicker [disabled]="!this.byNumber"></app-eis-datepicker></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <div class="w3-center">
+            <div class="w3-bar">
+                <button>Save</button>
+                <button>Cancel</button>
+                <button (click)="closeModal('iap-settings-modal');" title="Click to close window">Close</button>
+            </div>
+        </div>
+    </div>
+</app-jw-modal>
+

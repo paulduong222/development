@@ -1,0 +1,75 @@
+<label class="blk-hdr"><u>Prepared By</u></label>
+<form [formGroup]="compForm" autocomplete="off">
+<div class="eis">
+  <div>
+    <table>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="txPrepBy">Prepared By</label></td>
+          <td><label class="ast"></label></td>
+          <td>
+            <app-text-input id="txPrepBy" name="txPrepBy"
+            formControlName="preparedBy" allowSpace="true"
+            width="300" maxlength="50"></app-text-input>
+          </td>
+      </tr>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="txPrepPos">Preparer's Position/Title</label></td>
+          <td><label class="ast"></label></td>
+          <td>
+            <app-text-input id="txPrepPos" name="txPrepPos"
+            formControlName="preparedByPosition" allowSpace="true"
+            width="300" maxlength="50"></app-text-input>
+          </td>
+      </tr>
+    </table>  
+  </div>
+</div>
+<br>
+<label class="blk-hdr"><u>Approved By Incident Commander</u></label>
+<div class="eis">
+    <div>
+        <table>
+            <tr>
+                <td class="frmlbl"><label class="f1" for="txApprName">Name</label></td>
+                <td><label class="ast"></label></td>
+                <td>
+                  <app-text-input id="txApprName" name="txApprName"
+                  formControlName="approvedBy" allowSpace="true"
+                  width="300" maxlength="50"></app-text-input>
+                </td>
+            </tr>
+          </table>
+          <table>
+              <tr>
+                  <td>
+                    <table>
+                      <tr>
+                          <td class="frmlbl"><label class="f1" for="dtApprDate">Date</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                              <app-eis-datepicker #dtApprDate
+                               formControlName="approvedDateString"
+                                id="dtApprDate">
+                            </app-eis-datepicker>
+                          </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td>
+                      <table>
+                        <tr>
+                            <td class="frmlbl"><label class="f1" for="txApprTime">Time</label></td>
+                            <td><label class="ast"></label></td>
+                            <td>
+                              <app-text-input id="txApprTime" name="txApprTime"
+                              formControlName="approvedDateTime"
+                               width="80" restrict2="0-9" maxlength="4"></app-text-input>
+                            </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+          </table>
+    </div>
+</div>
+</form>

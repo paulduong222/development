@@ -1,0 +1,14 @@
+#dvadminhdr {
+    border-top: solid 1px black;
+    width: 890px;
+}
+#dvadminhdr label{
+    font-size: 14px;
+    font-weight: bold;
+}
+#dvadmin {
+    width: 875px;
+    height: 500px;
+    overflow: auto;
+    border-top: solid 1px black;
+}

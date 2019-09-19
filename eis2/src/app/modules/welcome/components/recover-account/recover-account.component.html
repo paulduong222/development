@@ -1,0 +1,152 @@
+<div class="">
+  <form [formGroup]="raForm">
+    <div id="dv-recover-account-wrapper" class="div-center-screen">
+      <div class="w3-container w3-padding-small w3-theme-d2">
+        <div class="w3-left" tabIndex="0">
+        
+            <img class="ml-5 mr-5" src="assets/images/key.png" width="32" height="32"> 
+            Create Account Manager User
+          
+        </div>
+      </div>
+      <div id="dv-recover-account">
+        <div id="dv-left" tabIndex="0">
+          <label class="frmlbl">To create a new Account Manager user account:</label> 
+          <div class="dv-mt">
+              <label class="frmlbl">NOTE: The Account Manager is unique for each database.  If there are multiple
+                    databases, you will need to perform this process for each database.
+              </label>
+          </div>
+          <hr />  
+        </div>
+        <div >
+          <label style="padding-right:10px;" class="frmlbl" Ariafor="cbDb">1. Select a Database</label>
+          <select id="cbDb" class="form-control" 
+              style="width:220px; height:24px;" 
+              aria-label="database select list" formControlName="database" required 
+              (change)="onDatabaseChange($event)">
+              <option *ngFor="let d of this.dbListData" [ngValue]="d">{{d.name}}</option>
+          </select>
+          <div class="dv-mt">
+            <label class="frmlbl"> 
+                2. Call the Help Desk and provide them with the following code:
+            </label>
+          </div>
+          <app-text-input class="ml-20" id="txRCode" name="txRCode" formControlName="rCode" type="text" 
+            width="280" maxlength="255" textTransform="none"></app-text-input>
+          <strong>
+            <button id="btnCopy" class="h22 ml-5" title="Click to copy code to the clipboard" 
+              [disabled]="this.copyDisabled" (click)="this.copyCode($event)">
+                Copy Code to Clipboard
+            </button>
+          </strong>
+          <div class="dv-mt">
+            <label class="frmlbl"> 
+                3. Enter the access key the Help Desk provided and click the Authenticate button:
+            </label> 
+          </div>
+          <app-text-input class="ml-20" id="txACode" name="txACode" type="text" formControlName="aCode" 
+            width="280" maxlength="255" (input)="this.authDisabled=$event.target.value.length === 0" textTransform="none">
+          </app-text-input>
+          <strong>
+            <button class="h22 ml-5" title="Click to authenticate the code"
+              [disabled]="this.authDisabled" (click)="this.authenticateCode()">
+              Authenticate
+            </button>
+          </strong>
+          <div class="dv-mt">
+            <label class="frmlbl"> 
+                4. After authenticating the access key, enter the account data and click save to create the new account.
+            </label> 
+          </div>
+          <hr />  
+        </div>
+        <table>
+          <tr>
+            <td>
+              <img class="ml-5" src="assets/images/logots.png">
+            </td>
+            <td>
+              <div class="ml-40">
+                <label> </label>
+                <br/>
+                <br/>
+                <table>
+                  <tr>
+                    <td class="frmlbl"><label for="txUserName">User Name</label></td>
+                    <td><label class="ast">*</label></td>
+                    <td>
+                      <app-text-input formControlName="userName" id="txUserName" name="txUserName"  type="text" 
+                          width="200" maxlength="50" textTransform="lowercase"
+                          (input)="this.userVo.loginName = $event.target.value"></app-text-input>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="frmlbl"><label for="txFirstName">First Name</label></td>
+                    <td><label class="ast">*</label></td>
+                    <td>
+                      <app-text-input formControlName="firstName" id="txFirstName" name="txFirstName" type="text" 
+                          width="200" maxlength="30" allowSpace="true"
+                          (input)="this.userVo.firstName = $event.target.value"></app-text-input>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="frmlbl"><label for="txLastName">Last Name</label></td>
+                    <td><label class="ast">*</label></td>
+                    <td>
+                      <app-text-input formControlName="lastName" id="txLastName" name="txLastName" type="text" 
+                          width="200" maxlength="35" allowSpace="true"
+                          (input)="this.userVo.lastName = $event.target.value"></app-text-input>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="frmlbl"><label for="cbUnits">Unit ID</label></td>
+                    <td><label class="ast">*</label></td>
+                    <td>
+                      <app-eis-dropdown
+                      id="cbUnits"
+                      [dropdownData]="this.orgList"
+                      [selectedDropdownData]="orgUnitCode"
+                      formControlName="homeUnitVo"
+                      [dropdownDisabled]="!this.authenticated"
+                      width="70"
+                      ></app-eis-dropdown>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="frmlbl"><label for="txPwd">Password</label></td>
+                    <td><label class="ast">*</label></td>
+                    <td>
+                        <app-text-input formControlName="pwd" id="txPwd" name="txPwd" type="password"
+                            width="200" maxlength="20"
+                            (input)="this.userVo.password = $event.target.value"></app-text-input>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="frmlbl"><label for="txCPwd">Confirm Password</label></td>
+                    <td><label class="ast">*</label></td>
+                    <td>
+                        <app-text-input formControlName="cpwd" id="txCPwd" name="txCPwd" type="password"
+                            width="200" maxlength="20"
+                            (input)="this.userVo.confirmPassword = $event.target.value"></app-text-input>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="dv-recover-account-btn-bar">
+          <div class="w3-center">
+          <strong>
+            <button class="w3-small h22" (click)="this.save()" title="Click to save the Account Manager user">Save</button>
+            <button class="w3-small h22 ml-8" (click)="this.cancel()" title="Click to cancel the recover account process" routerLink="/welcome/login">Cancel</button>
+          </strong>
+        </div> 
+      </div>
+    </div>
+  </form>  
+</div>
+<app-prompt-modal #promptCopy id="promptCopy" (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>  
+    

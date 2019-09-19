@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IAP_FORM_220_2_Tasks" language="groovy" pageWidth="752" pageHeight="592" orientation="Landscape" columnWidth="752" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="4839e48c-ed0b-4d30-977f-d239516ceb1e">
+	<property name="ireport.zoom" value="1.1289478601075553"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="type" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="start" class="java.lang.String"/>
+	<field name="flyFrom" class="java.lang.String"/>
+	<field name="flyTo" class="java.lang.String"/>
+	<pageHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="160" y="0" width="290" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Name of Personnel or Cargo (if applicable)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="0" y="0" width="160" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Category/Kind/Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="629" y="0" width="123" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fly To]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="450" y="0" width="52" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Mission]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="ce7fff0f-3b45-4cf6-86a4-a99d895d6c51" x="0" y="26" width="752" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" x="160" y="0" width="1" height="26"/>
+			</line>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" x="450" y="0" width="1" height="26"/>
+			</line>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" x="502" y="0" width="1" height="26"/>
+			</line>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="503" y="1" width="125" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fly From]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="450" y="13" width="52" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Start]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="0" y="13" width="160" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[and Function]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="160" y="13" width="290" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[or Instructions for Tactical Aircraft]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" x="628" y="0" width="1" height="26"/>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="b5266722-90da-4cd3-8c40-60334d10355a" stretchType="RelativeToTallestObject" x="0" y="0" width="160" height="20"/>
+				<box topPadding="2" leftPadding="3" rightPadding="2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{type}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="b5266722-90da-4cd3-8c40-60334d10355a" stretchType="RelativeToTallestObject" x="160" y="0" width="290" height="20"/>
+				<box topPadding="2" leftPadding="3" rightPadding="2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="b5266722-90da-4cd3-8c40-60334d10355a" stretchType="RelativeToTallestObject" x="450" y="0" width="52" height="20"/>
+				<box topPadding="2" leftPadding="3" rightPadding="2"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{start}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="b5266722-90da-4cd3-8c40-60334d10355a" stretchType="RelativeToTallestObject" x="503" y="1" width="125" height="20"/>
+				<box topPadding="2" leftPadding="3" rightPadding="2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{flyFrom}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="b5266722-90da-4cd3-8c40-60334d10355a" stretchType="RelativeToTallestObject" x="629" y="0" width="123" height="20"/>
+				<box topPadding="2" leftPadding="3" rightPadding="2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{flyTo}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="ce7fff0f-3b45-4cf6-86a4-a99d895d6c51" positionType="Float" x="0" y="20" width="752" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" stretchType="RelativeToTallestObject" x="160" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" stretchType="RelativeToTallestObject" x="450" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" stretchType="RelativeToTallestObject" x="502" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" stretchType="RelativeToTallestObject" x="628" y="0" width="1" height="20"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

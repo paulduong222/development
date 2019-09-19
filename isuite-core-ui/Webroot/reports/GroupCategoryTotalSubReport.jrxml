@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="GroupCategoryTotalSubReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="20" uuid="6367ae94-3bed-4d99-be9f-9946522b2bfc">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="subGroupCatDescription" class="java.lang.String"/>
+	<field name="costAmount" class="java.lang.Double"/>
+	<field name="kindGroupDescription" class="java.lang.String"/>
+	<field name="directIndirectName" class="java.lang.String"/>
+	<field name="incidentId" class="java.lang.Long"/>
+	<field name="incidentName" class="java.lang.String"/>
+	<variable name="grandTotalCost" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount}]]></variableExpression>
+	</variable>
+	<variable name="categoryTotal" class="java.lang.Double" resetType="Group" resetGroup="kindGroupDescription" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount}]]></variableExpression>
+	</variable>
+	<variable name="directIndirectTotal" class="java.lang.Double" resetType="Group" resetGroup="directIndirectName" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount}]]></variableExpression>
+	</variable>
+	<group name="directIndirectName">
+		<groupExpression><![CDATA[$F{directIndirectName}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band height="24">
+				<textField>
+					<reportElement uuid="12b34961-4cce-4c48-bf34-f0db7ec5aa10" x="9" y="3" width="178" height="20"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{directIndirectName} + " Subtotal: "]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="29f0ae70-d3f0-4639-a4d5-e9c45eb6f29a" x="187" y="3" width="97" height="20"/>
+					<textElement textAlignment="Right">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{directIndirectTotal}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="03894c66-e40a-41bc-924c-80bb22d754c4" x="286" y="3" width="100" height="20"/>
+					<textElement textAlignment="Right">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{directIndirectTotal}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="kindGroupDescription">
+		<groupExpression><![CDATA[$F{kindGroupDescription}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band height="29">
+				<line>
+					<reportElement uuid="e7334902-cfe2-471e-bbf7-f9f1efe35257" x="6" y="3" width="400" height="1"/>
+				</line>
+				<textField>
+					<reportElement uuid="6de1a9e4-6720-4288-afb3-13dd5172f05e" x="7" y="6" width="180" height="20"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{kindGroupDescription} + " Subtotal:"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="66f648ba-cbfa-4361-8149-b0231d821770" x="187" y="6" width="98" height="20"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$V{categoryTotal}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="0f1f2697-8f7e-4ac4-811c-a100c3735316" x="286" y="5" width="100" height="20"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$V{categoryTotal}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="3" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="c86921e8-7ad7-4c26-b6f3-da74e3deac0a" x="286" y="3" width="100" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="4f89a1d9-fb02-4105-aea1-47195e303b0b" x="5" y="3" width="182" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{subGroupCatDescription}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0480b75d-0639-4a33-bb01-2fc8554b4dae" x="286" y="2" width="100" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{costAmount}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="48bc00b3-d2a4-4d0f-bf02-b56d111f289b" x="187" y="3" width="98" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{costAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="39">
+			<staticText>
+				<reportElement uuid="8dd12dec-9b89-4d30-9c7c-941369047d12" x="7" y="10" width="180" height="20"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grand Total:     ]]></text>
+			</staticText>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement uuid="7124ee99-be7c-45eb-ac31-b5081a14f474" x="287" y="9" width="100" height="20"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["$"+$V{grandTotalCost}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="5fdad99c-b245-4ba8-94e1-b3e2468bda27" x="1" y="5" width="800" height="1"/>
+			</line>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement uuid="6d9f35e9-ad2a-4f5c-b075-cc949852f823" x="187" y="10" width="98" height="20"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["$"+$V{grandTotalCost}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,35 @@
+<app-jw-modal id="add-attach-modal" style="display: none;" class="box-hdr-dv">
+   <div style="width: 750px; height: 460px;padding: 0px;">
+      <div class="w3-container w3-padding-small w3-theme-d2">
+         <div class="w3-left">{{ this.windowLabel }}</div>
+      </div>
+      <div class="dv-box">
+         <p>Select Plan
+            <select [(ngModel)]="currentPlanKey" (change)="choosePlan()">
+               <option *ngFor="let plan of planList" value="{{plan.uniqueKey}}">{{plan.displayName}}</option>
+            </select>
+         </p>
+         <div style="width: 100%;height: 300px" class=grid-dv>
+            <app-eis-grid 
+               [columnDefs]="this.gridColumnDefs" 
+               [rowData]="rowData" 
+               [floatingFilter]=false
+               (rowSelectEvent)="rowSelect($event)"></app-eis-grid>
+         </div>
+         <p>
+            <label>Attachment Name</label>
+            <label class="ast">*</label>
+            <input id="txFile" readonly maxlength="200" style="width:300px;"
+               [value]="fileName" (click)="filePicker.click()" />
+            <img src="assets/images/magnifyingGlass.png" (click)="filePicker.click()">
+            <input type="file" #filePicker style="display: none;" accept=".pdf" (change)="uploadFile($event)">
+         </p>
+      </div>
+      <div id="dv-plan-action-bar" class="w3-small w3-left">
+         <button (click)="save()" title="Click to save the Plan.">Save</button>
+         <button (click)="delete()" title="Click to cancel changes.">Delete</button>
+         <button (click)="closeModal();" title="Click to cancel changes and close window">Cancel</button>
+      </div>
+   </div>
+</app-jw-modal>
+<app-prompt-modal id="promptModal" #promptModal  (promptActionEvent)="promptActionResult($event)"></app-prompt-modal>

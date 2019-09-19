@@ -1,0 +1,101 @@
+#dv-iap-top-bar {
+	background-color: #999999;
+	width: 100%;
+    height: 43px;
+    border: 1px solid blue;
+}
+#dv-iap-top-bar button{
+    margin-top: 5px;
+}
+#dv-iap-top-info {
+    padding: 4px;
+    font: 13px Helvetica,Arial,sans-serif;
+    width: 500px;
+    height: 35px;
+    background-color: white;    
+}
+#dv-iap-top-form-bar {
+    height: 30px;
+    width: 100%;
+    background-color: white;    
+}
+#dv-iap-top-form-bar-left {
+    float:left;
+    padding-left: 10px;
+    height: 28px;
+    width: 45%;
+    background-color: white;    
+}
+#dv-iap-top-form-bar-left button {
+    margin-top: 3px;
+	height:22px;
+}
+#dv-iap-top-form-bar-middle {
+    float:left;
+    text-align: center;
+    margin-top: 7px;
+    vertical-align: middle;
+    font: 16px Helvetica,Arial,sans-serif;
+    height: 20px;
+    width: 13%;
+    color: red;
+    background-color: white;    
+}
+#dv-iap-top-form-bar-right {
+    float:left;
+    text-align: right;
+    font: 16px Helvetica,Arial,sans-serif;
+    margin-top: 7px;
+    margin-right: 10px;
+    height: 20px;
+    width: 40%;
+    background-color: white;    
+}
+#dv-iap-top-form-bar-right label{
+    margin-top: 2px;
+}
+#dv-iap-top-bar-left {
+	vertical-align: middle;
+	padding-left: 3px;
+}
+#dv-iap-top-bar-left img {
+	height: 24px;
+	width: 24px;
+}
+#dv-iap-top-bar-right {
+	padding-right: 3px;
+}
+#dv-iap-top-bar-right button{
+	height:22px;
+}
+#dv-iap-bar {
+	background-color: #999999;
+	width: 100%;
+    height: 29px;
+}
+#dv-iap-bar-left {
+	vertical-align: middle;
+	margin-left: 1px;
+}
+#dv-iap-bar-left img {
+	height: 24px;
+	width: 24px;
+}
+#dv-iap-bar-right {
+	margin-right: 3px;
+}
+#dv-iap-bar-right button{
+	height:22px;
+}
+#dv-iap-grid {
+    margin-top: 5px;
+	background-color: white;
+	border: 1px solid darkgray;
+	width: 100%;
+	height: 100%;
+	min-width: 300px;
+}
+#dv-iap-main{
+    width: 100%;
+    height: 77vh;
+}

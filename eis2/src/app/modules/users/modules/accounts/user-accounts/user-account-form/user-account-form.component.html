@@ -1,0 +1,202 @@
+<div class="eis">
+	<div id="dv-account-form" class="eis bg-white">
+		<form [formGroup]="userForm" autocomplete="off">
+	<!-- div id="dv-acct-roles"><label>Roles</label></div -->
+	<!--
+
+	<div id="dv-role-type">
+		<input type="radio" formControlName="roletype" name="roletype" value="nonpriv"
+			(input)="this.onChangeRoleType($event)"> Non-Privileged
+		<input type="radio" formControlName="roletype" name="roletype" value="priv"
+			(input)="this.onChangeRoleType($event)"> Privileged
+	</div>
+	-->
+			<table>
+				<tr>
+					<td>
+						<table>
+							<tr>
+								<td class="frmlbl"><label class="f1" for="rdRoletype">Role Type</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+									<input type="radio" formControlName="roletype" name="roletype" value="nonpriv"
+										(input)="this.onChangeRoleType($event)"> Non-Privileged
+									<input type="radio" formControlName="roletype" name="roletype" value="priv"
+										(input)="this.onChangeRoleType($event)"> Privileged
+								</td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label class="f1" for="ckEnabled">Enabled</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+									<input formControlName="enabled" id="ckEnabled" type="checkbox"/>
+								</td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label for="txUName">User Name</label></td>
+								<td><label class="ast">*</label></td>
+								<td>
+									<app-text-input formControlName="loginName" id="txUName" name="txUName" type="text"
+										width="200" maxlength="30" textTransform="lowercase"></app-text-input>
+								</td>
+							</tr>
+							<tr>
+								<td class="frmlbl" ><label for="txFName">First Name</label></td>
+								<td><label class="ast">*</label></td>
+								<td>
+									<app-text-input formControlName="firstName" id="txFName" name="txFName" type="text"
+										width="200" maxlength="30" allowSpace="true"></app-text-input>
+								</td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label for="txLName">Last Name</label></td>
+								<td><label class="ast">*</label></td>
+								<td>
+									<app-text-input formControlName="lastName" id="txLName" name="txLName" type="text"
+										width="200" maxlength="35" allowSpace="true"></app-text-input>
+								</td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label for="txPwd">Password</label></td>
+								<td><label class="ast">*</label></td>
+								<td>
+									<app-text-input formControlName="pwd" id="txPwd" name="txPwd" type="password"
+										width="200" maxlength="20"></app-text-input>
+								</td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label for="txCPwd">Confirm Password</label></td>
+								<td><label class="ast">*</label></td>
+								<td>
+									<app-text-input formControlName="cpwd" id="txCPwd" name="txCPwd" type="password"
+										width="200" maxlength="20"></app-text-input>
+								</td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label></label></td>
+								<td><label class="ast"></label></td>
+								<td>
+									<button class="w3-small h22" [disabled]="this.newUser" (click)="resetPassword()"
+										title="Click to reset User's password">Reset Password</button>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td class="vtop">
+						<table>
+							<tr></tr>
+							<tr>
+								<td class="frmlbl"><label for="ddUnit">Unit ID</label></td>
+								<td><label class="ast">*</label></td>
+								<td>
+									<!-- <select id="cbUnit" formControlName="homeUnitVo" (change)="onUnitChange($event)" style="width:100px;">
+										<option *ngFor="let unit of this.orgList" [ngValue]="unit">{{ unit['unitCode'] }}</option>
+									</select> -->
+									<!-- <br> -->
+									<!-- <app-eis-dropdown #eisUnit [dropdownData]="this.orgList2"></app-eis-dropdown> -->
+									<app-eis-dropdown #unitCodeDropdown
+									id="ddUnit"
+									[dropdownData]="this.orgList"
+									[selectedDropdownData]="orgUnitCode"
+									(dropdownSelect)="onUnitChange($event)"
+									formControlName="homeUnitVo"
+									width="70"
+									></app-eis-dropdown>
+									<!-- (dropdownSelect)="onUnitChange($event)" -->
+								</td>
+							</tr>
+							<!--
+							<tr>
+								<td class="frmlbl"><label for="cbPdc">Dispatch Center</label></td>
+								<td><label class="ast">*</label></td>
+								<td>
+									<app-eis-dropdown #pdcCodeDropdown
+									id="ddUPdc"
+									[dropdownData]="this.pdcList"
+									[selectedDropdownData]="pdcUnitCode"
+									formControlName="pdcVo"
+									width="70"
+									></app-eis-dropdown>
+								</td>
+							</tr>
+							-->
+							<tr>
+								<td class="frmlbl"><label for="txWorkPhone">Work Phone</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+									<!--
+									<input formControlName="workPhone" id="txWorkPhone" name="txWorkPhone" type="text" style="width:200px;"/>
+									-->
+									<app-phone-input formControlName="workPhone" id="txWorkPhone" name="txWorkPhone" style="width:200px;"></app-phone-input>
+								</td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label for="txCellPhone">Cell Phone</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+									<app-phone-input formControlName="cellPhone" id="txCellPhone" name="txCellPhone" style="width:200px;"></app-phone-input>
+									<!--
+									<input formControlName="cellPhone" id="txCellPhone" name="txCellPhone" type="text" style="width:200px;"/>
+									-->
+								</td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label for="txEmail">Email</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+									<app-text-input formControlName="email" id="txEmail" name="txEmail" type="text"
+										width="200" maxlength="50"></app-text-input>
+								</td>
+							</tr>
+							<tr><td></td></tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td class="frmlbl" style="width: 105px;"><label>Roles</label></td>
+					<td><label class="ast">*</label></td>
+					<td *ngIf="this.userForm.get('roletype').value === 'priv'" >
+									<label *ngFor="let role of this.privilegedRoles">
+									<input type="checkbox" [value]="role.id" [checked]="role.checked" (change)="this.updatePrivRoleRow(role.id,$event);"> {{ role.displayName }}
+									<br>
+									</label>
+					</td>
+					<td *ngIf="this.userForm.get('roletype').value === 'nonpriv'" >
+						<button (click)="selectAllNonPrivRoles()" class="roleBtn" title="Click to select all roles">Select All</button>
+						<button (click)="unSelectAllNonPrivRoles()" class="roleBtn"  title="Click to unselect all roles">Un-Select All</button>
+						<br>
+						<br>
+							<label *ngFor="let role of this.nonPrivilegedRoles">
+								<input type="checkbox" [value]="role.id" [checked]="role.checked" (change)="this.updateNonPrivRoleRow(role.id,$event);"> {{ role.displayName }}
+								<br>
+							</label>
+					</td>
+				</tr>
+			</table>
+			<!--
+				<div #nonPrivRoles *ngIf="this.userForm.get('roletype').value === 'nonpriv'">
+					<br>
+					<div class="w3-container">
+						<div class="w3-left">
+							<label *ngFor="let role of this.nonPrivilegedRoles">
+								<input type="checkbox" [value]="role.id" [checked]="role.checked" (change)="this.updateNonPrivRoleRow(role.id,$event);"> {{ role.displayName }}
+								<br>
+							</label>
+						</div>
+						<div id="dv-role-action-bar" class="w3-right">
+							<button (click)="selectAllNonPrivRoles()" title="Click to select all roles">Select All</button>
+							<br>
+							<button (click)="unSelectAllNonPrivRoles()" title="Click to unselect all roles">Un-Select All</button>
+						</div>
+					</div>
+				</div>
+			-->
+		</form>
+	</div>
+	<div id="dv-acct-action-bar">
+		<button (click)="save()" title="Click to save User Account">Save</button>
+		<button (click)="cancel()" title="Click to cancel changes">Cancel</button>
+	</div>
+</div>

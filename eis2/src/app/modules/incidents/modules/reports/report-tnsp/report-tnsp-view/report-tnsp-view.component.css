@@ -1,0 +1,24 @@
+#dv-tnsp-rpt-left {
+    min-width: 280px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid darkgray;
+}
+#dv-tnsp-rpt-left button {
+    margin: 2px;
+    text-align: center;
+    width: 15vw;
+    min-width: 250px;
+    font: 12px Helvetica,Arial,sans-serif;
+    font-weight: bold;
+}
+.lbl-hdr {
+	font: 12px Helvetica,Arial,sans-serif;
+    font-weight: bold;
+}
+#dv-tnsp-rpt-right {
+    width: 79vw;
+    min-height: 500px;
+    padding: 10px;
+    /*border: 1px solid darkgray;*/
+}

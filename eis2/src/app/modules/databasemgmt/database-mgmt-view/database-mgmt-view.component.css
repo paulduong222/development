@@ -1,0 +1,46 @@
+#dv-db-mgmt-bar {
+	background-color: #999999;
+	width: 100%;
+	height: 4%;
+}
+
+#dv-db-mgmt-bar-left {
+	vertical-align: middle;
+	padding-left: 3px;
+}
+
+#dv-db-mgmt-bar-left img {
+	height: 24px;
+	width: 24px;
+}
+#dv-db-mgmt-bar-right {
+	padding-right: 3px;
+}
+
+#dv-db-mgmt-bar-right button{
+    height:22px;
+}
+
+#dv-db-mgmt-grid {
+	background-color: white;
+	border: 1px solid darkgray;
+	width: 100%;
+	height: 100%;
+	min-width: 300px;
+}
+
+#dv-db-mgmt-form {
+	background-color: white;
+	border: 1px solid darkgray;
+	width: 100%;
+	height: 100%;
+}
+
+.split-example {
+  outline: 1px solid darkgray;
+  margin: 2px;
+}
+
+split-area > p {
+  padding: 15px;
+}

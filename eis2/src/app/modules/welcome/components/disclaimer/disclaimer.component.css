@@ -1,0 +1,18 @@
+#dv-disclaimer {
+	min-width: 700px;
+	border-style: solid;
+	border-color: darkgray;
+	border-width: 1px 1px 1px 1px;
+	padding: 5px 5px 30px 5px;	
+	background-color: white;
+}
+#dv-disclaimer-btn-bar {
+	min-width: 600px;
+	height: 40px;
+	padding-top:5px;
+	vertical-align:middle;
+	background-color: lightgray;
+	border-style: solid;
+	border-color: darkgray;
+	border-width: 0px 1px 1px 1px;
+}

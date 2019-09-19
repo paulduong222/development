@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ActualDemob_subreport1" pageWidth="718" pageHeight="20" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="718" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="08a81a50-85a8-4af8-8a2b-3aa624e7a411">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="restOverNightCityState" class="java.lang.String"/>
+	<field name="estimatedArrivalDate" class="java.util.Date"/>
+	<field name="restOverNight" class="java.lang.Boolean"/>
+	<field name="recordCount" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="a50ec7be-13eb-4819-be8c-c0d6793acc3f" x="479" y="0" width="26" height="20"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.0" lineStyle="Double"/>
+					<leftPen lineWidth="0.0" lineStyle="Double"/>
+					<bottomPen lineWidth="0.0" lineStyle="Double"/>
+					<rightPen lineWidth="0.0" lineStyle="Double"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{restOverNight}==Boolean.TRUE ? "Y" : "N")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b33988ae-2618-4325-b21e-8826d98fd8d5" x="505" y="0" width="123" height="20"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.0" lineStyle="Double"/>
+					<leftPen lineWidth="0.0" lineStyle="Double"/>
+					<bottomPen lineWidth="0.0" lineStyle="Double"/>
+					<rightPen lineWidth="0.0" lineStyle="Double"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{restOverNightCityState}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM/dd/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="057c3626-76b6-4192-a5e0-8ee643c31069" x="628" y="0" width="59" height="20"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.0" lineStyle="Double"/>
+					<leftPen lineWidth="0.0" lineStyle="Double"/>
+					<bottomPen lineWidth="0.0" lineStyle="Double"/>
+					<rightPen lineWidth="0.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estimatedArrivalDate}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HHmm" isBlankWhenNull="true">
+				<reportElement uuid="8bce5930-cb5d-4162-9ab8-c91e12090efb" x="687" y="0" width="31" height="20"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="0.0" lineStyle="Double"/>
+					<leftPen lineWidth="0.0" lineStyle="Double"/>
+					<bottomPen lineWidth="0.0" lineStyle="Double"/>
+					<rightPen lineWidth="0.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estimatedArrivalDate}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="7ff8f1f2-e58b-4415-aa6b-2d9e190803d7" x="687" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="3766e3b6-08b9-48df-88b3-c0171677e548" x="0" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="01fc1e48-b599-4ba0-a814-9049bea80a13" x="48" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="9cf89e5d-56b0-4a88-ae94-9519b55b83d9" x="100" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="b551b3a7-d657-4cdf-8ff5-b71b1e785e2b" x="252" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="15626d54-8443-483d-ad36-1812ecb455ad" x="306" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="56602dbc-5471-4218-876b-dfe1c59b4243" x="340" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="fb7073a3-46a6-40f0-94c9-885869447c74" x="382" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="37402054-6ab4-470d-b514-370eab962beb" x="479" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="88bf29af-4892-4c12-ab45-3286a8cbfba5" x="505" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="7ae54f8b-7f71-4e50-9574-0c6be1d1fedb" x="628" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="4b7679ca-66e5-4661-bd0e-bc4caef148dd" x="718" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="b3732aba-f4b5-4b23-86fc-0ec15d4e275d" x="479" y="19" width="239" height="1">
+					<printWhenExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue() < $F{recordCount}.intValue())]]></printWhenExpression>
+				</reportElement>
+			</line>
+		</band>
+	</detail>
+	<noData>
+		<band height="20">
+			<line>
+				<reportElement uuid="e701640e-df36-4b02-bcfd-70b45af27acf" x="687" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="6e18ffee-a341-4086-8910-28423237e203" x="0" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="4e19d4d7-ba78-4d36-8960-dbb1c1a0e412" x="48" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="389a09a0-2183-4470-ae91-59a8d7b329c8" x="100" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="23863912-8ce0-4ef1-8936-f9904e627d91" x="252" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="085621a6-fe27-48fc-a141-2c569b41f36f" x="306" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="36649d5d-8ecd-4935-b6ad-2dd7062a1211" x="340" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="e4aec1db-5634-4194-89dc-9060642a8323" x="382" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="3e67188b-fc83-4095-aaa3-69ee9fb361f0" x="479" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="55c1e450-92c3-4c67-b7ad-61e02ee50329" x="505" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="dd7f3061-a9ad-408b-94bb-24c6f8d6d37f" x="628" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="9e6c6d2c-95a2-45cc-9aac-1bd2627ce0de" x="718" y="0" width="1" height="20"/>
+			</line>
+		</band>
+	</noData>
+</jasperReport>

@@ -1,0 +1,27 @@
+#dv-hdr-info {
+    padding: 10px 0px 10px 10px;
+    font: 14px Helvetica,Arial,sans-serif;
+}
+#dv-hdr-info label {
+    padding-left: 20px;
+}
+.tbl label{
+    padding-left: 20px;    
+}
+.tbl app-eis-datepicker{
+    padding-left: 10px;    
+}
+.tbl app-text-input{
+    padding-left: 10px;    
+}
+.tbl input{
+    padding-left: 10px;    
+}
+.acresButton {
+	height:22px;
+}
+.remarks {
+    height: 110px; 
+    width: 582px; 
+    resize: none;
+}

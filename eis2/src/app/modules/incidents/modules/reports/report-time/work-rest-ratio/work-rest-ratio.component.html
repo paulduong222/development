@@ -1,0 +1,72 @@
+<div class="main-card">
+  <h5 style="font-weight: 600; padding-left: 10px; font-size: 19px">Work/Rest Ratio</h5>
+  <div class="card-body">
+    <div class="date-box">
+      <label class="label-header">Select Date Range</label>
+      <span class="label-input">Start Date <span class="ast">*</span></span>
+      <app-eis-datepicker class="time-input" #dtStart></app-eis-datepicker>
+      <span class="label-input">End Date <span class="ast">*</span></span>
+      <app-eis-datepicker class="time-input" #dtEnd></app-eis-datepicker>
+    </div>
+    <div class="radio-box">
+      <label><input type="radio" name="resource" value="allResources" [(ngModel)]="resourceType">All Resources</label>
+      <label><input type="radio" name="resource" value="specificResources" [(ngModel)]="resourceType">Specific Resource</label>
+    </div>
+    <div style="display: flex; flex-direction: row">
+      <div class="option-box" *ngIf="resourceType === 'allResources'">
+        <div style="display: flex">
+          <div class="columns-display">
+            <label class="label-header">Group By</label>
+            <label><input type="radio" name="groupBy" value="groupByNone" [(ngModel)]="groupBy">None</label>
+            <label><input type="radio" name="groupBy" value="groupBySection" (change)="sortBy = 'sectionSortByShiftStartDate'" [(ngModel)]="groupBy">Section</label>
+            <label><input type="radio" name="groupBy" value="groupByDate" (change)="sortBy = 'sectionSortByRequestNumber'" [(ngModel)]="groupBy">Date</label>
+          </div>
+          <div class="columns-display" *ngIf="groupBy === 'groupBySection'">
+            <div *ngFor="let section of sections; let i = index">
+              <label class="pl-10 chckbox-lbl">
+                <input type="checkbox" class="chckbox" name="sections"
+                  value={{section.value}} (click)="checkboxHandler(i)"
+                  (change)="section.checked = !section.checked" [checked]="section.checked"> {{section.name}}
+              </label>
+            </div>
+          </div>
+          <div class="columns-display" *ngIf="groupBy === 'groupByDate'">
+            <label><input name="date-order" type="radio" value="dateTypeAscending" [(ngModel)]="dateOrder">Ascending</label>
+            <label><input name="date-order" type="radio" value="dateTypeDescending" [(ngModel)]="dateOrder">Descending</label>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="resourceType !== 'specificResources'">
+        <div class="option-box" *ngIf="groupBy !== 'groupByNone'">
+          <label class="label-header">Sort By</label>
+          <label *ngIf="groupBy === 'groupBySection'">
+                 <input type="radio" name="sortBy" value="sectionSortByShiftStartDate" [(ngModel)]="sortBy">Shift Start Date</label>
+          <label><input type="radio" name="sortBy" value="sectionSortByRequestNumber" [(ngModel)]="sortBy">Request Number</label>
+          <label><input type="radio" name="sortBy" value="sectionSortByName" [(ngModel)]="sortBy">Name</label>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex">
+      <div class="option-box" *ngIf="resourceType === 'specificResources'">
+        <div class="spc-res">
+          <span>Request Number</span>
+          <select class="date-input" type="text" [(ngModel)]="resourceIdSelected">
+            <option *ngFor="let option of requestNumbers" value="{{option.resourceId}}">{{option.label}}</option>
+          </select>
+        </div>
+        <div class="spc-res">
+          <span>Resource Name</span>
+          <select class="date-input" type="text" [(ngModel)]="resourceIdSelected">
+            <option *ngFor="let option of resourceNames" value="{{option.resourceId}}">{{option.label}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex;align-items: center; margin-top: 10px">
+      <input type="checkbox" class="checkbox" [(ngModel)]="workRestRatioReportFilter.excludeDemob"><label>Exclude Demob/Reassigned</label>
+    </div>
+    <div class="btn-box">
+      <button type="button" class="btn btn-default" (click)="generateReport()" title="Preview Report">Preview/Print</button>
+    </div>
+  </div>
+</div>

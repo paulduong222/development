@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TNSP2_subreport" language="groovy" pageWidth="752" pageHeight="21" orientation="Landscape" columnWidth="752" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="63d517d4-92c0-4145-bf7b-db5599489520">
+	<property name="ireport.zoom" value="1.4641000000000033"/>
+	<property name="ireport.x" value="285"/>
+	<property name="ireport.y" value="0"/>
+	<style name="row_conditional_style" backcolor="#FFFFFF">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}%2==0)]]></conditionExpression>
+			<style mode="Opaque" backcolor="#CCCCCC"/>
+		</conditionalStyle>
+	</style>
+	<field name="field" class="java.lang.String"/>
+	<field name="traineeName" class="java.lang.String"/>
+	<field name="traineeRequestNumber" class="java.lang.String"/>
+	<field name="traineeItemCode" class="java.lang.String"/>
+	<field name="traineeStart" class="java.lang.String"/>
+	<field name="traineeEnd" class="java.lang.String"/>
+	<field name="traineeAgencyCode" class="java.lang.String"/>
+	<field name="traineeUnitCode" class="java.lang.String"/>
+	<field name="trainerName" class="java.lang.String"/>
+	<field name="recommend" class="java.lang.String"/>
+	<field name="ptb" class="java.lang.String"/>
+	<field name="section" class="java.lang.String"/>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="7d4159a7-2b1d-4e2a-951a-62ee8ec3c1a8" stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="0" width="142" height="16" isPrintWhenDetailOverflows="true" backcolor="#FFFFFF"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{traineeName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="7d4159a7-2b1d-4e2a-951a-62ee8ec3c1a8" stretchType="RelativeToBandHeight" mode="Transparent" x="144" y="0" width="45" height="16" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{traineeRequestNumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="7d4159a7-2b1d-4e2a-951a-62ee8ec3c1a8" stretchType="RelativeToBandHeight" mode="Transparent" x="189" y="0" width="45" height="16" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{traineeItemCode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="7d4159a7-2b1d-4e2a-951a-62ee8ec3c1a8" stretchType="RelativeToBandHeight" mode="Transparent" x="235" y="0" width="60" height="16" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{traineeStart}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="7d4159a7-2b1d-4e2a-951a-62ee8ec3c1a8" stretchType="RelativeToBandHeight" mode="Transparent" x="296" y="0" width="60" height="16" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{traineeEnd}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="dbfb6f9c-d556-4b24-be78-3af1f99d6e6b" stretchType="RelativeToBandHeight" mode="Transparent" x="357" y="0" width="47" height="16" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{traineeAgencyCode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="MM/dd/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="7f954a3d-af85-4612-9f89-ed0ae2adc728" stretchType="RelativeToBandHeight" mode="Transparent" x="404" y="0" width="50" height="16" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{traineeUnitCode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="6e54680f-efaa-458a-a636-892b41293270" stretchType="RelativeToBandHeight" mode="Transparent" x="456" y="0" width="129" height="16" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{trainerName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="05270217-4b5d-4d93-9795-39eaa9a56cb4" stretchType="RelativeToBandHeight" mode="Transparent" x="586" y="0" width="40" height="16" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{recommend}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="c0159330-111d-45c4-8b4d-254ed0af71ce" stretchType="RelativeToBandHeight" mode="Transparent" x="627" y="0" width="40" height="16" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ptb}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="7c206623-6e87-4d5a-b36b-ea2c40319fc1" stretchType="RelativeToBandHeight" mode="Transparent" x="670" y="0" width="82" height="16" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{section}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" stretchType="RelativeToBandHeight" x="295" y="0" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" stretchType="RelativeToBandHeight" x="354" y="0" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" stretchType="RelativeToBandHeight" x="234" y="1" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" stretchType="RelativeToBandHeight" x="404" y="0" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" stretchType="RelativeToBandHeight" x="454" y="0" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" stretchType="RelativeToBandHeight" x="585" y="0" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" stretchType="RelativeToBandHeight" x="626" y="0" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement uuid="379f724b-9876-4e12-8de0-13ed0708ca60" positionType="FixRelativeToBottom" x="0" y="16" width="752" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" stretchType="RelativeToBandHeight" x="0" y="0" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" stretchType="RelativeToBandHeight" x="667" y="0" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" stretchType="RelativeToBandHeight" x="142" y="0" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" stretchType="RelativeToBandHeight" x="188" y="0" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" stretchType="RelativeToBandHeight" x="752" y="0" width="1" height="16"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

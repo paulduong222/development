@@ -1,0 +1,21 @@
+<div class="main-card">
+  <p class="title">Actual Demob</p>
+  <div class="card-body">
+    <div style="width: 30%; height: 350px; display: inline-block;">
+      <label><input style="width: 16px; height: 16px;" type="checkbox" name="includeSTTFComponents" value="includeSTTFComponents"  (click)="handleCheckbox($event)"> Include Strike Team/Task Force Components<br></label>
+    </div>
+    <div style="width: 50%; height: 350px; display: inline-block;">
+      <button class="padding-5" type="button" class="btn btn-default" (click)="showHideInstruction()" title="Click to toggle showing the instructions">Show/Hide&nbsp;Instructions</button>
+      <div class="tooltip-box padding-5" *ngIf="tooltipBox">
+        <p>Only Resources that meet the following requirements are included in the Report:</p>
+        <p>-The Resource has an Actual Release Date </p>
+        <p>-The Dispatch Notified of Actual Release checkbox is NOT checked</p>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-box">
+    <button class="padding-5" type="button" class="btn btn-default" (click)="confirm()" title="Click to generate Actual Demob Report">Preview/Print</button>
+  </div>
+</div>
+<app-prompt-modal id="promptModal" #promptModal  (promptActionEvent)="promptActionResult($event)"></app-prompt-modal>
+  

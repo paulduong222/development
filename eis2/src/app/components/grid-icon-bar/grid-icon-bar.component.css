@@ -1,0 +1,12 @@
+#dv-icon-bar-left {
+	padding-left: 1px;
+	display: block;
+	background-color: white;
+	border-left: 3px solid gray;
+}
+#dv-icon-bar-left img {
+	margin-right:1px;
+	height: 27px;
+	width: 27px;
+	border: 1px solid black;
+}

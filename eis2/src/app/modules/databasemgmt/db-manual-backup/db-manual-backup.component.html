@@ -1,0 +1,54 @@
+<h4 class="w3-theme-l3 w3-center mb-20" style="margin-left: 10px; margin-right:10px;">
+    <strong>Manual Backup Database</strong>
+  </h4>
+    
+  <div class="fs-12 ml-20 mb-10"> 
+  <form [formGroup]="this.dbForm">
+    <div class="mb-10">
+      <strong>
+        Backup Information
+      </strong>
+    </div>
+    <div class="border-solid-dkg-1 vw-98-p p-20 mb-20">
+      <table>
+        <tr>
+          <td class="frmlbl"><label for="txBackupName">Backup Name</label></td>
+          <td><label class="ast">*</label></td>
+          <td>
+            <app-text-input formControlName="backupName" id="txBackupName" name="txBackupName" type="text" 
+              width="320" maxlength="55" restrict2="a-z,A-Z,_,0-9"></app-text-input>
+            </td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label for="txDDestination">Default Destination</label></td>
+          <td></td>
+          <td>
+            <input formControlName="dDestination" id="txDDestination" name="txDDestination" type="text" style="width:320px;">
+          </td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label for="txADestination">Additional Destination</label></td>
+          <td></td>
+          <td>
+           <app-text-input formControlName="aDestination" id="txADestination" name="txADestination" type="text" 
+              width="320" maxlength="55" restrict2="a-z,A-Z,_,0-9,:,slash,-"
+              (input)="this.dbBackupData.altDestination = $event.target.value"></app-text-input>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><label>Note: Use 2 backslashes as separator ( ex: C:\\OtherBackupFolder\\ )</label></td>
+        </tr>
+      </table>
+    </div>
+  
+    <div class="button-action-bar">
+      <strong>
+        <button (click)="this.backup()" title="Click to backup the database">Backup</button>
+        <button (click)="this.cancel()" title="Click to cancel changes">Cancel</button>
+      </strong>
+    </div>
+  </form>
+  </div>
+    

@@ -1,0 +1,113 @@
+<div class="dv-comp-ht">
+	<div id="dv-hm-container" class="w3-padding-tiny" tabindex="0" aria-label="home page">
+		<img src="assets/images/home-header-site.png" width="100%">
+		<div id="dv-home-bar">
+			<div class="w3-left button-bar">
+				<button *ngIf="this.isAdminUser === true" class="w3-small w3-padding-small" routerLink="/users" title="Go to User Accounts">User Accounts</button>
+				<button *ngIf="this.isAdminUser === false" class="w3-small w3-padding-small" routerLink="/incidents" title="Go to Incidents">Incidents</button>
+				<!--
+				<button class="w3-small w3-padding-small" routerLink="/welcome/login">Global Reference Data</button>
+				-->
+				<button *ngIf="this.isAdminUser === true"  class="w3-small w3-padding-small" routerLink="/databasemgmt" title="Go to Database Management">Database Management</button>
+				<button *ngIf="this.isAdminUser === true"  class="w3-small w3-padding-small" routerLink="/messageboard" title="Go to Message Board Administration screen">Message Board Admin</button>
+			</div>
+			<div class="w3-right" style="padding-right:20px;">
+				<label style="color:white;padding-right:10px;" tabindex="0">Active Database: {{dbname}}</label>
+				<img src="assets/images/nwcg_sm.gif" height="50px" width="50px">
+			</div>
+		</div>
+		<div id="dv-hm">
+			<div id="dv-hm-left">
+					<div class="bx-hdr-mb">
+							<div class="bx-hdr-dv">
+								<div class="bx-hdr w3-theme-d2">
+									<div tabindex="0">User Information</div>
+									<div class="home-info" tabindex="0">
+										<table>
+											<tr>
+												<td class="infoLbl"><label>Last Login:</label></td>
+												<td class="infoVal"><label>{{ this.systemService.userSessionVo['lastLoginDate'] }}</label></td>
+											</tr>
+											<tr></tr>
+											<tr>
+												<td class="infoLbl"><label>Password Expiration:</label></td>
+												<td class="infoVal"><label>{{ this.systemService.userSessionVo['passwordExpireDate'] }}</label></td>
+											</tr>
+											<tr></tr>
+											<tr>
+												<td><label></label></td>
+												<td><app-change-password></app-change-password></td>
+											</tr>
+											<!--
+												<td><button class="w3-padding-tiny">Change Password</button></td>
+											<tr>
+												<td class="frmlbl"><label></label></td>
+												<td><button class="w3-padding-tiny">User Preferences</button></td>
+											</tr>
+											-->
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="bx-hdr-dv">
+								<div class="bx-hdr w3-theme-d2">
+									<div tabindex="0">System Information</div>
+									<div class="home-info" tabindex="0">
+										<table>
+											<tr>
+												<td class="infoLbl"><label>Server Date:</label></td>
+												<td class="infoVal"><label>{{ this.systemService.serverDate }}</label></td>
+											</tr>
+											<tr></tr>
+											<tr>
+												<td class="infoLbl"><label>System Version:</label></td>
+												<td class="infoVal"><label>{{ this.systemService.serverVersion }}</label></td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="bx-hdr-dv">
+								<div class="bx-hdr w3-theme-d2">
+									<div tabindex="0">External Links</div>
+								</div>
+									<div class="home-info">
+										<div id="dv-links">
+										<table>
+											<tr>
+												<td><a href="http://www.nwcg.gov/" target="blank"
+													title="Open the NWCG website in a new window">NWCG</a></td>
+											</tr>
+											<tr>
+												<td><a href="http://famit.nwcg.gov/applications/eisuite" target="blank"
+													title="Open the e-ISuite NWCG website in a new window">e-ISuite</a></td>
+											</tr>
+											<tr>
+												<td><a href="http://www.nifc.gov/nicc/sitreprt.pdf" target="blank"
+													title="Open the Situation Report in a new window">SITUATION REPORT</a></td>
+											</tr>
+											<tr>
+												<td><a href="http://famit.nwcg.gov/applications/ROSS" target="blank"
+													title="Open the ROSS website in a new window">ROSS</a></td>
+											</tr>
+										</table>
+										</div>
+									</div>
+							</div>
+						</div>
+			</div>
+			<div id="dv-hm-right">
+				<div class="bx-hdr-mb">
+					<div class="bx-hdr w3-theme-d2">
+						<div tabindex="0">Message Board</div>
+					</div>
+					<div class="dv-mb" aria-disabled="true">
+						<quill-editor [(ngModel)]="this.message" disabled="true">
+							<div quill-editor-toolbar></div>
+						</quill-editor>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

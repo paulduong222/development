@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="headerTitle" class="java.lang.String"/>
+	<parameter name="headerSubTitle" class="java.lang.String"/>
+	<field name="field" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="2" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="45" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="10" y="15" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="155" y="15" width="257" height="22"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COMMERCIAL AIR TRAVEL REQUEST]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="38" width="555" height="4"/>
+			</line>
+			<line>
+				<reportElement x="0" y="7" width="555" height="4"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="3" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="674" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="208" width="213" height="20"/>
+				<textElement>
+					<font size="11" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[8. Destination]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="268" width="310" height="20"/>
+				<textElement>
+					<font size="11" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[10. Unit Leader Responsible for Collecting Performance Rating]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="302" width="145" height="20"/>
+				<textElement>
+					<font size="11" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[11. Unit / Personnel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="627" width="213" height="20"/>
+				<textElement>
+					<font size="11" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[12. Remarks]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="620" width="531" height="1"/>
+			</line>
+			<line>
+				<reportElement x="10" y="153" width="531" height="1"/>
+			</line>
+			<line>
+				<reportElement x="10" y="262" width="531" height="1"/>
+			</line>
+			<line>
+				<reportElement x="12" y="299" width="531" height="1"/>
+			</line>
+			<line>
+				<reportElement x="10" y="202" width="531" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="197" y="305" width="217" height="17"/>
+				<textElement/>
+				<text><![CDATA[You and your resources have been released]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="321" width="217" height="17"/>
+				<textElement/>
+				<text><![CDATA[subject to signoff from the following:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="338" width="246" height="20"/>
+				<textElement/>
+				<text><![CDATA[(Demob Unit Leader check the appropriate boxes)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="358" width="118" height="15"/>
+				<textElement>
+					<font size="11" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Logistics Section:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="373" width="145" height="18"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[[       ]  Supply Unit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="391" width="145" height="18"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[[       ]  Communications Unit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="409" width="145" height="18"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[[       ]  Facilities Unit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="427" width="145" height="18"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[[       ]  Ground Support Unit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="470" width="145" height="18"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[[       ]  Documentation Unit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="455" width="118" height="15"/>
+				<textElement>
+					<font size="11" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Planning Section:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="488" width="145" height="18"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[[       ]  Demob Unit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="524" width="145" height="18"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[[       ]  Time Unit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="510" width="118" height="15"/>
+				<textElement>
+					<font size="11" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Finance Section:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="561" width="145" height="18"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[[       ]  Security Unit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="547" width="118" height="15"/>
+				<textElement>
+					<font size="11" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Other Section:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="579" width="145" height="18"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[[       ]  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="597" width="145" height="18"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[[       ]  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="373" width="324" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[      _________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="391" width="324" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[      _________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="409" width="324" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[      _________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="427" width="324" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[      _________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="598" width="324" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[      _________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="580" width="324" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[      _________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="562" width="324" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[      _________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="488" width="324" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[      _________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="470" width="324" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[      _________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="524" width="324" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[      _________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="207" width="213" height="20"/>
+				<textElement>
+					<font size="11" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[9. Agency / Region / Area Notified]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="228" width="59" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="11" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Home Unit:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="88" y="228" width="84" height="18"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="276" y="228" width="52" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="11" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Agency:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="269" y="246" width="59" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="11" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Home Unit:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="342" y="245" width="48" height="18"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="342" y="228" width="48" height="18"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="412" y="242" width="41" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="11" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="7" width="90" height="15"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[ICS-221]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="7" width="130" height="15"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Revision Date: 09/27/2007]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="22" width="555" height="4"/>
+			</line>
+			<line>
+				<reportElement x="0" y="4" width="555" height="4"/>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

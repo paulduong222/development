@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AirTravelReport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="523" leftMargin="36" rightMargin="36" topMargin="36" bottomMargin="72" uuid="b8715d12-574e-4f2e-bd70-13fed63d21da">
+	<property name="ireport.zoom" value="1.9487171000000014"/>
+	<property name="ireport.x" value="200"/>
+	<property name="ireport.y" value="1304"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\ISW\\isuite-core\\Webroot\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="resourceName" class="java.lang.String"/>
+	<field name="incidentNumber" class="java.lang.String"/>
+	<field name="requestNumber" class="java.lang.String"/>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="reassignment" class="java.lang.Boolean"/>
+	<field name="unitId" class="java.lang.String"/>
+	<field name="specialInstructions" class="java.lang.String"/>
+	<field name="tentativeReleaseDate" class="java.util.Date"/>
+	<field name="travelTimeHours" class="java.lang.String"/>
+	<field name="travelTimeMinutes" class="java.lang.String"/>
+	<field name="departJetport" class="java.lang.String"/>
+	<field name="departCity" class="java.lang.String"/>
+	<field name="returnJetport" class="java.lang.String"/>
+	<field name="returnCity" class="java.lang.String"/>
+	<field name="demobCity" class="java.lang.String"/>
+	<field name="demobState" class="java.lang.String"/>
+	<field name="firstWorkDate" class="java.util.Date"/>
+	<field name="lengthAtAssignment" class="java.lang.Integer"/>
+	<field name="dataSourceTravelQuestionData" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="reassignmentQuals" class="java.lang.String"/>
+	<field name="calcDate" class="java.util.Date"/>
+	<field name="departJetportCityState" class="java.lang.String"/>
+	<field name="returnJetportCityState" class="java.lang.String"/>
+	<field name="demobCityState" class="java.lang.String"/>
+	<field name="demobStatus" class="java.lang.String"/>
+	<field name="travelMethod" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="734" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="e1b3789b-4b77-475a-95f0-51b4ad68ba6e" x="0" y="507" width="152" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Special Instructions:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="288bbbcf-4bb9-46ff-ade9-8d3509c75af5" x="0" y="527" width="523" height="127"/>
+				<box topPadding="2" leftPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{specialInstructions}]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement uuid="5cb3d1d5-5abc-4ab3-b075-936a41d43caf" mode="Transparent" x="0" y="687" width="523" height="45" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement uuid="9bdd3375-b0ff-45a3-b0ff-10844aa6edbb" x="4" y="0" width="170" height="16"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Last Date Available to Work:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="5f14f8f6-d25f-404f-a3d9-09e427d66fed" x="4" y="16" width="135" height="16"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Reassignment Quals:]]></text>
+				</staticText>
+				<line>
+					<reportElement uuid="9c29c047-89d6-4f46-8760-d678e475f072" x="172" y="16" width="100" height="1"/>
+				</line>
+				<line>
+					<reportElement uuid="3c65a876-4299-448d-8183-52abed659448" x="140" y="32" width="342" height="1"/>
+				</line>
+				<textField pattern="MM/dd/yyyy" isBlankWhenNull="true">
+					<reportElement uuid="9e5ea6a9-1be4-447e-b6dc-bd7e93e7b283" x="172" y="0" width="100" height="16"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{calcDate}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="82ec365d-660e-46d5-bd77-b2f11b3c5356" x="140" y="17" width="340" height="16"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{reassignmentQuals}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement uuid="d2ca819b-c95d-4f66-b487-9ddfec35803e" mode="Transparent" x="0" y="175" width="523" height="94" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<staticText>
+					<reportElement uuid="834eef47-2d89-4b61-be6e-d4b9652d5587" x="4" y="0" width="212" height="16"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Date and Time Available to Leave ICP:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="7b51c243-a889-4b42-ae4d-3921677759a2" x="4" y="28" width="179" height="16"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[Travel Time from ICP to Airport:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="10074616-7477-49c7-bbc3-2db498b4bb9c" x="4" y="56" width="96" height="16"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[DEPART FROM:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="f7fcc40d-7a20-4489-b300-d20561684322" x="216" y="16" width="80" height="12"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Date]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="066a273c-b1e7-4b5e-a4b5-db91341c24b2" x="314" y="17" width="80" height="12"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Time]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="ef3307f4-55e7-48b6-ae05-da31fc179f97" x="216" y="44" width="80" height="12"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Hours]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="c8f30c61-6228-4619-8a9c-e2292a59a374" x="314" y="44" width="80" height="12"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Minutes]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="b067ae44-d1f3-4af6-bd20-68f68e73fdad" x="274" y="56" width="80" height="16"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[RETURN TO:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="8b232a35-09d3-401b-86a0-60454ca8a9ab" x="100" y="72" width="160" height="12"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Local Airport]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="99115b5d-a97e-4caa-bb02-5a4218e502ae" x="354" y="72" width="160" height="12"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Destination Airport]]></text>
+				</staticText>
+				<line>
+					<reportElement uuid="75ab5c5a-eafc-4d89-8a99-dbf08c26c721" x="216" y="16" width="80" height="1"/>
+				</line>
+				<line>
+					<reportElement uuid="4338ac88-a09c-4a1e-9f64-00a54bfc3f1d" x="314" y="16" width="80" height="1"/>
+				</line>
+				<line>
+					<reportElement uuid="f50f9f1a-bb22-4e17-a7e7-d16d049f28ba" x="216" y="44" width="80" height="1"/>
+				</line>
+				<line>
+					<reportElement uuid="b6d14ea2-2177-4e14-a43d-b455b36dbb1c" x="314" y="44" width="80" height="1"/>
+				</line>
+				<line>
+					<reportElement uuid="49ca90e0-8da3-4932-9a9f-44e96e64e7c5" x="100" y="70" width="160" height="1"/>
+				</line>
+				<line>
+					<reportElement uuid="bbac4245-b9ce-4da1-9faa-f39984798cc3" x="354" y="70" width="160" height="1"/>
+				</line>
+				<textField pattern="MM/dd/yyyy" isBlankWhenNull="true">
+					<reportElement uuid="46c4b458-d5c9-4c59-8c7b-550d71643736" x="216" y="0" width="80" height="16">
+						<printWhenExpression><![CDATA[($F{travelMethod}=="AR" || $F{travelMethod}=="AIR")]]></printWhenExpression>
+					</reportElement>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{tentativeReleaseDate}]]></textFieldExpression>
+				</textField>
+				<textField pattern="HH:mm" isBlankWhenNull="true">
+					<reportElement uuid="2052a507-c33d-4e8f-91cc-5e53fd3867dd" x="314" y="0" width="80" height="16">
+						<printWhenExpression><![CDATA[($F{travelMethod}=="AR" || $F{travelMethod}=="AIR")]]></printWhenExpression>
+					</reportElement>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{tentativeReleaseDate}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="af04c479-33f1-427c-8f7b-5793cd111f9c" x="216" y="28" width="80" height="16">
+						<printWhenExpression><![CDATA[($F{travelMethod}=="AR" || $F{travelMethod}=="AIR")]]></printWhenExpression>
+					</reportElement>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{travelTimeHours}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="ff3d2b96-916f-441d-b05a-d5c9e491ec7c" x="314" y="28" width="80" height="16">
+						<printWhenExpression><![CDATA[($F{travelMethod}=="AR" || $F{travelMethod}=="AIR")]]></printWhenExpression>
+					</reportElement>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{travelTimeMinutes}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="6a3836a4-f59e-42c3-973e-687d3597f2c5" x="100" y="56" width="160" height="16">
+						<printWhenExpression><![CDATA[($F{travelMethod}=="AR" || $F{travelMethod}=="AIR")]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[($F{departJetport} != null ? $F{departJetport} : "") + " / " + ($F{departCity} != null ? $F{departCity} : "" )]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="559305b0-4514-43ce-b4b4-4fe1a21607bf" x="354" y="56" width="160" height="16">
+						<printWhenExpression><![CDATA[($F{travelMethod}=="AR" || $F{travelMethod}=="AIR")]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[($F{returnJetport} != null ? $F{returnJetport}: "" ) + " / " + ($F{returnCity} != null ? $F{returnCity} : "" )]]></textFieldExpression>
+				</textField>
+			</frame>
+			<staticText>
+				<reportElement uuid="8774f953-ceaa-4572-9f83-ccb2ef676c71" x="0" y="667" width="175" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reassignment Information:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="538e76f5-ab74-441b-82be-00d087470914" x="4" y="269" width="124" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Travel Questions:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fa19f9a5-e5d4-4455-8fba-b1fc3b8dd38c" x="124" y="0" width="306" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[COMMERCIAL AIR TRAVEL REQUEST]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="d74a1dc5-1a4b-47c5-a61e-a2e4d6ab4131" x="100" y="53" width="198" height="16"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{requestNumber}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="09ab015e-03f8-41bc-8e53-263371c95772" x="124" y="20" width="306" height="14"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Incident: " + $F{incidentName} + " " + $F{incidentNumber}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="42c6bc92-c402-4cef-8d49-8b8750c4415c" x="100" y="67" width="198" height="1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="cad608b3-4b36-4c6d-948b-94873680588e" mode="Transparent" x="313" y="54" width="210" height="20" backcolor="#FFFFFF"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $F{reassignment} ? "DEMOB PENDING REASSIGNMENT" : "DEMOB" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b2b5121a-b3b2-4e57-a9e9-8da8ea09fb25" x="100" y="80" width="198" height="16"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{resourceName}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="828f89b8-6f39-4161-9fb2-5de325437685" x="100" y="95" width="198" height="1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="629f5bb5-6374-4431-b13d-7db4bb9da84e" x="100" y="108" width="198" height="16"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{unitId}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="de125982-59e1-446d-b9b9-56447ebda841" x="100" y="136" width="198" height="16"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{demobCityState}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="ce5d4276-c1eb-4070-a0fc-9c36037be730" x="100" y="123" width="198" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="7b2eb65c-6266-46e7-9a9f-164d79e3495a" x="100" y="151" width="198" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="44fbacb6-6d4c-4a94-93ef-45d7253190a5" x="100" y="95" width="146" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[(Must be name on picture ID)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="64e4a96c-101e-4360-bb84-9f4aa4812c40" x="100" y="124" width="146" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[State/Unit ID(EX:ID-BOD)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="56315ab6-236f-4d75-8d79-13cb3f3526ca" x="100" y="152" width="146" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Demob City/State]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="7ca2654c-f184-4cb8-91f9-751ba5079f2b" x="469" y="0" width="55" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement uuid="1d5466ae-b700-44a8-8868-891b5af9c2d8" x="28" y="0" width="82" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a56be08c-5caa-4c48-953d-6397869bdd88" x="0" y="52" width="100" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Request #:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a107772e-e86c-4259-be64-c3a94f6e9267" x="0" y="80" width="100" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Resource Name:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ea011c80-f270-4355-ad4c-e86102bb746c" x="0" y="108" width="100" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Unit ID:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b5fbcd6a-59de-4f06-9ec2-dd70054c4ba8" x="0" y="136" width="100" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Release To:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="737aa4d9-2b04-4c07-8f29-e22307fbd6fa" x="1" y="0" width="27" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<subreport>
+				<reportElement uuid="09b1e54b-e9ad-4b1a-bfac-77b198d651ff" x="0" y="289" width="523" height="206" isPrintWhenDetailOverflows="true"/>
+				<dataSourceExpression><![CDATA[$F{dataSourceTravelQuestionData}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "AirTravelReport_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

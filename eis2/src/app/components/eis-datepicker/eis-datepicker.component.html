@@ -1,0 +1,11 @@
+<input
+    [id]="this.id"
+    [name]="this.name"
+    type="date"
+    autocomplete="false"
+    [value]="this.curDateValue"
+    (change)="this.onDateSelect($event)"
+    (keydown)="setDate($event)"
+    [disabled]="this.disabled"
+    >
+    <!-- data-date-format="MM/dd/yyyy" -->

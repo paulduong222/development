@@ -1,0 +1,122 @@
+<div>
+  <form [formGroup]="compForm" autocomplete="off" onsubmit="">
+    <div class="eis">
+      <!--
+
+      <div class="split-example">
+        <as-split direction="vertical">
+          <as-split-area [size]="splitAreaTopSize">
+      -->
+      <div>
+        <table>
+              <tr>
+                <td>
+                  <!-- Column 1 -->
+                  <table>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txFaa">FAA #</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                          <app-text-input id="txFaa" name="txFaa"
+                           allowSpace="true" formControlName="faaNbr"
+                          width="200" maxlength="50"></app-text-input>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td class="frmlbl"><label class="f1" for="txCatKindType">Category/Kind/Type</label></td>
+                      <td><label class="ast">*</label></td>
+                      <td>
+                        <app-text-input id="txCatKindType" name="txCatKindType"
+                         allowSpace="true" formControlName="type"
+                        width="200" maxlength="50"></app-text-input>
+                      </td>
+                  </tr>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txMake">Make/Model</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                          <app-text-input id="txMake" name="txMake"
+                          formControlName="makeModel"
+                          width="200" maxlength="50" allowSpace="true"></app-text-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txBase">Base</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                          <app-text-input id="txBase" name="txBase"
+                          formControlName="base"
+                          width="200" maxlength="50" allowSpace="true"></app-text-input>
+                        </td>
+                    </tr>
+                  </table>
+                </td>
+                <td>
+                      <!-- Column 2 -->
+                      <table>
+                          <tr>
+                              <td class="frmlbl"><label class="f1" for="txAvail">Available</label></td>
+                              <td><label class="ast"></label></td>
+                              <td>
+                                <app-text-input id="txAvail" name="txAvail"
+                                formControlName="available"
+                                 width="150" maxlength="20" allowSpace="true"></app-text-input>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="frmlbl"><label class="f1" for="txStartTime">Start Time</label></td>
+                              <td><label class="ast"></label></td>
+                              <td>
+                                <app-text-input id="txStartTime" name="txStartTime"
+                                formControlName="startTime" restrict2="0-9"
+                                 width="80" maxlength="4" ></app-text-input>
+                              </td>
+                          </tr>
+                      </table>
+                  </td>
+                  <td>
+                      <!-- Column 3 -->
+                      <table>
+                          <tr>
+                              <td class="frmlbl"><label class="f1" for="txRemarks">Remarks</label></td>
+                              <td><label class="ast"></label></td>
+                              <td>
+                                  <textarea id="txRemarks" name="txRemarks" 
+                                  allowSpace="true" maxlength="50"
+                                  formControlName="remarks"
+                                  style="width:300px;height:130px;resize: none;"></textarea>
+                                </td>
+                          </tr>
+                      </table>
+                  </td>
+                </tr>
+            </table> 
+            </div> 
+  <!--        </as-split-area> 
+          <as-split-area [size]="splitAreaBottomSize" class="scroll-x">
+          -->
+            <div id="dv-block-action-bar" class="w3-small w3-left">
+              <button (click)="this.save()" title="Click to save the Helicopter." [disabled]="this.isFormLocked" type="button">Save</button>
+              <button (click)="this.add()" title="Click to add a new Helicopter." [disabled]="this.isFormLocked" type="button">Add Helicopter</button>
+              <button (click)="this.delete()" title="Click to delete the Helicopter." [disabled]="this.isFormLocked" type="button">Delete</button>
+              <button (click)="this.cancel()" title="Click to cancel changes." [disabled]="this.isFormLocked" type="button">Cancel</button>
+              <button (click)="this.preAddBlankLine()" title="Click to add a blank line." [disabled]="this.isFormLocked" type="button">Add Blank Line</button>
+              <button (click)="this.reorder()" title="Click to re-order Helicopters." [disabled]="this.isFormLocked" type="button">Re-Order Helicopters</button>
+            </div>
+            <div class="w3-left" style="height: 37vh; width: 100%;">
+                  <app-eis-grid #gridHelicopter
+                  [floatingFilter]="false"
+                  [columnDefs]="this.gridColumnDefs"
+                  [rowData]="this.helicopterList" 
+                  (rowSelectEvent)="onSelectHelicopterRow($event)">
+                  </app-eis-grid>
+            </div>
+          <!--
+          </as-split-area>
+        </as-split>
+        </div>
+          -->
+    </div>
+ </form>
+</div>
+<app-prompt-modal id="icsForm220HeliPromptModal" #icsForm220HeliPromptModal (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>

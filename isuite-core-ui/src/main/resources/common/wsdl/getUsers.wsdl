@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.nwcg.org/webservices/security/getUsers" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.nwcg.org/webservices/security/getUsers" targetNamespace="http://www.nwcg.org/webservices/security/getUsers">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:auth="http://www.nwcg.org/webservices/security/getUsers" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.nwcg.org/webservices/security/getUsers"><element name="getUsersRequest"><complexType><sequence><element name="ApplicationInstance"><simpleType><restriction base="string"><minLength value="1"/><maxLength value="31"/></restriction></simpleType></element><element name="AscendingOrder" type="boolean"/><element name="MaxCount" type="long"/><element name="SkipCount" type="long"/><element name="FilterValue" type="string"/><element name="Filter"><simpleType><restriction base="string"><enumeration value="contains"/><enumeration value="startswith"/><enumeration value="endswith"/><enumeration value="="/><enumeration value="!="/><enumeration value="&gt;"/><enumeration value="&gt;="/><enumeration value="&lt;"/><enumeration value="&lt;="/><enumeration value=""/></restriction></simpleType></element></sequence></complexType></element><element name="getUsersResponse"><complexType><sequence><element name="Users" type="auth:UsersComplexType"/></sequence></complexType></element><complexType name="UsersComplexType"><sequence><element maxOccurs="unbounded" minOccurs="0" name="User" type="auth:UserComplexType"/></sequence></complexType><complexType name="UserComplexType"><sequence><element name="UserName"><simpleType><restriction base="string"><minLength value="1"/><maxLength value="32"/></restriction></simpleType></element><element name="FirstName"><simpleType><restriction base="string"><minLength value="1"/><maxLength value="30"/></restriction></simpleType></element><element name="LastName"><simpleType><restriction base="string"><minLength value="1"/><maxLength value="30"/></restriction></simpleType></element></sequence></complexType></schema>
+  </wsdl:types>
+  <wsdl:message name="getUsersResponse">
+    <wsdl:part element="sch:getUsersResponse" name="getUsersResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUsersRequest">
+    <wsdl:part element="sch:getUsersRequest" name="getUsersRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="GetUsers">
+    <wsdl:operation name="getUsers">
+      <wsdl:input message="sch:getUsersRequest" name="getUsersRequest">
+    </wsdl:input>
+      <wsdl:output message="sch:getUsersResponse" name="getUsersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GetUsersSoap11" type="sch:GetUsers">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getUsers">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getUsersRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUsersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GetUsersService">
+    <wsdl:port binding="sch:GetUsersSoap11" name="GetUsersSoap11">
+      <soap:address location="https://nap-ft.nwcg.gov:443/rossTR/getUsersService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,16 @@
+.dv-eval-tab {
+    width: 100%;
+    height: 100%;
+    border: 1px solid darkgray;
+}
+.dv-eval-grid {
+	background-color: white;
+	border: 1px solid darkgray;
+    width: 100%;
+    height: 206px;
+}
+.dv-eval button {
+    font: 12px Helvetica,Arial,sans-serif;
+    height: 22px;
+    margin: 5px;
+}

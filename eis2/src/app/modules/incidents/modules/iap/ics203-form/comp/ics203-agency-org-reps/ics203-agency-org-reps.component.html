@@ -1,0 +1,62 @@
+<label class="blk-hdr"><u>Agency/Org Representatives</u></label>
+<div style="height: 280px;">
+    <app-eis-grid #gridAgencyOrgs 
+    [floatingFilter]="false"
+    [columnDefs]="this.gridColumnDefs" 
+    [rowData]="agencyOrgList"
+    (rowSelectEvent)="this.onSelectGridRow($event)">
+    </app-eis-grid>
+</div>
+<div id="dv-block-action-bar" class="w3-small w3-left">
+    <button title="Click to add a new Position.">Add Position</button>
+    <button title="Click to delete the Position.">Delete Position</button>
+    <button title="Click to add a blank line.">Add Blank Line</button>
+    <button title="Click to reorder Positions.">Re-Order Positions</button>
+</div>
+<div class="eis" style="height: 180px;">
+  <div>
+    <table>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="txAgency">Agency</label></td>
+          <td><label class="ast">*</label></td>
+          <td>
+            <app-text-input id="txAgency" name="txAgency"
+            width="330"></app-text-input>
+          </td>
+      </tr>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="ddResourceName1">Resource Name</label></td>
+          <td><label class="ast"></label></td>
+          <td style="width: 350px;">
+            <app-eis-dropdown id="ddResourceName1" name="ddResourceName1"
+              width="330"></app-eis-dropdown>
+          </td>
+          <td style="width: 60px;">
+              <label>Trainee</label>
+          </td>
+          <td style="width: 20px;">
+              <input type="checkbox" style="zoom: 1.2;">
+          </td>
+      </tr>
+      <tr>
+          <td class="frmlbl"><label class="f1" for="ddResourceName2">Resource Name</label></td>
+          <td><label class="ast"></label></td>
+          <td style="width: 350px;">
+              <app-eis-dropdown id="ddResourceName2" name="ddResourceName2"
+                width="330"></app-eis-dropdown>
+            </td>
+            <td style="width: 60px;">
+                <label>Trainee</label>
+            </td>
+            <td style="width: 20px;">
+                <input type="checkbox" style="zoom: 1.2;">
+            </td>
+      </tr>
+    </table>
+  </div>
+  <br>
+  <div id="dv-block-action-bar" class="w3-small w3-left">
+      <button (click)="this.save()" title="Click to save the block changes.">Save</button>
+      <button (click)="this.cancel()" title="Click to cancel changes">Cancel</button>
+  </div>
+</div>

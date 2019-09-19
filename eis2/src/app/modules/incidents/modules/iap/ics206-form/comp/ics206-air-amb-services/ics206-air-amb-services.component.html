@@ -1,0 +1,88 @@
+<label class="blk-hdr"><u>Air Ambulance Services</u></label>
+<div>
+  <form [formGroup]="compForm" autocomplete="off" onsubmit="">
+    <div class="eis">
+      <!--
+
+      <div class="split-example">
+        <as-split direction="vertical">
+          <as-split-area [size]="splitAreaTopSize">
+      -->
+      <div>
+        <table>
+              <tr>
+                <td>
+                  <!-- Column 1 -->
+                  <table>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txName">Name</label></td>
+                        <td><label class="ast">*</label></td>
+                        <td>
+                          <app-text-input id="txName" name="txName"
+                           allowSpace="true" formControlName="name"
+                          width="300" maxlength="100"></app-text-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txPhone">Phone</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                            <app-phone-input formControlName="phone" id="txPhone" #txPhone style="width:200px;"></app-phone-input>
+                        </td>
+                    </tr>
+                  </table>
+                </td>
+                <td>
+                      <!-- Column 2 -->
+                      <table>
+                      <tr>
+                          <td class="frmlbl"><label class="f1" for="txToa">Type of Aircraft</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                            <app-text-input id="txToa" name="txToa"
+                             allowSpace="true" formControlName="airtype"
+                            width="300" maxlength="75"></app-text-input>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="frmlbl"><label class="f1" for="txAc">Aircraft Capability</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                            <app-text-input id="txAc" name="txAc"
+                             allowSpace="true" formControlName="capability"
+                            width="300" maxlength="75"></app-text-input>
+                          </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+            </table> 
+            </div> 
+  <!--        </as-split-area> 
+          <as-split-area [size]="splitAreaBottomSize" class="scroll-x">
+          -->
+            <div id="dv-block-action-bar" class="w3-small w3-left">
+              <button (click)="this.save()" title="Click to save the Air Ambulance." [disabled]="this.isFormLocked" type="button">Save</button>
+              <button (click)="this.add()" title="Click to add a new Air Ambulance." [disabled]="this.isFormLocked" type="button">Add Air Ambulance</button>
+              <button (click)="this.delete()" title="Click to delete the Air Ambulance." [disabled]="this.isFormLocked" type="button">Delete</button>
+              <button (click)="this.cancel()" title="Click to cancel changes." [disabled]="this.isFormLocked" type="button">Cancel</button>
+              <button (click)="this.preAddBlankLine()" title="Click to add a blank line." [disabled]="this.isFormLocked" type="button">Add Blank Line</button>
+              <button (click)="this.reorder()" title="Click to re-order Air Ambulances." [disabled]="this.isFormLocked" type="button">Re-Order Air Ambulances</button>
+            </div>
+            <div class="w3-left" style="height: 50vh; width: 100%;">
+                  <app-eis-grid #gridAirAmbulance
+                  [floatingFilter]="false"
+                  [columnDefs]="this.gridColumnDefs"
+                  [rowData]="this.airAmbulanceList" 
+                  (rowSelectEvent)="onSelectRow($event)">
+                  </app-eis-grid>
+            </div>
+          <!--
+          </as-split-area>
+        </as-split>
+        </div>
+          -->
+    </div>
+ </form>
+</div>
+<app-prompt-modal id="icsForm206AirAmbPromptModal" #icsForm206AirAmbPromptModal (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>

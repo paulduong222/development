@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (C) 2008 Cognos ULC, an IBM Company. All rights reserved.
+    Cognos (R) is a trademark of Cognos ULC, (formerly Cognos Incorporated).
+-->
+<xs:schema xmlns:d="http://www.ibm.com/xmlns/prod/cognos/dataSet/201006" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ibm.com/xmlns/prod/cognos/dataSet/201006" elementFormDefault="qualified">
+	<xs:element name="dataSet">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="dataTable" type="d:dataTable" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="dataTable">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" maxOccurs="1"/>
+			<xs:element ref="d:row" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="row">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="IncID" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="IncNumber" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="IncName" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="IncState" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="InitialDate" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="IncDispOrgUnitCode" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="MergedIncFlag" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="PreviousIncNumber" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="IncType" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="IncAgencyAbbrev" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="ReqID" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="ReqStatusCode" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="RootReqFlag" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="ReqNumberPrefix" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="ReqNumber" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="AssignmentName" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="ReqStatus" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="ReqCatalogName" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="ReqCategoryName" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="FilledCatalogItemCode" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="FilledCatalogItemName" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="ContractType" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="ContractNumber" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="MobETD" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="ResID" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="ResName" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="LastName" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="FirstName" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="MiddleName" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="ResProvUnitCode" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="VendorOwnedFlag" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="VendorName" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="JetPort" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="ResProvAgencyAbbrev" type="xs:string" maxOccurs="1" minOccurs="0"/>
+				<xs:element name="EmploymentClass" type="xs:string" maxOccurs="1" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

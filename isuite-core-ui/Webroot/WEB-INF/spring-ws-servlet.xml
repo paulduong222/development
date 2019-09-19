@@ -1,0 +1,101 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	
+	<!-- ######################################## -->
+	<!--    routing for xml message to endpoints  -->
+	<!-- ######################################## -->
+	<bean
+		class="org.springframework.ws.server.endpoint.adapter.GenericMarshallingMethodEndpointAdapter">
+		<description> This adapter allows for methods that need and returns marshalled
+			objects. The MarshallingEndpoint uses JAXB 2 objects. </description>
+		<constructor-arg ref="marshaller"/>
+	</bean>
+	
+	<bean id="payloadMapping"
+		class="org.springframework.ws.server.endpoint.mapping.PayloadRootQNameEndpointMapping">
+		<description> This mapping uses the root name in the payload (body contents) to
+			determine where to send the message. The "mappings" property defines the
+			lookup. </description>
+		<property name="mappings">
+			<props>
+				<!-- notify from the namespace http://gov.nwcg.isuite.webservice is sent to the dataNotifyEndpoint -->
+				<prop key="{http://gov.nwcg.isuite.webservice}notify">
+					dataNotifyEndpoint</prop>
+			</props>
+		</property>
+		<property name="interceptors">
+			<list>
+				<ref local="loggingInterceptor"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="loggingInterceptor"
+		class="org.springframework.ws.server.endpoint.interceptor.PayloadLoggingInterceptor">
+		<description> This interceptor logs the message payload. </description>
+	</bean>
+	
+	<bean
+		class="org.springframework.ws.server.endpoint.mapping.PayloadRootAnnotationMethodEndpointMapping">
+		<description> This uses the annotations in the endpoint classes to determine where
+			to send the message. </description>
+	</bean>
+	
+	<bean
+		class="org.springframework.ws.server.endpoint.adapter.XPathParamAnnotationMethodEndpointAdapter">
+		<description> This class maps namespaces to parameters in the XPath arguments in
+			endpoints </description>
+		<property name="namespaces">
+			<props>
+				<prop key="isw">http://gov.nwcg.isuite.webservice</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- ######################################## -->
+	<!--          marshaller                      -->
+	<!-- ######################################## -->
+	<bean id="marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+		<description> This is used to convert from objects to xml. The jaxb compiler reads an
+			xsd and creates java classes. This is done during the build of the
+			isuite-webservice-enterprise and the outputs are in the 'generated-sources'
+			directory. The 'contextPath' must point to package of these generated sources
+			</description>
+		<property name="contextPath"
+			value="gov.nwcg.isuite.webservice.api.schema">
+		</property>
+	</bean>
+	
+	<!-- ######################################## -->
+	<!--    handler for data notify messages      -->
+	<!-- ######################################## -->
+	<bean id="dataNotifyEndpoint"
+		class="gov.nwcg.isuite.webservice.impl.DataNotifyEndpoint">
+		<description>Handles the data notify messages</description>
+		<!-- <constructor-arg ref="externalSystemService"/> -->
+	</bean>
+	
+	
+	<!-- ######################################## -->
+	<!--    wsdl publisher data notify messages   -->
+	<!-- ######################################## -->
+	
+	<bean id="dataNotify"
+		class="org.springframework.ws.wsdl.wsdl11.DynamicWsdl11Definition">
+		<description> This bean definition represents a WSDL definition that is generated
+			at runtime, based on the builder defined below. It can be retrieved by going to
+			/ws/dataNotify.wsdl (i.e. the bean name corresponds to the filename).
+			</description>
+		
+		<property name="builder">
+			<bean
+				class="org.springframework.ws.wsdl.wsdl11.builder.XsdBasedSoap11Wsdl4jDefinitionBuilder">
+				<property name="schema" value="/WEB-INF/dataNotify.xsd"/>
+				<property name="portTypeName" value="Updates"/>
+				<property name="locationUri"
+					value="http://localhost:8080/ws/dataNotify/"/>
+			</bean>
+		</property>
+	</bean>
+	
+</beans>

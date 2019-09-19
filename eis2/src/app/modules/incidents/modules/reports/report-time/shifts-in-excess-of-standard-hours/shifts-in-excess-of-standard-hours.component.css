@@ -1,0 +1,120 @@
+* {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+.main-card {
+    border: 1px solid gray;
+    height: 83vh;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+.card-body {
+    margin: 20px;
+    padding: 0 20px 20px 20px;
+    min-width: 800px;
+}
+.radio-box {
+    height: 25px;
+    font-size: 12px;
+    padding: 7px;
+}
+.radio-box label:last-child {
+    margin-left: 20px;
+}
+input[type="radio"] {
+    margin-top: -3px;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+.text-box {
+    border: 1px solid gray;
+    height: 400px;
+    width: 700px;
+    font-size: 11px;
+    margin-top: 7px;
+    background-color: #dbd6d6;
+    color: black;
+    padding-left: 5px;
+}
+.text-box .title {
+  font-size: 12px;
+  font-weight: 550;
+}
+button {
+    height: 20px;
+    font-size: 12px;
+    font-weight: 550;
+    line-height: 10px;
+    margin-bottom: 20px;
+}
+.checkbox {
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
+}
+.date-box {
+    width: 500px;
+    height: 110px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding: 5px;
+}
+.date-box label {
+    display: block;
+    font-size: 13px;
+    padding: 3px;
+}
+.date-box input {
+    width: 105px;
+}
+.label-input, .date-box input {
+    margin: 5px
+}
+.date-box .label-header {
+    font-weight: 550;
+}
+.btn-box {
+    width: 100%;
+    float: left;
+    margin-top: 10px
+}
+.btn-box button {
+    display: block;
+    margin-bottom: 5px;
+    height: 25px;
+}
+.btn-box button:first-child {
+    margin-top: 20px;
+}
+.option-box {
+    width: 330px;
+    height: 110px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding: 5px;
+}
+.option-box label {
+    display: block;
+    font-size: 13px;
+    padding: 3px;
+}
+.option-box .label-header {
+    font-weight: 550;
+}
+.spc-res{
+    display: flex;
+    justify-content: space-evenly;
+}
+.spc-res select{
+    min-height: 25px;
+    width: 200px;
+    margin: 5px;
+}
+.spc-res span{
+    margin: 5px 0px 5px 0px;
+}

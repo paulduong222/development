@@ -1,0 +1,130 @@
+<h4 class="w3-theme-l3 w3-center mb-20" style="margin-left: 10px; margin-right:10px;">
+    <strong>Copy Database</strong>
+  </h4>
+    
+  <div class="fs-12 ml-20 mb-10 mt-0"> 
+    <form [formGroup]="dbForm">
+    <div class="mb-10">
+      <strong>
+        Database To Copy
+      </strong>
+    </div>
+    <div class="border-solid-dkg-1 vw-80-p p-10 mb-20">
+      <table>
+        <tr>
+          <td class="frmlbl"><label for="cbDatabaseCopy">Database To Copy</label></td>
+          <td><label class="ast">*</label></td>
+          <td>
+            <select formControlName="sourcedb" id="cbDatabaseCopy" style="width:200px;" 
+              (change)="this.selectedSourceDb = this.dblist[$event.target.selectedIndex]">
+                <option *ngFor="let v of this.dblist" [ngValue]="v" >{{ v['databaseName'] }}</option>
+           </select>
+      </td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label for="txDPassword">Database Password</label></td>
+          <td><label class="ast">*</label></td>
+          <td>
+            <app-text-input formControlName="dpassword" id="txDPassword" name="txDPassword" type="password" 
+              width="200" maxlength="55" 
+              (input)="this.selectedSourceDb.password = $event.target.value"></app-text-input>
+          </td>
+        </tr>
+      </table>
+    </div>
+  
+    <div class="mb-10">
+      <strong>
+        New Database
+      </strong>
+    </div>
+    <div class="border-solid-dkg-1 vw-98-p p-10 mb-10">
+      <table class="mb-20">
+        <tr>
+          <td class="frmlbl"><label for="txDName">Database Name</label></td>
+          <td><label class="ast">*</label></td>
+          <td>
+           <app-text-input formControlName="databaseName" id="txDName" name="txDName" type="text" 
+              width="200" maxlength="64"  restrict2="a-z,A-Z,_,0-9"
+              (input)="this.dbAvailVo.databaseName = $event.target.value"></app-text-input>
+          </td>
+          <td class="frmlbl"><label>(Database Name MUST begin with an Alpha character.)</label></td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label for="txD2Password">Database Password</label></td>
+          <td><label class="ast">*</label></td>
+          <td>
+              <app-text-input formControlName="targetpassword" id="txD2Password" name="txD2Password" type="password" 
+              width="200" maxlength="55" 
+              (input)="this.dbAvailVo.password = $event.target.value"></app-text-input>
+          </td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label for="txVPassword">Verify Password</label></td>
+          <td><label class="ast">*</label></td>
+          <td>
+              <app-text-input formControlName="targetconfpassword" id="txVPassword" name="txVPassword" type="password" 
+              width="200" maxlength="55" 
+              (input)="this.dbAvailVo.confirmPassword = $event.target.value"></app-text-input>
+          </td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label for="ckAutoBackup">Automatic Backup</label></td>
+          <td></td>
+          <td>
+              <input formControlName="autoBackup" id="ckAutoBackup" (change)="this.onChangeBackup($event)" type="checkbox"/>
+          </td>
+        </tr>
+      </table>
+      <div class="mb-10">
+        <strong>
+          Autobackup Information
+        </strong>
+      </div>
+      <div class="border-solid-dkg-1 vw-98-p p-10">
+        <table>
+          <tr>
+            <td class="frmlbl"><label for="cbIntervals">Intervals</label></td>
+            <td><label class="ast">*</label></td>
+            <td>
+                <select formControlName="interval" id="cbIntervals" style="width:100px;" (change)="this.dbAvailVo.backupInterval = this.intervals[$event.target.selectedIndex].hours">
+                    <option *ngFor="let v of this.intervals" [ngValue]="v.hours" >{{ v['desc'] }}</option>
+                  </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="frmlbl"><label for="txDDestination">Default Destination</label></td>
+            <td></td>
+            <td>
+                <input formControlName="defaultDestination" id="txDDestination" name="txDDestination" type="text" style="width:330px;"/>
+            </td>
+          </tr>
+          <tr>
+            <td class="frmlbl"><label for="txADestination">Additional Destination</label></td>
+            <td></td>
+            <td>
+              <app-text-input formControlName="additionalDestination" id="txADestination" name="txADestination" type="text" 
+                width="330" maxlength="55"  restrict2="a-z,A-Z,_,0-9,:,slash,-"
+                (input)="this.dbAvailVo.additionalBackupDestination = $event.target.value"></app-text-input>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><label>Note: Use 2 backslashes as seperator ( ex: C:\\OtherBackupFolder\\ )</label></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  
+    <div class="button-action-bar">
+      <strong>
+        <button (click)="save()" title="Click to copy the database">Save</button>
+        <button (click)="cancel()" title="Click to cancel changes">Cancel</button>
+      </strong>
+    </div>
+    </form>
+  </div>
+  
+  

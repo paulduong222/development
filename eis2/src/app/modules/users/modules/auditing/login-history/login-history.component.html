@@ -1,0 +1,12 @@
+<div id="dv-login-history">
+  <app-auditing-filter #loginHistoryFilter
+      (filterEvent)="this.doFilter($event)"></app-auditing-filter>
+  <app-eis-grid #loginHistoryGrid
+      [treeViewMode]="false"
+      [columnDefs]="this.columnDefs"
+      [rowData]="this.gridData">
+  </app-eis-grid>
+<!--
+<app-auditing-grid [columnDefs]="this.columnDefs" [rowData]="this.gridData"></app-auditing-grid>
+-->
+</div>

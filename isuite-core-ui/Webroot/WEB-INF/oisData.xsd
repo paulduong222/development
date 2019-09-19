@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://gov.nwcg.isuite.webservice.oisData"
+xmlns="http://gov.nwcg.isuite.webservice.oisData"
+elementFormDefault="qualified">
+
+<!-- anything prefixed by xs comes from the "http://www.w3.org.2001/XMLSchema" namespace -->
+<!-- elements defined in this xsd are to be in the "http://gov.nwcg.isuite.webservice.oisData" namespace -->
+<!-- any use of the elements defined here in an xml document must use the namespace -->
+	
+	<xs:attribute name="actionType">
+		<xs:simpleType>
+    		<xs:restriction base="xs:string">
+    			<xs:enumeration value="add"/>
+    			<xs:enumeration value="update"/>
+    		</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	
+	<xs:simpleType name="action">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="add"/>
+			<xs:enumeration value="update"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+		
+	<!-- ################################ -->
+	<!--   country code                   -->
+	<!-- ################################ -->
+
+	<xs:simpleType name="countryAbbreviation">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]{2,3}"/> <!-- 2 or 3 upper case letters -->
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="countryCode">
+		<xs:sequence>
+			<xs:element name="action" type="action"/>
+			<xs:element name="abbreviation" type="countryAbbreviation"/>
+			<xs:element name="name" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:integer"/>
+	</xs:complexType>
+	
+	<!-- ################################ -->
+	<!--   country subdivision code       -->
+	<!-- ################################ -->
+	
+	<xs:simpleType name="countrySubdivisionCodeAbbreviation">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]{2}"/> <!-- 2 upper case letters -->
+		</xs:restriction>
+	</xs:simpleType>
+	
+
+	<xs:complexType name="countrySubdivisionCode">
+		<xs:sequence>
+			<xs:element name="action" type="action"/>
+			<xs:element name="abbreviation" type="countrySubdivisionCodeAbbreviation"/>
+			<xs:element name="name" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:integer"/>
+	</xs:complexType>
+	
+	<!-- ################################ -->
+	<!--   office type                    -->
+	<!-- ################################ -->
+	
+	<xs:complexType name="officeType">
+		<xs:sequence>
+			<xs:element name="action" type="action"/>
+			<xs:element name="name" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:integer"/>
+	</xs:complexType>
+	
+	<!-- ################################ -->
+	<!--   organization                   -->
+	<!-- ################################ -->
+	
+	<xs:simpleType name="organizationAbbreviation">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z0-9]+"/> <!-- upper case letters -->
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="unitCode">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z0-9]+"/> <!-- upper case letters -->
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="subUnitCode">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z0-9]+"/> <!-- upper case letters -->
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="organization">
+		<xs:sequence>
+			<xs:element name="action" type="action"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="parent" minOccurs="0" maxOccurs="1" type="xs:integer"/>
+			<xs:element name="abbreviation" minOccurs="0" maxOccurs="1" type="organizationAbbreviation"/>
+			<xs:element name="officeTypeId" type="xs:integer"/>
+			<xs:element name="hostProvider" type="xs:boolean"/>
+			<xs:element name="cache" type="xs:boolean"/>
+			<xs:element name="countryId" type="xs:integer"/>
+			<xs:element name="countrySubdivisionId" type="xs:integer"/>
+			<xs:element name="unitCode" type="unitCode"/>
+			<xs:element name="subUnitCode" minOccurs="0" maxOccurs="1" type="subUnitCode" />
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:integer"/>
+	</xs:complexType>
+	
+	<!-- ################################ -->
+	<!--   oisData                        -->
+	<!-- ################################ -->
+	
+    <xs:element name="oisData">
+		<xs:complexType>
+			<xs:sequence>
+			<xs:element name="countryCode" type="countryCode" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="countrySubdivisionCode" type="countrySubdivisionCode" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="officeType" type="officeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="organization" type="organization" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+    </xs:element>
+
+</xs:schema>

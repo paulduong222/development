@@ -1,0 +1,163 @@
+<div id="dv-import-users">
+  <div><label class="hdr-lbl">Step 1: Import User Accounts</label></div>
+  <div id="dv-import-users-top">
+    <div class="dv-top-left">
+      <div class="eis">
+        <form [formGroup]="importForm" autocomplete="off" (ngSubmit)="onImport()">
+          <table>
+            <tr>
+              <td class="frmlbl"><label class="f1">File Path/Name</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                <input id="txFile" readonly formControlName="txtFile" maxlength="200" style="width:300px;"
+                  [value]="fileName" (click)="filePicker.click()" />
+              </td>
+              <td>
+                <img src="assets/images/magnifyingGlass.png" (click)="filePicker.click()">
+                <input type="file" style="display: none;" #filePicker accept=".usr" (change)="uploadFile($event)">
+              </td>
+            </tr>
+            <tr>
+              <td class="frmlbl"><label class="f1">Default Password</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                <input id="txPwd" type="password" formControlName="defaultPassword" maxlength="50"
+                  style="width:170px;" />
+              </td>
+            </tr>
+            <tr>
+              <td class="frmlbl"><label class="f1">Confirm Default Password</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                <input id="txPwd2" type="password" formControlName="confirmDefaultPassword" maxlength="50"
+                  style="width:170px;" />
+              </td>
+            </tr>
+          </table>
+          <div style="margin:10px;">
+            <button class="h22" type="submit" title="Click to import the Users." [disabled]="importForm.invalid">Import</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="dv-top-right">
+      <label class="hdr-lbl">Step 1 Instructions</label>
+      <div id="dv-import-inst2">
+        <div>
+          <label>To import user accounts, click the browse button and navigate to the export file.</label>
+          <br />
+          <label>Select the file to import. Enter the password to assign to each imported user account.</label>
+          <br />
+          <label>Click the import button to import the user accounts.</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="dv-import-users-left" class="w3-left">
+    <div><label class="hdr-lbl">Step 2: Resolve User Account Conflicts</label></div>
+    <!-- <app-import-grid [rowData]="this.rowData"></app-import-grid> -->
+    <!-- <ag-grid-angular #importGrid style="width: 100%; height: 100%;" class="ag-theme-balham" rowSelection="single"
+      rowHeight="24" [enableFilter]="true" [enableColResize]="true" [rowData]="rowData" [columnDefs]="columnDefs"
+      (selectionChanged)="onSelect($event)" (gridReady)="onGridReady($event)">
+    </ag-grid-angular> -->
+    <app-eis-grid #conflictGrid id="conflictGrid"
+        [treeViewMode]="false"
+        [columnDefs]="columnDefs"
+        [rowData]="userImportFailureVos"
+        (rowSelectEvent)="onSelect($event)"
+        (gridReadyEvent)="onGridReady($event)">
+      </app-eis-grid>
+  </div>
+
+  <div class="dv-conflict-desc">
+    <span><strong><label>Conflict Description: </label></strong>
+      <label>{{conflictDesc}}</label></span>
+  </div>
+  <div class="dv-conflict-user">
+    <button class="h22" (click)="removeFromImport()" [disabled]="conflictDisable">Do not import this user</button>
+  </div>
+  <form [formGroup]="conflictForm" (ngSubmit)="saveConflictResolution()">
+    <div>
+      <table>
+        <td>
+          <tr>
+            <td class="frmlbl"><label>User Name</label></td>
+            <td><label class="ast">*</label></td>
+            <td>
+              <!-- <input id="txUserName" name="txUserName" type="text" maxlength="20" style="width:140px;"
+                formControlName="loginName"/> -->
+                <app-text-input formControlName="loginName" id="txUserName" name="txUserName" type="text"
+										width="170" maxlength="30" textTransform="lowercase"></app-text-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="frmlbl"><label>First Name</label></td>
+            <td><label class="ast">*</label></td>
+            <td>
+              <!-- <input id="txFirstName" name="txFirstName" type="text" maxlength="30" style="width:170px;"
+                formControlName="firstName"/> -->
+                <app-text-input formControlName="firstName" id="txFirstName" name="txFirstName" type="text"
+										width="170" maxlength="30" allowSpace="true"></app-text-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="frmlbl"><label>Last Name</label></td>
+            <td><label class="ast">*</label></td>
+            <td>
+              <!-- <input id="txLastName" name="txLastName" type="text" maxlength="35" style="width:170px;"
+                formControlName="lastName"/> -->
+                <app-text-input formControlName="lastName" id="txLastName" name="txLastName" type="text"
+                width="170" maxlength="35" allowSpace="true"></app-text-input>
+            </td>
+          </tr>
+        </td>
+        <td>
+          <tr>
+            <td class="frmlbl"><label>Unit ID</label></td>
+            <td><label class="ast">*</label></td>
+            <td>
+              <app-eis-dropdown id="cbUnit" [dropdownData]="homeUnitCodeData" [selectedDropdownData]="homeUnitCode"
+                [dropdownDisabled]="conflictDisable"
+                (dropdownSelect)=" onUnitChange($event)"
+                formControlName="homeUnitVo"></app-eis-dropdown>
+            </td>
+          </tr>
+          <!--
+
+          <tr>
+            <td class="frmlbl"><label>Primary Dispatch Center</label></td>
+            <td><label class="ast">*</label></td>
+            <td>
+              <app-eis-dropdown id="cbPrimaryDispatchCenter" [dropdownData]="pdcUnitCodeData"
+                [selectedDropdownData]="pdcUnitCode" [dropdownDisabled]="conflictDisable"
+                formControlName="pdcVo"></app-eis-dropdown>
+            </td>
+          </tr>
+          -->
+        </td>
+      </table>
+    </div>
+    <div class="dv-bottom-right" [class.dv-disabled]="conflictDisable">
+      <label class="hdr-lbl">Step 2 Instructions</label>
+      <div>
+        <div class="pb-20">
+          <label>If there were conflicts that occurred when importing user accounts, a list of the </label>
+          <label>affected user accounts will display in the grid under Step 2 - Resolve User Account Conflicts.</label>
+        </div>
+        <div class="pb-20"><label>Click a user account and modify the data in the fields to the right to fix the
+            conflict.</label></div>
+        <div class="pb-20"><label>Click each listed user account and modify the data to fix all conflicts for the listed
+            user accounts.</label></div>
+        <div class="pb-20">
+          <label>Once all of the user accounts have been fixed, click the Save All Conflict Resolutions button to save
+          </label>
+          <label>the fixed user accounts to the system.</label>
+        </div>
+      </div>
+    </div>
+    <div class="dv-conflict-button">
+      <button class="h22" type="submit" title="Click to save conflict resolutons" [disabled]="conflictSumbit" >Save All Conflict Resolutions</button>
+    </div>
+  </form>
+</div>
+<app-prompt-modal #confirmModal id="confirmModal" (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>

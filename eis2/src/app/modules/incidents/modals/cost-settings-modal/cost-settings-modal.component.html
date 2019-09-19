@@ -1,0 +1,49 @@
+<app-jw-modal id="cost-settings-modal" style="display: none;" class="box-hdr-dv">
+    <div style="width: 400px; height: 130px;padding: 0px;">
+      <form [formGroup]="costForm" autocomplete="off">
+        <div class="w3-container w3-padding-small w3-theme-d2">
+            <div class="w3-left">Incident Cost Settings</div>
+            <div class="w3-right"></div>
+        </div>
+        <div class="eis" style="margin-left: 4px;">
+            <label><strong>Default Hours</strong></label>
+            <div class="dv-form-hours">
+                <table class="">
+                <tr>
+                        <td class="frmlbl"><label class="f1" for="txHours">Default Hours</label></td>
+                        <td><label class="ast">*</label></td>
+                        <td>
+                            <app-text-input id="txHours" name="txHours" type="text"
+                            formControlName="defaultHours"
+                            width="40" maxlength="2" restrict2="0-9"></app-text-input>
+                        </td>
+                </tr>
+                </table>
+            </div>
+            <!--
+            <label><strong>Run Cost Options</strong></label>
+            <table>
+                <tr>
+                    <td>
+                        <div class="dv-form-costrun">
+                            <input type="radio" formControlName="costRunDefault" name="costRunDefault" value="Run Cost Manually"><label>Run Cost Manually</label>
+                            <br>
+                            <input type="radio" formControlName="costRunDefault" name="costRunDefault"  value="Run Cost Automatically"><label>Run Cost Automatically</label>
+                        </div>
+                    </td>                    
+                </tr>
+            </table>
+            -->
+        </div>
+        <br>
+        <div id="dv-cost-set-action-bar">
+                <div class="w3-center w3-small">
+                    <button (click)="this.save()" title="Click to save the Cost Settings">Save</button>
+                    <button (click)="this.cancel()" title="Click to cancel changes">Cancel</button>
+                    <button (click)="closeModal('cost-settings-modal');" title="Click to close window">Close</button>
+                </div>
+        </div>
+     </form>
+    </div>
+</app-jw-modal>
+

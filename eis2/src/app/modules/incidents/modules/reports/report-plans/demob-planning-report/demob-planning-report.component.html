@@ -1,0 +1,102 @@
+<div class="main-card">
+  <div class="card-body">
+    <p class="title">Demob Planning Report</p>
+    <table style="display: block">
+      <tr>
+        <td class="td-width">
+          <div class="bx-hdr-dv">
+            <div class="bx-hdr">
+              <div><label class="w3-small">Resource Categories</label></div>
+            </div>
+            <div class="bx-body">
+              <div><input type="checkbox" [checked]="demobPlanningReportFilter.allResourceCategories" value="allResourceCategories" (click)="handleCheckbox($event)"><label class="pl-10">All Resources</label></div>
+              <div><input type="checkbox" [checked]="demobPlanningReportFilter.aircraft" value="aircraft" (click)="handleCheckbox($event)"><label class="pl-10">Aircraft</label></div>
+              <div><input type="checkbox" [checked]="demobPlanningReportFilter.crews" value="crews" (click)="handleCheckbox($event)"><label class="pl-10">Crews</label></div>
+              <div><input type="checkbox" [checked]="demobPlanningReportFilter.equipment" value="equipment" (click)="handleCheckbox($event)"><label class="pl-10">Equipment</label></div>
+              <div><input type="checkbox" [checked]="demobPlanningReportFilter.overhead" value="overhead" (click)="handleCheckbox($event)"><label class="pl-10">Overhead</label></div>
+            </div>
+          </div>
+        </td>
+        <td class="td-width">
+          <div class="bx-hdr-dv">
+            <div class="bx-hdr">
+              <div><label class="w3-small">Group by Section</label></div>
+            </div>
+            <div class="bx-body">
+              <div><input type="checkbox" [checked]="demobPlanningReportFilter.allGroups" value="allGroups" (click)="handleCheckbox($event)"><label class="pl-10">All Sections</label></div>
+              <div><input type="checkbox" [checked]="demobPlanningReportFilter.operations" value="operations" (click)="handleCheckbox($event)" ><label class="pl-10">Operations</label></div>
+              <div><input type="checkbox" [checked]="demobPlanningReportFilter.command" value="command" (click)="handleCheckbox($event)"><label class="pl-10">Command</label></div>
+              <div><input type="checkbox" [checked]="demobPlanningReportFilter.logistics" value="logistics" (click)="handleCheckbox($event)"><label class="pl-10">Logistics</label></div>
+              <div><input type="checkbox" [checked]="demobPlanningReportFilter.plans" value="plans" (click)="handleCheckbox($event)"><label class="pl-10">Plans</label></div>
+              <div><input type="checkbox" [checked]="demobPlanningReportFilter.finance" value="finance" (click)="handleCheckbox($event)"><label class="pl-10">Finance</label></div>
+              <div><input type="checkbox" [checked]="demobPlanningReportFilter.external" value="external" (click)="handleCheckbox($event)"><label class="pl-10">External</label></div>
+            </div>
+          </div>
+        </td>
+        <td class="td-width">
+          <div class="bx-hdr-dv">
+            <div class="bx-hdr">
+              <div><label class="w3-small">Resource Status</label></div>
+            </div>
+            <div class="bx-body">
+              <div><input type="checkbox" [checked]="demobPlanningReportFilter.allResourceStatuses" value="allResourceStatuses" (click)="handleCheckbox($event)"><label class="pl-10">All Statuses</label></div>
+              <div><input type="checkbox" [checked]="demobPlanningReportFilter.checkin" value="checkin" (click)="handleCheckbox($event)"><label class="pl-10">Checked-In</label></div>
+              <div><input type="checkbox" [checked]="demobPlanningReportFilter.demobed" value="demobed" (click)="handleCheckbox($event)"><label class="pl-10">Demobed</label></div>
+              <div><input type="checkbox" [checked]="demobPlanningReportFilter.reassigned" value="reassigned" (click)="handleCheckbox($event)"><label class="pl-10">Reassigned</label></div>
+              <div><input type="checkbox" [checked]="demobPlanningReportFilter.pendingDemob" value="pendingDemob" (click)="handleCheckbox($event)"><label class="pl-10">Pending Demob</label></div>
+              <div><input type="checkbox" [checked]="demobPlanningReportFilter.filled" value="filled" (click)="handleCheckbox($event)"><label class="pl-10">Filled</label></div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <table style="display: block">
+      <tr>
+        <td style="width: 500px">
+          <div style="height: 280px" class="bx-hdr-dv">
+            <div class="bx-hdr-sort">
+              <div><label class="w3-small">Report Sorts</label></div>
+            </div>
+            <div style="padding: 0 10px 0 10px" class="report-sort">
+              <div class="left-box">
+                <h5 class="title">Available</h5>
+                <app-data-table [noHeader]="noHeader" [bodyStyle]="bodyStyle" [tableDefinition]="tableDef" [data]="data" [filter]="filter" (rowClicked)="getClickedRow($event, 'indexSelected', 'data', 'shiftIndex')" [scrollAble]="scrollAble" [indexSelected]="indexSelected" [extraStyle]="extraStyle"></app-data-table>
+              </div>
+              <div class="center-box">
+                <div class="icon" (click)="moveSelected('data', 'dataSelected', 'indexSelected', 'shiftIndex')"><img src="assets/images/arrow_right.png" title="Add Selected Item"></div>
+                <div class="icon" (click)="moveSelected('dataSelected', 'data', 'indexSelectedCopy', 'shiftIndexCopy')"><img src="assets/images/arrow_left.png" title="Remove Selected Item"></div>
+                <div class="icon" (click)="moveAll('data', 'dataSelected', 'indexSelected', 'shiftIndex')"><img src="assets/images/arrow_right_double.png" title="Add All Items"></div>
+                <div class="icon" (click)="moveAll('dataSelected', 'data', 'indexSelectedCopy', 'shiftIndexCopy')"><img src="assets/images/arrow_left_double.png" title="Remove All Items"></div>
+              </div>
+              <div class="right-box">
+                <h5 class="title">Selected</h5>
+                <app-data-table [noHeader]="noHeader" [bodyStyle]="bodyStyle" [tableDefinition]="tableDef" [data]="dataSelected" (rowClicked)="getClickedRow($event, 'indexSelectedCopy', 'dataSelected', 'shiftIndexCopy')" [scrollAble]="scrollAble" [indexSelected]="indexSelectedCopy" [extraStyle]="extraStyle"></app-data-table>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td style="vertical-align: top;">
+          <div class="radio-box">
+            <div class="padding-5">
+              <label><input type="checkbox" name="state" value="includeSTTFComponents" (click)="handleCheckbox($event)" [checked]="demobPlanningReportFilter.includeSTTFComponents"> Include Strike Team/Task Force Components<br></label>
+            </div>
+            <div class="padding-5">
+              <label><input type="checkbox" name="state1" value="subTotalsFirstSort" (click)="handleCheckbox($event)"  [checked]="demobPlanningReportFilter.subTotalsFirstSort"> Subtotals on First sort<br></label>
+            </div>
+            <!-- <div class="padding-5">
+              <label  class="disabled"><input type="checkbox" name="state2" value="groupSubsection" (click)="handleCheckbox($event)" disabled> Group by Subsection<br></label>
+            </div> -->
+            <button class="padding-5" type="button" class="btn btn-default button-cus" (click)="showHideInstruction()" title="Click to toggle showing the instructions">Show/Hide&nbsp;Instructions</button>
+            <div class="tooltip-box padding-5" *ngIf="tooltipBox">
+              <p>Select the Resource Categories, Sections and Statuses to include in the report.</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <div style="width: 100%; margin-top: 10px">
+      <button type="button" class="btn btn-default button-cus" (click)="generateReport()" title="Click to generate Demob Planning Report">Preview/Print</button>
+      <button type="button" class="btn btn-default button-cus" style="margin-left: 10px" title="Click to restore defaults" (click)="restoreDefault()">Restore Defaults</button>
+    </div>
+  </div>
+</div>

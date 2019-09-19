@@ -1,0 +1,100 @@
+<div id="dv-contr-form" class="eis bg-white">
+  <form  [formGroup]="contractorForm" autocomplete="off">
+ <table>
+    <tr>
+      <td>
+          <table>
+              <tr [class]="getIncidentSelectorClass()">
+                  <td class="frmlbl"><label class="f1" for="ddIncident">Select Incident</label></td>
+                  <td><label class="ast">*</label></td>
+                  <td>
+                        <app-eis-dropdown id="ddIncident" #ddIncident
+                        formControlName="incidentVo"
+                        [width]="300"
+                        [selectedDropdownData]="this.selectedIncidentDropdownData"
+                        [dropdownData]="this.incidentDropdownData"></app-eis-dropdown>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="frmlbl"><label class="f1" for="txName">Contractor/Cooperator</label></td>
+                  <td><label class="ast">*</label></td>
+                  <td>
+                     <app-text-input id="txUName" name="txUName" type="text"
+                       width="300" maxlength="50" 
+                       allowSpace="true" formControlName="name" textTransform="uppercase"></app-text-input>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="frmlbl"><label class="f1" for="txDuns">DUNS</label></td>
+                  <td><label class="ast"></label></td>
+                  <td>
+                     <app-text-input id="txDuns" name="txDuns" type="text"
+                     formControlName="duns"  width="300" maxlength="13" 
+                     restrict2="0-9" textTransform="uppercase"></app-text-input>
+                  </td>
+              </tr>
+         </table>
+      </td>
+      <td>
+          <table>
+              <tr>
+                  <td class="frmlbl"><label class="f1" for="txAddr1">Address 1</label></td>
+                  <td><label class="ast"></label></td>
+                  <td>
+                     <app-text-input id="txAddr1" name="txAddr1" type="text"
+                     formControlName="addressLine1"  allowSpace="true"  width="300" maxlength="35" textTransform="uppercase"></app-text-input>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="frmlbl"><label class="f1" for="txAddr2">Address 2</label></td>
+                  <td><label class="ast"></label></td>
+                  <td>
+                     <app-text-input id="txAddr2" name="txAddr2" type="text"
+                     formControlName="addressLine2" allowSpace="true" width="300" maxlength="35" textTransform="uppercase"></app-text-input>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="frmlbl"><label class="f1" for="txCity">City</label></td>
+                  <td><label class="ast"></label></td>
+                  <td>
+                     <app-text-input id="txCity" name="txCity" type="text"
+                     formControlName="city" allowSpace="true" width="300" maxlength="30" textTransform="uppercase"></app-text-input>
+                  </td>
+              </tr>
+              <tr>
+                <td class="frmlbl"><label class="f1" for="ddState">State</label></td>
+                <td><label class="ast"></label></td>
+                <td>
+                    <app-eis-dropdown id="ddState" #ddState
+                      formControlName="countryCodeSubdivisionVo"
+                      [width]="40"
+                      [selectedDropdownData]="this.selectedStateDropdownData"
+                      [dropdownData]="this.statesDropdownData"></app-eis-dropdown>
+                </td>
+              </tr>
+              <tr>
+                  <td class="frmlbl"><label class="f1" for="txZip">Zip</label></td>
+                  <td><label class="ast"></label></td>
+                  <td>
+                     <app-text-input id="txZip" name="txZip" type="text"
+                     formControlName="zip"  width="90" maxlength="10" 
+                     restrict2="0-9,-" textTransform="uppercase"></app-text-input>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="frmlbl"><label class="f1" for="txPhone">Phone</label></td>
+                  <td><label class="ast"></label></td>
+                  <td>
+                    <app-phone-input formControlName="phone" id="txPhone" #txPhone style="width:300px;"></app-phone-input>
+                  </td>
+              </tr>
+         </table>
+      </td>
+    </tr>
+  </table>
+  <div id="dv-contractor-action-bar" class="w3-small">
+      <button (click)="this.save()" title="Click to save the Contractor">Save</button>
+      <button (click)="this.cancel()" title="Click to cancel changes">Cancel</button>
+    </div>
+</form>
+</div>

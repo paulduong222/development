@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DetailByResourceSubReport1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="500f44d7-e22c-420b-8dfd-a08c5e1f657a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<field name="grouping" class="java.lang.String"/>
+	<field name="itemcodecategory" class="java.lang.String"/>
+	<field name="itemcode" class="java.lang.String"/>
+	<field name="itemcodedescription" class="java.lang.String"/>
+	<field name="resourcename" class="java.lang.String"/>
+	<field name="requestnumber" class="java.lang.String"/>
+	<field name="agencycode" class="java.lang.String"/>
+	<field name="unitid" class="java.lang.String"/>
+	<field name="assigndatechar" class="java.lang.String"/>
+	<field name="costenddatechar" class="java.lang.String"/>
+	<field name="activitydatechar" class="java.lang.String"/>
+	<field name="shift" class="java.lang.String"/>
+	<field name="costgroupname" class="java.lang.String"/>
+	<field name="unitcost" class="java.lang.String"/>
+	<field name="rateunits" class="java.lang.String"/>
+	<field name="ratetype" class="java.lang.String"/>
+	<field name="costamount" class="java.lang.Double"/>
+	<variable name="costamount_1" class="java.lang.Integer" resetType="Group" resetGroup="grouping" calculation="Sum">
+		<variableExpression><![CDATA[$F{costamount}]]></variableExpression>
+	</variable>
+	<variable name="costamount_2" class="java.lang.Integer" resetType="Group" resetGroup="itemcodecategory" calculation="Sum">
+		<variableExpression><![CDATA[$F{costamount}]]></variableExpression>
+	</variable>
+	<variable name="costamount_3" class="java.lang.Integer" resetType="Group" resetGroup="resourcename" calculation="Sum">
+		<variableExpression><![CDATA[$F{costamount}]]></variableExpression>
+	</variable>
+	<group name="grouping">
+		<groupExpression><![CDATA[$F{grouping}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement uuid="af4f11cb-3a33-4eb0-bb65-0a1080bf2bf5" x="19" y="0" width="100" height="20"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{grouping}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<line>
+					<reportElement uuid="cc29174d-06a0-4afa-93f7-40a116e12752" x="-22" y="18" width="595" height="2"/>
+				</line>
+				<textField>
+					<reportElement uuid="45c8b7be-4c68-4827-b82f-4bc39715d9df" x="141" y="0" width="100" height="20"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="34859ea6-eaf6-40c2-9000-613be8cea065" x="98" y="0" width="35" height="20"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total: ]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="0c11d844-0dd0-4531-b747-7ec1920a1aa0" x="19" y="0" width="68" height="20"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{grouping}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="itemcodecategory">
+		<groupExpression><![CDATA[$F{itemcodecategory}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement uuid="e612ac45-cb0e-40a7-ab2d-01cd8a39ea94" x="19" y="0" width="151" height="20"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{itemcodecategory}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<textField>
+					<reportElement uuid="fa3a28aa-27a2-44da-9089-459e7e83d764" x="205" y="0" width="100" height="20"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_2}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="eb86186c-2b31-426d-9c9e-62fca97cc2ff" x="162" y="0" width="32" height="20"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total: ]]></text>
+				</staticText>
+				<line>
+					<reportElement uuid="81b01f29-2d04-4a97-9a5d-a7ef17fe5c99" x="-22" y="19" width="595" height="1"/>
+				</line>
+				<textField>
+					<reportElement uuid="6f2b5aa4-df74-4a0c-a724-2425aaed243e" x="41" y="0" width="117" height="20"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{itemcodecategory}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="resourcename">
+		<groupExpression><![CDATA[$F{resourcename}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement uuid="15795bb1-f87e-4184-93f6-3eaa3a5edd30" x="19" y="0" width="100" height="20"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{resourcename}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<staticText>
+					<reportElement uuid="9fa289e8-15a0-4a64-9b34-5be1aeaba4e1" x="101" y="0" width="57" height="20"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Sub Total: ]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="71d84c64-0eb4-4d88-92f1-80d276e2e2fb" x="158" y="0" width="100" height="20"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{costamount_3}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement uuid="0acf6163-3718-4bc9-a96f-d6971dbe1d8c" x="-22" y="19" width="595" height="1"/>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="requestnumber">
+		<groupExpression><![CDATA[$F{requestnumber}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement uuid="c5bc5d3c-f2ff-45ae-9916-8486fcd6a79a" x="201" y="0" width="44" height="20"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{requestnumber}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="d60df991-677e-422a-b7e2-6e9e428ea1cd" x="257" y="0" width="44" height="20"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{agencycode}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="270c2deb-c1eb-4179-b279-dc783bf70c71" x="310" y="0" width="51" height="20"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{unitid}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="3d6deda2-bd49-4c93-855c-c3df52a665b5" x="367" y="0" width="53" height="20"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{assigndatechar}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="2e4f7404-7ec7-43cb-9b91-27bc98ab35fa" x="431" y="0" width="46" height="20"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{costenddatechar}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="agency">
+		<groupExpression><![CDATA[$F{agencycode}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<staticText>
+					<reportElement uuid="6b291339-be33-4950-9651-f877f8ead4dd" x="56" y="0" width="34" height="20"/>
+					<textElement>
+						<font isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Date]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="0174664a-3dbe-47a1-ba6f-2e6109f50902" x="119" y="0" width="29" height="20"/>
+					<textElement>
+						<font isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Shift]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="cada8f84-3a73-4302-9a73-79231da5ad65" x="191" y="0" width="58" height="20"/>
+					<textElement>
+						<font isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Cost Grp.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="5868f60e-5105-48c5-a76b-d58c529f2d0e" x="281" y="0" width="54" height="20"/>
+					<textElement>
+						<font isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Unit Cost]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="4e634ba3-514d-4925-94a1-ed4078f13069" x="333" y="0" width="27" height="20"/>
+					<textElement>
+						<font isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Units]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="1fb34664-15eb-422a-9203-49aba6b652db" x="390" y="0" width="65" height="20"/>
+					<textElement>
+						<font isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Rate Type]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="79f7524e-f366-443d-bb60-4a795ddf4382" x="455" y="0" width="56" height="20"/>
+					<textElement>
+						<font isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Daily Cost]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="32">
+			<staticText>
+				<reportElement uuid="27b7b73e-bece-4c78-9948-47757ce1667f" x="32" y="0" width="58" height="32"/>
+				<textElement/>
+				<text><![CDATA[Resource Item Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="49239bc3-0a91-4aaa-b651-63ae5080217e" x="201" y="0" width="44" height="32"/>
+				<textElement/>
+				<text><![CDATA[Request Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="97c15b93-a218-45ae-abd9-5ede8835b659" x="259" y="0" width="44" height="32"/>
+				<textElement/>
+				<text><![CDATA[Agency Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5425d742-2816-4245-b80b-a3040445b85f" x="316" y="0" width="28" height="30"/>
+				<textElement/>
+				<text><![CDATA[Unit ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7fc897d3-774c-4b9e-a777-09882526e12f" x="367" y="0" width="36" height="31"/>
+				<textElement/>
+				<text><![CDATA[Assign Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e1178ff2-8e51-4112-90f6-5910ef1b2cb2" x="431" y="0" width="46" height="30"/>
+				<textElement/>
+				<text><![CDATA[Cost End Date]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="ec1490b1-0648-4ab4-a62f-7318899dac1c" x="-22" y="29" width="595" height="1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="aa62a921-8b62-4a36-bead-cb78c1de0602" x="56" y="0" width="63" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{activitydatechar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f41fdd94-3ddd-4a67-9ec2-f05d66a3cddc" x="119" y="0" width="72" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{shift}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="be47f3d0-e73b-438f-be3e-1042a3058811" x="191" y="0" width="90" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{costgroupname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d8412573-c0a6-45ee-9f65-d75c65638466" x="281" y="0" width="48" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{unitcost}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c70e0398-3c04-464a-b6d0-897ce207477d" x="333" y="0" width="48" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{rateunits}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0e49b38c-0802-4892-af06-98a07dfed9e8" x="390" y="0" width="46" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ratetype}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4091023d-2337-4e37-a63a-bbad026887b1" x="455" y="0" width="67" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{costamount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="60">
+			<crosstab>
+				<reportElement uuid="d38f8e85-e155-4285-a5b0-d67453852bf3" x="0" y="10" width="555" height="50"/>
+				<rowGroup name="itemcodecategory" width="121" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{itemcodecategory}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="54b78d4f-be37-48ac-8ba9-2c4406f3794d" style="Crosstab Data Text" x="0" y="0" width="121" height="25"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$V{itemcodecategory}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#005FB3" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement uuid="58a4ab5b-7013-46b1-acf9-26655234c5e7" x="0" y="0" width="170" height="25" forecolor="#FFFFFF"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Item Code Total]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="itemcodedescription" width="146" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{itemcodedescription}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="913cbd0d-f353-4eb1-983f-b9814934e4cf" style="Crosstab Data Text" x="0" y="0" width="146" height="25"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$V{itemcodedescription}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement uuid="f20b27cc-1cec-499e-af35-2839a1b81265" x="0" y="0" width="146" height="25"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="grouping" height="30" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{grouping}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="c389b8b9-1491-4328-a120-d970829b4cce" style="Crosstab Data Text" x="0" y="0" width="71" height="30"/>
+								<textElement>
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{grouping}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement uuid="91e8ce47-7096-4304-a6ac-486d534fba02" x="0" y="0" width="62" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Total]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="costamountMeasure" class="java.lang.Double" calculation="Sum">
+					<measureExpression><![CDATA[$F{costamount}]]></measureExpression>
+				</measure>
+				<crosstabCell width="71" height="25">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="ed7189bb-e0b9-4f8b-8f5c-d2c3a0acadb2" style="Crosstab Data Text" x="0" y="0" width="71" height="25"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$V{costamountMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="71" height="25" rowTotalGroup="itemcodecategory">
+					<cellContents backcolor="#005FB3" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="8d0dffcc-c749-4f73-b4df-dad8fec92b9f" style="Crosstab Data Text" x="0" y="0" width="71" height="25" forecolor="#FFFFFF"/>
+							<textElement>
+								<font isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{costamountMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="62" columnTotalGroup="grouping">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="8eecf1de-bbc2-4430-a067-684ae50677fa" style="Crosstab Data Text" x="0" y="0" width="62" height="25"/>
+							<textElement>
+								<font isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{costamountMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="62" rowTotalGroup="itemcodecategory" columnTotalGroup="grouping">
+					<cellContents backcolor="#005FB3" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="0c4bd7a2-482e-498c-a4f2-e0b4f2d5198d" style="Crosstab Data Text" x="0" y="0" width="62" height="25" forecolor="#FFFFFF"/>
+							<textElement>
+								<font isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{costamountMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="71" height="25" rowTotalGroup="itemcodedescription">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="5f7e1171-6240-48ea-a27d-89eef62b306f" style="Crosstab Data Text" x="0" y="0" width="71" height="25"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$V{costamountMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="62" rowTotalGroup="itemcodedescription" columnTotalGroup="grouping">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="a2a87407-0ea8-44cd-a6dc-3f4ccc4b67f1" style="Crosstab Data Text" x="0" y="0" width="62" height="25"/>
+							<textElement>
+								<font isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{costamountMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>

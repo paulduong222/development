@@ -1,0 +1,14 @@
+<div style="height: 99%; width: 99%;">
+  <app-time-none id="appTimeNone" #appTimeNone
+    *ngIf="this.timeMode === ''"></app-time-none>
+  <app-time-overhead id="appTimeOverhead" #appTimeOverhead
+    [timeData]="this.timeData"
+    [specialPayVos]="this.specialPayVos"
+    [rateClassRateVos]="this.rateClassRateVos"
+    [rateClassRateData]="this.rateClassRateData"
+    *ngIf="this.timeMode === 'overhead'"></app-time-overhead>
+  <app-time-crew id="appTimeCrew" #appTimeCrew
+    *ngIf="this.timeMode === 'crews'"></app-time-crew>
+  <app-time-contractor id="appTimeContractor" #appTimeContractor
+    *ngIf="this.timeMode === 'contractor'"></app-time-contractor>
+</div>

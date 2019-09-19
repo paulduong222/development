@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="GroupCategoryTotalSubReportCrosstab" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e535be7e-edd8-4a27-907c-6d0ac9d456a3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="style1">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{ROW_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" forecolor="#000000" backcolor="#E3E3E3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="groupingName" class="java.lang.String"/>
+	<field name="directIndirectName" class="java.lang.String"/>
+	<field name="kindGroupDescription" class="java.lang.String"/>
+	<field name="subGroupCatDescription" class="java.lang.String"/>
+	<field name="groupBy" class="java.lang.String"/>
+	<field name="costAmount" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="40" splitType="Stretch">
+			<crosstab columnBreakOffset="1000">
+				<reportElement uuid="5fae42ae-bf88-4794-8961-596190f2f247" mode="Transparent" x="0" y="0" width="572" height="40"/>
+				<rowGroup name="directIndirectName" width="0" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{directIndirectName}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#FFFFFF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+								<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+								<leftPen lineWidth="0.0" lineColor="#FFFFFF"/>
+								<bottomPen lineWidth="0.0" lineColor="#FFFFFF"/>
+								<rightPen lineWidth="0.0" lineColor="#FFFFFF"/>
+							</box>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#FFFFFF" mode="Opaque">
+							<staticText>
+								<reportElement uuid="a7afa563-4a47-41fa-a984-b3092bf1d7ee" mode="Opaque" x="0" y="3" width="137" height="14" forecolor="#000000" backcolor="#CCCCCC"/>
+								<box topPadding="0"/>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[   GRAND TOTAL]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="kindGroupDescription" width="0" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{kindGroupDescription}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#FFFFFF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.0" lineStyle="Solid" lineColor="#FFFFFF"/>
+								<topPen lineWidth="0.0" lineColor="#FFFFFF"/>
+								<leftPen lineWidth="0.0" lineColor="#FFFFFF"/>
+								<bottomPen lineWidth="0.0" lineColor="#FFFFFF"/>
+								<rightPen lineWidth="0.0" lineColor="#FFFFFF"/>
+							</box>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#FFFFFF" mode="Opaque">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="09925e20-814c-4c68-9f9c-ae3d5a490bbb" style="Crosstab Data Text" mode="Opaque" x="0" y="3" width="137" height="14" backcolor="#E3E3E3">
+									<printWhenExpression><![CDATA[!$V{directIndirectName}.equals( "NonWF" )]]></printWhenExpression>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{directIndirectName} + " TOTAL"]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="subGroupCatDescription" width="137" totalPosition="End" headerPosition="Bottom">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{subGroupCatDescription}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#FFFFFF" mode="Opaque">
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement uuid="46c3734f-9597-4669-bd26-8c65769b9f4c" stretchType="RelativeToBandHeight" mode="Opaque" x="0" y="3" width="137" height="14"/>
+								<textElement textAlignment="Left" verticalAlignment="Top">
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{subGroupCatDescription}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#FFFFFF" mode="Opaque">
+							<box bottomPadding="0"/>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement uuid="87365b94-433c-404f-9015-4a889d3f5151" style="Crosstab Data Text" stretchType="RelativeToBandHeight" mode="Opaque" x="0" y="0" width="41" height="12" backcolor="#FFFFFF"/>
+								<box topPadding="0" bottomPadding="0"/>
+								<textElement textAlignment="Left" verticalAlignment="Top">
+									<font size="9" isBold="true"/>
+								</textElement>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement uuid="87365b94-433c-404f-9015-4a889d3f5151" style="Crosstab Data Text" stretchType="RelativeToBandHeight" mode="Opaque" x="0" y="4" width="137" height="14" backcolor="#F0F0F0"/>
+								<box topPadding="0" bottomPadding="0"/>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{kindGroupDescription} + " TOTAL"]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="groupBy" height="14" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{groupBy}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#FFFFFF" mode="Opaque">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="21185d11-24ce-4d28-bd34-6dc4c078b40d" style="Crosstab Data Text" mode="Opaque" x="3" y="0" width="59" height="14"/>
+								<box>
+									<bottomPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Right" verticalAlignment="Top">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{groupBy}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#FFFFFF" mode="Opaque">
+							<staticText>
+								<reportElement uuid="d00bd58e-a5dc-4004-b912-154e73f8a91d" mode="Opaque" x="3" y="0" width="59" height="14"/>
+								<box>
+									<bottomPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Right" verticalAlignment="Top">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[TOTAL]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="costAmountMeasure" class="java.lang.Integer" calculation="Sum">
+					<measureExpression><![CDATA[$F{costAmount}]]></measureExpression>
+				</measure>
+				<crosstabCell width="62" height="17">
+					<cellContents backcolor="#FFFFFF" mode="Opaque">
+						<textField isStretchWithOverflow="true" pattern="#,##0">
+							<reportElement uuid="a91659f7-42a8-4fd6-b384-5125c9d32d42" stretchType="RelativeToBandHeight" mode="Opaque" x="3" y="3" width="59" height="14"/>
+							<box>
+								<bottomPen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Top">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{costAmountMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="62" height="18" rowTotalGroup="directIndirectName">
+					<cellContents backcolor="#FFFFFF" mode="Opaque">
+						<textField pattern="#,##0">
+							<reportElement uuid="d2f80333-e8f7-442a-8ba9-1bed0bf61ba7" style="Crosstab Data Text" mode="Opaque" x="3" y="3" width="59" height="14" forecolor="#000000" backcolor="#CCCCCC"/>
+							<box topPadding="1"/>
+							<textElement textAlignment="Right" verticalAlignment="Top">
+								<font size="10" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{costAmountMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="62" height="17" columnTotalGroup="groupBy">
+					<cellContents backcolor="#FFFFFF" mode="Opaque">
+						<textField isStretchWithOverflow="true" pattern="#,##0">
+							<reportElement uuid="5efa3052-a495-4c31-9fe2-35572e67a8f7" stretchType="RelativeToBandHeight" mode="Opaque" x="3" y="3" width="59" height="14"/>
+							<box>
+								<bottomPen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Top">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{costAmountMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="62" height="18" rowTotalGroup="directIndirectName" columnTotalGroup="groupBy">
+					<cellContents backcolor="#FFFFFF" mode="Opaque">
+						<textField pattern="#,##0">
+							<reportElement uuid="ba5f97ab-dc53-444f-ab3a-982fb4242d8b" style="Crosstab Data Text" mode="Opaque" x="3" y="3" width="59" height="14" forecolor="#000000" backcolor="#CCCCCC"/>
+							<box topPadding="0"/>
+							<textElement textAlignment="Right" verticalAlignment="Top">
+								<font size="10" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{costAmountMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="62" height="17" rowTotalGroup="kindGroupDescription">
+					<cellContents backcolor="#FFFFFF" mode="Opaque">
+						<textField pattern="#,##0" isBlankWhenNull="true">
+							<reportElement uuid="92435726-4300-49bb-96d1-5a16eca7f9b5" style="Crosstab Data Text" mode="Opaque" x="3" y="3" width="59" height="14" backcolor="#E3E3E3">
+								<printWhenExpression><![CDATA[!$V{directIndirectName}.equals( "NonWF" )]]></printWhenExpression>
+							</reportElement>
+							<box topPadding="0"/>
+							<textElement textAlignment="Right" verticalAlignment="Top">
+								<font size="10" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{costAmountMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="62" height="17" rowTotalGroup="kindGroupDescription" columnTotalGroup="groupBy">
+					<cellContents backcolor="#FFFFFF" mode="Opaque">
+						<textField pattern="#,##0">
+							<reportElement uuid="2ea6d0c7-326b-4fef-aeb8-9f612d9b591c" style="Crosstab Data Text" mode="Opaque" x="3" y="3" width="59" height="14" backcolor="#E3E3E3">
+								<printWhenExpression><![CDATA[!$V{directIndirectName}.equals( "NonWF" )]]></printWhenExpression>
+							</reportElement>
+							<box topPadding="1"/>
+							<textElement textAlignment="Right" verticalAlignment="Top">
+								<font size="10" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{costAmountMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="62" height="18" rowTotalGroup="subGroupCatDescription">
+					<cellContents backcolor="#FFFFFF" mode="Opaque">
+						<textField isStretchWithOverflow="true" pattern="#,##0">
+							<reportElement uuid="92435726-4300-49bb-96d1-5a16eca7f9b5" style="Crosstab Data Text" stretchType="RelativeToBandHeight" mode="Opaque" x="3" y="4" width="59" height="14" backcolor="#F0F0F0"/>
+							<box topPadding="0">
+								<topPen lineWidth="0.0"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Top">
+								<font size="10" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{costAmountMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="62" height="18" rowTotalGroup="subGroupCatDescription" columnTotalGroup="groupBy">
+					<cellContents backcolor="#FFFFFF" mode="Opaque">
+						<textField isStretchWithOverflow="true" pattern="#,##0">
+							<reportElement uuid="92435726-4300-49bb-96d1-5a16eca7f9b5" style="Crosstab Data Text" stretchType="RelativeToBandHeight" mode="Opaque" x="3" y="4" width="59" height="14" backcolor="#F0F0F0"/>
+							<box topPadding="0">
+								<topPen lineWidth="0.0"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Top">
+								<font size="10" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{costAmountMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>

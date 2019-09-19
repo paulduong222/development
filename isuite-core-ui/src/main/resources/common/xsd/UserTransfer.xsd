@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://isuite.nwcg.gov/UserTransfer"
+		    xmlns:user="http://isuite.nwcg.gov/UserTransfer"
+		    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		    xmlns:nwcgLib="http://isuite.nwcg.gov/lib"
+		    elementFormDefault="qualified"
+		    attributeFormDefault="unqualified"
+		    version="1.0">
+	<xsd:import namespace="http://isuite.nwcg.gov/lib" schemaLocation="eisuite_lib.xsd"/>
+	<xsd:element name="UserTransfer">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="User" type="nwcgLib:UserType" maxOccurs="unbounded"/>
+			</xsd:sequence>	
+		</xsd:complexType>
+	</xsd:element>		    
+</xsd:schema>

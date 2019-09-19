@@ -1,0 +1,30 @@
+<app-jw-modal [id]="this.id" style="display: none;" >
+  <div class="w3-container dv-md">
+      <div class="w3-container w3-padding-small w3-theme-d2 w3-medium">
+          <div class="w3-left" tabindex="0"><label>{{ promptTitle }}</label></div>
+          <div class="w3-right"></div>
+      </div>
+      <div >
+        <div class="w3-center dv-md-msg" tabindex="0">
+          <div *ngIf="this.alertMessage1 !== ''"><label class="lbl-alert"><strong>{{ alertMessage1 }}</strong></label></div>
+          <br *ngIf="this.promptMessage1 !== ''">
+          <div *ngIf="this.promptMessage1 !== ''"><label>{{ promptMessage1 }}</label></div>
+          <br *ngIf="this.promptMessage2 !== ''">
+          <div *ngIf="this.promptMessage2 !== ''"><label>{{ promptMessage2 }}</label></div>
+          <br *ngIf="this.promptMessage3 !== ''">
+          <div *ngIf="this.promptMessage3 !== ''"><label>{{ promptMessage3 }}</label></div>
+          <br *ngIf="this.promptMessage4 !== ''">
+          <div *ngIf="this.promptMessage4 !== ''"><label>{{ promptMessage4}}</label></div>
+          <br *ngIf="this.promptMessage5 !== ''">
+          <div *ngIf="this.promptMessage5 !== ''"><label>{{ promptMessage5 }}</label></div>
+        </div>
+        </div>
+      <div class="w3-center">
+				<div class="w3-bar">
+				  <button *ngIf="this.button1Label !== ''" class="w3-small" (click)="buttonClick(button1Label)" style="margin-right: 3px;">{{ button1Label }}</button>
+				  <button *ngIf="this.button2Label !== ''" class="w3-small" (click)="buttonClick(button2Label)" style="margin-right: 3px;">{{ button2Label }}</button>
+				  <button *ngIf="this.button3Label !== ''" class="w3-small" (click)="buttonClick(button3Label)" style="margin-right: 3px;">{{ button3Label }}</button>
+				</div>
+			</div>
+  </div>
+</app-jw-modal>

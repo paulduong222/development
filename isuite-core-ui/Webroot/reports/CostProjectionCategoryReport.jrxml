@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CostProjectionCategoryReport" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="5254c3a5-e4b7-4575-b66b-18957fb64949">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\workspace_fs\\isuite-core\\Webroot\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="incidentNumber" class="java.lang.String"/>
+	<field name="incidentId" class="java.lang.Long"/>
+	<field name="incidentGroupId" class="java.lang.Number"/>
+	<field name="incidentGroupName" class="java.lang.String"/>
+	<field name="dataSourceSubReportData" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="dataSourceSubTotalReportData" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="dataSourceSubReportChartData" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="projectionName" class="java.lang.String"/>
+	<field name="reportName" class="java.lang.String"/>
+	<field name="reportType" class="java.lang.String"/>
+	<field name="startDate" class="java.util.Date"/>
+	<field name="endDate" class="java.util.Date"/>
+	<pageHeader>
+		<band height="114" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="115dbe71-b05e-4f18-8e01-6bde2c0539b3" x="140" y="27" width="297" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Projection: "+ $F{projectionName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1f9c1433-b5df-487d-bb86-db3da9533d57" x="459" y="8" width="102" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[e-ISuite Cost Report ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d6444ea5-8bf1-4252-80ec-ec6f04e21ce8" x="459" y="23" width="37" height="14"/>
+				<textElement textAlignment="Left">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Printed:]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy HH:mm">
+				<reportElement uuid="f39e69a7-4470-4dc7-b5eb-77612c35ec3e" x="496" y="23" width="78" height="14"/>
+				<textElement textAlignment="Left">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("MM/dd/yyyy HH:mm").format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a4c772c4-59e7-4b83-80b1-49e3b2550e73" x="140" y="0" width="297" height="27"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cost Projection Category Report]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="231a527a-8395-469a-9478-3b32f4ffae5b" x="140" y="73" width="297" height="20">
+					<printWhenExpression><![CDATA[($F{incidentGroupName} != "" && $F{incidentGroupName} != null)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Incident Group: " + $F{incidentGroupName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="496b3ce2-b2ff-4bef-a8a4-5c501e50b6b0" x="477" y="37" width="57" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="0efefca9-67f3-4bf4-89f2-4e5b79d77fa4" x="534" y="37" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="c8436d54-0b1f-40a2-94a2-819ee91bac18" x="0" y="91" width="595" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Incident: " + $F{incidentName} + "(" + $F{incidentNumber} +")"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="d4a15c9b-8a50-4a90-be55-9d3b0131af88" x="0" y="111" width="595" height="2"/>
+				<graphicElement>
+					<pen lineWidth="2.25" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<textField pattern="MM/dd/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="115dbe71-b05e-4f18-8e01-6bde2c0539b3" x="234" y="53" width="59" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{startDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="628803b7-4064-44ff-b5cc-85a439783560" x="171" y="53" width="61" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Start Date:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="628803b7-4064-44ff-b5cc-85a439783560" x="294" y="53" width="59" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[End Date:]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="115dbe71-b05e-4f18-8e01-6bde2c0539b3" x="354" y="53" width="59" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{endDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="52" splitType="Stretch">
+			<printWhenExpression><![CDATA[new Boolean(!$F{reportType}.equals("Report Only"))]]></printWhenExpression>
+			<break>
+				<reportElement uuid="c84ca052-3a35-451c-9183-59e54d0d998e" x="0" y="46" width="100" height="1">
+					<printWhenExpression><![CDATA[new Boolean(!$F{reportType}.equals("Graph Only")) && ($F{dataSourceSubReportChartData}.getRecordCount() > 0) && $F{dataSourceSubReportData}.getRecordCount() > 0]]></printWhenExpression>
+				</reportElement>
+			</break>
+			<subreport>
+				<reportElement uuid="3d4eba4a-722d-45e5-b591-6692eb2a7a57" x="0" y="5" width="38" height="40" isRemoveLineWhenBlank="true"/>
+				<subreportParameter name="reportName">
+					<subreportParameterExpression><![CDATA[$F{reportName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$F{dataSourceSubReportChartData}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CostProjectionBarChart.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="47" splitType="Stretch">
+			<printWhenExpression><![CDATA[new Boolean(!$F{reportType}.equals("Graph Only"))]]></printWhenExpression>
+			<subreport>
+				<reportElement uuid="d560fdb9-b8fd-4c5b-a80f-292c7be933f6" x="0" y="6" width="38" height="38" isRemoveLineWhenBlank="true"/>
+				<dataSourceExpression><![CDATA[$F{dataSourceSubReportData}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CostProjectionCategorySubReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="69">
+			<printWhenExpression><![CDATA[new Boolean(!$F{reportType}.equals("Graph Only"))]]></printWhenExpression>
+			<subreport>
+				<reportElement uuid="2685672a-25c4-44d8-9eb4-eec69c3ec864" x="0" y="18" width="38" height="39" isRemoveLineWhenBlank="true"/>
+				<dataSourceExpression><![CDATA[$F{dataSourceSubTotalReportData}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CostProjectionCategoryDetailTotalSubReport.jasper"]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement uuid="939f1f1a-c515-4fdf-b2ba-c2c6c4b03606" x="0" y="5" width="100" height="1">
+					<printWhenExpression><![CDATA[new Boolean(!$F{reportType}.equals("Graph Only"))]]></printWhenExpression>
+				</reportElement>
+			</break>
+		</band>
+	</detail>
+</jasperReport>

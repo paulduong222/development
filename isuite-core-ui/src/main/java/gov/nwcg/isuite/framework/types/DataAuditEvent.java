@@ -1,0 +1,12 @@
+package gov.nwcg.isuite.framework.types;
+
+public enum DataAuditEvent {
+	ENABLED_DISABLED
+	,ROLE_CHANGED
+	,ACCOUNT_CREATED
+	,ACCOUNT_DELETED
+	,PASSWORD_RESET
+	,ROB_ACCEPTED
+	,BACKUP_COMPLETED
+	,ACCOUNT_LOGIN
+}

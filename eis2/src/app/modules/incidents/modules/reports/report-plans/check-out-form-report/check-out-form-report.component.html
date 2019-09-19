@@ -1,0 +1,40 @@
+<div class="main-card">
+  <div class="card-body">
+    <p class="title">Check-Out Form Report</p>
+    <div class="table-box">
+      <h6 style="font-weight: 600; padding-left: 10px; font-size: 14px">Report Sorts</h6>
+      <div style="display: flex; flex-direction: row; margin-top: 10px">
+        <div class="left-box">
+          <h5 class="title">Available</h5>
+          <app-data-table [noHeader]="noHeader" [bodyStyle]="bodyStyle" [tableDefinition]="tableDef" [data]="data" [filter]="filter" (rowClicked)="getClickedRow($event, 'indexSelected', 'data' , 'shiftIndex')" [scrollAble]="scrollAble" [indexSelected]="indexSelected" [extraStyle]="extraStyle"></app-data-table>
+        </div>
+        <div class="center-box">
+          <div class="icon" (click)="moveSelected('data', 'dataSelected', 'indexSelected', 'shiftIndex')"><img src="assets/images/arrow_right.png" title="Add Selected Item"></div>
+          <div class="icon" (click)="moveSelected('dataSelected', 'data', 'indexSelectedCopy', 'shiftIndexCopy')"><img src="assets/images/arrow_left.png" title="Remove Selected Item"></div>
+          <div class="icon" (click)="moveAll('data', 'dataSelected', 'indexSelected', 'shiftIndex')"><img src="assets/images/arrow_right_double.png" title="Add All Items"></div>
+          <div class="icon" (click)="moveAll('dataSelected', 'data', 'indexSelectedCopy', 'shiftIndexCopy')"><img src="assets/images/arrow_left_double.png" title="Remove All Items"></div>
+        </div>
+        <div class="right-box">
+          <h5 class="title">Selected</h5>
+          <app-data-table [noHeader]="noHeader" [bodyStyle]="bodyStyle" [tableDefinition]="tableDef" [data]="dataSelected" (rowClicked)="getClickedRow($event, 'indexSelectedCopy', 'dataSelected', 'shiftIndexCopy')" [scrollAble]="scrollAble" [indexSelected]="indexSelectedCopy" [extraStyle]="extraStyle"></app-data-table>
+        </div>
+      </div>
+    </div>
+    <div class="radio-box">
+      <button class="padding-5" type="button" class="btn btn-default" (click)="showHideInstruction()" title="Click to toggle showing the instructions">Show/Hide&nbsp;Instructions</button>
+      <div class="tooltip-box padding-5" *ngIf="tooltipBox">
+        <p>Only Resources that meet the following requirements are included in the Report:</p>
+        <p>-The resource does NOT have a checkmark in the Check-Out Form Printed checkbox</p>
+        <p>-The Status is Pending (P).</p>
+      </div>
+    </div>
+    <div class="bottom-box">
+      <div class="padding-5">
+        <label><input type="checkbox" name="state" value="includeSTTFComponents" [(ngModel)]="includeSTTFComponents"> Include Strike Team/Task Force Components<br></label>
+      </div>
+      <button class="padding-5" type="button" class="btn btn-default" (click)="confirm()" title="Click to generate Checkout Report">Preview/Print</button>
+    </div>
+  </div>
+</div>
+<app-prompt-modal id="promptModal" #promptModal  (promptActionEvent)="promptActionResult($event)"></app-prompt-modal>
+<app-prompt-modal id="promptModal2" #promptModal2  (promptActionEvent)="promptActionResult2($event)"></app-prompt-modal>

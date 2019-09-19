@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CostProjectionBarChart" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dcf5e088-ad8c-4eba-9b3d-ef4584acba01">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="groupName" class="java.lang.String"/>
+	<field name="totalAmountInt" class="java.lang.Integer"/>
+	<field name="dateStr" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="650" splitType="Stretch">
+			<stackedAreaChart>
+				<chart isShowLegend="true">
+					<reportElement uuid="493826dc-6865-4ae2-a5ab-c69744160bc9" x="0" y="0" width="533" height="268"/>
+					<chartTitle position="Bottom"/>
+					<chartSubtitle>
+						<font size="3"/>
+					</chartSubtitle>
+					<chartLegend position="Right">
+						<font size="5"/>
+					</chartLegend>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{groupName}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{dateStr}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{totalAmountInt}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<areaPlot>
+					<plot labelRotation="30.0"/>
+					<categoryAxisFormat labelRotation="30.0">
+						<axisFormat>
+							<tickLabelFont>
+								<font size="5"/>
+							</tickLabelFont>
+						</axisFormat>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat>
+							<labelFont>
+								<font size="3"/>
+							</labelFont>
+							<tickLabelFont>
+								<font size="5"/>
+							</tickLabelFont>
+						</axisFormat>
+					</valueAxisFormat>
+				</areaPlot>
+			</stackedAreaChart>
+		</band>
+	</summary>
+</jasperReport>

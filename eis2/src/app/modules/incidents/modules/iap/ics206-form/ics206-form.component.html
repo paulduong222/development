@@ -1,0 +1,52 @@
+<div id="dv-ics206">
+  <div class="w3-left">
+    <button [class]="getBtnClass('block3')" (click)="this.openTab('block3')" title="Click to edit Block 3. Ambulance Services.">3. Ambulance Services</button>
+    <button [class]="getBtnClass('block4')" (click)="this.openTab('block4')" title="Click to edit Block 4. Air Ambulance Services.">4. Air Ambulance Services</button>
+    <button [class]="getBtnClass('block5')" (click)="this.openTab('block5')" title="Click to edit Block 5. Hospitals.">5. Hospitals</button>
+    <button [class]="getBtnClass('block6')" (click)="this.openTab('block6')" title="Click to edit Block 6. Area Location Capability.">6. Area Location Capability</button>
+    <button [class]="getBtnClass('block7')" (click)="this.openTab('block7')" title="Click to edit Block 7. Remote Camp Location(s).">7. Remote Camp Location(s)</button>
+    <button [class]="getBtnClass('block8-9')" (click)="this.openTab('block8-9')" title="Click to edit Block 8-9. Prepared By/Reviewed By.">8-9. Prepared By/Reviewed By</button>
+  </div>
+  <br>
+	<!-- Block 3 -->
+  <div id="dv-block3" [class]="getDivBlockClass('block3')">
+    <app-ics206-amb-services #ics206AmbServices
+     (ics206AmbulanceUpdateEvent)="this.ics206AmbulanceUpdateEvent()"
+     (ics206ReorderOpenEvent)="this.ics206ReorderOpenEvent($event)"></app-ics206-amb-services>
+  </div>  
+	<!-- Block 4 -->
+  <div id="dv-block4" [class]="getDivBlockClass('block4')">
+      <app-ics206-air-amb-services #ics206AirAmbServices
+      (ics206AirAmbulanceUpdateEvent)="this.ics206AirAmbulanceUpdateEvent()"
+      (ics206ReorderOpenEvent)="this.ics206ReorderOpenEvent($event)"></app-ics206-air-amb-services>
+  </div>
+	<!-- Block 5 -->
+  <div id="dv-block5" [class]="getDivBlockClass('block5')">
+    <app-ics206-hospitals #ics206Hospitals
+     (ics206HospitalUpdateEvent)="this.ics206HospitalUpdateEvent()"
+     (ics206ReorderOpenEvent)="this.ics206ReorderOpenEvent($event)"></app-ics206-hospitals>
+  </div>
+	<!-- Block 6 -->
+  <div id="dv-block6" [class]="getDivBlockClass('block6')">
+    <app-ics206-area-loc-cap #ics206AreaLocCap
+     (ics206AlcUpdateEvent)="this.ics206AlcUpdateEvent()"
+     (ics206ReorderOpenEvent)="this.ics206ReorderOpenEvent($event)"></app-ics206-area-loc-cap>
+  </div>
+	<!-- Block 7 -->
+  <div id="dv-block7" [class]="getDivBlockClass('block7')">
+    <app-ics206-remote-camp-loc #ics206RemoteCampLoc
+    (ics206RclUpdateEvent)="this.ics206RclUpdateEvent()"
+    (ics206ReorderOpenEvent)="this.ics206ReorderOpenEvent($event)"></app-ics206-remote-camp-loc>
+  </div>
+	<!-- Block 8-9 -->
+  <div id="dv-block8-9" [class]="getDivBlockClass('block8-9')">
+    <app-ics206-prep-by-rev-by #ics206PrepByRevBy></app-ics206-prep-by-rev-by>
+  </div>
+  <div id="dv-block-action-bar" *ngIf="this.showActionBar" class="w3-small w3-left">
+      <button (click)="this.save(false)" [disabled]="this.isFormLocked" title="Click to save the block changes.">Save</button>
+      <button (click)="this.save(true)" [disabled]="this.isFormLocked"  title="Click to save the block and move to next block.">Save/Next Block</button>
+      <button (click)="this.cancel()" [disabled]="this.isFormLocked"  title="Click to cancel changes.">Cancel</button>
+  </div>
+</div>
+<app-iap-reorder-window #reorderWindow
+  (saveOrderEvent)="this.saveOrderEvent($event)"></app-iap-reorder-window>

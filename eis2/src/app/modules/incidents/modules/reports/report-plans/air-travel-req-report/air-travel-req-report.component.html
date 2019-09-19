@@ -1,0 +1,19 @@
+<div class="main-card">
+  <p class="title">Air Travel Request</p>
+  <div class="card-body">
+    <div style="width: 50%; height: 350px;">
+      <button class="padding-5" type="button" class="btn btn-default" (click)="showHideInstruction()" title="Click to toggle showing the instructions">Show/Hide&nbsp;Instructions</button>
+      <div class="tooltip-box padding-5" *ngIf="tooltipBox">
+        <p>Only Resources that meet the following requirements are included in the Report:</p>
+        <p>-The Status is Pending (P)</p>
+        <p>-The Demobilization Travel Method is A/R or Air</p>
+        <p>-The Air Travel to Dispatch checkbox is NOT checked</p>
+        <p>-The resource is a person</p>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-box">
+    <button class="padding-5" type="button" class="btn btn-default" (click)="confirm()" title="Click to generate Air Travel Request Report">Preview/Print</button>
+  </div>
+</div>
+<app-prompt-modal id="promptModal" #promptModal  (promptActionEvent)="promptActionResult($event)"></app-prompt-modal>

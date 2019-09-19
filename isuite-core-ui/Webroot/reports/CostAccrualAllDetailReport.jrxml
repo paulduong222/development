@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CostAccrualAllDetailReport" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2905d836-73b5-418e-9ef1-c7ba125d99bc">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Workspace\\isuite-core\\Webroot\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="accrualDatasource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="header1" class="java.lang.String"/>
+	<field name="header2" class="java.lang.String"/>
+	<field name="header3" class="java.lang.String"/>
+	<field name="header4" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="73" splitType="Stretch">
+			<textField>
+				<reportElement uuid="0c074741-942d-46cb-bed6-43f9b41a31e8" x="3" y="16" width="572" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Extract Date: " +$F{header1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0c074741-942d-46cb-bed6-43f9b41a31e8" x="3" y="30" width="572" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Sequence: " + $F{header2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0c074741-942d-46cb-bed6-43f9b41a31e8" x="3" y="44" width="572" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Prepared By: " + $F{header3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0c074741-942d-46cb-bed6-43f9b41a31e8" x="3" y="58" width="572" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{header4}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="1cabb06b-cb3e-4b0c-ad62-53b87015d25e" x="3" y="72" width="572" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="38a44045-c8be-4d36-9de7-eaf286cf291f" x="3" y="0" width="572" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Accrual All Detail Report]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="cd840686-e5c5-4bfb-800c-169c8c319b74" mode="Transparent" x="0" y="0" width="141" height="14" backcolor="#FFFFFF"/>
+				<textElement>
+					<font fontName="SansSerif" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Resource Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cd840686-e5c5-4bfb-800c-169c8c319b74" mode="Transparent" x="159" y="0" width="48" height="14" backcolor="#FFFFFF"/>
+				<textElement>
+					<font fontName="SansSerif" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Request #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cd840686-e5c5-4bfb-800c-169c8c319b74" mode="Transparent" x="392" y="0" width="90" height="14" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Previous Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cd840686-e5c5-4bfb-800c-169c8c319b74" mode="Transparent" x="207" y="0" width="41" height="14" backcolor="#FFFFFF"/>
+				<textElement>
+					<font fontName="SansSerif" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Item Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cd840686-e5c5-4bfb-800c-169c8c319b74" mode="Transparent" x="248" y="0" width="40" height="14" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Unit ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cd840686-e5c5-4bfb-800c-169c8c319b74" mode="Transparent" x="299" y="0" width="90" height="14" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Total Amount]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="1c1b0fd4-0fe3-467f-bfaa-c09efa60f9fd" x="0" y="18" width="569" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="cd840686-e5c5-4bfb-800c-169c8c319b74" mode="Transparent" x="484" y="0" width="87" height="14" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Change Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="79" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="e20e46c5-6e72-42bf-a3ce-161b28e5d2a9" isPrintRepeatedValues="false" x="3" y="0" width="572" height="74" isRemoveLineWhenBlank="true"/>
+				<dataSourceExpression><![CDATA[$F{accrualDatasource}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CostAccrualAllDetailReport_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

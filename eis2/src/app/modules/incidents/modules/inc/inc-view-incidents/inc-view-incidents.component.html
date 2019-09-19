@@ -1,0 +1,46 @@
+<div>
+    <div class="w3-container">
+      <div class="w3-left" style="width: 400px">
+          <table>
+              <tr>
+                <td><label><strong>Incident Number:</strong></label></td>
+                <td>
+                   <label>
+                     <strong>
+                       {{ this.incidentTag }}
+                    </strong>
+                  </label>
+               </td>
+              </tr>
+          </table>
+      </div>      
+      <div class="w3-left">
+          <table>
+              <tr>
+                <td><label><strong>Incident Name:</strong></label></td>
+                <td><label><strong> {{ this.incidentVo.incidentName }}</strong></label></td>
+              </tr>
+          </table>
+      </div>      
+    </div>
+  </div>
+  <div class="dv-module-sub-nav-bar">
+    <div class="btn-group-sub-menu">
+      <button (click)="dataTabSelect('incidentinfo')" [class]="getStyle('incidentinfo')">Incident Info</button>	
+      <button *ngIf="this.incidentAction === 'edit'" (click)="dataTabSelect('acctcodes')" [class]="getStyle('acctcodes')">Accounting Codes</button>
+      <button *ngIf="this.incidentAction === 'edit'"  (click)="dataTabSelect('refdata')" [class]="getStyle('refdata')">Reference Data</button>	
+    </div>
+  </div>
+  <app-inc-info-tab 
+      #incInfoTab
+      *ngIf="this.selectedIncidentTab === 'incidentinfo'"
+      (incInfoTabProcessingEvent)="this.incInfoTabProcessingEvent($event)"
+      (incidentVo)="this.incidentVo">
+  </app-inc-info-tab>
+  <app-inc-acct-code-tab #incAcctCodeTab 
+      *ngIf="this.selectedIncidentTab === 'acctcodes'"
+      (incAcctCodeProcessingEvent)="this.incAcctCodeProcessingEvent($event)"
+      ></app-inc-acct-code-tab>
+  <app-inc-ref-data-tab #incRefDataTab
+      *ngIf="this.selectedIncidentTab === 'refdata'"
+  ></app-inc-ref-data-tab>

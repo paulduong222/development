@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AircraftDetailSubReport" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="88c8e73a-b9e1-4996-8278-3ca9ab7acac5">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="2"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" forecolor="#000000" backcolor="#E3E3E3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="incidentName" class="java.lang.String"/>
+	<parameter name="incidentNumber" class="java.lang.String"/>
+	<field name="activityDate" class="java.util.Date"/>
+	<field name="costGrp" class="java.lang.String"/>
+	<field name="itemCode" class="java.lang.String"/>
+	<field name="totalAmount" class="java.lang.Double"/>
+	<field name="flightHrs" class="java.lang.Double"/>
+	<field name="galWater" class="java.lang.Double"/>
+	<field name="galRetard" class="java.lang.Double"/>
+	<field name="numOfLoads" class="java.lang.Double"/>
+	<field name="numOfTrips" class="java.lang.Double"/>
+	<field name="numOfPax" class="java.lang.Double"/>
+	<field name="lbsCargo" class="java.lang.Double"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="itemDescription" class="java.lang.String"/>
+	<variable name="subTotalCost" class="java.lang.Double" resetType="Group" resetGroup="GroupByItemCode" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalAmount}]]></variableExpression>
+	</variable>
+	<variable name="grandTotalCost" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalAmount}]]></variableExpression>
+	</variable>
+	<variable name="flight" class="java.lang.Double" resetType="Group" resetGroup="GroupByItemCode" calculation="Sum">
+		<variableExpression><![CDATA[$F{flightHrs}]]></variableExpression>
+	</variable>
+	<variable name="water" class="java.lang.Double" resetType="Group" resetGroup="GroupByItemCode" calculation="Sum">
+		<variableExpression><![CDATA[$F{galWater}]]></variableExpression>
+	</variable>
+	<variable name="retard" class="java.lang.Double" resetType="Group" resetGroup="GroupByItemCode" calculation="Sum">
+		<variableExpression><![CDATA[$F{galRetard}]]></variableExpression>
+	</variable>
+	<variable name="loads" class="java.lang.Double" resetType="Group" resetGroup="GroupByItemCode" calculation="Sum">
+		<variableExpression><![CDATA[$F{numOfLoads}]]></variableExpression>
+	</variable>
+	<variable name="trips" class="java.lang.Double" resetType="Group" resetGroup="GroupByItemCode" calculation="Sum">
+		<variableExpression><![CDATA[$F{numOfTrips}]]></variableExpression>
+	</variable>
+	<variable name="pax" class="java.lang.Double" resetType="Group" resetGroup="GroupByItemCode" calculation="Sum">
+		<variableExpression><![CDATA[$F{numOfPax}]]></variableExpression>
+	</variable>
+	<variable name="gargo" class="java.lang.Double" resetType="Group" resetGroup="GroupByItemCode" calculation="Sum">
+		<variableExpression><![CDATA[$F{lbsCargo}]]></variableExpression>
+	</variable>
+	<variable name="flightTotal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{flightHrs}]]></variableExpression>
+	</variable>
+	<variable name="waterTotal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{galWater}]]></variableExpression>
+	</variable>
+	<variable name="retardTotal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{galRetard}]]></variableExpression>
+	</variable>
+	<variable name="loadTotal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{numOfLoads}]]></variableExpression>
+	</variable>
+	<variable name="tripTotal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{numOfTrips}]]></variableExpression>
+	</variable>
+	<variable name="paxTotal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{numOfPax}]]></variableExpression>
+	</variable>
+	<variable name="gargoTotal" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{lbsCargo}]]></variableExpression>
+	</variable>
+	<group name="GroupByItemCode" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{itemCode}]]></groupExpression>
+		<groupHeader>
+			<band height="17">
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="30ad2762-ccd3-4335-b922-8ba8f10b53b6" mode="Opaque" x="0" y="0" width="751" height="15" backcolor="#E3E3E3"/>
+					<textElement verticalAlignment="Top">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" Item Code: " + $F{itemCode} + " - " + $F{itemDescription} + "    "]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement uuid="0912e2fb-0562-4276-8b08-4aa37e899f3c" x="0" y="16" width="752" height="1"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<rectangle>
+					<reportElement uuid="b0c10bc1-e34e-4f49-a313-5e9bc6412a05" x="0" y="3" width="751" height="16" backcolor="#E3E3E3"/>
+					<graphicElement>
+						<pen lineWidth="0.0"/>
+					</graphicElement>
+				</rectangle>
+				<textField pattern="#,###,##0.00" isBlankWhenNull="true">
+					<reportElement uuid="80a24382-dcf5-4b2b-92dc-ea2e78a088c3" x="328" y="3" width="60" height="16"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{subTotalCost}==null?0.00:$V{subTotalCost}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="0eb5ab65-3217-4eff-b4b0-30c7937de8a9" x="0" y="3" width="184" height="16"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SUB TOTAL:]]></text>
+				</staticText>
+				<textField pattern="#,##0.00" isBlankWhenNull="false">
+					<reportElement uuid="80a24382-dcf5-4b2b-92dc-ea2e78a088c3" x="388" y="3" width="54" height="16"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{flight}==null?0.00:$V{flight}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="false">
+					<reportElement uuid="80a24382-dcf5-4b2b-92dc-ea2e78a088c3" x="442" y="3" width="60" height="16"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{water}==null?0.00:$V{water}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="false">
+					<reportElement uuid="80a24382-dcf5-4b2b-92dc-ea2e78a088c3" x="502" y="3" width="59" height="16"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{retard}==null?0.00:$V{retard}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="false">
+					<reportElement uuid="80a24382-dcf5-4b2b-92dc-ea2e78a088c3" x="562" y="3" width="46" height="16"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{loads}==null?0.00:$V{loads}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="false">
+					<reportElement uuid="80a24382-dcf5-4b2b-92dc-ea2e78a088c3" x="608" y="3" width="46" height="16"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{trips}==null?0.00:$V{trips}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="false">
+					<reportElement uuid="80a24382-dcf5-4b2b-92dc-ea2e78a088c3" x="654" y="3" width="46" height="16"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{pax}==null?0.00:$V{pax}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,###,##0.00" isBlankWhenNull="false">
+					<reportElement uuid="80a24382-dcf5-4b2b-92dc-ea2e78a088c3" x="700" y="3" width="51" height="16"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{gargo}==null?0.00:$V{gargo}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="26" splitType="Stretch">
+			<line>
+				<reportElement uuid="0912e2fb-0562-4276-8b08-4aa37e899f3c" x="0" y="24" width="752" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="05331bb9-5fd2-46ff-9997-350564bb4346" x="502" y="0" width="59" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Gallons Retardant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="75a719d9-4f26-48f0-be56-fef983fe76b6" x="562" y="0" width="46" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[# Loads]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="41a5db99-d325-44e3-b7d0-5b1e4473acd2" x="608" y="0" width="46" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[# Trips]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2b5c3fad-f44c-490e-b455-b243c0673dba" x="654" y="0" width="46" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[# Pax]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d55f5b9b-62a5-4765-a310-30ebce010772" x="700" y="0" width="51" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lbs. Cargo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="34bdd665-97b2-4ffb-9bb8-8bf2a727855d" x="12" y="0" width="44" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="557390c5-fd34-44fc-ad5c-551b2ad46635" x="388" y="0" width="54" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Flight Hours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d4c1204-c132-4b54-817b-42ece776e862" x="328" y="0" width="60" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Flight $]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="657eb5ad-65e2-4714-9962-b92e393d3ad8" x="70" y="0" width="195" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Resource Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1e4f338b-1ffc-40f5-b736-5c81105e4406" x="442" y="0" width="60" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gallons Water]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d4c1204-c132-4b54-817b-42ece776e862" x="273" y="0" width="55" height="26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cost Group]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="MM/dd/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="9356f92f-0727-4e8e-b5a2-7aefd0401f24" style="style1" stretchType="RelativeToBandHeight" x="0" y="0" width="67" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{activityDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="fc40f97d-8d2b-49aa-ae62-1632cfa04eb1" style="style1" stretchType="RelativeToBandHeight" x="58" y="0" width="195" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,###,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="f62e39a6-f8fc-479b-9bbe-bd8865193cb4" style="style1" stretchType="RelativeToBandHeight" x="328" y="0" width="60" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalAmount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="305a2ef5-eb27-455d-b808-b0d29eabbbae" style="style1" stretchType="RelativeToBandHeight" x="442" y="0" width="60" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{galWater}==null?0.00:$F{galWater}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="17152b9d-8f1e-4086-9e06-c7633ff27c42" style="style1" stretchType="RelativeToBandHeight" x="502" y="0" width="59" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{galRetard}==null?0.00:$F{galRetard}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="e80f87d7-d5d3-4cab-9043-65f0721d9e27" style="style1" stretchType="RelativeToBandHeight" x="562" y="0" width="46" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numOfLoads}==null?0.00:$F{numOfLoads}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="63a076dc-3aec-4771-8db5-41d929f46cc0" style="style1" stretchType="RelativeToBandHeight" x="608" y="0" width="46" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numOfTrips}==null?0.00:$F{numOfTrips}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="3fede76d-3c5e-4c0b-aa3f-25d593a9b8ae" style="style1" stretchType="RelativeToBandHeight" x="654" y="0" width="46" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numOfPax}==null?0.00:$F{numOfPax}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="true">
+				<reportElement uuid="8163984b-514a-4d6f-9896-616253a25430" style="style1" stretchType="RelativeToBandHeight" x="700" y="0" width="51" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lbsCargo}==null?0.00:$F{lbsCargo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement uuid="4a76ffad-a57e-4ab8-a7fd-7e60db7a323d" style="style1" stretchType="RelativeToBandHeight" x="388" y="0" width="54" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{flightHrs}==null?0.00:$F{flightHrs}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="e524991c-97d6-4d18-a7cf-9d64e837360f" style="style1" stretchType="RelativeToBandHeight" x="273" y="0" width="55" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{costGrp}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="20">
+			<rectangle>
+				<reportElement uuid="46631679-5e4a-4d5d-b26e-ad7c071a585d" x="0" y="2" width="751" height="16" backcolor="#CCCCCC"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="c97d4761-a017-4171-9644-f45a42adc29a" x="0" y="2" width="184" height="16" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRAND TOTAL:]]></text>
+			</staticText>
+			<textField pattern="#,###,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="b12f81f5-5348-4f1c-9e3b-a00e2c9ef48e" x="306" y="2" width="82" height="16" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{grandTotalCost}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="b12f81f5-5348-4f1c-9e3b-a00e2c9ef48e" x="388" y="2" width="54" height="16" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{flightTotal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="b12f81f5-5348-4f1c-9e3b-a00e2c9ef48e" x="442" y="2" width="60" height="16" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{waterTotal}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="b12f81f5-5348-4f1c-9e3b-a00e2c9ef48e" x="502" y="2" width="59" height="16" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{retardTotal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,###,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="b12f81f5-5348-4f1c-9e3b-a00e2c9ef48e" x="700" y="2" width="51" height="16" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{gargoTotal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="b12f81f5-5348-4f1c-9e3b-a00e2c9ef48e" x="562" y="2" width="46" height="16" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{loadTotal}==null?0:$V{loadTotal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="b12f81f5-5348-4f1c-9e3b-a00e2c9ef48e" x="608" y="2" width="46" height="16" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{tripTotal}==null?0:$V{tripTotal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="b12f81f5-5348-4f1c-9e3b-a00e2c9ef48e" x="654" y="2" width="46" height="16" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{paxTotal}==null?0:$V{paxTotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

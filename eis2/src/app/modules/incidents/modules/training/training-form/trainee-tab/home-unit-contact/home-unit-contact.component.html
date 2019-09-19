@@ -1,0 +1,89 @@
+<div>
+    <form [formGroup]="homeUnitContactForm">
+      <table>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><label tabIndex="0"><strong>Home Unit Contact</strong></label></td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label for="txName">Name</label></td>
+          <td><label class="ast">*</label></td>
+          <td>
+            <app-text-input formControlName="name" id="txName" name="txName" type="text"
+              width="242" maxlength="35" allowSpace="true" textTransform="uppercase"></app-text-input>
+          </td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label for="ddUnitCode">Unit ID</label></td>
+          <td></td>
+          <td>
+            <app-eis-dropdown  id="ddUnitCode" #ddUnitCode width="70"
+              formControlName="unitVo"
+              (dropdownSelect)="this.unitSelectEvent($event)"
+              [dropdownData]="this.incidentSelectorService.tnspUnitTypeData"
+              [selectedDropdownData]="this.selectedUnitDropdownData"
+              [viewportWidth]="300">
+            </app-eis-dropdown>
+          </td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label for="txUnitDesc">Unit Description</label></td>
+          <td></td>
+          <td>
+            <app-text-input formControlName="unitDesc" id="txUnitDesc" name="txUnitDesc" type="text"
+              width="242" allowSpace="true" textTransform="uppercase"></app-text-input>
+          </td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label for="txAddress1">Address</label></td>
+          <td></td>
+          <td>
+            <app-text-input formControlName="address1" id="txAddress1" name="txAddress1" type="text"
+              width="242" maxlength="35" allowSpace="true" textTransform="uppercase"></app-text-input>
+          </td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label for="txCity">City</label></td>
+          <td></td>
+          <td>
+            <app-text-input formControlName="city" id="txCity" name="txCity" type="text"
+              width="230" maxlength="30" allowSpace="true" textTransform="uppercase"></app-text-input>
+          </td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label for="ddState">State</label></td>
+          <td></td>
+          <td>
+            <app-eis-dropdown id="ddState" #ddState width="50"
+              formControlName="countryCodeSubdivisionVo"
+              [selectedDropdownData]="this.selectedStateDropdownData"
+              [dropdownData]="this.incidentSelectorService.stateTypeData">
+            </app-eis-dropdown>
+            <label id="zip" for="txZipCode">Zip Code</label>
+            <app-text-input class="ml-5" formControlName="zipCode" id="txZipCode" name="txZipCode" type="text"
+              width="100" maxlength="10" restrict2="0-9,-"></app-text-input>
+          </td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label for="txPhone">Phone</label></td>
+          <td></td>
+          <td>
+            <app-phone-input formControlName="phone" id="txPhone" name="txPhone"></app-phone-input>
+          </td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label for="txEmail">Email</label></td>
+          <td></td>
+          <td>
+            <app-text-input formControlName="email" id="txEmail" name="txEmail" type="text"
+              width="242" maxlength="50" textTransform="uppercase"></app-text-input>
+          </td>
+        </tr>
+      </table>
+    </form>
+    </div>
+    <div class="dv-action-bar">
+      <button id="btnSave" (click)="this.saveHomeUnitContact()" title="Click to save the Home Unit Contact.">Save</button>
+      <button id="btnCancel" (click)="this.cancelHomeUnitContact()" title="Click to cancel the changes.">Cancel</button>
+    </div>

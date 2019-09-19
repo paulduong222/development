@@ -1,0 +1,92 @@
+<div class="main-card">
+    <div class="rpt-lbl">
+        {{ this.title }}
+    </div>
+    <div class="radio-box">
+        <label>
+            <input name="reportType" type="radio" value="resourceCost" [(ngModel)]="analysisReportFilter.analysisReport">
+            Resource Cost
+        </label>
+        <label>
+            <input name="reportType" type="radio" value="exception" [(ngModel)]="analysisReportFilter.analysisReport">
+            Exception
+        </label>
+        <label>
+            <input name="reportType" type="radio" value="resourceItemCodeByCost" [(ngModel)]="analysisReportFilter.analysisReport">
+            Resource/Item Code - By Cost
+        </label>
+        <label>
+            <input name="reportType" type="radio" value="resourceItemCodeByCostOH" [(ngModel)]="analysisReportFilter.analysisReport">
+            Resource/Item Code - By Cost Overhead
+        </label>
+    </div>
+    <div class="rpt-box">
+        <div class="rpt-lbl">
+            Reports
+        </div>
+        <div *ngIf="analysisReportFilter.analysisReport == 'resourceCost' || analysisReportFilter.analysisReport == 'exception'">
+        <div class="rpt-lbl">
+            Additional Filters
+        </div>
+        <div *ngIf="analysisReportFilter.analysisReport == 'resourceCost'">
+            <label>
+                <input type="radio" value="itemCode" [(ngModel)]="analysisReportFilter.itemCodeOrResource">
+                Daily Cost Comparison by Item Code
+            </label>
+            <br>
+            <label>
+                <input type="radio" value="resource" [(ngModel)]="analysisReportFilter.itemCodeOrResource">
+                Daily Cost Comparison by Resource Exceeding Standard Rate
+            </label>
+            <br>
+        </div>
+        <div *ngIf="analysisReportFilter.analysisReport == 'exception'">
+            <label>
+                <input type="radio" value="noActualTimePosted" [(ngModel)]="analysisReportFilter.analysisReportFilter">
+                Resources With No Actual Time Posted
+            </label>
+            <br>
+            <label>
+                <input type="radio" value="exceeds10000" [(ngModel)]="analysisReportFilter.analysisReportFilter">
+                Resources Daily Cost Exceeds {{ this.costExceeds}} <input type="number" [(ngModel)]="analysisReportFilter.exceeds10000">
+            </label>
+            <br>
+            <label>
+                <input type="radio" value="threeOrMoreDays" [(ngModel)]="analysisReportFilter.analysisReportFilter">
+                Resources With Actual Time Posting But {{ this.days }} or More Days of Unposted Time <input type="number" [(ngModel)]="analysisReportFilter.threeOrMoreDays">
+            </label>
+            <br>
+            <label>
+                <input type="radio" value="noAgencyAssigned" [(ngModel)]="analysisReportFilter.analysisReportFilter">
+                Resources With No Agency Assigned
+            </label>
+            <br>
+            <label>
+                <input type="radio" value="noCostRecords" [(ngModel)]="analysisReportFilter.analysisReportFilter">
+                Resources With Missing Assign Dates or Status is F
+            </label>
+            <br>
+        </div>
+        </div>
+        <div *ngIf="analysisReportFilter.analysisReport == 'resourceItemCodeByCost' || analysisReportFilter.analysisReport == 'resourceItemCodeByCostOH'">
+            <label>
+                <input type="checkbox" [(ngModel)]="analysisReportFilter.dateRangeIncluded">
+                Select Date Range
+            </label>
+            <br>
+            <div [style.opacity]="analysisReportFilter.dateRangeIncluded ? 1.0 : 0.35">
+                Date Range 
+                <label class="ast">*</label><app-eis-datepicker #dtStart [disabled]="!analysisReportFilter.dateRangeIncluded"></app-eis-datepicker>
+                <label class="ast">*</label><app-eis-datepicker #dtEnd [disabled]="!analysisReportFilter.dateRangeIncluded"></app-eis-datepicker>
+            </div>
+            <button class="padding-5" type="button" class="btn btn-default" (click)="showHideInstruction()">Show/Hide&nbsp;Instructions</button>
+            <div class="tooltip-box padding-5" *ngIf="tooltipBox">
+                <div *ngIf="analysisReportFilter.analysisReport == 'resourceItemCodeByCost'" ><p>This report identifies cost information based on item codes and resources.</p></div>
+                <div *ngIf="analysisReportFilter.analysisReport == 'resourceItemCodeByCostOH'" ><p>This report identifies cost information based on overhead personnel resources.</p></div>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%; margin-top: 10px">
+        <button type="button" class="btn btn-default button-cus" title="Click to Preview/Print the report" (click)="generateReport()">Preview/Print</button>
+    </div>
+</div>

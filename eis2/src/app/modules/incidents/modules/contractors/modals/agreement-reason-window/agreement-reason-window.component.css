@@ -1,0 +1,14 @@
+#dv-reason-action-bar {
+    padding-right: 5px;
+	background-color: #6183A6;
+    width: 100%;
+    height:30px;
+}
+#dv-reason-action-bar button {
+    margin-top: 3px;
+    height:22px;
+}
+.tablbl {
+    padding-left: 5px;
+    font: 12px Helvetica,Arial,sans-serif;
+}

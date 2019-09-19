@@ -1,0 +1,37 @@
+<div class="dv-module-sub-nav-bar">
+  <div class="btn-group-sub-menu">
+    <button routerLink="/incidents/reports/plans">Plans Reports</button>
+    <button routerLink="/incidents/reports/time" class="btn-selected">Time Reports</button>
+    <button routerLink="/incidents/reports/cost" >Cost Reports</button>
+    <button routerLink="/incidents/reports/training" title="Click to access the Training Specialist Reports area.">Training Specialist Reports</button>
+    <button routerLink="/incidents/reports/custom" >Custom Reports</button>
+  </div>
+</div>
+<div style="display: flex;" id="dv-mod-view">
+  <div id="dv-plans-rpt-left" class="w3-left">
+    <label class="lbl-hdr">Time Invoices</label>
+    <div><button (click)="selectReport('of286-invoice');" [class]="buttonClass('of286-invoice')">OF286 Invoice</button></div>
+    <div><button (click)="selectReport('of288-invoice');" [class]="buttonClass('of288-invoice')">OF288 Invoice</button></div>
+    <label class="lbl-hdr">Time Reports</label>
+    <div><button (click)="selectReport('shifts-in-excess-of-standard-hours');" [class]="buttonClass('shifts-in-excess-of-standard-hours')">Shifts in Excess of Standard Hours</button></div>
+    <!-- <div><button (click)="selectReport('personnel-time-report');" [class]="buttonClass('personnel-time-report')">Personnel Time Report (Print/Fax)</button></div> -->
+    <div><button (click)="selectReport('work-rest-ratio');" [class]="buttonClass('work-rest-ratio')">Work/Rest Ratio</button></div>
+    <div><button (click)="selectReport('summary-of-hours-worked');" [class]="buttonClass('summary-of-hours-worked')">Summary of Hours Worked</button></div>
+    <div><button (click)="selectReport('missing-days-of-postings');" [class]="buttonClass('missing-days-of-postings')">Missing Days of Postings</button></div>
+    <div><button (click)="selectReport('crew-roster');" [class]="buttonClass('crew-roster')">Crew Roster</button></div>
+    <div><button (click)="selectReport('vendor-resource-summary');" [class]="buttonClass('vendor-resource-summary')">Vendor Resource Summary</button></div>
+
+  </div>
+  <div id="dv-plans-rpt-rht" class="w3-left">
+    <app-of286-invoice-report *ngIf="this._selectedReport === 'of286-invoice'"></app-of286-invoice-report>
+    <app-of288-invoice-report *ngIf="this._selectedReport === 'of288-invoice'"></app-of288-invoice-report>
+    <app-shifts-in-excess-of-standard-hours *ngIf="this._selectedReport === 'shifts-in-excess-of-standard-hours'"></app-shifts-in-excess-of-standard-hours>
+    <!-- <app-personnel-time-report *ngIf="this._selectedReport === 'personnel-time-report'"></app-personnel-time-report> -->
+    <app-work-rest-ratio *ngIf="this._selectedReport === 'work-rest-ratio'"></app-work-rest-ratio>
+    <app-summary-of-hours-worked *ngIf="this._selectedReport === 'summary-of-hours-worked'"></app-summary-of-hours-worked>
+    <app-missing-days-of-postings *ngIf="this._selectedReport === 'missing-days-of-postings'"></app-missing-days-of-postings>
+    <app-crew-roster *ngIf="this._selectedReport === 'crew-roster'"></app-crew-roster>
+    <app-vendor-resource-summary *ngIf="this._selectedReport === 'vendor-resource-summary'"></app-vendor-resource-summary>
+
+  </div>
+</div>

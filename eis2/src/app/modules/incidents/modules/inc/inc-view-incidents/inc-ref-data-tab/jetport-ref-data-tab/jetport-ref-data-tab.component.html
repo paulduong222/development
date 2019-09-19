@@ -1,0 +1,77 @@
+<div class="dv-inc-jetport">
+  <div class="dv-chk-boxes">
+    <form [formGroup]="filterForm">
+      <input formControlName="standard" id="ckStandard" type="checkbox"
+        (input)="onStandardChange($event)"><label>Standard</label>
+      <input formControlName="nonStandard" id="ckNonStandard" type="checkbox"
+        (input)="onNonStandardChange($event)"><label>Non-Standard</label>
+    </form>
+  </div>
+  <div id="dv-jetport-bar">
+      <div id="dv-jetport-bar-left" class="w3-left">
+        <app-grid-icon-bar
+          [showFilter]="true" 
+          [showExpandRetract]="false"
+          (filterEvent)="this.clearFilter()"
+          (refreshEvent)="this.refreshGrid()">
+        </app-grid-icon-bar>
+      </div>
+      <div id="dv-jetport-bar-right" class="w3-right">
+        <button [class]="buttonClass('add')" (click)="addJetport()" title="Click to add a new Jetport">Add Jetport</button>
+        <button [class]="buttonClass('edit')" (click)="this.editJetport()" title="Click to edit Jetport">Edit Jetport</button>
+        <button [class]="buttonClass('delete')" (click)="this.deleteJetport()" title="Click to delete the Jetport"
+           [disabled]="this.jetportVo.standard">Delete Jetport</button>
+      </div>
+   </div>
+   <div class="dv-inc-jetport-grid">
+      <app-eis-grid #gridJetportRefData
+        [treeViewMode]="false"
+        (rowSelectEvent)="this.onSelectGridRow($event)"
+        [rowData]="this.jetportVosFiltered"
+        [columnDefs]="this.gridColumnDefs">
+      </app-eis-grid>
+  </div>
+  <div class="dv-inc-jetport-form">
+    <div class="dv-jetport-inner">
+      <form [formGroup]="jetportForm" autocomplete="off">
+        <div class="eis">
+        <table>
+          <tr>
+              <td class="frmlbl"><label class='f1"' for="txJetportCode">Jetport Code</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                  <app-text-input id="txJetportCode" name="txJetportCode" restrict2="a-z,A-Z,0-9"
+                   formControlName="code" maxlength="4" textTransform="uppercase" width="60"></app-text-input>
+              </td>
+          </tr>
+          <tr>
+              <td class="frmlbl"><label class='f1"' for="txDesc">Description</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                  <app-text-input id="txDesc" name="txDesc" width="280"
+                  formControlName="desc" maxlength="75" restrict2="a-z,A-Z,0-9,-" allowSpace="true" textTransform="uppercase"></app-text-input>
+              </td>
+          </tr>
+          <tr>
+              <td class="frmlbl"><label class='f1"' for="ddState">State</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                <app-eis-dropdown id="ddState" #ddState width="50"
+                 formControlName="countryCodeSubdivisionVo"
+                 [selectedDropdownData]="this.stateTypeDropdownData"
+                 [dropdownData]="this.incidentSelectorService.stateTypeData"></app-eis-dropdown>
+         </td>
+          </tr>
+        </table>
+      </div>
+      </form>
+    </div>
+    <div class="dv-action-bar">
+        <button id="btnSave" (click)="this.save()" title="Click to save the Jetport"
+          [disabled]="this.jetportVo.standard">Save</button>
+        <button id="btnCancel" (click)="this.cancel()" title="Click to cancel changes"
+          [disabled]="this.jetportVo.standard">Cancel</button>
+    </div>
+  </div>
+</div>
+<app-prompt-modal id="promptModalIncJetport" #promptModalIncJetport (promptActionEvent)="this.promptActionResultJetport($event)"></app-prompt-modal>

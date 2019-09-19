@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://isuite.nwcg.gov/CustomReportExport"
+	xmlns:cr="http://isuite.nwcg.gov/CustomReportExport" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:nwcgLib="http://isuite.nwcg.gov/lib" elementFormDefault="qualified"
+	attributeFormDefault="unqualified" version="1.0">
+
+	<xsd:element name="CustomReportExport">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Title" type="cr:StringMaxLength50" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="Subtitle" type="cr:StringMaxLength50" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="Description" type="cr:StringMaxLength200" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="DataView" type="cr:StringMaxLength50" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="CreateDateTime" type="xsd:date" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="ExportDateTime" type="xsd:date" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="CreatorFirstName" type="cr:StringMaxLength50" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="CreatorLastName" type="cr:StringMaxLength50" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="VisibleToPublic" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="Landscape" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="LineSpacing" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+				<xsd:element name="Criterias" type="cr:CriteriaListType" minOccurs="0" maxOccurs="1"/>
+				<xsd:element name="Columns" type="cr:ColumnListType" minOccurs="1" maxOccurs="1" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="CriteriaListType">
+		<xsd:sequence>
+			<xsd:element name="Criteria" type="cr:CriteriaType" minOccurs="1" maxOccurs="20"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="ColumnListType">
+		<xsd:sequence>
+			<xsd:element name="Column" type="cr:ColumnType" minOccurs="1" maxOccurs="70" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CriteriaType">
+		<xsd:sequence>
+			<xsd:element name="CriteriaType" type="cr:StringMaxLength1" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="Connective" type="cr:StringMaxLength50" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SourceViewFieldSQLName" type="cr:StringMaxLength50" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SourceInputValue" type="cr:StringMaxLength50" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SourceEvaluatorType" type="cr:StringMaxLength50" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="OperatorType" type="cr:StringMaxLength50" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TargetType" type="cr:StringMaxLength50" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TargetValue1" type="cr:StringMaxLength50" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TargetValue2" type="cr:StringMaxLength50" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TargetViewFieldSQLName" type="cr:StringMaxLength50" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TargetList" type="cr:StringMaxLength200" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TargetTermType" type="cr:StringMaxLength50" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="TargetEvaluatorType" type="cr:StringMaxLength50" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ChildrenCriterias" type="cr:CriteriaListType" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="DisplayOrder" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="GroupID" type="xsd:long" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ParentGroupID" type="xsd:long" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ColumnType">
+		<xsd:sequence>
+			<xsd:element name="ColumnName" type="cr:StringMaxLength50" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="DisplayOrder" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:int">
+						<xsd:minInclusive value="0" />
+						<xsd:maxInclusive value="70" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<!-- 
+			<xsd:element name="SQLName" type="cr:StringMaxLength50" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="DataType" type="cr:StringMaxLength50" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="RefDataType" type="cr:StringMaxLength50" minOccurs="0" maxOccurs="1"/>
+			-->
+			<xsd:element name="Header" type="cr:StringMaxLength50" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="Width" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:int">
+						<xsd:minInclusive value="0" />
+						<xsd:maxInclusive value="600" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+
+			<xsd:element name="AggregateType" type="cr:StringMaxLength50" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="FormatType" type="cr:StringMaxLength50" minOccurs="0" maxOccurs="1"/>
+
+			<xsd:element name="SortBySeq" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="SortByType" type="cr:StringMaxLength20" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="GroupBySeq" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="GroupByType" type="cr:StringMaxLength20" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="StringMaxLength1">
+    	<xsd:restriction base="xsd:string">
+      		<xsd:maxLength value="1" />
+    	</xsd:restriction>
+  	</xsd:simpleType>
+	
+	<xsd:simpleType name="StringMaxLength20">
+    	<xsd:restriction base="xsd:string">
+      		<xsd:maxLength value="20" />
+    	</xsd:restriction>
+  	</xsd:simpleType>
+	
+	<xsd:simpleType name="StringMaxLength50">
+    	<xsd:restriction base="xsd:string">
+      		<xsd:maxLength value="50" />
+    	</xsd:restriction>
+  	</xsd:simpleType>
+	
+	<xsd:simpleType name="StringMaxLength100">
+    	<xsd:restriction base="xsd:string">
+      		<xsd:maxLength value="100" />
+    	</xsd:restriction>
+  	</xsd:simpleType>
+	
+	<xsd:simpleType name="StringMaxLength200">
+    	<xsd:restriction base="xsd:string">
+      		<xsd:maxLength value="200" />
+    	</xsd:restriction>
+  	</xsd:simpleType>
+	
+</xsd:schema>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="GlidePathReport_resourceday_totals" language="groovy" columnCount="30" printOrder="Horizontal" pageWidth="900" pageHeight="20" orientation="Landscape" columnWidth="30" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="63d517d4-92c0-4145-bf7b-db5599489520">
+	<property name="ireport.zoom" value="1.2100000000000009"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.style.evaluation.time.enabled" value="true"/>
+	<style name="day_cs">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{text}.equals("DMB"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#000000" isBold="true"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{text}.equals("LWD"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#FF0000" isBold="true"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{text}.equals("___"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF0000" backcolor="#FF0000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{text}.equals("__"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFF00" backcolor="#FFFF00"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{text}.equals("_"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#00FF00" backcolor="#00FF00"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{text}.equals("?"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#BDBDBD" backcolor="#BDBDBD"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{text}==null) || "".equals($F{text})]]></conditionExpression>
+			<style mode="Opaque" forecolor="#000000" backcolor="#FFFFFF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false"/>
+	<field name="text" class="java.lang.String"/>
+	<detail>
+		<band height="20">
+			<textField isStretchWithOverflow="true" evaluationTime="Auto" pattern="####0" isBlankWhenNull="true">
+				<reportElement uuid="047478a8-7524-465b-874c-9e17ed42e700" stretchType="RelativeToTallestObject" mode="Opaque" x="0" y="0" width="30" height="20" isPrintWhenDetailOverflows="true" backcolor="#CCCCCC"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="0.5" lineColor="#999999"/>
+					<topPen lineWidth="0.5" lineColor="#999999"/>
+					<leftPen lineWidth="0.5" lineColor="#999999"/>
+					<bottomPen lineWidth="0.5" lineColor="#999999"/>
+					<rightPen lineWidth="0.5" lineColor="#999999"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{text}.toInteger()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

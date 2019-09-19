@@ -1,0 +1,40 @@
+<div style="padding: 5px;" [style.height]="calcHt()">
+  <div id="dv-accrual-bar">
+    <div id="dv-accrual-bar-left" class="w3-left">
+      <app-grid-icon-bar
+        [showFilter]="true" 
+        [showExpandRetract]="false"
+        (filterEvent)="this.clearFilter()"
+        (refreshEvent)="this.refreshGrid()">
+      </app-grid-icon-bar>
+    </div>
+  </div>
+  <div style="display: block; width: 100%; height: 100%;">
+      <label><strong>Accrual Extract</strong></label>
+      <br>
+      <div class="w3-left"  style="width: 80%; height: 100%;">
+        <div id="dv-accrual-grid">
+            <app-eis-grid #accrualGrid 
+              [columnDefs]="this.gridColumnDefs" 
+              [rowData]="accrualList"
+              (rowSelectEvent)="this.onSelectAccrual($event)">
+            </app-eis-grid>
+          </div>
+      </div>
+    <div style="float:left; padding-left: 10px; width: 200px; height: 100%;">
+        <label><strong>Reports</strong></label>
+        <br>
+        <input type="radio" name="rdReport" value="summary" checked> Summary<br>
+        <input type="radio" name="rdReport" value="detail"> Detail<br>
+        <input type="radio" name="rdReport" value="detailall"> Detail All<br>
+        <br>
+        <button class="w3-small">Preview</button>
+    </div>
+  </div>
+  <div class="dv-action-bar w3-small" style="clear: both;">
+      <button>Extract</button>
+      <button>Finalize</button>
+      <button>Accrual Accounting Code</button>
+   </div>
+</div>
+<app-prompt-modal #promptModal (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>

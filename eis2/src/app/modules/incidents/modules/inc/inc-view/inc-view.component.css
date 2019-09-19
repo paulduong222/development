@@ -1,0 +1,15 @@
+#dv-inc-grid {
+	background-color: white;
+	border: 1px solid darkgray;
+	width: 100%;
+	height: 100%;
+	min-width: 300px;
+	display: block;
+	overflow: auto;
+}
+#dv-inc-view {
+	background-color: white;
+	border: 1px solid darkgray;
+	width: 100%;
+	height: 100%;
+}

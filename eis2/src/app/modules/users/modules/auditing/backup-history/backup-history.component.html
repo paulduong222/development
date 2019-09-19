@@ -1,0 +1,9 @@
+<div id="dv-backup-history">
+    <app-auditing-filter #backupHistoryFilter
+        (filterEvent)="this.doFilter($event)"></app-auditing-filter>
+    <app-eis-grid #backupHistoryGrid
+        [treeViewMode]="false"
+        [columnDefs]="this.columnDefs"
+        [rowData]="this.gridData">
+    </app-eis-grid>
+</div>

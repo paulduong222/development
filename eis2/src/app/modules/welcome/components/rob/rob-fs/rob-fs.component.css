@@ -1,0 +1,14 @@
+#dvfsdr {
+    border-top: solid 1px black;
+    width: 890px;
+}
+#dvfshdr label{
+    font-size: 14px;
+    font-weight: bold;
+}
+#dvfs {
+    width: 890px;
+    height: 450px;
+    overflow: auto;
+    border-top: solid 1px black;
+}

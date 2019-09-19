@@ -1,0 +1,10 @@
+<div id="dv-auditing-main">
+  <app-auditing-nav-bar (menuSelectEvent)="onMenuSelect($event)"></app-auditing-nav-bar>
+  <div id="dv-auditing-tab">
+    <app-login-history #appLoginHistory (sendToParentFilter)="this.doFilter($event)" [class]="getActiveTab('loginhistory')" [gridData]="this.gridData"></app-login-history>
+    <app-user-accounts-history #appUserAccountsHistory (sendToParentFilter)="this.doFilter($event)"  [class]="getActiveTab('useraccountshistory')" [gridData]="this.gridData"></app-user-accounts-history>
+    <app-password-reset-history #appPasswordResetHistory (sendToParentFilter)="this.doFilter($event)"  [class]="getActiveTab('passwordresethistory')" [gridData]="this.gridData"></app-password-reset-history>
+    <app-rob-history #appRobHistory (sendToParentFilter)="this.doFilter($event)"  [class]="getActiveTab('robhistory')" [gridData]="this.gridData"></app-rob-history>
+    <app-backup-history #appBackupHistory (sendToParentFilter)="this.doFilter($event)"  [class]="getActiveTab('backuphistory')" [gridData]="this.gridData"></app-backup-history>
+  </div>
+</div>

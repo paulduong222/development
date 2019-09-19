@@ -1,0 +1,18 @@
+#dv-block-action-bar {
+    margin: 3px 3px 3px 3px;
+    padding-left:5px;
+	background-color: #6183A6;
+    width: 99%;
+    height: 26px;
+}
+#dv-block-action-bar button {
+    margin-top: 2px;
+    margin-left: 4px;
+    height:22px;
+}
+
+#txRemarks {
+    width:280px;
+    height:50px;
+    resize: none;
+}

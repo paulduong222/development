@@ -1,0 +1,102 @@
+<div class="main-card">
+  <label class="title">All Resources Report</label>
+  <div class="card-body">
+    <table style="display: block">
+      <tr>
+        <td class="td-width">
+          <div class="bx-hdr-dv">
+            <div class="bx-hdr">
+              <div><label class="w3-small">Resource Categories</label></div>
+            </div>
+            <div class="bx-body">
+              <div><input type="checkbox" value="allResourceCategories" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.allResourceCategories"><label class="pl-10">All Resources</label></div>
+              <div><input type="checkbox" value="aircraft" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.aircraft"><label class="pl-10">Aircraft</label></div>
+              <div><input type="checkbox" value="crews" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.crews"><label class="pl-10">Crews</label></div>
+              <div><input type="checkbox" value="equipment" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.equipment"><label class="pl-10">Equipment</label></div>
+              <div><input type="checkbox" value="overhead" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.overhead"><label class="pl-10">Overhead</label></div>
+            </div>
+          </div>
+        </td>
+        <td class="td-width">
+          <div class="bx-hdr-dv">
+            <div class="bx-hdr">
+              <div><label class="w3-small">Group by Section</label></div>
+            </div>
+            <div class="bx-body">
+              <div><input type="checkbox" value="allGroups" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.allGroups"><label class="pl-10">All Sections</label></div>
+              <div><input type="checkbox" value="operations" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.operations" ><label class="pl-10">Operations</label></div>
+              <div><input type="checkbox" value="command" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.command"><label class="pl-10">Command</label></div>
+              <div><input type="checkbox" value="logistics" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.logistics"><label class="pl-10">Logistics</label></div>
+              <div><input type="checkbox" value="plans" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.plans"><label class="pl-10">Plans</label></div>
+              <div><input type="checkbox" value="finance" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.finance"><label class="pl-10">Finance</label></div>
+              <div><input type="checkbox" value="external" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.external"><label class="pl-10">External</label></div>
+            </div>
+          </div>
+        </td>
+        <td class="td-width">
+          <div class="bx-hdr-dv">
+            <div class="bx-hdr">
+              <div><label class="w3-small">Resource Status</label></div>
+            </div>
+            <div class="bx-body">
+              <div><input type="checkbox" value="allResourceStatuses" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.allResourceStatuses"><label class="pl-10">All Statuses</label></div>
+              <div><input type="checkbox" value="checkin" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.checkin"><label class="pl-10">Checked-In</label></div>
+              <div><input type="checkbox" value="demobed" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.demobed"><label class="pl-10">Demobed</label></div>
+              <div><input type="checkbox" value="reassigned" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.reassigned"><label class="pl-10">Reassigned</label></div>
+              <div><input type="checkbox" value="pendingDemob" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.pendingDemob"><label class="pl-10">Pending Demob</label></div>
+              <div><input type="checkbox" value="filled" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.filled"><label class="pl-10">Filled</label></div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <table style="display: block">
+      <tr>
+        <td style="width: 500px">
+          <div style="height: 280px" class="bx-hdr-dv">
+            <div class="bx-hdr-sort">
+              <div><label class="w3-small">Report Sorts</label></div>
+            </div>
+            <div style="padding: 0 10px 0 10px" class="report-sort">
+              <div class="left-box">
+                <h5 class="title">Available</h5>
+                <app-data-table [extraStyle]="extraStyle" [noHeader]="noHeader" [bodyStyle]="bodyStyle" [tableDefinition]="tableDef" [data]="data" [filter]="filter" (rowClicked)="getClickedRow($event, 'indexSelected', 'data', 'shiftIndex')" [scrollAble]="scrollAble" [indexSelected]="indexSelected"></app-data-table>
+              </div>
+              <div class="center-box">
+                <div class="icon" (click)="moveSelected('data', 'dataSelected', 'indexSelected', 'shiftIndex')"><img src="assets/images/arrow_right.png" title="Add Selected Item"></div>
+                <div class="icon" (click)="moveSelected('dataSelected', 'data', 'indexSelectedCopy', 'shiftIndexCopy')"><img src="assets/images/arrow_left.png" title="Remove Selected Item"></div>
+                <div class="icon" (click)="moveAll('data', 'dataSelected', 'indexSelected', 'shiftIndex')"><img src="assets/images/arrow_right_double.png" title="Add All Items"></div>
+                <div class="icon" (click)="moveAll('dataSelected', 'data', 'indexSelectedCopy', 'shiftIndexCopy')"><img src="assets/images/arrow_left_double.png" title="Remove All Items"></div>
+              </div>
+              <div class="right-box">
+                <h5 class="title">Selected</h5>
+                <app-data-table [extraStyle]="extraStyle" [noHeader]="noHeader" [bodyStyle]="bodyStyle" [tableDefinition]="tableDef" [data]="dataSelected" (rowClicked)="getClickedRow($event, 'indexSelectedCopy', 'dataSelected', 'shiftIndexCopy')" [scrollAble]="scrollAble" [indexSelected]="indexSelectedCopy"></app-data-table>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td style="vertical-align: top;">
+          <div class="radio-box">
+            <div class="padding-5">
+              <label><input type="checkbox" name="state" value="strikeTeamTaskForce" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.strikeTeamTaskForce"> Include Strike Team/Task Force Components<br></label>
+            </div>
+            <div class="padding-5">
+              <label><input type="checkbox" name="state1" value="subTotalsFirstSort" (click)="handleCheckbox($event)" [checked]="allIncidentResourcesReportFilter.subTotalsFirstSort"> Subtotals on First sort<br></label>
+            </div>
+            <!-- <div class="padding-5">
+              <label class="disabled"><input type="checkbox" name="state2" value="groupSubsection" (click)="handleCheckbox($event)" disabled> Group by Subsection<br></label>
+            </div> -->
+            <button class="padding-5" type="button" class="btn btn-default" (click)="showHideInstruction()" title="Click to toggle showing the instructions">Show/Hide&nbsp;Instructions</button>
+            <div class="tooltip-box padding-5" *ngIf="tooltipBox">
+              <p>Select the Resource Categories, Sections and Statuses to include in the report.</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <div style="width: 100%; margin-top: 10px">
+      <button type="button" class="btn btn-default" (click)="generateReport()" title="Click to generate All Resources Report">Preview/Print</button>
+      <button type="button" class="btn btn-default" style="margin-left: 10px" title="Click to restore defaults" (click)="restoreDefault()">Restore Defaults</button>
+    </div>
+  </div>
+</div>

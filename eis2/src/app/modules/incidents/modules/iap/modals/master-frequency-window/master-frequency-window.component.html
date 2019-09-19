@@ -1,0 +1,23 @@
+<app-jw-modal id="master-freq-window-modal" style="display: none;" class="box-hdr-dv">
+    <div *ngIf="this.showModal === true" 
+      style="width: 85vw; height: 85vh;">
+      <div class="w3-container w3-padding-small w3-theme-d2">
+          <div class="w3-left w3-medium">Master Frequency List</div>
+       </div>
+       <div class="w-container" style="width: 100%; width: 100%;">
+         <div class="w3-left" style="width: 85vw; height: 73vh;">
+            <app-eis-grid2 #gridMfl
+               [columnDefs]="this.gridColumnDefs"
+               [rowData]="this.mflList"
+               (rowSelectEvent)="this.onSelectRow($event)">
+            </app-eis-grid2>
+         </div>
+       </div>
+       <br>
+       <div class="dv-action-bar w3-center w3-small w3-left">
+          <button [disabled]="this.disableSaveToFormButton" (click)="this.saveToForm()" title="Click to save the selected frequencies to the form.">Save to Form</button>
+          <button (click)="this.closeModal();" title="Click to close window">Close</button>
+       </div>
+    </div>
+
+</app-jw-modal>

@@ -1,0 +1,59 @@
+<div class="main-card">
+    <div class="rpt-lbl">
+        Aircraft Detail
+    </div>
+    <div>
+        <label>
+            <input name="groupCatSum" type="radio" value="isReportOnly" [(ngModel)]="filterBy">
+            Reports Only
+        </label>
+        <label>
+            <input name="groupCatSum" type="radio" value="isGraphOnly" [(ngModel)]="filterBy">
+            Graph Only
+        </label>
+        <label>
+            <input name="groupCatSum" type="radio" value="isReportAndGraph" [(ngModel)]="filterBy">
+            Reports And Graph
+        </label>
+    </div>
+    <div class="rpt-box">
+        <div class="rpt-lbl" *ngIf="filterBy !== 'isGraphOnly'">
+            Reports
+        </div>
+        <div>
+            <label>
+                <input type="checkbox"  [(ngModel)]="aircraftDetailReportFilter.isDateRangeSelected">
+                Select Date Range
+            </label>
+            <br>
+            <div [style.opacity]="aircraftDetailReportFilter.isDateRangeSelected ? 1.0 : 0.35">
+                Date Range 
+                <label class="ast">*</label><app-eis-datepicker #dtStart [disabled]="!aircraftDetailReportFilter.isDateRangeSelected"></app-eis-datepicker>
+                <label class="ast">*</label><app-eis-datepicker #dtEnd [disabled]="!aircraftDetailReportFilter.isDateRangeSelected"></app-eis-datepicker>
+            </div>
+        </div>
+        <div class="rpt-lbl">
+            Additional Filters
+        </div>
+        <div>
+            <label>
+                <input type="radio" value="isIncludeAllAircraftType" [(ngModel)]="additionalFilter">
+                Include All
+            </label>
+            <br>
+            <label>
+                <input type="radio" value="isSelectiveAircraftTypes" [(ngModel)]="additionalFilter">
+                Select Aircraft Type
+            </label>
+            <div class="checkbox-box" *ngIf="listCheckBox && listCheckBoxAble.includes(additionalFilter)">
+                <label *ngFor="let row of listCheckBox" style="display: block;">
+                    <input type="checkbox" (click)="handleCheckbox(row.id)">
+                    {{row.label}}
+                </label>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%; margin-top: 10px">
+            <button type="button" class="btn btn-default button-cus" title="Click to Preview/Print the report" (click)="generateReport()">Preview/Print</button>
+    </div>
+</div>

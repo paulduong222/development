@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="GroupCategoryTotalReport1" pageWidth="842" pageHeight="900" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5254c3a5-e4b7-4575-b66b-18957fb64949">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="incidentNumber" class="java.lang.String"/>
+	<field name="groupingName" class="java.lang.String"/>
+	<field name="incidentId" class="java.lang.Long"/>
+	<field name="dataSourceSubReportData" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="dataSourceSubReportChartData" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="startDate" class="java.util.Date"/>
+	<field name="endDate" class="java.util.Date"/>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="108" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="1f9c1433-b5df-487d-bb86-db3da9533d57" x="665" y="8" width="135" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[e-ISuite Cost Report ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d6444ea5-8bf1-4252-80ec-ec6f04e21ce8" x="679" y="23" width="37" height="14"/>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Printed:]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy Hh:mm">
+				<reportElement uuid="f39e69a7-4470-4dc7-b5eb-77612c35ec3e" x="716" y="23" width="85" height="14"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("MM/dd/yyyy HH.mm").format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="468e21b1-d9f7-4941-8156-48070790e09c" x="712" y="37" width="63" height="14"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of        "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="1c8e0c26-9490-42a5-9118-bc990429024b" x="776" y="37" width="20" height="14"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a4c772c4-59e7-4b83-80b1-49e3b2550e73" x="287" y="0" width="231" height="27"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cost Category Total Report]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="c8436d54-0b1f-40a2-94a2-819ee91bac18" x="186" y="60" width="397" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Incident: " + $F{incidentName} + "(" + $F{incidentNumber} +")"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="a484ab38-01aa-45d9-8e5a-43c56e5dfe2a" x="0" y="83" width="800" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="2656857d-6a2c-4783-8675-80537a0b8f5f" x="41" y="84" width="203" height="21"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA["Grouping Name: "+$F{groupingName}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="115dbe71-b05e-4f18-8e01-6bde2c0539b3" x="186" y="29" width="397" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{groupingName} + " Category Total"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3617ad48-aca8-4976-8b73-30ccb6b45936" x="285" y="86" width="55" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Start Date:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3617ad48-aca8-4976-8b73-30ccb6b45936" x="426" y="86" width="52" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[End Date:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="a620b2bc-dc36-40c8-bfb5-a849e0f2f400" x="342" y="86" width="82" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{startDate}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="a620b2bc-dc36-40c8-bfb5-a849e0f2f400" x="480" y="86" width="82" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{endDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="43" splitType="Stretch"/>
+		<band height="37" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="c9c9373d-0c23-444f-8e25-5cb32c00cc91" x="0" y="0" width="38" height="37"/>
+				<dataSourceExpression><![CDATA[$F{dataSourceSubReportData}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["C:\\workspaceISuite2012\\isuite-core\\Webroot\\reports\\GroupCategoryTotalSubReportCrosstab.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

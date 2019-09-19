@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:flex="http://www.springframework.org/schema/flex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/flex http://www.springframework.org/schema/flex/spring-flex-1.0.xsd"
+	default-lazy-init="true">
+ 
+	<bean id="flexExceptionTranslator" class="gov.nwcg.isuite.framework.util.FlexExceptionTranslator"/>
+ 	
+	<flex:message-broker>
+		<flex:exception-translator ref="flexExceptionTranslator"/>
+	</flex:message-broker>  
+	<flex:remoting-destination ref="adminOfficeService" />
+	<flex:remoting-destination ref="adminOfficeService2" />
+	<flex:remoting-destination ref="agencyGroupService" />
+	<flex:remoting-destination ref="agencyGroupService2" />
+	<flex:remoting-destination ref="agencyService" />
+	<flex:remoting-destination ref="agencyService2" />
+	<flex:remoting-destination ref="authenticationService" />
+	<flex:remoting-destination ref="contractorAgreementService" />
+	<flex:remoting-destination ref="contractorRateService" />
+	<flex:remoting-destination ref="contractorService" />
+	<flex:remoting-destination ref="contractorService2" />
+	<flex:remoting-destination ref="costAccrualService" />
+	<flex:remoting-destination ref="costProjectionService" />
+	<flex:remoting-destination ref="costGroupService" />
+	<flex:remoting-destination ref="countrySubdivisionService" />
+	<flex:remoting-destination ref="customReportService" />
+	<flex:remoting-destination ref="dataAuditTrackingService" />
+	<flex:remoting-destination ref="databaseMgmtService" />
+	<flex:remoting-destination ref="dataTransferService" />
+	<flex:remoting-destination ref="financialExportService" />
+	<flex:remoting-destination ref="glidePathReportService" />
+	<flex:remoting-destination ref="groupCategoryService" />
+	<flex:remoting-destination ref="helpDeskService" />
+	<flex:remoting-destination ref="iapService" />
+	<flex:remoting-destination ref="iapCopyService" />
+	<flex:remoting-destination ref="iapPlanService" />
+	<flex:remoting-destination ref="iapReportService" />
+	<flex:remoting-destination ref="incidentCostRateService" />
+	<flex:remoting-destination ref="incidentService" />
+	<flex:remoting-destination ref="incidentSelectorService" />
+	<flex:remoting-destination ref="incidentService2" />
+	<flex:remoting-destination ref="incidentGroupService" />
+	<flex:remoting-destination ref="incidentGroupService2" />
+	<flex:remoting-destination ref="incidentPrefsService" />
+	<flex:remoting-destination ref="incidentResourceDailyCostService" />
+	<flex:remoting-destination ref="incidentResourceService" />
+	<flex:remoting-destination ref="incidentResource2Service" />
+	<flex:remoting-destination ref="otherResourceCostService" />
+	<flex:remoting-destination ref="jetPortService" />
+	<flex:remoting-destination ref="jetPortService2" />
+	<flex:remoting-destination ref="kindService2" />
+	<flex:remoting-destination ref="kindGroupService" />
+	<flex:remoting-destination ref="messageService" />
+	<flex:remoting-destination ref="organizationService" />
+	<flex:remoting-destination ref="organizationService2" />
+	<flex:remoting-destination ref="pickListService" />
+	<flex:remoting-destination ref="quickStatsService" />
+	<flex:remoting-destination ref="quickStatsService2" />
+	<flex:remoting-destination ref="rateClassRateService" />
+    <flex:remoting-destination ref="reportService" />
+    <flex:remoting-destination ref="reportService2" />
+    <flex:remoting-destination ref="reportTimeService" />
+    <flex:remoting-destination ref="reportCostService" />
+	<flex:remoting-destination ref="resourceInventoryService" />
+	<flex:remoting-destination ref="resourceService" />
+	<flex:remoting-destination ref="rossImportService" />
+	<flex:remoting-destination ref="rossResourceImportService" />
+	<flex:remoting-destination ref="sit209Service" />
+	<flex:remoting-destination ref="sit209Service2" />
+	<flex:remoting-destination ref="subGroupCategoryService" />
+	<flex:remoting-destination ref="systemSupportService" />
+	<flex:remoting-destination ref="testDateService" />
+	<flex:remoting-destination ref="timePostService" />
+	<flex:remoting-destination ref="timePostAdjustmentService" />
+	<flex:remoting-destination ref="trainingSpecialistService" />
+	<flex:remoting-destination ref="trainingSpecialistReportService" />
+	<flex:remoting-destination ref="trainingSpecialistSettingsService" />
+	<flex:remoting-destination ref="userService" />
+	<flex:remoting-destination ref="userService2" />
+	<flex:remoting-destination ref="userGroupService" />
+	<flex:remoting-destination ref="userGroupService2" />
+	<flex:remoting-destination ref="userPreferencesService" />
+	<flex:remoting-destination ref="sysCostRateService" />
+	<flex:remoting-destination ref="systemService" />
+	<flex:remoting-destination ref="systemRoleService" />
+	<flex:remoting-destination ref="systemParameterService" />
+	<flex:remoting-destination ref="taskQueueService" />
+	<flex:remoting-destination ref="workAreaResourceService" />
+	<flex:remoting-destination ref="workAreaService" />
+	<flex:remoting-destination ref="userSessionManagementService" />
+	<flex:remoting-destination ref="userSessionManagementService2" />
+	<flex:remoting-destination ref="irwinService" />
+
+</beans>

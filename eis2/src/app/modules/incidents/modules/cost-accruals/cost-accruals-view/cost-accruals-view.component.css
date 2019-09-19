@@ -1,0 +1,26 @@
+#dv-accrual-bar {
+	background-color: #999999;
+	width: 100%;
+	height: 4%;
+}
+#dv-accrual-bar-left {
+	vertical-align: middle;
+	padding-left: 3px;
+}
+#dv-accrual-bar-left img {
+	height: 24px;
+	width: 24px;
+}
+#dv-accrual-bar-right {
+	padding-right: 3px;
+}
+#dv-accrual-bar-right button{
+	height:22px;
+}
+#dv-accrual-grid {
+	background-color: white;
+	border: 1px solid darkgray;
+	width: 100%;
+	height: 100%;
+	min-width: 600px;
+}

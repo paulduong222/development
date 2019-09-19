@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TNSP_4_Interview" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8fd2fa76-f2b1-432d-8596-9f04766d2c56">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="88"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<field name="traineeName" class="java.lang.String"/>
+	<field name="requestNumber" class="java.lang.String"/>
+	<field name="traineeItemCode" class="java.lang.String"/>
+	<field name="traineeItemCodeDesc" class="java.lang.String"/>
+	<field name="trainerName" class="java.lang.String"/>
+	<field name="trainerRequestNumber" class="java.lang.String"/>
+	<field name="trainerUnit" class="java.lang.String"/>
+	<field name="trainerUnitDesc" class="java.lang.String"/>
+	<field name="trainerItemCode" class="java.lang.String"/>
+	<field name="trainerItemDesc" class="java.lang.String"/>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="incidentNumber" class="java.lang.String"/>
+	<field name="tnspFullName" class="java.lang.String"/>
+	<background>
+		<band height="752" splitType="Stretch">
+			<line>
+				<reportElement uuid="2a2ee6da-6034-47fa-ba75-f5f9fec9c499" x="1" y="36" width="572" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="212e4c5c-ab36-47a5-87d0-42db65ba3699" x="572" y="85" width="1" height="646"/>
+			</line>
+			<line>
+				<reportElement uuid="a4dc0683-e54b-4f13-894d-22036de26209" x="0" y="85" width="1" height="646"/>
+			</line>
+			<line>
+				<reportElement uuid="153194c1-a876-49d2-bbaa-b340218f785f" x="0" y="730" width="572" height="1"/>
+			</line>
+		</band>
+	</background>
+	<pageHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="babdbebb-241f-4145-bb83-7188c08f900b" x="1" y="0" width="572" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Incident Trainee Exit Interview
+TNSP-4
+Trainee: Trainee Position:
+Coach/Evaluator: Training Specialist:
+Incident Name/Number:
+1. Is this your first assignment in this position? Y N
+2. Do you feel you benefited from this assignment? (Explain)
+__________________________________________________________________
+3. Were your training goals accomplished? Y N
+If no, explain
+__________________________________________________________________
+__________________________________________________________________
+4. Would you prefer another trainee assignment? Y N
+5. Comments regarding your coach/evaluator. (Assistance, Ability, Knowledge of position,
+and so forth)
+__________________________________________________________________
+__________________________________________________________________
+6. Did you receive a job performance
+evaluation?
+[ ] Yes [ ] No
+Trainee Signature:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b2be69cd-e537-4636-9245-38f62ff8c5fc" x="0" y="16" width="572" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{incidentName}!="" && $F{incidentName}!=null ? "(" : "")+($F{incidentName}!="" && $F{incidentName}!=null ? $F{incidentName} + ($F{incidentNumber}!="" && $F{incidentNumber}!=null ? " / ":"") :"" ) + ($F{incidentNumber}!="" && $F{incidentNumber}!=null ? $F{incidentNumber} :"")+($F{incidentName}!="" && $F{incidentName}!=null ? ")" : "")]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="6da9bc38-cce5-4534-ba7e-50175e414964" mode="Opaque" x="1" y="1" width="141" height="14" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Trainee:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="9dbcd5dc-3df9-470d-abeb-949614acc3a7" mode="Transparent" x="150" y="1" width="228" height="13" backcolor="#FFFFFF"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{traineeName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6da9bc38-cce5-4534-ba7e-50175e414964" mode="Opaque" x="379" y="1" width="99" height="14" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Trainee Position:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="9dbcd5dc-3df9-470d-abeb-949614acc3a7" mode="Transparent" x="482" y="1" width="88" height="13" backcolor="#FFFFFF"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{traineeItemCode}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6da9bc38-cce5-4534-ba7e-50175e414964" mode="Opaque" x="1" y="15" width="141" height="13" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Trainer/Evaluator:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="9dbcd5dc-3df9-470d-abeb-949614acc3a7" mode="Transparent" x="150" y="15" width="330" height="13" backcolor="#FFFFFF"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{trainerName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6da9bc38-cce5-4534-ba7e-50175e414964" mode="Opaque" x="1" y="29" width="141" height="13" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Training Specialist:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="9dbcd5dc-3df9-470d-abeb-949614acc3a7" mode="Transparent" x="150" y="28" width="228" height="13" backcolor="#FFFFFF"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tnspFullName}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="0ec57b13-6122-4e4f-8db5-0be267dd76f4" x="1" y="15" width="571" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="0ec57b13-6122-4e4f-8db5-0be267dd76f4" x="1" y="28" width="571" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="0ec57b13-6122-4e4f-8db5-0be267dd76f4" x="1" y="41" width="571" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="2c60636c-6fd3-4548-b2c7-3aaa776c9676" x="143" y="1" width="1" height="40"/>
+			</line>
+			<line>
+				<reportElement uuid="a4dc0683-e54b-4f13-894d-22036de26209" x="1" y="0" width="1" height="41"/>
+			</line>
+			<line>
+				<reportElement uuid="a4dc0683-e54b-4f13-894d-22036de26209" x="378" y="1" width="1" height="15"/>
+			</line>
+			<line>
+				<reportElement uuid="a4dc0683-e54b-4f13-894d-22036de26209" x="571" y="0" width="1" height="41"/>
+			</line>
+			<line>
+				<reportElement uuid="a4dc0683-e54b-4f13-894d-22036de26209" x="479" y="1" width="1" height="15"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="577" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="7" y="8" width="15" height="13"/>
+				<textElement/>
+				<text><![CDATA[1.  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="25" y="8" width="248" height="13"/>
+				<textElement/>
+				<text><![CDATA[Is this your first assignment in this position?   ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="25" y="27" width="317" height="13"/>
+				<textElement/>
+				<text><![CDATA[Do you feel you benefited from this assignment? (Explain)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="7" y="27" width="15" height="13"/>
+				<textElement/>
+				<text><![CDATA[2.  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="25" y="121" width="248" height="13"/>
+				<textElement/>
+				<text><![CDATA[Were your training goals accomplished?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="7" y="121" width="15" height="13"/>
+				<textElement/>
+				<text><![CDATA[3.  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="25" y="235" width="538" height="13"/>
+				<textElement/>
+				<text><![CDATA[Comments regarding your trainer/evaluator. (Assistance, Ability, Knowledge of position, etc.)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="7" y="235" width="15" height="13"/>
+				<textElement/>
+				<text><![CDATA[5.  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="7" y="496" width="148" height="13"/>
+				<textElement/>
+				<text><![CDATA[Trainee (Signature)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="9dbcd5dc-3df9-470d-abeb-949614acc3a7" mode="Transparent" x="7" y="483" width="418" height="13" backcolor="#FFFFFF"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement/>
+			</textField>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="7" y="218" width="15" height="13"/>
+				<textElement/>
+				<text><![CDATA[4.  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="25" y="218" width="250" height="13"/>
+				<textElement/>
+				<text><![CDATA[Would you prefer another trainee assignment?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="7" y="329" width="15" height="13"/>
+				<textElement/>
+				<text><![CDATA[6.  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="25" y="329" width="297" height="13"/>
+				<textElement/>
+				<text><![CDATA[Do you feel you could perform in this position if assigned?]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="568e59a8-2ce3-463a-b3ec-77b81c7695b3" x="255" y="329" width="20" height="13"/>
+				<textElement/>
+			</textField>
+			<line>
+				<reportElement uuid="0ec57b13-6122-4e4f-8db5-0be267dd76f4" x="1" y="0" width="571" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="0ec57b13-6122-4e4f-8db5-0be267dd76f4" x="1" y="21" width="571" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="0ec57b13-6122-4e4f-8db5-0be267dd76f4" x="1" y="40" width="571" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="342" y="121" width="229" height="13"/>
+				<textElement/>
+				<text><![CDATA[Y                N  (if no, explain)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="342" y="8" width="229" height="13"/>
+				<textElement/>
+				<text><![CDATA[Y                N]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="0ec57b13-6122-4e4f-8db5-0be267dd76f4" x="1" y="120" width="571" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="0ec57b13-6122-4e4f-8db5-0be267dd76f4" x="0" y="136" width="571" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="0ec57b13-6122-4e4f-8db5-0be267dd76f4" x="1" y="215" width="571" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="342" y="218" width="229" height="13"/>
+				<textElement/>
+				<text><![CDATA[Y                N  ]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="0ec57b13-6122-4e4f-8db5-0be267dd76f4" x="1" y="231" width="571" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="0ec57b13-6122-4e4f-8db5-0be267dd76f4" x="1" y="248" width="571" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="0ec57b13-6122-4e4f-8db5-0be267dd76f4" x="1" y="328" width="571" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="0ec57b13-6122-4e4f-8db5-0be267dd76f4" x="1" y="342" width="571" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="25" y="383" width="297" height="13"/>
+				<textElement/>
+				<text><![CDATA[Did your Trainer certify the tasks in your Position Taskbook?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="7" y="383" width="15" height="13"/>
+				<textElement/>
+				<text><![CDATA[7.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="342" y="330" width="229" height="13"/>
+				<textElement/>
+				<text><![CDATA[Y                N  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="345" y="383" width="229" height="13"/>
+				<textElement/>
+				<text><![CDATA[Y                N  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="25" y="433" width="297" height="13"/>
+				<textElement/>
+				<text><![CDATA[Did you receive a final performance evaluation?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="345" y="433" width="229" height="13"/>
+				<textElement/>
+				<text><![CDATA[Y                N  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="7" y="433" width="15" height="13"/>
+				<textElement/>
+				<text><![CDATA[8.]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="0ec57b13-6122-4e4f-8db5-0be267dd76f4" x="1" y="382" width="571" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="0ec57b13-6122-4e4f-8db5-0be267dd76f4" x="1" y="396" width="571" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="0ec57b13-6122-4e4f-8db5-0be267dd76f4" x="1" y="432" width="571" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="0ec57b13-6122-4e4f-8db5-0be267dd76f4" x="1" y="446" width="571" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="342" y="483" width="83" height="13"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="342" y="529" width="83" height="13"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="7" y="542" width="172" height="13"/>
+				<textElement/>
+				<text><![CDATA[Trainer/Evaluator (Signature)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="9dbcd5dc-3df9-470d-abeb-949614acc3a7" mode="Transparent" x="7" y="529" width="418" height="13" backcolor="#FFFFFF"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement/>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="13">
+			<staticText>
+				<reportElement uuid="32b2c411-01c1-4d42-80cc-aa9146c093c4" x="480" y="0" width="83" height="13"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[TNSP-4]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

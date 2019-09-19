@@ -1,0 +1,58 @@
+<div id="dv-ics220">
+  <div class="w3-left">
+    <button [class]="getBtnClass('block3-4')" (click)="this.openTab('block3-4')" title="Click to edit Block 3-4. Sunrise/Sunset/Remarks.">3-4. Sunrise/Sunset/Remarks</button>
+    <button [class]="getBtnClass('block5-6')" (click)="this.openTab('block5-6')" title="Click to edit Block 5-6. Ready Alert Aircraft/Temporary Flight Restriction Number.">5-6. Ready Alert Aircraft/Temporary Flight Restriction Number</button>
+    <button [class]="getBtnClass('block7')" (click)="this.openTab('block7')" title="Click to edit Block 7. Personnel.">7. Personnel</button>
+    <button [class]="getBtnClass('block8')" (click)="this.openTab('block8')" title="Click to edit Block 8. Frequencies.">8. Frequencies</button>
+    <button [class]="getBtnClass('block9')" (click)="this.openTab('block9')" title="Click to edit Block 9. Fixed Wing.">9. Fixed Wing</button>
+    <button [class]="getBtnClass('block10')" (click)="this.openTab('block10')" title="Click to edit Block 10 Helicopters.">10. Helicopters</button>
+    <button [class]="getBtnClass('block11')" (click)="this.openTab('block11')" title="Click to edit Block 11. Prepared By.">11. Prepared By</button>
+    <button [class]="getBtnClass('block12')" (click)="this.openTab('block12')" title="Click to edit Block 12. Task/Mission/Assignment.">12. Task/Mission/Assignment</button>
+  </div>
+  <br>
+	<!-- Block 3-4 -->
+  <div id="dv-block4" [class]="getDivBlockClass('block3-4')">
+    <app-ics220-sunrise-sunset #ics220SunriseSunset></app-ics220-sunrise-sunset>
+  </div>  
+	<!-- Block 5-6 -->
+  <div id="dv-block5-6" [class]="getDivBlockClass('block5-6')">
+      <app-ics220-ready-alert #ics220ReadyAlert></app-ics220-ready-alert>
+  </div>
+	<!-- Block 7 -->
+  <div id="dv-block7" [class]="getDivBlockClass('block7')">
+      <app-ics220-personnel #ics220Personnel></app-ics220-personnel>
+  </div>
+	<!-- Block 8 -->
+  <div id="dv-block8" [class]="getDivBlockClass('block8')">
+    <app-ics220-frequencies #ics220Frequencies></app-ics220-frequencies>
+  </div>
+	<!-- Block 9 -->
+  <div id="dv-block9" [class]="getDivBlockClass('block9')">
+    <app-ics220-fixed-wing #ics220FixedWing></app-ics220-fixed-wing>
+  </div>
+	<!-- Block 10 -->
+  <div id="dv-block10" [class]="getDivBlockClass('block10')">
+    <label class="blk-hdr"><u>Helicopters</u></label>
+    <app-ics220-helicopters #ics220Helicopters
+    (helicopterUpdateEvent)="this.helicopterUpdateEvent()"
+    (ics220ReorderOpenEvent)="this.ics220ReorderOpenEvent($event)"></app-ics220-helicopters>
+  </div>
+	<!-- Block 11 -->
+  <div id="dv-block11" [class]="getDivBlockClass('block11')">
+    <app-ics220-prep-by #ics220PrepBy></app-ics220-prep-by>
+  </div>
+	<!-- Block 12 -->
+  <div id="dv-block12" [class]="getDivBlockClass('block12')">
+    <label class="blk-hdr"><u>Task/Mission/Assignment</u></label>
+    <app-ics220-task-mission #ics220TaskMission
+     (taskUpdateEvent)="this.taskUpdateEvent()"
+     (ics220ReorderOpenEvent)="this.ics220ReorderOpenEvent($event)"></app-ics220-task-mission>
+  </div>
+  <div id="dv-block-action-bar" *ngIf="this.showActionBar" class="w3-small w3-left">
+      <button (click)="this.save(false)" [disabled]="this.isFormLocked" title="Click to save the block changes.">Save</button>
+      <button (click)="this.save(true)" [disabled]="this.isFormLocked"  title="Click to save the block and move to next block.">Save/Next Block</button>
+      <button (click)="this.cancel()" [disabled]="this.isFormLocked"  title="Click to cancel changes.">Cancel</button>
+  </div>
+</div>
+<app-iap-reorder-window #reorderWindow
+  (saveOrderEvent)="this.saveOrderEvent($event)"></app-iap-reorder-window>

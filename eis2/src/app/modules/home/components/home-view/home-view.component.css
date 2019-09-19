@@ -1,0 +1,79 @@
+#dv-hm-container {
+	width:100%;
+	min-width:800px;
+}
+#dv-home-bar {
+	background-color: black;
+	height:50px;
+	width:100%;
+}
+.button-bar {
+	padding-top:10px;
+	padding-left:10px;
+}
+#dv-hm {
+	width: 100%;
+	height: 100%;
+}
+#dv-hm-left {
+	float: left;
+	width: 25%;
+	min-width:300px;
+}
+#dv-hm-right {
+	display: inline-block;
+	position: relative;
+	border: 1px solid darkgray;
+	width:75%;
+	min-height: 492px;
+	background: white;
+	height:100%;
+	padding: 5px;
+}
+
+.bx-hdr {
+	height:30px;
+	padding: 5px;
+}
+.bx-hdr-dv {
+	border: 1px solid darkgray;
+	padding: 5px;
+	height: 160px;
+}
+.bx-hdr-mb {
+	border: 1px solid darkgray;
+	padding: 5px;
+	height: 100%;
+}
+.dv-mb {
+	height: 100%;
+	min-height: 437px;
+	background-color:white;
+}
+.home-info{
+	padding-top:5px;
+	color: black;
+	font: 14px Helvetica,Arial,sans-serif;
+}
+.infoLbl {
+	text-align:right;
+	font: 14px Helvetica,Arial,sans-serif;
+}
+.infoVal {
+	font: 14px Helvetica,Arial,sans-serif;
+}
+.home-info button {
+	height:22px;
+}
+.home-info table{
+	padding-top:10px;
+}
+.home-info table tr {
+	height: 10px;
+}
+#dv-links {
+	color: blue;
+	font-weight: bold;
+	font: 14px Helvetica,Arial,sans-serif;
+	padding-bottom: 5px;
+}

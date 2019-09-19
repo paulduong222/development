@@ -1,0 +1,137 @@
+<div class="eis">
+    <form [formGroup]="incForm" autocomplete="off">
+      <table>
+        <tr>
+          <td>
+            <!-- coloum 1-->
+            <table>
+              <tr>
+                <td class="frmlbl"><label class='f1"'>Event Type</label></td>
+                <td><label class="ast">*</label></td>
+                <td>
+                  <app-eis-dropdown 
+                    id="ddEventType"
+                    #ddEventType
+                    [dropdownData]="this.incidentSelectorService.eventTypeData"
+                    [selectedDropdownData]="this.eventTypeDropdownData"
+                    width="50"></app-eis-dropdown>
+                </td>
+              </tr>
+              <tr>
+                <td class="frmlbl"><label class='f1"' for="txName">Incident Name</label></td>
+                <td><label class="ast">*</label></td>
+                <td>
+                   <app-text-input formControlName="incidentName" id="txName" name="txName" type="text"
+                      width="249" maxlength="50" allowSpace="true" textTransform="uppercase"></app-text-input>
+                </td>
+              </tr>
+              <tr>
+                <td class="frmlbl"><label class='f1"'>Incident Number</label></td>
+                <td><label class="ast">*</label></td>
+                <td>
+                  <div id="incidentNumTable" style="width: 250px; border: 1px solid black">
+                    <tr>
+                      <td class="incTable">Country Code <label class="ast">*</label></td>
+                      <td><input placeholder="US" style="width: 50px; font-weight: bold;" disabled></td></tr>
+                    <tr>
+                      <td class="incTable"><label for="ddOrgType">Unit ID </label><label class="ast">*</label></td>
+                      <td>
+                          <app-eis-dropdown id="ddOrgType" #ddOrgType
+                              formControlName="homeUnitVo"
+                              [width]="70"
+                              [selectedDropdownData]="this.orgTypeDropdownData"
+                              (dropdownSelect)="updateIncidentTag($event);"
+                              [dropdownData]="this.incidentSelectorService.organizationTypeData"></app-eis-dropdown>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="incTable">Number <label class="ast">*</label></td>
+                      <td>
+                          <app-text-input formControlName="incidentNumber" id="txNbr" name="txNbr" type="text"
+                          width="100" maxlength="10" restrict2="a-z,A-Z,0-9" allowSpace="false" textTransform="uppercase"
+                          (input)="this.incidentVo.incidentNumber = $event.target.value; updateIncidentTag($event);"></app-text-input>
+                          </td>
+                    </tr>
+                    <tr>
+                      <td class="incTable"></td>
+                      <td>{{ this.incidentTag2 }}</td></tr>
+                    
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="frmlbl"><label class='f1"' for="ddAgencyType">Incident Jurisdiction</label></td>
+                <td><label class="ast">*</label></td>
+                <td>
+                    <app-eis-dropdown id="ddAgencyType" #ddAgencyType
+                      formControlName="agencyVo"
+                      [width]="50"
+                      [selectedDropdownData]="this.agencyTypeDropdownData"
+                      [dropdownData]="this.incidentSelectorService.agencyTypeData"></app-eis-dropdown>
+                </td>
+              </tr>
+                  </table>
+        </td>
+        <td>
+          <!-- coloum 2-->
+          <table>
+            <tr>
+              <td class="frmlbl"><label class='f1"' for="ddStateType">State</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                  <app-eis-dropdown id="ddStateType" #ddStateType
+                    formControlName="countryCodeSubdivisionVo"
+                    [width]="50"
+                    [selectedDropdownData]="this.stateTypeDropdownData"
+                    [dropdownData]="this.incidentSelectorService.stateTypeData"></app-eis-dropdown>
+                </td>
+            </tr>
+            <tr>
+              <td class="frmlbl"><label class='f1"'>Start Date</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                <app-eis-datepicker #dtStart
+                  formControlName="startDate"
+                  id="dtStart">
+                </app-eis-datepicker>
+                <!-- 
+                <input id="startDate" name="startDate" type="date" (keydown)="setDate($event)">
+                  <app-eis-datepicker></app-eis-datepicker> -->
+              </td>
+            </tr>
+            <tr>
+              <td class="frmlbl"><label class='f1"'>End Date</label></td>
+              <td><label class="ast"></label></td>
+              <td>
+                  <app-eis-datepicker #dtEnd
+                  formControlName="endDate"
+                  id="dtEnd">
+                </app-eis-datepicker>
+              </td>
+            </tr>
+            <tr *ngIf="this.incidentVo.rossIncId !== ''">
+                <td class="frmlbl"><label class='f1"' for="txRossId">ROSS ID</label></td>
+                <td><label class="ast"></label></td>
+                <td>
+                  <input id="txRossId" name="txRossId" formControlName="rossId">
+                </td>
+           </tr>
+           <tr>
+              <td class="frmlbl"><label class='f1"' for="taDesc">Description</label></td>
+              <td><label class="ast"></label></td>
+              <td>
+                <textarea id="taDesc" name="taDesc" formControlName="incidentDesc"
+                style="resize: none; width: 350px; height: 75px;" maxlength="1024"></textarea>
+              </td>
+            </tr>
+          </table>
+        </td>
+        </tr>
+      </table>
+    </form>
+    <div class="dv-action-bar">
+      <button id="btnSave" (click)="this.save(false)" title="Click to save the Incident">Save</button>
+      <button id="btnCancel" (click)="this.cancel()" title="Click to cancel changes">Cancel</button>
+    </div>
+  </div>
+  <app-prompt-modal id="promptModalIncInfo" #promptModalIncInfo (promptActionEvent)="this.promptActionResultIncInfo($event)"></app-prompt-modal>

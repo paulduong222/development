@@ -1,0 +1,30 @@
+<div class="main-card">
+  <p class="title">Tentative Poster</p>
+  <div class="card-body">
+    <div class="date-box">
+      <h5 style="font-weight: 550;">Tentative Release Date Range</h5>
+      <div style="text-align: right; padding-right: 60px">
+        <div class="label-input">Start Date <label class="ast">*</label> </div>
+        <app-eis-datepicker  #dtStart></app-eis-datepicker>
+      </div>
+      <div style="text-align: right; padding-right: 60px; margin-top: 10px">
+        <div class="label-input">End Date <label class="ast">*</label> </div>
+        <app-eis-datepicker  #dtEnd></app-eis-datepicker>
+      </div>
+    </div>
+    <div style="width: 100%; margin: 20px 20px 20px 0; height: 230px;">
+      <div style="padding-bottom: 10px">
+        <label><input type="checkbox" name="state" value="includeSTTFComponents" (click)="handleCheckbox()"> Include Strike Team/Task Force Components<br></label>
+      </div>
+      <button type="button" class="btn btn-default" (click)="showHideInstruction()" title="Click to toggle showing the instructions">Show/Hide&nbsp;Instructions</button>
+      <div class="tooltip-box" *ngIf="tooltipBox">
+        <p>Only Resources that meet the following requirements are included in the Report: </p>
+        <p>-The Resource has a Tentative Release Date and Time </p>
+        <p> -The Tentative Release Date is within the specified date range</p>
+        <p>-The Status is not Demobed (D)</p>
+        <p>-The request number is C,E,O,or A</p>
+      </div>
+    </div>
+    <button type="button" class="btn btn-default" style="margin: 20px 20px 20px 0;" (click)="generateReport()" title="Click to generate Tentative Poster Report">Preview/Print </button>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+.msg-container-secondtmp{
+	padding-top: 24px;
+	background: lightgray;
+	border: solid darkgray;
+	margin-top: 6px;
+}
+.msg-container-third{
+	background:white;
+    height: 52vh;
+    /*
+    border: solid darkgray;
+	min-height: 502px; */
+}

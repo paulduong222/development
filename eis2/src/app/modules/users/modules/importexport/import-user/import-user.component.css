@@ -1,0 +1,90 @@
+#dv-import-users {
+    display: block;
+	font: 12px Helvetica,Arial,sans-serif;
+    border: 1px solid darkgray;
+    background-color: white;
+    padding: 10px;
+    width: 100%;
+    height: 85vh;
+    margin:5px auto;
+    overflow: auto;
+}
+#dv-import-users-top {
+    display: block;
+    margin: 5px auto;
+    padding: 5px;
+    width: 100%;
+    height: 160px;
+    border: 1px solid darkgray;
+}
+
+#dv-import-users-bottom {
+  margin: 5px auto;
+  padding: 5px;
+  width: 560px;
+  height: 180px;
+}
+
+#dv-import-users-left {
+    width: 48%;
+    /* min-width: 676px; */
+    height: 65%;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+.hdr-lbl {
+	font: 14px Helvetica,Arial,sans-serif;
+    font-weight: bold;
+}
+.dv-top-left {
+    float: left;
+    width: 500px;
+    height: 130px;
+    margin: 10px;
+}
+.dv-top-right {
+    float: left;
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid darkgray;
+    background-color: #dfe4e8;
+    width: 500px;
+    height: 80px;
+}
+#dv-import-inst2 {
+    padding: 5px;
+}
+#dv-import-inst2 div{
+    padding-bottom: 20px;
+}
+
+.dv-bottom-right {
+    float: left;
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid darkgray;
+    background-color: #dfe4e8;
+    width: 560px;
+    height: 180px;
+}
+
+.dv-conflict-button {
+    float: left;
+    padding-top:10px;
+    width: 500px;
+}
+
+.dv-conflict-desc {
+    padding-top: 24px;
+}
+
+.dv-conflict-user {
+    padding-top: 20px;
+}
+
+.dv-disabled {
+    opacity: 0.5;
+    background: #888888;
+    pointer-events: none;
+}
+

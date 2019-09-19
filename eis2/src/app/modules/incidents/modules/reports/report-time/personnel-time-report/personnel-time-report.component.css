@@ -1,0 +1,135 @@
+* {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+.main-card {
+    border: 1px solid gray;
+    height: 83vh;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+.card-body {
+    margin: 20px;
+    padding: 0 20px 20px 20px;
+    min-width: 900px;
+}
+.radio-box {
+    height: 25px;
+    font-size: 12px;
+    padding: 7px;
+}
+.radio-box label:last-child {
+    margin-left: 20px;
+}
+input[type="radio"] {
+    margin-top: -3px;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+.text-box {
+    border: 1px solid gray;
+    height: 100px;
+    width: 800px;
+    font-size: 12px;
+    margin-top: 7px;
+    background-color: #EFE4AA;
+    color: black;
+    padding-left: 5px;
+}
+.text-box .title {
+  font-size: 12px;
+  font-weight: 550;
+}
+.text-box .sub-box {
+    display: flex;
+}
+.text-box .sub-box .label-input {
+    width: 50%;
+}
+button {
+    height: 20px;
+    font-size: 12px;
+    font-weight: 550;
+    line-height: 10px;
+    margin-bottom: 20px;
+}
+.checkbox {
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
+}
+.date-box {
+    width: 800px;
+    height: 80px;
+    border: 1px solid gray;
+    margin-top: 2px;
+    padding: 5px;
+}
+.date-box label {
+    display: block;
+    font-size: 13px;
+    padding: 3px;
+}
+.date-box input {
+    width: 100px;
+}
+.label-input, .date-box input {
+    margin: 5px
+}
+.date-box .label-header {
+    font-weight: 550;
+}
+.btn-box {
+    width: 100%;
+    float: left;
+    margin-top: 10px;
+    background-color: #6183A6;
+}
+.btn-box button {
+    display: block;
+    margin-bottom: 5px;
+    height: 25px;
+    float: left;
+    margin: 10px
+}
+.left-box {
+    width: 450px;
+    height: 380px;
+    border: 1px solid gray;
+    margin-top: 10px;
+    padding: 5px;
+    float: left;
+}
+.left-box button {
+    margin: 7px;
+}
+.right-box {
+    margin: 10px 0px 0px 10px;
+    float: left;
+    font-size: 12px;
+}
+.text-box img {
+    height: 15px;
+    margin-right: 5px;
+    width: 15px;
+}
+.text-box label {
+    display: block;
+}
+.text-box input[type="checkbox"] {
+    margin-top: -1px;
+    vertical-align: middle;
+    width: 17px;
+    height: 17px;
+}
+.lv2 {
+    margin-left: 25px;
+    margin-top: 5px;
+}
+.lv3 {
+    margin-left: 50px;
+    margin-top: 5px;
+}

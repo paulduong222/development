@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SummaryForCurrentDaySubReportByDate" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="aa237491-5463-4679-b4aa-a3a86110bb8a">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="314"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" forecolor="#000000" backcolor="#E3E3E3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="groupingName" class="java.lang.String"/>
+	<parameter name="groupingNameList" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="directIndirectName" class="java.lang.String"/>
+	<field name="kindGroupDescription" class="java.lang.String"/>
+	<field name="subGroupCatDescription" class="java.lang.String"/>
+	<field name="groupBy" class="java.lang.String"/>
+	<field name="costAmount" class="java.lang.Double"/>
+	<field name="groupByDate" class="java.util.Date"/>
+	<field name="currentDateCostAmount" class="java.lang.Double"/>
+	<variable name="subcategorytotal" class="java.lang.Double" resetType="Group" resetGroup="kindCategoryGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount}]]></variableExpression>
+	</variable>
+	<variable name="kindcategorytotal" class="java.lang.Double" resetType="Group" resetGroup="directIndirectGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount}]]></variableExpression>
+	</variable>
+	<variable name="groupbytotal" class="java.lang.Double" resetType="Group" resetGroup="GroupByTotal" calculation="Sum">
+		<variableExpression><![CDATA[$F{costAmount}]]></variableExpression>
+	</variable>
+	<variable name="subcategorytotal_current" class="java.lang.Double" resetType="Group" resetGroup="kindCategoryGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{currentDateCostAmount}]]></variableExpression>
+	</variable>
+	<variable name="kindcategorytotal_current" class="java.lang.Double" resetType="Group" resetGroup="directIndirectGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{currentDateCostAmount}]]></variableExpression>
+	</variable>
+	<variable name="groupbytotal_current" class="java.lang.Double" resetType="Group" resetGroup="GroupByTotal" calculation="Sum">
+		<variableExpression><![CDATA[$F{currentDateCostAmount}]]></variableExpression>
+	</variable>
+	<group name="GroupByTotal" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{groupBy}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="61e311bf-64b2-4b01-91c1-f8042cf3b922" mode="Transparent" x="0" y="0" width="572" height="14" backcolor="#FFFFFF"/>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[($P{groupingName} != "Incident") ? "Group By " + $P{groupingName} + " - " + ($F{groupBy}==null?"":$F{groupBy}) : "Group By Incident"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="6a82a60e-8fc2-4ea4-b268-d304cc9ced0c" x="413" y="15" width="114" height="14"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="10" isBold="true" isUnderline="false"/>
+					</textElement>
+					<text><![CDATA[Cumulative]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="6a82a60e-8fc2-4ea4-b268-d304cc9ced0c" x="301" y="15" width="109" height="14"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font size="10" isBold="true" isUnderline="false"/>
+					</textElement>
+					<text><![CDATA[Current Day]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="17">
+				<textField pattern="#,##0">
+					<reportElement uuid="ea1d7e79-fc72-487b-9a43-c62e55b8325b" mode="Opaque" x="413" y="3" width="114" height="14" forecolor="#000000" backcolor="#CCCCCC"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{groupbytotal}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="562224e6-2148-4b46-9962-52f3eb8ddade" mode="Opaque" x="31" y="3" width="268" height="14" forecolor="#000000" backcolor="#CCCCCC"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["GRAND TOTAL"]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement uuid="ea1d7e79-fc72-487b-9a43-c62e55b8325b" mode="Opaque" x="301" y="3" width="109" height="14" forecolor="#000000" backcolor="#CCCCCC"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{groupbytotal_current}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="directIndirectGroup">
+		<groupExpression><![CDATA[$F{directIndirectName}]]></groupExpression>
+		<groupFooter>
+			<band height="17">
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="9cd31d97-bd69-4197-a38c-ef592ceaada6" mode="Opaque" x="31" y="3" width="268" height="14" backcolor="#E3E3E3"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{directIndirectName} + " TOTAL"]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement uuid="37658a3b-0514-4f48-b144-09d2984eb2b0" mode="Opaque" x="302" y="3" width="109" height="14" backcolor="#E3E3E3"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{kindcategorytotal_current}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement uuid="37658a3b-0514-4f48-b144-09d2984eb2b0" mode="Opaque" x="412" y="3" width="114" height="14" backcolor="#E3E3E3"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{kindcategorytotal}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="kindCategoryGroup">
+		<groupExpression><![CDATA[$F{kindGroupDescription}]]></groupExpression>
+		<groupFooter>
+			<band height="17">
+				<textField isStretchWithOverflow="true" pattern="#,##0">
+					<reportElement uuid="2613f756-7b75-47d5-8b8b-a2d545b54f58" stretchType="RelativeToBandHeight" mode="Opaque" x="301" y="3" width="109" height="14" backcolor="#F0F0F0"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{subcategorytotal_current}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="ee49ebd8-9548-4614-901e-51c562e36d7e" stretchType="RelativeToBandHeight" mode="Opaque" x="31" y="3" width="268" height="14" backcolor="#F0F0F0"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["      " + $F{kindGroupDescription} + " TOTAL"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="#,##0">
+					<reportElement uuid="2613f756-7b75-47d5-8b8b-a2d545b54f58" stretchType="RelativeToBandHeight" mode="Opaque" x="412" y="3" width="114" height="14" backcolor="#F0F0F0"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{subcategorytotal}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="14">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="84b66584-0f25-44e5-9507-d4207c88c06d" stretchType="RelativeToBandHeight" x="31" y="0" width="273" height="14"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subGroupCatDescription}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0">
+				<reportElement uuid="de393154-fa91-4272-b36c-d0df665a0297" stretchType="RelativeToBandHeight" x="413" y="0" width="114" height="14"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{costAmount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0">
+				<reportElement uuid="de393154-fa91-4272-b36c-d0df665a0297" stretchType="RelativeToBandHeight" x="301" y="0" width="109" height="14"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{currentDateCostAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

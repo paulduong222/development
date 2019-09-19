@@ -1,0 +1,61 @@
+<div id="dv-export-users">
+  <div id="dv-export-users-left" class="w3-left">
+    <div><label class="hdr-lbl">Step 1: Exclude User Accounts</label></div>
+      <app-eis-grid
+      [treeViewMode]="false"
+      [columnDefs]="columnDefs"
+      [rowData]="rowData"
+      (rowSelectEvent)="rowSelected = true"
+      (gridReadyEvent)="onGridReady($event)">
+    </app-eis-grid>
+      <!-- <ag-grid-angular #exportUserGrid
+        style="width: 100%; height: 100%;"
+        class="ag-theme-balham" rowSelection="single"
+        rowHeight="24"
+        [floatingFilter]="true"
+        [enableFilter]="true"
+        [enableColResize]="true"
+        [rowData]="rowData"
+        [columnDefs]="columnDefs"
+        [components]="{checkboxRenderer: checkboxRenderer}"
+        (selectionChanged)="rowSelected = true"
+        (gridReady)="onGridReady($event)">
+      </ag-grid-angular> -->
+  </div>
+  <div id="dv-export-users-right" class="w3-left">
+    <div>
+      <button [disabled]="!rowSelected" (click)="selectRow()"
+       title="Click to exclude the selected User.">
+        Exclude User
+      </button>
+      <button  [disabled]="!rowSelected"  (click)="deselectRow()"
+        title="Click to include the selected User.">Include User</button>
+    </div>
+    <div id="dv-exp-inst">
+      <div><label class="hdr-lbl">Step 1 Instructions</label></div>
+      <div id="dv-exp-inst2">
+        <div>
+          <label
+            >To exclude user accounts from the export, select the user in the
+            grid and click the Exclude User button.</label
+          >
+        </div>
+        <div>
+          <label
+            >To remove the exclusion of an user account, select the user in the
+            grid and click the Include User button.</label
+          >
+        </div>
+        <div>
+          <label>Click the Export button to export the user accounts.</label>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:10px;">
+      <button (click)="exportUsers()"
+      title="Click to export the selected Users.">Export Users</button>
+    </div>
+  </div>
+</div>
+<app-prompt-modal #promptModal id="promptModal" (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>
+<app-download-modal #downloadModal (downloadEvent)="this.modalDownload($event)"></app-download-modal>

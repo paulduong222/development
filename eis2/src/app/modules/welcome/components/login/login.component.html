@@ -1,0 +1,66 @@
+<div class="">
+		<form [formGroup]="loginForm" autocomplete="off">
+		<div id="dv-login-wrapper" class="div-center-screen">
+			<div class="w3-container w3-padding-small w3-theme-d2">
+			  <div id="dv-login-hdr" class="w3-left" aria-label="Login window" tabindex="0">
+				  Login
+			  </div>
+			  <div class="w3-right">
+			  </div>
+			</div>
+			<div id="dv-login">
+				<div id="dv-left">
+					<img src="assets/images/logots.png">
+				</div>
+				<div id="dv-right">
+						<table>
+									<tr>
+										<td class="frmlbl" for="cbDb"><label>Database</label></td>
+										<td><label class="ast">*</label></td>
+										<td>
+											<select id="cbDb" class="form-control" 
+												style="width: 130px;"	
+												aria-label="database select list" formControlName="database" required
+												(change)="onDatabaseChange($event)">
+												<option *ngFor="let d of this.dbListData" [ngValue]="d">{{d.name}}</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td class="frmlbl" for="txtUserName"><label #userNameLbl>User Name</label></td>
+										<td><label class="ast">*</label></td>
+										<td>
+											<input id="txUserName" aria-label="user name" formControlName="userName" name="txUserName" type="text" style="width:130px;" required minlength="4">
+										</td>
+									</tr>
+									<tr>
+										<td class="frmlbl" for="txtPwd"><label #pwdLbl>Password</label></td>
+										<td><label class="ast">*</label></td>
+										<td>
+											<input id="txPwd" aria-labelledby="pwdLbl" formControlName="password" name="txPwd" type="password" style="width:130px;" required minlength="4"/>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="3">
+											<span id="displayError" class="ast"></span>
+										</td>
+									</tr>
+						</table>
+				</div>		
+			</div>
+			<div id="dv-login-btn-bar">
+				 <div class="w3-center">
+					<div class="w3-bar">
+					  <!--
+						  <button class="w3-small w3-padding-small" routerLink="/home">Login</button>
+					  -->
+					  <button id="loginBtn" class="w3-small w3-padding-small" (click)="connectAndLogin()">Login</button>
+					  <button class="w3-small w3-padding-small" routerLink="/welcome">Cancel</button>
+					  <button class="w3-small w3-padding-small" routerLink="/welcome/recover-account">Recover Account</button>
+					</div>
+				</div> 
+			</div>
+		</div>
+	</form>
+	</div>
+	<app-prompt-modal #promptModal id="promptModal" (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>

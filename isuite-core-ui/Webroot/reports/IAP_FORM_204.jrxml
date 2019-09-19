@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IAP_FORM_204" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="880bab8d-4b22-4c48-ab0c-b8fb2bf0b16a">
+	<property name="ireport.zoom" value="2.1961500000000007"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="140"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Workspace\\isuite-core\\Webroot\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="fromDate" class="java.lang.String"/>
+	<field name="fromTime" class="java.lang.String"/>
+	<field name="toDate" class="java.lang.String"/>
+	<field name="toTime" class="java.lang.String"/>
+	<field name="branchName" class="java.lang.String"/>
+	<field name="divisionName" class="java.lang.String"/>
+	<field name="groupName" class="java.lang.String"/>
+	<field name="stagingArea" class="java.lang.String"/>
+	<field name="preparedBy" class="java.lang.String"/>
+	<field name="preparedByPosition" class="java.lang.String"/>
+	<field name="preparedDateTime" class="java.lang.String"/>
+	<field name="specialInstructions" class="java.lang.String"/>
+	<field name="workAssignments" class="java.lang.String"/>
+	<field name="resourcesAssigned" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="communications" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="operationsPersonnel" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="approvedBy" class="java.lang.String"/>
+	<field name="preparedDateString" class="java.lang.String"/>
+	<field name="preparedTime" class="java.lang.String"/>
+	<field name="draftFinal" class="java.lang.String"/>
+	<field name="operationalPeriod" class="java.lang.String"/>
+	<field name="fromDayOfWeek" class="java.lang.String"/>
+	<field name="toDayOfWeek" class="java.lang.String"/>
+	<background>
+		<band height="752" splitType="Stretch">
+			<line>
+				<reportElement uuid="5d008a8b-7052-4fe4-8822-5d9eeb97b016" x="0" y="20" width="1" height="707"/>
+			</line>
+			<line>
+				<reportElement uuid="5d008a8b-7052-4fe4-8822-5d9eeb97b016" x="572" y="20" width="1" height="707"/>
+			</line>
+			<line>
+				<reportElement uuid="c5543e5b-5978-452c-8df5-bffefc2cbca0" x="0" y="726" width="572" height="1"/>
+			</line>
+		</band>
+	</background>
+	<pageHeader>
+		<band height="111">
+			<staticText>
+				<reportElement uuid="b0c668ad-8b81-4e20-acf0-dbed2afa115a" x="0" y="0" width="572" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Division/Group Assignment List (ICS 204 WF)]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="7eb1faef-4181-4cb1-b214-5159a913d26c" x="0" y="20" width="572" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="683e1ef2-5ca7-483f-9010-d689de7461bf" mode="Opaque" x="1" y="21" width="315" height="16" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ 1. Incident Name:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="683e1ef2-5ca7-483f-9010-d689de7461bf" mode="Opaque" x="1" y="63" width="315" height="16" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ 2. Operational Period:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2b95cd75-d514-4cb8-9e70-3843889c72c8" x="7" y="40" width="297" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{incidentName}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="39e18e89-cb77-4906-b2ed-c85d096274f9" x="0" y="62" width="316" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="bbd77836-5899-4781-a2b6-556728eabd08" x="316" y="21" width="1" height="90"/>
+			</line>
+			<line>
+				<reportElement uuid="39e18e89-cb77-4906-b2ed-c85d096274f9" x="0" y="37" width="316" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="39e18e89-cb77-4906-b2ed-c85d096274f9" x="0" y="79" width="316" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="aed4cd80-f4d6-4e94-9c61-827c9d2a829f" x="2" y="83" width="100" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Date/Time From:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="aed4cd80-f4d6-4e94-9c61-827c9d2a829f" x="165" y="83" width="100" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Date/Time To:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="683e1ef2-5ca7-483f-9010-d689de7461bf" mode="Opaque" x="317" y="21" width="255" height="16" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  3.]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="bbd77836-5899-4781-a2b6-556728eabd08" x="414" y="39" width="1" height="72"/>
+			</line>
+			<staticText>
+				<reportElement uuid="19f4a4a8-70e9-477c-9d39-ad8a5bb03caf" x="317" y="39" width="42" height="16"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Branch:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="19f4a4a8-70e9-477c-9d39-ad8a5bb03caf" x="418" y="40" width="68" height="16"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Division/Group:]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="7eb1faef-4181-4cb1-b214-5159a913d26c" x="0" y="110" width="572" height="1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="e4731705-3479-4279-97c4-573880496c67" x="329" y="56" width="59" height="50"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{branchName}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="e4731705-3479-4279-97c4-573880496c67" x="428" y="56" width="125" height="50"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{divisionName}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="adbbaa48-84f2-4678-841b-6b3fcc9043b0" x="2" y="95" width="100" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{fromDate} != null ? $F{fromDate} : "" )+" "+($F{fromTime} != null ? $F{fromTime} : "")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="adbbaa48-84f2-4678-841b-6b3fcc9043b0" x="165" y="95" width="100" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{toDate} != null ? $F{toDate} : "")+" "+($F{toTime} != null ? $F{toTime} : "")]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="c3706b72-a97e-44f4-8d77-099c5c5eadcd" x="110" y="95" width="38" height="13" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fromDayOfWeek}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="c3706b72-a97e-44f4-8d77-099c5c5eadcd" x="280" y="95" width="36" height="13" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{toDayOfWeek}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="c3706b72-a97e-44f4-8d77-099c5c5eadcd" x="134" y="63" width="131" height="13" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{operationalPeriod}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="39e18e89-cb77-4906-b2ed-c85d096274f9" x="317" y="37" width="255" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="bbd77836-5899-4781-a2b6-556728eabd08" x="158" y="80" width="1" height="30"/>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="683e1ef2-5ca7-483f-9010-d689de7461bf" mode="Opaque" x="1" y="0" width="20" height="16" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ 4.]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="7eb1faef-4181-4cb1-b214-5159a913d26c" x="0" y="16" width="572" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="683e1ef2-5ca7-483f-9010-d689de7461bf" mode="Opaque" x="20" y="0" width="552" height="16" backcolor="#CCCCCC"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[                                                                                                   Operations Personnel]]></text>
+			</staticText>
+			<subreport>
+				<reportElement uuid="3ec50ce5-7ea7-46a7-bf1d-b14948309d3f" x="0" y="17" width="572" height="23" isPrintWhenDetailOverflows="true"/>
+				<dataSourceExpression><![CDATA[$F{operationsPersonnel}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "IAP_FORM_204_OpPersonnel2.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="683e1ef2-5ca7-483f-9010-d689de7461bf" mode="Opaque" x="20" y="0" width="552" height="16" backcolor="#CCCCCC"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[                                                                                         Resources Assigned this Period]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="39e18e89-cb77-4906-b2ed-c85d096274f9" x="0" y="16" width="572" height="1"/>
+			</line>
+			<subreport>
+				<reportElement uuid="8c0403df-fec1-4da0-8cb2-a91ca7c5c964" x="0" y="17" width="572" height="40" isPrintWhenDetailOverflows="true"/>
+				<dataSourceExpression><![CDATA[$F{resourcesAssigned}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "IAP_FORM_204_ResourcesAssigned.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement uuid="683e1ef2-5ca7-483f-9010-d689de7461bf" mode="Opaque" x="1" y="0" width="20" height="16" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ 5.]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="39e18e89-cb77-4906-b2ed-c85d096274f9" x="0" y="0" width="572" height="1"/>
+			</line>
+		</band>
+		<band height="46" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="683e1ef2-5ca7-483f-9010-d689de7461bf" x="2" y="0" width="529" height="16"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[6. Control Operations/Work Assignments:]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="39e18e89-cb77-4906-b2ed-c85d096274f9" positionType="Float" mode="Opaque" x="0" y="0" width="572" height="1"/>
+			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="e682ab5d-e566-4ae4-8fe7-5e99de8257c0" x="5" y="16" width="564" height="30" isPrintWhenDetailOverflows="true"/>
+				<textElement markup="html">
+					<font size="10" isStrikeThrough="false"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="1.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{workAssignments}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="46" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="683e1ef2-5ca7-483f-9010-d689de7461bf" x="2" y="0" width="132" height="16"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[7. Special Instructions:]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="39e18e89-cb77-4906-b2ed-c85d096274f9" x="0" y="0" width="572" height="1"/>
+			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="c3880940-12d6-4adf-9696-5fb807b88683" x="5" y="16" width="564" height="30" isPrintWhenDetailOverflows="true"/>
+				<textElement markup="html">
+					<font size="10"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="1.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{specialInstructions}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="250" splitType="Stretch">
+			<frame>
+				<reportElement uuid="0abc2fbe-5ab2-47d5-9b87-c0392b16ee8c" positionType="Float" x="0" y="83" width="572" height="59"/>
+				<staticText>
+					<reportElement uuid="683e1ef2-5ca7-483f-9010-d689de7461bf" x="2" y="2" width="207" height="16"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[9. Prepared By (Resource Unit Leader)]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="adbbaa48-84f2-4678-841b-6b3fcc9043b0" x="5" y="21" width="204" height="14"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{preparedBy}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement uuid="0d7b4a83-4d17-4b26-8bd7-df05a6e26812" x="214" y="0" width="1" height="35"/>
+				</line>
+				<staticText>
+					<reportElement uuid="683e1ef2-5ca7-483f-9010-d689de7461bf" x="216" y="2" width="193" height="16"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Approved By (Planning Section Chief)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="683e1ef2-5ca7-483f-9010-d689de7461bf" x="414" y="2" width="34" height="16"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Date]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="683e1ef2-5ca7-483f-9010-d689de7461bf" x="497" y="2" width="34" height="16"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Time]]></text>
+				</staticText>
+				<line>
+					<reportElement uuid="0d7b4a83-4d17-4b26-8bd7-df05a6e26812" x="411" y="0" width="1" height="35"/>
+				</line>
+				<line>
+					<reportElement uuid="0d7b4a83-4d17-4b26-8bd7-df05a6e26812" x="485" y="0" width="1" height="35"/>
+				</line>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="adbbaa48-84f2-4678-841b-6b3fcc9043b0" x="224" y="21" width="179" height="14"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{approvedBy}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="adbbaa48-84f2-4678-841b-6b3fcc9043b0" x="414" y="21" width="67" height="14"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{preparedDateString}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="adbbaa48-84f2-4678-841b-6b3fcc9043b0" x="490" y="21" width="68" height="14"/>
+					<textElement textAlignment="Left">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{preparedTime}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="e4cca922-da64-4b64-864e-cb8fcfe2b6a6" x="102" y="38" width="360" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{draftFinal}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="5bcdf60d-f815-4131-8c04-e8e1c8f3c7cd" x="2" y="38" width="100" height="20"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ICS 204 WF (1/14)]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="cac22b33-6d8b-4a5d-9b9b-11e9bad5e7e8" x="475" y="38" width="77" height="20" isPrintWhenDetailOverflows="true"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Report">
+					<reportElement uuid="0d6d260e-e3e0-43c2-b105-9127b1548dac" x="552" y="38" width="20" height="20" isPrintWhenDetailOverflows="true"/>
+					<textElement verticalAlignment="Top">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement uuid="39e18e89-cb77-4906-b2ed-c85d096274f9" x="0" y="35" width="572" height="1"/>
+				</line>
+			</frame>
+			<staticText>
+				<reportElement uuid="683e1ef2-5ca7-483f-9010-d689de7461bf" positionType="Float" mode="Opaque" x="1" y="0" width="571" height="16" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  Division/Group Communication Summary]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="39e18e89-cb77-4906-b2ed-c85d096274f9" positionType="Float" x="0" y="0" width="572" height="1"/>
+			</line>
+			<subreport>
+				<reportElement uuid="59c48b6c-f525-4e46-8280-0b7c24c58b28" positionType="Float" x="0" y="16" width="572" height="67" isPrintWhenDetailOverflows="true"/>
+				<dataSourceExpression><![CDATA[$F{communications}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "IAP_FORM_204_Communications.jasper"]]></subreportExpression>
+			</subreport>
+			<line>
+				<reportElement uuid="39e18e89-cb77-4906-b2ed-c85d096274f9" positionType="Float" x="0" y="16" width="572" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="683e1ef2-5ca7-483f-9010-d689de7461bf" positionType="Float" mode="Opaque" x="1" y="1" width="20" height="15" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ 8.]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

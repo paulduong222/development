@@ -1,0 +1,33 @@
+<app-jw-modal id="agreement-reason-modal" style="display: none;" class="box-hdr-dv">
+    <div style="width: 400px; height: 200px;padding: 0px;">
+        <div class="w3-container w3-padding-small w3-theme-d2">
+            <div class="w3-left">Agreement Number Change Reason</div>
+            <div class="w3-right"></div>
+        </div>
+        <div>
+            <Label class="tablbl">Enter reason for agreement number change.</Label>
+        </div>
+        <div class="eis" style="height: 150px; width: 100%;">
+            <form [formGroup]="reasonForm" autocomplete="off">
+            <table>
+                <tr>
+                    <td class="frmlbl"><label class="f1" for="txReason">Reason</label></td>
+                    <td><label class="ast">*</label></td>
+                    <td>
+                        <textarea id="txReason" name="txReason" 
+                          formControlName="reason" maxlength="255"
+                          style="width:300px;height:100px;resize: none;"
+                          (input)="this.inputChange($event)"></textarea>
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+        <div id="dv-reason-action-bar">
+            <div class="w3-center w3-small">
+                <button (click)="this.save()" [disabled]="btnDisabled" title="Click to save the change reason">Save</button>
+                <button (click)="closeModal('agreement-reason-modal');" title="Click to cancel changes and close window">Close</button>
+            </div>
+        </div>
+   </div>
+</app-jw-modal>

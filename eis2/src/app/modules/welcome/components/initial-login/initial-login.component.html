@@ -1,0 +1,96 @@
+<div class="">
+    <div id="dv-initial-login-wrapper" class="div-center-screen">
+      <div class="w3-container w3-padding-small w3-theme-d2">
+        <div class="w3-left">
+          Create Account Manager User
+        </div>
+      </div>
+      <div id="dv-initial-login">
+        <div>
+          <label >Please create the initial database name, password, and the initial Site Account Manager user.</label>
+        </div>
+        <div id="dv-logo">
+          <img src="assets/images/logots.png">
+        </div>
+        <div id="dv-right">
+          <label>Database Name MUST begin with an Alpha character.</label>
+          <p></p>
+          <table>
+            <tr>
+              <td class="frmlbl"><label>Database Name</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                <input id="txDatabaseName" name="txDatabaseName" type="text" maxlength="30" style="width:250px;"/>
+              </td>
+            </tr>
+            <tr>
+              <td class="frmlbl"><label>Database Password</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                <input id="txDatabasePassword" name="txDatabasePassword" type="text" maxlength="30" style="width:250px;"/>
+              </td>
+            </tr>
+            <tr>
+              <td class="frmlbl"><label>Confirm Database Password</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                <input id="txConfirmDatabasePassword" name="txConfirmDatabasePassword" type="text" maxlength="30" style="width:250px;"/>
+              </td>
+            </tr>
+            <p></p>
+            <tr>
+              <td class="frmlbl"><label>User Name</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                <input id="txUserName" name="txUserName" type="text" value="ad." maxlength="255" style="width:250px;"/>
+              </td>
+            </tr>
+            <tr>
+              <td class="frmlbl"><label>First Name</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                <input id="txFirstName" name="txFirstName" type="text" maxlength="30" style="width:250px;"/>
+              </td>
+            </tr>
+            <tr>
+              <td class="frmlbl"><label>Last Name</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                <input id="txLastName" name="txLastName" type="text" maxlength="35" style="width:250px;"/>
+              </td>
+            </tr>
+            <tr>
+              <td class="frmlbl" ><label>Unit ID</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                <select id="cbUnitID" style="width:150px; height:24px;"></select>
+              </td>
+            </tr>
+            <tr>
+              <td class="frmlbl"><label>Password</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                <input id="txPassword" name="txPassword" type="text" maxlength="255" style="width:250px;"/>
+              </td>
+            </tr>	
+            <tr>
+              <td class="frmlbl"><label>Confirm Password</label></td>
+              <td><label class="ast">*</label></td>
+              <td>
+                <input id="txConfirmPassword" name="txConfirmPassword" type="text" maxlength="255" style="width:250px;"/>
+              </td>
+            </tr>		
+          </table>
+        </div>		
+      </div>
+      <div id="dv-initial-login-btn-bar">
+         <div class="w3-center">
+          <div class="w3-bar">
+            <button class="w3-small w3-padding-small">Save</button>
+            <button class="w3-small w3-padding-small" routerLink="/welcome">Cancel</button>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+  

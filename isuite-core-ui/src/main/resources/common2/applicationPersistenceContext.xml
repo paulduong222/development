@@ -1,0 +1,1959 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:security="http://www.springframework.org/schema/security"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.1.xsd">
+
+	
+	<context:property-placeholder location="classpath:jdbc.properties,classpath:app.properties"/>
+	
+    <bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" lazy-init="true">
+    </bean>
+    
+	<import resource="applicationSessionFactoryContext.xml"/>
+
+	<bean id="ldapProperties"
+		class="gov.nwcg.isuite.framework.security.ldap.LdapProperties">
+		<property name="ldapFactory" value="${ldap.factory}" />
+		<property name="ldapUrl" value="${ldap.url}" />
+		<property name="ldapAuthType" value="${ldap.authenticationtype}" />
+	</bean>
+
+	<bean id="hibernateProperties"
+		class="gov.nwcg.isuite.framework.core.persistence.hibernate.HibernateProperties">
+		<property name="dialect" value="${hibernate.dialect}" />
+		<property name="showSql" value="${hibernate.showSql}" />
+		<property name="hbm2ddl" value="${hibernate.hbm2ddl.auto}" />
+		<property name="default_schema" value="${hibernate.default_schema}" />
+	</bean>
+
+	<!--
+	<bean id="parentDataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		abstract="true">
+	</bean>
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+	-->
+	<bean id="parentDataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		abstract="true">
+	</bean>
+		
+	<bean id="dataSource" 
+			parent="parentDataSource"
+			class="gov.nwcg.isuite.framework.core.persistence.RoutingDataSource">
+		<property name="targetDataSources">
+			<map key-type="gov.nwcg.isuite.framework.core.persistence.DynamicDataSourceType">
+				<entry key="MASTER" value-ref="masterDataSource"/>
+				<entry key="DEFAULT0" value-ref="default0DataSource"/>
+				<entry key="DEFAULT1" value-ref="default1DataSource"/>
+				<entry key="DEFAULT2" value-ref="default2DataSource"/>
+				<entry key="DEFAULT3" value-ref="default3DataSource"/>
+				<entry key="DEFAULT4" value-ref="default4DataSource"/>
+				<entry key="DEFAULT5" value-ref="default5DataSource"/>
+				<entry key="DEFAULT6" value-ref="default6DataSource"/>
+				<entry key="DEFAULT7" value-ref="default7DataSource"/>
+				<entry key="DEFAULT8" value-ref="default8DataSource"/>
+				<entry key="DEFAULT9" value-ref="default9DataSource"/>
+				<entry key="DEFAULT10" value-ref="default10DataSource"/>
+				<entry key="DEFAULT11" value-ref="default11DataSource"/>
+				<entry key="DEFAULT12" value-ref="default12DataSource"/>
+				<entry key="DEFAULT13" value-ref="default13DataSource"/>
+				<entry key="DEFAULT14" value-ref="default14DataSource"/>
+				<entry key="DEFAULT15" value-ref="default15DataSource"/>
+				<entry key="DEFAULT16" value-ref="default16DataSource"/>
+				<entry key="DEFAULT17" value-ref="default17DataSource"/>
+				<entry key="DEFAULT18" value-ref="default18DataSource"/>
+				<entry key="DEFAULT19" value-ref="default19DataSource"/>
+				<entry key="DEFAULT20" value-ref="default20DataSource"/>
+			</map>
+		</property>
+		<property name="defaultTargetDataSource" ref="masterDataSource"/>
+	</bean>
+	
+	<bean id="masterDataSource" parent="parentDataSource" >
+		<property name="url" value="${jdbc.url}" />
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<!--
+        <property name="validationQuery" value="${validationQuery}" />
+        <property name="testOnBorrow" value="${testOnBorrow}" />
+	-->
+	<bean id="default0DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default1DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default2DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default3DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default4DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default5DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default6DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default7DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default8DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default9DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default10DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default11DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default12DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default13DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default14DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default15DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default16DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default17DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default18DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default19DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="default20DataSource" parent="parentDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+
+	<bean id="sessionFactory" parent="baseSessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="hibernateProperties" ref="hibernateProperties" />
+		<property name="dataSource" ref="dataSource" />
+        <property name="lobHandler" ref="lobHandler" />
+	</bean>
+	
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="nestedTransactionAllowed" value="true"/>
+	</bean>
+	
+	 <!-- ############################### -->
+    <!--      transaction support        -->
+    <!-- ############################### -->	
+	
+	<bean id="transactionSupportTarget" class="gov.nwcg.isuite.framework.core.persistence.hibernate.TransactionSupportImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="providerDialect" value="${hibernate.dialect}" />
+        <property name="loggingInterceptor" ref="loggingInterceptor" />
+	</bean>
+
+	<bean id="transactionSupport"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="target" ref="transactionSupportTarget" />
+		<property name="transactionAttributes">
+			<props>
+           	<prop key="get*Picklist*">
+               PROPAGATION_NESTED,readOnly, -PersistenceException
+            </prop>  
+            <prop key="get*Grid*">
+               PROPAGATION_NESTED,readOnly, -PersistenceException
+            </prop>  
+            <prop key="*">
+               PROPAGATION_NESTED, -PersistenceException
+            </prop>
+			</props>
+		</property>
+	</bean>
+	
+	 <!-- ############################### -->
+    <!--          encryptor            -->
+    <!-- ############################### -->	
+	
+	<bean id="encryptor" class="gov.nwcg.isuite.framework.security.impl.SecretKeyEncryptorImpl">
+		<constructor-arg>
+			<value>testProperties.properties</value>
+		</constructor-arg>
+	</bean>   
+	
+	<bean id="encryption" class="gov.nwcg.isuite.framework.security.impl.Encryption">
+		<constructor-arg ref="encryptor" />
+	</bean>  
+
+    <bean id="crudDaoTarget" 
+        class="gov.nwcg.isuite.framework.core.persistence.hibernate.CrudDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+    	</bean>
+	
+	<bean id="crudDao"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="target" ref="crudDaoTarget" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">
+					PROPAGATION_NESTED, -PersistenceException
+				</prop>
+			</props>
+		</property>
+	</bean>
+	
+    <bean id="transferableDaoTarget" 
+        class="gov.nwcg.isuite.framework.core.persistence.hibernate.TransferableDaoHibernate" >
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="transferableDao"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="target" ref="transferableDaoTarget" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">
+					PROPAGATION_NESTED, -PersistenceException
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<bean id="accrualCodeDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.AccrualCodeDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="accrualCodeDao" parent="transactionSupport">
+		<property name="target" ref="accrualCodeDaoTarget" />
+	</bean>
+
+	<bean id="accountCodeDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.AccountCodeDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="accountCodeDao" parent="transactionSupport">
+		<property name="target" ref="accountCodeDaoTarget" />
+	</bean>
+
+	<bean id="adjustCategoryDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.AdjustCategoryDaoHibernate">
+        <constructor-arg ref="crudDao" /> 
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="adjustCategoryDao" parent="transactionSupport">
+		<property name="target" ref="adjustCategoryDaoTarget" />
+	</bean>	
+
+	<bean id="adminOfficeDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.AdminOfficeDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="adminOfficeDao" parent="transactionSupport">
+		<property name="target" ref="adminOfficeDaoTarget" />
+	</bean>
+
+	<bean id="agencyDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.AgencyDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="agencyDao" parent="transactionSupport">
+		<property name="target" ref="agencyDaoTarget" />
+	</bean>
+	
+	<bean id="agencyGroupDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.AgencyGroupDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="agencyGroupDao" parent="transactionSupport">
+		<property name="target" ref="agencyGroupDaoTarget" />
+	</bean>
+
+    <bean id="assignableDaoTarget" 
+        class="gov.nwcg.isuite.framework.core.persistence.hibernate.AssignableDaoHibernate" >
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="assignableDao"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="target" ref="assignableDaoTarget" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">
+					PROPAGATION_NESTED, -PersistenceException
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="assignmentDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.AssignmentDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="assignmentDao" parent="transactionSupport">
+		<property name="target" ref="assignmentDaoTarget" />
+	</bean>
+
+	<bean id="assignmentTimeDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.AssignmentTimeDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="assignmentTimeDao" parent="transactionSupport">
+		<property name="target" ref="assignmentTimeDaoTarget" />
+	</bean>
+
+	<bean id="branchSettingDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.BranchSettingDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="branchSettingDao" parent="transactionSupport">
+		<property name="target" ref="branchSettingDaoTarget" />
+	</bean>
+
+	<bean id="branchSettingPositionDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.BranchSettingPositionDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="branchSettingPositionDao" parent="transactionSupport">
+		<property name="target" ref="branchSettingPositionDaoTarget" />
+	</bean>
+	
+	<bean id="complexityDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.ComplexityDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="complexityDao" parent="transactionSupport">
+		<property name="target" ref="complexityDaoTarget" />
+	</bean>	
+
+	<bean id="contractorDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.ContractorDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="contractorDao" parent="transactionSupport">
+		<property name="target" ref="contractorDaoTarget" />
+	</bean>	
+	
+	<bean id="contractorAgreementDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.ContractorAgreementDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="contractorAgreementDao" parent="transactionSupport">
+		<property name="target" ref="contractorAgreementDaoTarget" />
+	</bean>	
+	
+	<bean id="contractorAgreementNumberHistoryDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.ContractorAgreementNumberHistoryDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="contractorAgreementNumberHistoryDao" parent="transactionSupport">
+		<property name="target" ref="contractorAgreementNumberHistoryDaoTarget" />
+	</bean>	
+	
+	<bean id="contractorNameHistoryDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.ContractorNameHistoryDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="contractorNameHistoryDao" parent="transactionSupport">
+		<property name="target" ref="contractorNameHistoryDaoTarget" />
+	</bean>	
+	
+	<bean id="contractorPaymentInfoDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.ContractorPaymentInfoDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="contractorPaymentInfoDao" parent="transactionSupport">
+		<property name="target" ref="contractorPaymentInfoDaoTarget" />
+	</bean>
+	
+	<bean id="contractorRateDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.ContractorRateDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="contractorRateDao" parent="transactionSupport">
+		<property name="target" ref="contractorRateDaoTarget" />
+	</bean>	
+
+	<bean id="costAccrualExtractDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.CostAccrualExtractDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="costAccrualExtractDao" parent="transactionSupport">
+		<property name="target" ref="costAccrualExtractDaoTarget" />
+	</bean>	
+
+	<bean id="costDataDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.CostDataDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="costDataDao" parent="transactionSupport">
+		<property name="target" ref="costDataDaoTarget" />
+	</bean>	
+
+	<bean id="costGroupAgencyDayShareDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.CostGroupAgencyDayShareDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="costGroupAgencyDayShareDao" parent="transactionSupport">
+		<property name="target" ref="costGroupAgencyDayShareDaoTarget" />
+	</bean>	
+	
+	<bean id="costGroupAgencyDaySharePercentageDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.CostGroupAgencyDaySharePercentageDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="costGroupAgencyDaySharePercentageDao" parent="transactionSupport">
+		<property name="target" ref="costGroupAgencyDaySharePercentageDaoTarget" />
+	</bean>	
+	
+	<bean id="costGroupDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.CostGroupDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="costGroupDao" parent="transactionSupport">
+		<property name="target" ref="costGroupDaoTarget" />
+	</bean>	
+	
+	<bean id="costProjectionItemWorksheetDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.CostProjectionItemWorksheetDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="costProjectionItemWorksheetDao" parent="transactionSupport">
+		<property name="target" ref="costProjectionItemWorksheetDaoTarget" />
+	</bean>
+	
+	<bean id="costProjectionDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.CostProjectionDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="costProjectionDao" parent="transactionSupport">
+		<property name="target" ref="costProjectionDaoTarget" />
+	</bean>	
+	
+	<bean id="costProjectionItemDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.CostProjectionItemDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="costProjectionItemDao" parent="transactionSupport">
+		<property name="target" ref="costProjectionItemDaoTarget" />
+	</bean>	
+
+
+	<bean id="countryCodeDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.CountryCodeDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="countryCodeDao" parent="transactionSupport">
+		<property name="target" ref="countryCodeDaoTarget" />
+	</bean>
+
+	<bean id="countryCodeSubdivisionDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.CountryCodeSubdivisionDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="countryCodeSubdivisionDao" parent="transactionSupport">
+		<property name="target" ref="countryCodeSubdivisionDaoTarget" />
+	</bean>
+	
+	<bean id="customReportDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.CustomReportDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="customReportDao" parent="transactionSupport">
+		<property name="target" ref="customReportDaoTarget" />
+	</bean>
+	
+	<bean id="customReportFilterDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.CustomReportFilterDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="customReportFilterDao" parent="transactionSupport">
+		<property name="target" ref="customReportFilterDaoTarget" />
+	</bean>
+
+	<bean id="dailyFormDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.DailyFormDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="dailyFormDao" parent="transactionSupport">
+		<property name="target" ref="dailyFormDaoTarget" />
+	</bean>	
+
+	<bean id="dataAuditConfigDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.DataAuditConfigDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="dataAuditConfigDao" parent="transactionSupport">
+		<property name="target" ref="dataAuditConfigDaoTarget" />
+	</bean>	
+
+	<bean id="dataAuditTrackingDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.DataAuditTrackingDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="dataAuditTrackingDao" parent="transactionSupport">
+		<property name="target" ref="dataAuditTrackingDaoTarget" />
+	</bean>	
+
+	<bean id="dataTransferDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.DataTransferDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="dataTransferDao" parent="transactionSupport">
+		<property name="target" ref="dataTransferDaoTarget" />
+	</bean>	
+
+	<bean id="dataStreamXStream"
+		class="gov.nwcg.isuite.framework.stream.DataStreamXstream">
+		<property name="converters">
+			<list>
+				<bean
+					class="gov.nwcg.isuite.framework.other.impl.MessageConverter">
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="dbAvailDaoTarget" parent="transactionSupportTarget"
+			class="gov.nwcg.isuite.core.persistence.hibernate.DbAvailDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="dbAvailDao" parent="transactionSupport">
+		<property name="target" ref="dbAvailDaoTarget" />
+	</bean>	
+
+	<bean id="departmentDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.DepartmentDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="departmentDao" parent="transactionSupport">
+		<property name="target" ref="departmentDaoTarget" />
+	</bean>	
+	
+	<bean id="eventTypeDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.EventTypeDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="entryDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.EntryDaoHibernate">
+		<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="entryDao" parent="transactionSupport">
+		<property name="target" ref="entryDaoTarget" />
+	</bean>
+	
+	<bean id="entryErrorDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.EntryErrorDaoHibernate">
+        <constructor-arg ref="crudDao" /> 
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="entryErrorDao" parent="transactionSupport">
+		<property name="target" ref="entryErrorDaoTarget" />
+	</bean>
+
+	<bean id="eventTypeDao" parent="transactionSupport">
+		<property name="target" ref="eventTypeDaoTarget" />
+	</bean>
+	
+	<bean id="financialExportDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.FinancialExportDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="financialExportDao" parent="transactionSupport">
+		<property name="target" ref="financialExportDaoTarget" />
+	</bean>
+	
+	<bean id="fontDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.FontDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="fontDao" parent="transactionSupport">
+		<property name="target" ref="fontDaoTarget" />
+	</bean>	
+	
+	<bean id="fuelTypeDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.FuelTypeDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="fuelTypeDao" parent="transactionSupport">
+		<property name="target" ref="fuelTypeDaoTarget" />
+	</bean>
+
+	<bean id="glidePathReportDao" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.GlidePathReportDaoHibernate" >
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="gridColumnDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.GridColumnDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="gridColumnDao" parent="transactionSupport">
+		<property name="target" ref="gridColumnDaoTarget" />
+	</bean>	
+
+	<bean id="gridColumnUserDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.GridColumnUserDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="gridColumnUserDao" parent="transactionSupport">
+		<property name="target" ref="gridColumnUserDaoTarget" />
+	</bean>	
+
+	<bean id="groupCategoryDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.GroupCategoryDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="groupCategoryDao" parent="transactionSupport">
+		<property name="target" ref="groupCategoryDaoTarget" />
+	</bean>	
+
+	<bean id="iapAreaLocationCapabilityDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapAreaLocationCapabilityDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="iapAreaLocationCapabilityDao" parent="transactionSupport">
+		<property name="target" ref="iapAreaLocationCapabilityDaoTarget" />
+	</bean>	
+
+	<bean id="iapAttachmentDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapAttachmentDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="iapAttachmentDao" parent="transactionSupport">
+		<property name="target" ref="iapAttachmentDaoTarget" />
+	</bean>	
+
+	<bean id="iapBranchDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapBranchDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="iapBranchDao" parent="transactionSupport">
+		<property name="target" ref="iapBranchDaoTarget" />
+	</bean>	
+
+	<bean id="iapBranchCommSummaryDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapBranchCommSummaryDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="iapBranchCommSummaryDao" parent="transactionSupport">
+		<property name="target" ref="iapBranchCommSummaryDaoTarget" />
+	</bean>	
+
+
+	<bean id="iapBranchPersonnelDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapBranchPersonnelDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="iapBranchPersonnelDao" parent="transactionSupport">
+		<property name="target" ref="iapBranchPersonnelDaoTarget" />
+	</bean>	
+
+	<bean id="iapBranchRscAssignDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapBranchRscAssignDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="iapBranchRscAssignDao" parent="transactionSupport">
+		<property name="target" ref="iapBranchRscAssignDaoTarget" />
+	</bean>	
+
+
+	<bean id="iapForm202DaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapForm202DaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="iapForm202Dao" parent="transactionSupport">
+		<property name="target" ref="iapForm202DaoTarget" />
+	</bean>	
+
+	<bean id="iapForm203DaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapForm203DaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="iapForm203Dao" parent="transactionSupport">
+		<property name="target" ref="iapForm203DaoTarget" />
+	</bean>	
+
+	<bean id="iapForm205DaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapForm205DaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="iapForm205Dao" parent="transactionSupport">
+		<property name="target" ref="iapForm205DaoTarget" />
+	</bean>	
+
+	<bean id="iapForm206DaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapForm206DaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="iapForm206Dao" parent="transactionSupport">
+		<property name="target" ref="iapForm206DaoTarget" />
+	</bean>	
+
+	<bean id="iapForm220DaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapForm220DaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="iapForm220Dao" parent="transactionSupport">
+		<property name="target" ref="iapForm220DaoTarget" />
+	</bean>	
+
+	<bean id="iapAircraftDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapAircraftDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="iapAircraftDao" parent="transactionSupport">
+		<property name="target" ref="iapAircraftDaoTarget" />
+	</bean>	
+
+	<bean id="iapAircraftTaskDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapAircraftTaskDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="iapAircraftTaskDao" parent="transactionSupport">
+		<property name="target" ref="iapAircraftTaskDaoTarget" />
+	</bean>	
+
+	<bean id="iapHospitalDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapHospitalDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="iapHospitalDao" parent="transactionSupport">
+		<property name="target" ref="iapHospitalDaoTarget" />
+	</bean>	
+	
+	<bean id="iapMedicalAidDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapMedicalAidDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="iapMedicalAidDao" parent="transactionSupport">
+		<property name="target" ref="iapMedicalAidDaoTarget" />
+	</bean>	
+	
+	<bean id="iapPersonnelDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapPersonnelDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="iapPersonnelDao" parent="transactionSupport">
+		<property name="target" ref="iapPersonnelDaoTarget" />
+	</bean>	
+	
+	<bean id="iapFrequencyDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapFrequencyDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="iapFrequencyDao" parent="transactionSupport">
+		<property name="target" ref="iapFrequencyDaoTarget" />
+	</bean>	
+
+	<bean id="iapPlanDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapPlanDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="iapPlanDao" parent="transactionSupport">
+		<property name="target" ref="iapPlanDaoTarget" />
+	</bean>
+	
+	<bean id="iapPlanPrintOrderDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapPlanPrintOrderDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="iapPlanPrintOrderDao" parent="transactionSupport">
+		<property name="target" ref="iapPlanPrintOrderDaoTarget" />
+	</bean>	
+
+	<bean id="iapRemoteCampLocDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapRemoteCampLocationsDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="iapRemoteCampLocDao" parent="transactionSupport">
+		<property name="target" ref="iapRemoteCampLocDaoTarget" />
+	</bean>	
+
+	<bean id="iapMasterFrequencyDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapMasterFrequencyDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="iapMasterFrequencyDao" parent="transactionSupport">
+		<property name="target" ref="iapMasterFrequencyDaoTarget" />
+	</bean>	
+	
+	<bean id="iapPositionItemCodeDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IapPositionItemCodeDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="iapPositionItemCodeDao" parent="transactionSupport">
+		<property name="target" ref="iapPositionItemCodeDaoTarget" />
+	</bean>	
+	
+	<bean id="incidentCostRateDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IncidentCostRateDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="incidentCostRateDao" parent="transactionSupport">
+		<property name="target" ref="incidentCostRateDaoTarget" />
+	</bean>
+
+	<bean id="incidentCostRateKindDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IncidentCostRateKindDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="incidentCostRateKindDao" parent="transactionSupport">
+		<property name="target" ref="incidentCostRateKindDaoTarget" />
+	</bean>
+
+	<bean id="incidentCostRateOvhdDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IncidentCostRateOvhdDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="incidentCostRateOvhdDao" parent="transactionSupport">
+		<property name="target" ref="incidentCostRateOvhdDaoTarget" />
+	</bean>
+
+	<bean id="incidentCostRateStateDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IncidentCostRateStateDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="incidentCostRateStateDao" parent="transactionSupport">
+		<property name="target" ref="incidentCostRateStateDaoTarget" />
+	</bean>
+
+	<bean id="incidentCostRateStateKindDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IncidentCostRateStateKindDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="incidentCostRateStateKindDao" parent="transactionSupport">
+		<property name="target" ref="incidentCostRateStateKindDaoTarget" />
+	</bean>
+
+	<bean id="incidentDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IncidentDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="incidentDao" parent="transactionSupport">
+		<property name="target" ref="incidentDaoTarget" />
+	</bean>
+
+	<bean id="incidentSelectorDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IncidentSelectorDaoHibernate" >
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="incidentSelectorDao" parent="transactionSupport">
+		<property name="target" ref="incidentSelectorDaoTarget" />
+	</bean>
+	
+	<bean id="incidentAccountCodeDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IncidentAccountCodeDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+	<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="incidentAccountCodeDao" parent="transactionSupport">
+		<property name="target" ref="incidentAccountCodeDaoTarget" />
+	</bean>
+
+	<bean id="incidentGroupDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IncidentGroupDaoHibernate">
+      <constructor-arg ref="crudDao" /> 
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="incidentGroupDao" parent="transactionSupport">
+		<property name="target" ref="incidentGroupDaoTarget" />
+	</bean>
+
+	<bean id="incidentGroupQuestionDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IncidentGroupQuestionDaoHibernate">
+      <constructor-arg ref="crudDao" /> 
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="incidentGroupQuestionDao" parent="transactionSupport">
+		<property name="target" ref="incidentGroupQuestionDaoTarget" />
+	</bean>
+
+	<bean id="incidentGroupUserDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IncidentGroupUserDaoHibernate">
+      <constructor-arg ref="crudDao" /> 
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="incidentGroupUserDao" parent="transactionSupport">
+		<property name="target" ref="incidentGroupUserDaoTarget" />
+	</bean>
+	
+	<bean id="incidentOrgDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IncidentOrgDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="incidentOrgDao" parent="transactionSupport">
+		<property name="target" ref="incidentOrgDaoTarget" />
+	</bean>	
+	
+	<bean id="incidentResourceDailyCostDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IncidentResourceDailyCostDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="incidentResourceDailyCostDao" parent="transactionSupport">
+		<property name="target" ref="incidentResourceDailyCostDaoTarget" />
+	</bean>
+
+	<bean id="incidentResourceOtherDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IncidentResourceOtherDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="incidentResourceOtherDao" parent="transactionSupport">
+		<property name="target" ref="incidentResourceOtherDaoTarget" />
+	</bean>
+	
+
+	<bean id="incidentResourceDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IncidentResourceDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="incidentResourceDao" parent="transactionSupport">
+		<property name="target" ref="incidentResourceDaoTarget" />
+	</bean>
+
+	<bean id="incidentPrefsDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IncidentPrefsDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="incidentPrefsDao" parent="transactionSupport">
+		<property name="target" ref="incidentPrefsDaoTarget" />
+	</bean>	
+	
+	<bean id="incidentQSKindDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IncidentQSKindDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="incidentQSKindDao" parent="transactionSupport">
+		<property name="target" ref="incidentQSKindDaoTarget" />
+	</bean>	
+	
+	<bean id="incidentQuestionDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IncidentQuestionDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="incidentQuestionDao" parent="transactionSupport">
+		<property name="target" ref="incidentQuestionDaoTarget" />
+	</bean>	
+	
+	<bean id="incidentShiftDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.IncidentShiftDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="incidentShiftDao" parent="transactionSupport">
+		<property name="target" ref="incidentShiftDaoTarget" />
+	</bean>	
+
+	<bean id="jetPortDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.JetPortDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="jetPortDao" parent="transactionSupport">
+		<property name="target" ref="jetPortDaoTarget" />
+	</bean>	
+
+	<bean id="kindDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.KindDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="kindDao" parent="transactionSupport">
+		<property name="target" ref="kindDaoTarget" />
+	</bean>	
+	
+	<bean id="kindAltDescDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.KindAltDescDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="kindAltDescDao" parent="transactionSupport">
+		<property name="target" ref="kindAltDescDaoTarget" />
+	</bean>	
+
+	<bean id="kindGroupDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.KindGroupDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="kindGroupDao" parent="transactionSupport">
+		<property name="target" ref="kindGroupDaoTarget" />
+	</bean>
+
+	<bean id="messageDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.MessageDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="messageDao" parent="transactionSupport">
+		<property name="target" ref="messageDaoTarget" />
+	</bean>
+
+	<bean id="messageFilter" scope="prototype" class="gov.nwcg.isuite.core.filter.impl.MessageFilterImpl">
+    </bean>
+
+	<bean id="messageDataStreamDao"
+		class="gov.nwcg.isuite.framework.stream.impl.DataStreamDaoImpl">
+		<constructor-arg><ref bean="messageDataStreamStrategy"/> </constructor-arg>
+	</bean>
+
+	<bean id="messageDataStreamStrategy"
+		class="gov.nwcg.isuite.framework.stream.admin.MessageDataStreamStrategy">
+		<constructor-arg>
+			<ref bean="dataStreamXStream" />
+		</constructor-arg>
+	</bean>
+	
+
+	<bean id="officeTypeDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.OfficeTypeDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="officeTypeDao" parent="transactionSupport">
+		<property name="target" ref="officeTypeDaoTarget" />
+	</bean>
+	
+	<bean id="organizationDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.OrganizationDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="organizationDao" parent="transactionSupport">
+		<property name="target" ref="organizationDaoTarget" />
+	</bean>
+
+	<bean id="passwordHistoryDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.PasswordHistoryDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="passwordHistoryDao" parent="transactionSupport">
+		<property name="target" ref="passwordHistoryDaoTarget" />
+	</bean>	
+	
+	<bean id="priorityProgramDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.PriorityProgramDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="priorityProgramDao" parent="transactionSupport">
+		<property name="target" ref="priorityProgramDaoTarget" />
+	</bean>	
+	
+	<bean id="questionDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.QuestionDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="questionDao" parent="transactionSupport">
+		<property name="target" ref="questionDaoTarget" />
+	</bean>	
+
+	<bean id="quickStatsDao" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.QuickStatsDaoHibernate" >
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="rateClassDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.RateClassDaoHibernate">
+        <constructor-arg ref="crudDao" /> 
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="rateClassDao" parent="transactionSupport">
+		<property name="target" ref="rateClassDaoTarget" />
+	</bean>	
+	
+	<bean id="rateClassRateDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.RateClassRateDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="rateClassRateDao" parent="transactionSupport">
+		<property name="target" ref="rateClassRateDaoTarget" />
+	</bean>	
+	
+	<bean id="rateGroupDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.RateGroupDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="rateGroupDao" parent="transactionSupport">
+		<property name="target" ref="rateGroupDaoTarget" />
+	</bean>	
+	
+	<bean id="recommendationDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.RecommendationDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="recommendationDao" parent="transactionSupport">
+		<property name="target" ref="recommendationDaoTarget" />
+	</bean>	
+	
+	<bean id="regionCodeDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.RegionCodeDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="regionCodeDao" parent="transactionSupport">
+		<property name="target" ref="regionCodeDaoTarget" />
+	</bean>
+
+   	<bean id="requestCategoryDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.RequestCategoryDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="requestCategoryDao" parent="transactionSupport">
+		<property name="target" ref="requestCategoryDaoTarget" />
+	</bean>	
+
+	<bean id="reportIncidentResourceDao" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.ReportIncidentResourceDaoHibernate" >
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+		
+	<bean id="reportDemobDao" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.ReportDemobDaoHibernate" >
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+   <bean id="resInvImportDaoTarget"  parent="transactionSupportTarget"
+      class="gov.nwcg.isuite.core.persistence.hibernate.ResInvImportDaoHibernate">
+      <constructor-arg ref="crudDao" />
+      <property name="sessionFactory" ref="sessionFactory" />
+   </bean>
+   
+   <bean id="resInvImportDao" parent="transactionSupport">
+      <property name="target" ref="resInvImportDaoTarget" />
+   </bean>
+	
+   <bean id="resInvImportConflictDaoTarget"  parent="transactionSupportTarget"
+      class="gov.nwcg.isuite.core.persistence.hibernate.ResInvImportConflictDaoHibernate">
+      <constructor-arg ref="crudDao" />
+      <property name="sessionFactory" ref="sessionFactory" />
+   </bean>
+   
+   <bean id="resInvImportConflictDao" parent="transactionSupport">
+      <property name="target" ref="resInvImportConflictDaoTarget" />
+   </bean>
+
+   <bean id="resourceInventoryDaoTarget"  parent="transactionSupportTarget"
+      class="gov.nwcg.isuite.core.persistence.hibernate.ResourceInventoryDaoHibernate">
+      <constructor-arg ref="crudDao" />
+      <property name="sessionFactory" ref="sessionFactory" />
+   </bean>
+   
+   <bean id="resourceHomeUnitContactDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.ResourceHomeUnitContactDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="resourceHomeUnitContactDao" parent="transactionSupport">
+		<property name="target" ref="resourceHomeUnitContactDaoTarget" />
+	</bean>	
+   
+   <bean id="resourceInventoryDao" parent="transactionSupport">
+      <property name="target" ref="resourceInventoryDaoTarget" />
+   </bean>
+   
+   <bean id="restrictedIncidentUserDaoTarget"  parent="transactionSupportTarget"
+      class="gov.nwcg.isuite.core.persistence.hibernate.RestrictedIncidentUserDaoHibernate">
+      <constructor-arg ref="crudDao" />
+      <property name="sessionFactory" ref="sessionFactory" />
+   </bean>
+   
+   <bean id="restrictedIncidentUserDao" parent="transactionSupport">
+      <property name="target" ref="restrictedIncidentUserDaoTarget" />
+   </bean>
+	
+	<bean id="reportTimeDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.ReportTimeDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<bean id="reportTimeDao" parent="transactionSupport">
+		<property name="target" ref="reportTimeDaoTarget"/>
+	</bean>
+	
+	<bean id="reportCostDao" parent="transactionSupport">
+		<property name="target" ref="reportCostDaoTarget"/>
+	</bean>
+	
+	<bean id="reportCostDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.ReportCostDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="reportDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.ReportDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="reportDao" parent="transactionSupport">
+		<property name="target" ref="reportDaoTarget" />
+	</bean>
+	
+	<bean id="resourceDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.ResourceDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="resourceDao" parent="transactionSupport">
+		<property name="target" ref="resourceDaoTarget" />
+	</bean>
+
+	<bean id="resourceKindDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.ResourceKindDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="resourceKindDao" parent="transactionSupport">
+		<property name="target" ref="resourceKindDaoTarget" />
+	</bean>
+	
+	<bean id="resourceOtherDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.ResourceOtherDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="resourceOtherDao" parent="transactionSupport">
+		<property name="target" ref="resourceOtherDaoTarget" />
+	</bean>	
+	
+	<bean id="resourceTrainingDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.ResourceTrainingDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="resourceTrainingDao" parent="transactionSupport">
+		<property name="target" ref="resourceTrainingDaoTarget" />
+	</bean>
+	
+	<bean id="resourceTrainingObjectiveDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.ResourceTrainingObjectiveDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="resourceTrainingObjectiveDao" parent="transactionSupport">
+		<property name="target" ref="resourceTrainingObjectiveDaoTarget" />
+	</bean>
+	
+	<bean id="resourceTrainingTrainerDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.ResourceTrainingTrainerDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="resourceTrainingTrainerDao" parent="transactionSupport">
+		<property name="target" ref="resourceTrainingTrainerDaoTarget" />
+	</bean>
+
+	<bean id="rossImportProcessDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.RossImportProcessDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="rossImportProcessDao" parent="transactionSupport">
+		<property name="target" ref="rossImportProcessDaoTarget" />
+	</bean>
+
+	<bean id="rossImportProcessDataErrorDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.RossImportProcessDataErrorDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="rossImportProcessDataErrorDao" parent="transactionSupport">
+		<property name="target" ref="rossImportProcessDataErrorDaoTarget" />
+	</bean>
+
+	<bean id="rossImportProcessResourceErrorDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.RossImportProcessResourceErrorDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="rossImportProcessResourceErrorDao" parent="transactionSupport">
+		<property name="target" ref="rossImportProcessResourceErrorDaoTarget" />
+	</bean>
+
+	<bean id="rossIncBlacklistDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.RossIncBlacklistDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="rossIncBlacklistDao" parent="transactionSupport">
+		<property name="target" ref="rossIncBlacklistDaoTarget" />
+	</bean>
+
+	<bean id="rossIncDataBlacklistDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.RossIncDataBlacklistDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="rossIncDataBlacklistDao" parent="transactionSupport">
+		<property name="target" ref="rossIncDataBlacklistDaoTarget" />
+	</bean>
+
+	<bean id="rossXmlFileDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.RossXmlFileDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="rossXmlFileDao" parent="transactionSupport">
+		<property name="target" ref="rossXmlFileDaoTarget" />
+	</bean>
+
+	<bean id="rossXmlFileDataDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.RossXmlFileDataDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="rossXmlFileDataDao" parent="transactionSupport">
+		<property name="target" ref="rossXmlFileDataDaoTarget" />
+	</bean>
+
+	<bean id="specialPayDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.SpecialPayDaoHibernate">
+        <constructor-arg ref="crudDao" /> 
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="specialPayDao" parent="transactionSupport">
+		<property name="target" ref="specialPayDaoTarget" />
+	</bean>	
+
+	<bean id="sit209DaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.Sit209DaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="sit209Dao" parent="transactionSupport">
+		<property name="target" ref="sit209DaoTarget" />
+	</bean>
+	
+	<bean id="subGroupCategoryDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.SubGroupCategoryDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="subGroupCategoryDao" parent="transactionSupport">
+		<property name="target" ref="subGroupCategoryDaoTarget" />
+	</bean>	
+
+	<bean id="sysCostRateDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.SysCostRateDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="sysCostRateDao" parent="transactionSupport">
+		<property name="target" ref="sysCostRateDaoTarget" />
+	</bean>
+
+	<bean id="sysCostRateKindDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.SysCostRateKindDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="sysCostRateKindDao" parent="transactionSupport">
+		<property name="target" ref="sysCostRateKindDaoTarget" />
+	</bean>
+
+	<bean id="sysCostRateOvhdDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.SysCostRateOvhdDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="sysCostRateOvhdDao" parent="transactionSupport">
+		<property name="target" ref="sysCostRateOvhdDaoTarget" />
+	</bean>
+
+	<bean id="sysCostRateStateDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.SysCostRateStateDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="sysCostRateStateDao" parent="transactionSupport">
+		<property name="target" ref="sysCostRateStateDaoTarget" />
+	</bean>
+	
+	<bean id="sysCostRateStateKindDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.SysCostRateStateKindDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="sysCostRateStateKindDao" parent="transactionSupport">
+		<property name="target" ref="sysCostRateStateKindDaoTarget" />
+	</bean>
+
+	<bean id="systemDaoTarget" parent="transactionSupportTarget"
+    	class="gov.nwcg.isuite.core.persistence.hibernate.SystemDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="systemDao" parent="transactionSupport">
+		<property name="target" ref="systemDaoTarget" />
+	</bean>
+	
+	<bean id="systemModuleDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.SystemModuleDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="systemModuleDao" parent="transactionSupport">
+		<property name="target" ref="systemModuleDaoTarget" />
+	</bean>
+	
+	<bean id="systemModulePermDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.SystemModulePermDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="systemModulePermDao" parent="transactionSupport">
+		<property name="target" ref="systemModulePermDaoTarget" />
+	</bean>
+
+	<bean id="systemNotificationDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.SystemNotificationDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="systemNotificationDao" parent="transactionSupport">
+		<property name="target" ref="systemNotificationDaoTarget" />
+	</bean>
+
+	<bean id="systemNotifyUserDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.SystemNotifyUserDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="systemNotifyUserDao" parent="transactionSupport">
+		<property name="target" ref="systemNotifyUserDaoTarget" />
+	</bean>
+
+	<bean id="systemParameterDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.SystemParameterDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="systemParameterDao" parent="transactionSupport">
+		<property name="target" ref="systemParameterDaoTarget" />
+	</bean>
+
+	<bean id="systemRoleDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.SystemRoleDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="systemRoleDao" parent="transactionSupport">
+		<property name="target" ref="systemRoleDaoTarget" />
+	</bean>
+
+	<bean id="systemRolePermDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.SystemRolePermDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="systemRolePermDao" parent="transactionSupport">
+		<property name="target" ref="systemRolePermDaoTarget" />
+	</bean>
+	
+	<bean id="transferControlDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.TransferControlDaoHibernate">
+      <constructor-arg ref="crudDao" /> 
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="transferControlDao" parent="transactionSupport">
+		<property name="target" ref="transferControlDaoTarget" />
+	</bean>
+
+	
+	<bean id="taskQueueDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.TaskQueueDaoHibernate">
+      <constructor-arg ref="crudDao" /> 
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="taskQueueDao" parent="transactionSupport">
+		<property name="target" ref="taskQueueDaoTarget" />
+	</bean>
+
+	<bean id="taskQueueLogDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.TaskQueueLogDaoHibernate">
+      <constructor-arg ref="crudDao" /> 
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="taskQueueLogDao" parent="transactionSupport">
+		<property name="target" ref="taskQueueLogDaoTarget" />
+	</bean>
+
+	<bean id="timeAssignAdjustDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.TimeAssignAdjustDaoHibernate">
+        <constructor-arg ref="crudDao" /> 
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="timeAssignAdjustDao" parent="transactionSupport">
+		<property name="target" ref="timeAssignAdjustDaoTarget" />
+	</bean>	
+  
+  <bean id="timeInvoiceDaoTarget" parent="transactionSupportTarget"
+    class="gov.nwcg.isuite.core.persistence.hibernate.TimeInvoiceDaoHibernate" >
+      <constructor-arg ref="crudDao" />
+    <property name="sessionFactory" ref="sessionFactory" />
+  </bean>
+  
+  <bean id="timeInvoiceDao" parent="transactionSupport">
+    <property name="target" ref="timeInvoiceDaoTarget" />
+  </bean>
+  
+	<bean id="timePostDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.TimePostDaoHibernate">
+        <constructor-arg ref="crudDao" /> 
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="timePostDao" parent="transactionSupport">
+		<property name="target" ref="timePostDaoTarget" />
+	</bean>	
+	
+	<bean id="trainingContactDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.TrainingContactDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="trainingContactDao" parent="transactionSupport">
+		<property name="target" ref="trainingContactDaoTarget" />
+	</bean>
+	
+	<bean id="trainingSettingsDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.TrainingSettingsDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="trainingSettingsDao" parent="transactionSupport">
+		<property name="target" ref="trainingSettingsDaoTarget" />
+	</bean>
+
+	<bean id="userDataStreamDao"
+		class="gov.nwcg.isuite.framework.stream.impl.DataStreamDaoImpl">
+		<constructor-arg><ref bean="userDataStreamStrategy"/> </constructor-arg>
+	</bean>
+
+	<bean id="userDataStreamStrategy"
+		class="gov.nwcg.isuite.framework.stream.access.UserDataStreamStrategy">
+		<constructor-arg>
+			<ref bean="dataStreamXStream" />
+		</constructor-arg>
+	</bean>
+
+	<bean id="urlDaoTarget" parent="transactionSupportTarget"
+    	class="gov.nwcg.isuite.core.persistence.hibernate.UrlDaoHibernate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="urlDao" parent="transactionSupport">
+		<property name="target" ref="urlDaoTarget" />
+	</bean>
+
+	<bean id="userImportFailureDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.UserImportFailureDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="userImportFailureDao" parent="transactionSupport">
+		<property name="target" ref="userImportFailureDaoTarget" />
+	</bean>
+	
+	<bean id="userDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.UserDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="userDao" parent="transactionSupport">
+		<property name="target" ref="userDaoTarget" />
+	</bean>
+
+	<bean id="userGroupDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.UserGroupDaoHibernate">
+      <constructor-arg ref="crudDao" /> 
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="userGroupDao" parent="transactionSupport">
+		<property name="target" ref="userGroupDaoTarget" />
+	</bean>
+	
+	<bean id="userGroupUserDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.UserGroupUserDaoHibernate">
+      <constructor-arg ref="crudDao" /> 
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="userGroupUserDao" parent="transactionSupport">
+		<property name="target" ref="userGroupUserDaoTarget" />
+	</bean>
+
+	<bean id="userNotificationDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.UserNotificationDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="userNotificationDao" parent="transactionSupport">
+		<property name="target" ref="userNotificationDaoTarget" />
+	</bean>
+	
+	<bean id="userSessionLogDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.UserSessionLogDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="userSessionLogDao" parent="transactionSupport">
+		<property name="target" ref="userSessionLogDaoTarget" />
+	</bean>
+
+	<bean id="userSessionLogActivityDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.UserSessionLogActivityDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="userSessionLogActivityDao" parent="transactionSupport">
+		<property name="target" ref="userSessionLogActivityDaoTarget" />
+	</bean>
+
+	<bean id="workAreaDaoTarget" parent="transactionSupportTarget"
+    	class="gov.nwcg.isuite.core.persistence.hibernate.WorkAreaDaoHibernate">
+		<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="workAreaDao" parent="transactionSupport">
+		<property name="target" ref="workAreaDaoTarget" />
+	</bean>
+
+	<bean id="workAreaUserDaoTarget" parent="transactionSupportTarget"
+    	class="gov.nwcg.isuite.core.persistence.hibernate.WorkAreaUserDaoHibernate">
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="workAreaUserDao" parent="transactionSupport">
+		<property name="target" ref="workAreaUserDaoTarget" />
+	</bean>
+	
+	<bean id="workPeriodDaoTarget" parent="transactionSupportTarget"
+		class="gov.nwcg.isuite.core.persistence.hibernate.WorkPeriodDaoHibernate" >
+    	<constructor-arg ref="crudDao" />
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="workPeriodDao" parent="transactionSupport">
+		<property name="target" ref="workPeriodDaoTarget" />
+	</bean>
+
+</beans>

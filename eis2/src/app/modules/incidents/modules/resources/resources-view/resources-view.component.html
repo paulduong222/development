@@ -1,0 +1,121 @@
+<div class="dv-resources-div">
+  <div id="dv-resource-filter">
+    <form [formGroup]="resourceFilter">
+      <input type="radio" formControlName="filterName" name="filterName" value="All"
+      (input)="this.onFilterGrid('All')"><label>All</label>
+      <input type="radio" formControlName="filterName"  name="filterName"  value="Aircraft"
+      (input)="this.onFilterGrid('Aircraft')"><label>Aircarft</label>
+      <input type="radio" formControlName="filterName"  name="filterName" value="Overhead"
+      (input)="this.onFilterGrid('Overhead')"><label>Overhead</label>
+      <input type="radio" formControlName="filterName"  name="filterName" value="Crews"
+      (input)="this.onFilterGrid('Crews')"><label>Crews</label>
+      <input type="radio" formControlName="filterName"  name="filterName" value="Equipment"
+      (input)="this.onFilterGrid('Equipment')"><label>Equipment</label>
+      <input type="radio" formControlName="filterName"  name="filterName" value="All Personnel"
+      (input)="this.onFilterGrid('All Personnel')"><label>All Personnel</label>
+      <input type="radio" formControlName="filterName"  name="filterName" value="All Non-Personnel"
+      (input)="this.onFilterGrid('All Non-Personnel')"><label>All Non-Personnel</label>
+  </form>
+</div>
+  <div id="dv-top-bar">
+    <div id="dv-top-bar-left" class="w3-left">
+			<app-grid-icon-bar
+				[showCustomize]="false"
+				[showExpandRetract]="true"
+				(customizeEvent)="this.customizeColumnsEvent()"
+				(refreshEvent)="this.refreshGridEvent()"
+				(filterEvent)="this.clearFilterEvent()"
+				(expandRetractEvent)="this.expandRetractEvent()">
+			</app-grid-icon-bar>
+    </div>
+    <div id="dv-top-bar-right" class="w3-right">
+        {{ this.incidentSelectorService.selectedTab }}
+        {{ this.incidentSelectorService.selectedSubTab }}
+      <button [class]="getAddResourceButtonClass()" (click)="this.addResource()" title="Click to add new Resource">Add Resource</button>
+      <button [class]="getEditResourceButtonClass()" (click)="this.editResource()" title="Click to edit the Resource">Edit Resource</button>
+      <button class="w3-small" (click)="this.deleteResource(false)" title="Click to delete the Resource">Delete Resource</button>
+      <button (click)="this.openQuickStats()" *ngIf="this.incidentSelectorService.selectedSubTab === 'demob' || this.incidentSelectorService.selectedSubTab === 'checkin'"
+        class="w3-small" title="Click to open Quick Stats">Quick Stats</button>
+      <button *ngIf="this.incidentSelectorService.selectedSubTab === 'time'"
+          (click)="this.postTimeView()" [class]="getPostTimeButtonClass()"
+          title="Click to post Time">Post Time</button>
+      <button *ngIf="this.incidentSelectorService.selectedSubTab === 'time'"
+          (click)="this.postTimeAdjView()" [class]="getPostTimeAdjButtonClass()"
+          title="Click to post Time Adjustments">Post Adjustments</button>
+      <button *ngIf="this.incidentSelectorService.selectedSubTab === 'time'" class="w3-small"
+          title="click to generate an Invoice">Invoices</button>
+      <button *ngIf="this.incidentSelectorService.selectedSubTab === 'cost'" [class]="getViewCostsButtonClass()"
+          (click)="this.costView()"
+          title="Click to view Costs">View Costs</button>
+    </div>
+  </div>
+  <div  *ngIf="this.incidentSelectorService.selectedSubTab === 'checkin'" class="dv-top-bar">
+    <div id="dv-top-bar-left" class="w3-left">
+    </div>
+    <div id="dv-top-bar-right" class="w3-right">
+      <button class="w3-small h22">Group Check-In</button>
+    </div>
+  </div>
+  <div *ngIf="this.incidentSelectorService.selectedSubTab === 'demob'" class="dv-top-bar">
+    <div id="dv-top-bar-left" class="w3-left">
+    </div>
+    <div id="dv-top-bar-right" class="w3-right">
+      <button class="w3-small h22">Group Pending</button>
+      <button class="w3-small h22">Group Demob</button>
+      <button class="w3-small h22">Group Check-In</button>
+      <button class="w3-small h22">Tentative Poster</button>
+      <button class="w3-small h22">Available For Release</button>
+      <button class="w3-small h22">Air Travel Request</button>
+      <button class="w3-small h22">Checkout</button>
+      <button class="w3-small h22">Actual Demob</button>
+      <button class="w3-small h22">Ground Support</button>
+    </div>
+  </div>
+  <div class="split-example" style="height: 85vh;">
+    <as-split direction="horizontal">
+      <as-split-area [size]="splitAreaLeftSize">
+			<div id="dv-resource-grid">
+          <app-resource-grid #resourceGrid
+          (resourceSelectedEvent)="this.resourceSelectedEvent($event)"></app-resource-grid>
+			</div>
+      </as-split-area>
+      <as-split-area [size]="splitAreaRightSize" style="background-color: white;">
+        <div *ngIf="this.incidentSelectorService.resourcesMode === 'resview'"
+            [class]="getResourceFormClass()">
+            <app-resources-form #appResourceForm id="appResourceForm"
+            *ngIf="this.incidentSelectorService.resourcesMode === 'resview'"
+            (saveResourceEvent)="this.saveResourceEvent($event)"
+            [checkinDemobRole]="this.checkinDemobRole"
+            [timeRole]="this.timeRole"
+            [costRole]="this.costRole"
+            [contractorVos]="this.contractorVos"
+            [contractorData]="this.contractorData"
+            [rateClassRateVos]="this.rateClassRateVos"
+            [rateClassRateData]="this.rateClassRateData"
+            [currentSelectedIncidentSelectorVo]="this.currentSelectedIncidentSelectorVo"></app-resources-form>
+        </div>
+        <div class="dv-action-bar w3-small"
+          *ngIf="this.incidentSelectorService.resourcesMode === 'resview'">
+          <button (click)="this.saveResource()" title="Click to save the Resource">Save</button>
+          <button (click)="this.cancelResource()" title="Click to cancel changes">Cancel</button>
+        </div>
+        <div *ngIf="this.incidentSelectorService.resourcesMode !== 'resview'"
+          style="height: 80vh;">
+          <app-resources-time #appResourceTime id="appResourceTime"
+            *ngIf="this.incidentSelectorService.resourcesMode === 'timeview'"
+            [rateClassRateVos]="this.rateClassRateVos"
+            [rateClassRateData]="this.rateClassRateData"
+            [specialPayVos]="this.specialPayVos"
+            ></app-resources-time>
+          <app-resources-timeadj #appResourceTimeAdj *ngIf="this.incidentSelectorService.resourcesMode === 'timeadjview'"></app-resources-timeadj>
+          <app-resources-cost #appResourceCost *ngIf="this.incidentSelectorService.resourcesMode === 'costview'"></app-resources-cost>
+        </div>
+          <!--
+        <button (click)="this.saveResource()" title="Click to save the Ressource">Save</button>
+        -->
+      </as-split-area>
+    </as-split>
+  </div>
+</div>
+<app-prompt-modal id="promptModalResView" #promptModalResView (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>
+<app-quick-stats-window id="quickStatsWindow" #quickStatsWindow></app-quick-stats-window>

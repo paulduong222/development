@@ -1,0 +1,58 @@
+<form [formGroup]="compForm" autocomplete="off">
+  <label class="blk-hdr"><u>Ready Alert Aircraft</u></label>
+  <br>
+  <br>
+  <div class="eis">
+    <div>
+      <table>
+        <tr>
+            <td class="frmlbl"><label class="f1" for="txMedi">Medivac</label></td>
+            <td><label class="ast"></label></td>
+            <td>
+              <app-text-input id="txMedi" name="txMedi"
+              formControlName="medivac" allowSpace="true" 
+              width="200" maxlength="50"></app-text-input>
+            </td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label class="f1" for="txNewInc">New Incident</label></td>
+          <td><label class="ast"></label></td>
+          <td>
+            <app-text-input id="txNewInc" name="txNewInc"
+            formControlName="newIncident" allowSpace="true" 
+            width="200" maxlength="50"></app-text-input>
+          </td>
+
+        </tr>
+      </table>  
+    </div>
+  </div>
+  <br>
+  <label class="blk-hdr"><u>Temporary Flight Restriction</u></label>
+  <br>
+  <br>
+  <div class="eis">
+    <div>
+      <table>
+        <tr>
+            <td class="frmlbl"><label class="f1" for="txAlt">Altitude</label></td>
+            <td><label class="ast"></label></td>
+            <td>
+              <app-text-input id="txAlt" name="txAlt"
+              formControlName="altitude" allowSpace="true" 
+              width="300" maxlength="200"></app-text-input>
+            </td>
+        </tr>
+        <tr>
+          <td class="frmlbl"><label class="f1" for="txCenterPoint">Center Point</label></td>
+          <td><label class="ast"></label></td>
+          <td>
+            <app-text-input id="txCenterPoint" name="txCenterPoint"
+            formControlName="centerPoint" allowSpace="true" 
+            width="300" maxlength="200"></app-text-input>
+          </td>
+       </tr>
+      </table>  
+    </div>
+  </div>
+</form>

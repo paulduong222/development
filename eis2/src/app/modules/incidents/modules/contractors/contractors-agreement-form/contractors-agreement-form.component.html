@@ -1,0 +1,71 @@
+<div id="dv-agree-container">
+    <div id="dv-agreement-grid" [class]="getDisplayClass()">
+        <app-eis-grid #gridAgreement 
+          [columnDefs]="this.gridColumnDefs" 
+          [rowData]="agreementList"
+          (rowSelectEvent)="this.onSelectAgreement($event)">
+        </app-eis-grid>
+      </div>
+    <div  class="dv-agreement-form" [class]="getDisplayClass()">
+      <div class="dv-agreement-action-bar w3-small">
+        <button (click)="this.add()" [class]="getTopBarButtonClass('add')" title="Click to add a new agreement">Add</button>
+        <button (click)="this.delete()" title="Click to delete the agreement">Delete</button>
+      </div>
+      <div class="eis bg-white dv-agree-form">
+        <form [formGroup]="agreementForm" autocomplete="off">
+            <table>
+                <tr>
+                    <td class="frmlbl"><label class="f1" for="txAgreement">Contract/Agreement #</label></td>
+                    <td><label class="ast">*</label></td>
+                    <td>
+                        <app-text-input id="txAgreement" name="txAgreement" type="text"
+                        formControlName="agreementNumber"  width="200" maxlength="30" 
+                        textTransform="uppercase"></app-text-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="frmlbl"><label class="f1" for="dtStart">Beginning Date</label></td>
+                    <td><label class="ast"></label></td>
+                    <td>
+                        <app-eis-datepicker #dtStart
+                          formControlName="startDate"
+                          id="dtStart">
+                      </app-eis-datepicker>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="frmlbl"><label class="f1" for="dtEnd">Expiration Date</label></td>
+                    <td><label class="ast"></label></td>
+                    <td>
+                        <app-eis-datepicker #dtEnd
+                          formControlName="endDate"
+                          id="dtEnd">
+                      </app-eis-datepicker>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="frmlbl"><label class="f1" for="ddAdminOffice">Admin Office For Payment</label></td>
+                    <td><label class="ast"></label></td>
+                    <td>
+                        <app-eis-dropdown id="ddAdminOffice" #ddAdminOffice
+                        formControlName="adminOfficeVo"
+                        [width]="200"
+                        [selectedDropdownData]="this.selectedAdminOfficeDropdownData"
+                        [dropdownData]="this.adminOfficeDropdownData"></app-eis-dropdown>
+                    </td>
+                    <td class="w3-small">
+                        <button (click)="openAdminOfficeWindow()" title="Click to add a new Admin Office" style="height:20px;">+</button>
+                    </td>
+                </tr>
+            </table>
+          </form>
+          <div class="dv-agreement-action-bar2 w3-small">
+              <button (click)="this.saveAgreement(false)" title="Click to save the Agreement">Save</button>
+              <button (click)="this.cancel()" title="Click to cancel changes">Cancel</button>
+            </div>
+      </div>
+  </div>
+</div>
+<app-prompt-modal id="agreementPromptModal" #agreementPromptModal (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>
+<app-agreement-reason-window id="agreementReasonWindow" #agreementReasonWindow (saveModalEvent)="this.saveAgreementReason($event)"></app-agreement-reason-window> 
+<app-admin-office-window id="adminOfficeWindow" #adminOfficeWindow (saveModalEvent)="this.saveAdminOfficeEvent($event)"></app-admin-office-window> 

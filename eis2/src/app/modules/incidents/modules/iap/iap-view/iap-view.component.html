@@ -1,0 +1,82 @@
+<div style="height: 91vh; width: 100%;">
+    <div id="dv-iap-top-bar">
+        <div id="dv-iap-top-bar-left" class="w3-left">
+          <div id="dv-iap-top-info">
+              <label>1 - Select Plan</label>
+              <br>
+              <label>2 - Either click an Add Form Button to add a new form or click a form to edit that form.</label>
+          </div>
+        </div>
+        <div id="dv-iap-bar-right" class="w3-right">
+            <label style="color: black;margin-right:5px;"><strong>Plan Actions</strong></label>
+            <button (click)="this.createPlan()" class="w3-small" title="Click to create a new Plan">Create Plan</button>
+            <button (click)="this.editPlan()" class="w3-small" [disabled]="this.planLocked === true" title="Click to edit the Plan">Edit Plan</button>
+            <button (click)="this.copyPlan()" class="w3-small" title="Click to copy the Plan">Copy Plan</button>
+            <button (click)="this.lockUnlockPlan()" class="w3-small" title="Click to lock/unlock the Plan">{{ this.lockUnlockPlanBtnLabel }}</button>
+            <button (click)="this.deletePlan()" class="w3-small" title="Click to delete the Plan">Delete Plan</button>
+            <button (click)="this.addExternalAttach()" class="w3-small" [disabled]="this.planLocked === true" title="Click to add external attachments">Add External Attachments</button>
+            <button (click)="this.previewPrintPlan()" class="w3-small" title="Click to preview/print the Plan">Preview/Print Plan</button>
+        </div>
+    </div>
+    <div id="dv-iap-top-form-bar">
+        <div id="dv-iap-top-form-bar-left" class="w3-left">
+            <button (click)="this.addIcsForm('202')" class="w3-small" [disabled]="this.planLocked === true" title="Click to a new ICS 202 Form to the Plan">Add ICS 202</button>
+            <button (click)="this.addIcsForm('203')" class="w3-small" [disabled]="this.planLocked === true" title="Click to a new ICS 203 Form to the Plan">Add ICS 203</button>
+            <button (click)="this.addIcsForm('204')" class="w3-small" [disabled]="this.planLocked === true" title="Click to a new ICS 204 Form to the Plan">Add ICS 204</button>
+            <button (click)="this.addIcsForm('205')" class="w3-small" [disabled]="this.planLocked === true" title="Click to a new ICS 205 Form to the Plan">Add ICS 205</button>
+            <button (click)="this.addIcsForm('206')" class="w3-small" [disabled]="this.planLocked === true" title="Click to a new ICS 206 Form to the Plan">Add ICS 206</button>
+            <button (click)="this.addIcsForm('220')" class="w3-small" [disabled]="this.planLocked === true" title="Click to a new ICS 220 Form to the Plan">Add ICS 220</button>
+        </div>
+        <div id="dv-iap-top-form-bar-middle" class="w3-left">
+            <label><strong>{{ this.lockLabel }}</strong></label>
+        </div>
+          <div id="dv-iap-top-form-bar-right" class="w3-right">
+          <label><strong>{{ this.planFormLabel }}</strong></label>
+        </div>
+    </div>
+    <div id="dv-iap-bar" class="">
+      <div id="dv-iap-bar-left" class="w3-left">
+        <app-grid-icon-bar
+          [showFilter]="false" 
+          [showExpandRetract]="false"
+          (refreshEvent)="this.refreshGrid()">
+        </app-grid-icon-bar>
+      </div>
+      <div id="dv-iap-bar-right" class="w3-right">
+          <label style="color: black;margin-right:5px;"><strong>Form Actions</strong></label>
+          <button (click)="this.copyForm()" class="w3-small" title="Click to copy the Form">Copy Form</button>
+          <button (click)="this.lockUnlockForm()" class="w3-small" [disabled]="this.planLocked === true" title="Click to Lock/Unlock the Form">{{ this.lockUnlockFormBtnLabel }}</button>
+          <button (click)="this.deleteForm()" class="w3-small" [disabled]="this.planLocked === true" title="Click to delete the Form">Delete Form</button>
+          <button (click)="this.previewPrintForm()" class="w3-small" title="Click to preview/print the Form">Preview/Print Form</button>
+      </div>
+    </div>
+    <div id="dv-iap-main">
+        <div class="split-example">
+            <as-split direction="horizontal">
+              <as-split-area [size]="splitAreaLeftSize">
+                <div id="dv-iap-grid">
+                  <app-eis-grid #gridIapPlan
+                    [floatingFilter]="false" 
+                    [treeViewMode]="true"
+                    [columnDefs]="this.gridColumnDefs" 
+                    [rowData]="iapPlanList"
+                    (rowSelectEvent)="this.onSelectIapRow($event)">
+                  </app-eis-grid>
+                </div>
+              </as-split-area>  
+              <as-split-area [size]="splitAreaRightSize" class="scroll-x">
+                <app-ics202-form #ics202Form *ngIf="this.formView === 'ICS202'"></app-ics202-form>
+                <app-ics203-form #ics203Form *ngIf="this.formView === 'ICS203'"></app-ics203-form>
+                <app-ics205-form #ics205Form *ngIf="this.formView === 'ICS205'"></app-ics205-form>
+                <app-ics206-form #ics206Form *ngIf="this.formView === 'ICS206'"></app-ics206-form>
+                <app-ics220-form #ics220Form *ngIf="this.formView === 'ICS220'"></app-ics220-form>
+              </as-split-area>
+            </as-split>
+          </div>
+    </div>
+  </div>
+	<app-prompt-modal id="iapPromptModal" #iapPromptModal (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>
+  <app-add-edit-plan-window #addEditPlanWindow (savePlanEvent)="this.savePlanEvent($event)"></app-add-edit-plan-window>
+  <app-copy-plan-window #copyPlanWindow></app-copy-plan-window>
+  <app-copy-form-window #copyFormWindow></app-copy-form-window>
+  <app-add-attach-window #addAttachWindow></app-add-attach-window>

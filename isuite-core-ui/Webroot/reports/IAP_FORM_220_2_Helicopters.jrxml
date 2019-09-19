@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IAP_FORM_220_2_Helicopters" language="groovy" pageWidth="752" pageHeight="592" orientation="Landscape" columnWidth="752" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="dee04ae5-4277-4f92-a62b-9894d7f5ac3b">
+	<property name="ireport.zoom" value="1.500000000000005"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="faaNbr" class="java.lang.String"/>
+	<field name="type" class="java.lang.String"/>
+	<field name="model" class="java.lang.String"/>
+	<field name="base" class="java.lang.String"/>
+	<field name="available" class="java.lang.String"/>
+	<field name="start" class="java.lang.String"/>
+	<field name="remarks" class="java.lang.String"/>
+	<pageHeader>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="199" y="0" width="85" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Make/Model]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="375" y="0" width="75" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Available]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="78" y="0" width="120" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Category/Kind/Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="0" y="0" width="77" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[FAA N#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="503" y="0" width="249" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Remarks]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="285" y="0" width="89" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Base]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14f2185-a273-4af8-b18d-53184e6a9145" x="450" y="0" width="52" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Start]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="ce7fff0f-3b45-4cf6-86a4-a99d895d6c51" x="0" y="15" width="752" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" x="77" y="0" width="1" height="15"/>
+			</line>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" x="198" y="0" width="1" height="15"/>
+			</line>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" x="284" y="0" width="1" height="15"/>
+			</line>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" x="374" y="0" width="1" height="15"/>
+			</line>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" x="450" y="0" width="1" height="15"/>
+			</line>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" x="502" y="0" width="1" height="15"/>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="0286b257-d3f4-488e-9daa-b020bc640862" stretchType="RelativeToTallestObject" x="0" y="0" width="77" height="16"/>
+				<box topPadding="2" leftPadding="3" rightPadding="2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{faaNbr}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="0286b257-d3f4-488e-9daa-b020bc640862" stretchType="RelativeToTallestObject" x="78" y="0" width="120" height="16"/>
+				<box topPadding="2" leftPadding="3" rightPadding="2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{type}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="0286b257-d3f4-488e-9daa-b020bc640862" stretchType="RelativeToTallestObject" x="199" y="0" width="85" height="16"/>
+				<box topPadding="2" leftPadding="3" rightPadding="2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{model}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="0286b257-d3f4-488e-9daa-b020bc640862" stretchType="RelativeToTallestObject" x="285" y="0" width="89" height="16"/>
+				<box topPadding="2" leftPadding="3" rightPadding="2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{base}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="0286b257-d3f4-488e-9daa-b020bc640862" stretchType="RelativeToTallestObject" isPrintRepeatedValues="false" x="375" y="0" width="75" height="16"/>
+				<box topPadding="2" leftPadding="3" rightPadding="2"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{available}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="0286b257-d3f4-488e-9daa-b020bc640862" stretchType="RelativeToTallestObject" x="450" y="0" width="52" height="16"/>
+				<box topPadding="2" leftPadding="3" rightPadding="2"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{start}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="0286b257-d3f4-488e-9daa-b020bc640862" stretchType="RelativeToTallestObject" x="503" y="0" width="249" height="16"/>
+				<box topPadding="2" leftPadding="3" rightPadding="2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{remarks}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="ce7fff0f-3b45-4cf6-86a4-a99d895d6c51" positionType="Float" x="0" y="17" width="752" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" stretchType="RelativeToTallestObject" x="77" y="0" width="1" height="17"/>
+			</line>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" stretchType="RelativeToTallestObject" x="198" y="0" width="1" height="17"/>
+			</line>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" stretchType="RelativeToTallestObject" x="284" y="0" width="1" height="17"/>
+			</line>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" stretchType="RelativeToTallestObject" x="374" y="0" width="1" height="17"/>
+			</line>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" stretchType="RelativeToTallestObject" x="450" y="0" width="1" height="17"/>
+			</line>
+			<line>
+				<reportElement uuid="b0af5bd9-6fa5-4136-a82f-c895494db0ef" stretchType="RelativeToTallestObject" x="502" y="0" width="1" height="17"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

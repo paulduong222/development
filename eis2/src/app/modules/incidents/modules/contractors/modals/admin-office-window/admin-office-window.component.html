@@ -1,0 +1,79 @@
+<app-jw-modal id="admin-office-modal" style="display: none;" class="box-hdr-dv">
+    <div style="width: 550px; height: 300px;padding: 0px;">
+        <div class="w3-container w3-padding-small w3-theme-d2">
+            <div class="w3-left">Admin Offices for Payment</div>
+            <div class="w3-right"></div>
+        </div>
+        <div id="dv-adminoffice-form" class="eis" style="height: 210px; width: 520px;margin-top: 10px;">
+            <form [formGroup]="adminOfficeForm" autocomplete="off">
+            <table>
+                <tr>
+                    <td class="frmlbl"><label class="f1" for="txName">Office Name</label></td>
+                    <td><label class="ast">*</label></td>
+                    <td>
+                       <app-text-input formControlName="officeName" id="txUName" name="txUName" type="text"
+                         width="350" maxlength="30" allowSpace="true" textTransform="uppercase"></app-text-input>
+                    </td>
+                </tr>
+                <tr>
+                   <td class="frmlbl"><label class="f1" for="txAddr1">Address Line 1</label></td>
+                   <td><label class="ast">*</label></td>
+                   <td>
+                      <app-text-input  formControlName="addressLine1" id="txUAddr1" name="txAddr1" type="text"
+                        width="350" maxlength="35" allowSpace="true" textTransform="uppercase"></app-text-input>
+                   </td>
+               </tr>
+               <tr>
+                   <td class="frmlbl"><label class="f1" for="txAddr2">Address Line 2</label></td>
+                   <td><label class="ast"></label></td>
+                   <td>
+                      <app-text-input formControlName="addressLine2" id="txUAddr2" name="txAddr2" type="text"
+                        width="350" maxlength="35" allowSpace="true" textTransform="uppercase"></app-text-input>
+                   </td>
+               </tr>
+               <tr>
+                  <td class="frmlbl"><label class="f1" for="txCity">City</label></td>
+                  <td><label class="ast">*</label></td>
+                  <td>
+                     <app-text-input formControlName="city" id="txCity" name="txCity" type="text"
+                       width="350" maxlength="30" allowSpace="true" textTransform="uppercase"></app-text-input>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="frmlbl"><label class="f1" for="ddState">State</label></td>
+                  <td><label class="ast">*</label></td>
+                  <td>
+                      <app-eis-dropdown id="ddState" #ddState
+                        formControlName="countryCodeSubdivisionVo"
+                        [width]="40"
+                        [selectedDropdownData]="this.selectedStateDropdownData"
+                        [dropdownData]="this.statesDropdownData"></app-eis-dropdown>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="frmlbl"><label class="f1" for="txZip">Zip Code</label></td>
+                  <td><label class="ast">*</label></td>
+                  <td>
+                     <app-text-input formControlName="zip" id="txZip" name="txZip" type="text"
+                      width="100" maxlength="10" restrict2="0-9" textTransform="uppercase"></app-text-input>
+                 </td>
+              </tr>
+              <tr>
+                  <td class="frmlbl"><label class="f1" for="txPhone">Phone</label></td>
+                  <td><label class="ast"></label></td>
+                  <td>
+                     <app-phone-input formControlName="phone" id="txPhone" name="txPhone" style="width:100px;"></app-phone-input>
+                  </td>
+              </tr>
+            </table>
+            </form>
+        </div>
+        <div id="dv-adminoffice-action-bar">
+            <div class="w3-center w3-small">
+                <button (click)="this.save()" title="Click to save the Admin Office">Save</button>
+                <button (click)="this.cancel()" title="Click to cancel changes">Cancel</button>
+                <button (click)="closeModal('admin-office-modal');" title="Click to cancel changes and close window">Close</button>
+            </div>
+        </div>
+   </div>
+</app-jw-modal>

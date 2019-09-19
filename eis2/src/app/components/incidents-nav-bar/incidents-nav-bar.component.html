@@ -1,0 +1,7 @@
+<div id="dv-incidents-nav-bar" class="btn-group-menu">
+  <button (click)="tabClick('/incidents')" [class]="getStyle('/incidents/inc')">Incidents</button>	
+  <button (click)="tabClick('/incidents/resources')" [class]="getStyle('/incidents/resources')">Resources</button>	
+  <button [class]="getStyle('/incidents/iap')">IAP</button>
+  <button [class]="getStyle('/incidents/training')">Training</button>
+  <button (click)="tabClick('/incidents/reports/plans')" [class]="getStyle('/incidents/reports')">Reports</button>
+</div>

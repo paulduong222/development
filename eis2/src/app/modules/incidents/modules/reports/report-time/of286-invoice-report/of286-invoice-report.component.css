@@ -1,0 +1,145 @@
+* {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+.main-card {
+    border: 1px solid gray;
+    height: 83vh;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+.card-body {
+    margin: 20px;
+    padding: 0 20px 20px 20px;
+    min-width: 800px;
+}
+.radio-box {
+    height: 50px;
+    font-size: 12px;
+    padding-top: 7px;
+    padding-left: 5px;
+}
+.radio-box label:last-child {
+    margin-left: 20px;
+}
+input[type="radio"] {
+    margin-top: -3px;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+.text-box {
+    border: 1px solid gray;
+    height: 400px;
+    width: 700px;
+    font-size: 11px;
+    margin-top: 7px;
+    background-color: #dbd6d6;
+    color: black;
+    padding-left: 5px;
+}
+.text-box .title {
+  font-size: 12px;
+  font-weight: 550;
+}
+button {
+    height: 20px;
+    font-size: 12px;
+    font-weight: 550;
+    line-height: 10px;
+    margin-bottom: 20px;
+}
+.datetime-box {
+    width: 530px;
+    height: 70px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding: 5px;
+}
+.datetime-box input {
+    width: 80px;
+    margin-left: 10px;
+}
+.checkbox {
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
+}
+.left-box {
+    width: 330px;
+    height: 110px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding: 5px;
+    float: left;
+}
+.left-box label {
+    display: block;
+    font-size: 13px;
+    padding: 3px;
+}
+.left-box .label-header {
+    font-weight: 550;
+}
+.right-box {
+    width: 280px;
+    height: 110px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding: 5px;
+    float: left;
+    margin-left: 10px;
+}
+.right-box-table {
+    width: 450px;
+    height: 190px;
+    margin-top: 10px;
+    padding: 5px;
+    float: left;
+    margin-left: 10px;
+}
+.right-box label {
+    display: block;
+    font-size: 13px;
+    padding: 3px;
+}
+.right-box .label-header {
+    font-weight: 550;
+}
+.btn-box {
+    width: 100%;
+    float: left;
+    margin-top: 10px
+}
+.btn-box button {
+    display: block;
+    margin-bottom: 5px;
+    height: 25px;
+}
+.btn-box button:first-child {
+    margin-top: 20px;
+}
+.dv-md {
+    padding: 0px;
+    min-width: 240px;
+    min-height: 150px;
+}
+.dv-md button {
+    height: 24px;
+}
+.dv-md-msg {
+    padding: 20px 10px 20px 10px;
+	font: 12px Helvetica,Arial,sans-serif;
+}
+.lbl-alert {
+    color: red;
+	font: 14px Helvetica,Arial,sans-serif;
+}
+.resource-input {
+  width: 200px;
+}

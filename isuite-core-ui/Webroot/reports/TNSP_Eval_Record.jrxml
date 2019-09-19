@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TNSP_Eval_Record" language="groovy" pageWidth="612" pageHeight="792" columnWidth="532" leftMargin="40" rightMargin="40" topMargin="40" bottomMargin="30" uuid="2e6fb964-6a85-4a98-b97d-0040923d5c8e">
+	<property name="ireport.zoom" value="1.331000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="139"/>
+	<field name="field1" class="java.lang.String"/>
+	<field name="traineeName" class="java.lang.String"/>
+	<field name="requestNumber" class="java.lang.String"/>
+	<field name="traineeItemCode" class="java.lang.String"/>
+	<field name="traineeItemCodeDesc" class="java.lang.String"/>
+	<field name="traineeAgency" class="java.lang.String"/>
+	<field name="traineeUnitCode" class="java.lang.String"/>
+	<field name="traineeUnitDesc" class="java.lang.String"/>
+	<field name="traineeHUName" class="java.lang.String"/>
+	<field name="traineeHUCode" class="java.lang.String"/>
+	<field name="traineeHUDesc" class="java.lang.String"/>
+	<field name="traineeHUAddress" class="java.lang.String"/>
+	<field name="traineeHUCity" class="java.lang.String"/>
+	<field name="traineeHUState" class="java.lang.String"/>
+	<field name="traineeHUZip" class="java.lang.String"/>
+	<field name="traineeHUFullAddress" class="java.lang.String"/>
+	<field name="traineeHUPhone" class="java.lang.String"/>
+	<field name="traineeHUEmail" class="java.lang.String"/>
+	<field name="trainerName" class="java.lang.String"/>
+	<field name="trainerRequestNumber" class="java.lang.String"/>
+	<field name="trainerUnit" class="java.lang.String"/>
+	<field name="trainerUnitDesc" class="java.lang.String"/>
+	<field name="trainerItemCode" class="java.lang.String"/>
+	<field name="trainerItemDesc" class="java.lang.String"/>
+	<field name="trainerAddress" class="java.lang.String"/>
+	<field name="trainerCity" class="java.lang.String"/>
+	<field name="trainerState" class="java.lang.String"/>
+	<field name="trainerZip" class="java.lang.String"/>
+	<field name="trainerFullAddress" class="java.lang.String"/>
+	<field name="trainerPhone" class="java.lang.String"/>
+	<field name="trainerEmail" class="java.lang.String"/>
+	<field name="trainerRecommend" class="java.lang.String"/>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="incidentNumber" class="java.lang.String"/>
+	<field name="incidentType" class="java.lang.String"/>
+	<field name="incidentComplexity" class="java.lang.String"/>
+	<field name="incidentAcres" class="java.lang.String"/>
+	<field name="incidentFuelType" class="java.lang.String"/>
+	<field name="trainerComments" class="java.lang.String"/>
+	<field name="evalRecordNumber" class="java.lang.String"/>
+	<field name="traineeDuration" class="java.lang.String"/>
+	<background>
+		<band height="722"/>
+	</background>
+	<title>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="9269faaa-88a0-4257-b27e-74e6e2b2e4c2" mode="Transparent" x="0" y="0" width="532" height="35"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EVALUATION RECORD]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="687" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="88d527ea-b5ff-40db-bc32-09311a3a7acf" x="261" y="0" width="269" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Evaluation Record # ______________________"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9b34da04-1032-4a7c-a18a-0c842b554502" x="0" y="20" width="532" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Trainee Information]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="0" y="40" width="190" height="20" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Printed Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="0" y="60" width="190" height="20" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Trainee Position on Incident/Event]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="0" y="80" width="190" height="20" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Home Unit/Agency]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="0" y="100" width="190" height="20" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Home Unit/Agency Address/Phone]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b2be69cd-e537-4636-9245-38f62ff8c5fc" x="191" y="40" width="340" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{traineeName}!="" ? $F{traineeName} : "")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b2be69cd-e537-4636-9245-38f62ff8c5fc" x="191" y="60" width="340" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{traineeItemCode}!="" && $F{traineeItemCode}!=null ? $F{traineeItemCode}+" - ":"") + ($F{traineeItemCodeDesc}!="" && $F{traineeItemCodeDesc}!=null ? $F{traineeItemCodeDesc}:"")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b2be69cd-e537-4636-9245-38f62ff8c5fc" x="191" y="80" width="340" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{traineeUnitCode}!="" && $F{traineeUnitCode}!=null?$F{traineeUnitCode}:"") + ' ' + ($F{traineeAgency}!="" && $F{traineeAgency}!=null ? $F{traineeAgency} : "")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b2be69cd-e537-4636-9245-38f62ff8c5fc" x="191" y="100" width="340" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{traineeHUFullAddress}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="379f724b-9876-4e12-8de0-13ed0708ca60" x="0" y="60" width="532" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="379f724b-9876-4e12-8de0-13ed0708ca60" x="0" y="80" width="532" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="379f724b-9876-4e12-8de0-13ed0708ca60" x="0" y="100" width="532" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="190" y="40" width="1" height="80"/>
+			</line>
+			<staticText>
+				<reportElement uuid="9b34da04-1032-4a7c-a18a-0c842b554502" x="0" y="130" width="532" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Evaluator Information]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="0" y="150" width="190" height="20" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Printed Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="0" y="170" width="190" height="20" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Evaluator Position on Incident/Event]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="0" y="190" width="190" height="20" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Home Unit/Agency]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="0" y="210" width="190" height="20" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Home Unit/Agency Address/Phone]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b2be69cd-e537-4636-9245-38f62ff8c5fc" x="191" y="150" width="340" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{trainerRequestNumber}!="" && $F{trainerRequestNumber}!=null?$F{trainerRequestNumber}+' ' :"") + ($F{trainerName}!="" && $F{trainerName}!=null ? $F{trainerName} : "")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b2be69cd-e537-4636-9245-38f62ff8c5fc" x="191" y="170" width="340" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{trainerItemCode}!="" && $F{trainerItemCode}!=null?$F{trainerItemCode}+' ':"") + ($F{trainerItemDesc}!="" && $F{trainerItemDesc}!=null?$F{trainerItemDesc} :"")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b2be69cd-e537-4636-9245-38f62ff8c5fc" x="191" y="190" width="340" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{trainerUnit}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b2be69cd-e537-4636-9245-38f62ff8c5fc" x="191" y="210" width="340" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{trainerFullAddress}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="379f724b-9876-4e12-8de0-13ed0708ca60" x="0" y="170" width="532" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="379f724b-9876-4e12-8de0-13ed0708ca60" x="0" y="190" width="532" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="379f724b-9876-4e12-8de0-13ed0708ca60" x="0" y="210" width="532" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="190" y="150" width="1" height="80"/>
+			</line>
+			<staticText>
+				<reportElement uuid="9b34da04-1032-4a7c-a18a-0c842b554502" x="0" y="237" width="532" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Incident/Event Information]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="0" y="257" width="90" height="20" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Incident Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="0" y="277" width="90" height="20" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Duration]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="0" y="297" width="90" height="20" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Fuel Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="276" y="257" width="90" height="20" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Incident Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="276" y="277" width="90" height="20" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Incident Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="556f8c8c-e541-449c-ac72-51a2a1d958c4" mode="Opaque" x="276" y="297" width="90" height="20" backcolor="#E3E3E3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Complexity Type]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="379f724b-9876-4e12-8de0-13ed0708ca60" x="0" y="277" width="532" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="379f724b-9876-4e12-8de0-13ed0708ca60" x="0" y="297" width="532" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="90" y="257" width="1" height="60"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="276" y="257" width="1" height="60"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="365" y="257" width="1" height="60"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b2be69cd-e537-4636-9245-38f62ff8c5fc" x="91" y="257" width="185" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incidentName}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b2be69cd-e537-4636-9245-38f62ff8c5fc" x="91" y="277" width="185" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{traineeDuration}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b2be69cd-e537-4636-9245-38f62ff8c5fc" x="91" y="297" width="185" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incidentFuelType}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b2be69cd-e537-4636-9245-38f62ff8c5fc" x="366" y="257" width="165" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incidentNumber}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b2be69cd-e537-4636-9245-38f62ff8c5fc" x="366" y="277" width="165" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incidentType}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b2be69cd-e537-4636-9245-38f62ff8c5fc" x="366" y="297" width="165" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incidentComplexity}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="4583fb21-2947-454e-a346-a5869ad650f7" mode="Transparent" x="0" y="257" width="532" height="60"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="9b34da04-1032-4a7c-a18a-0c842b554502" x="128" y="333" width="154" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Evaluator’s Recommendation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9b34da04-1032-4a7c-a18a-0c842b554502" x="287" y="333" width="173" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[(Initial only one line as appropriate)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="63c9da79-f5be-40f4-8eb6-3e44ee06f5fb" x="46" y="354" width="19" height="41"/>
+				<textElement/>
+				<text><![CDATA[1.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9b34da04-1032-4a7c-a18a-0c842b554502" x="64" y="354" width="468" height="53"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[The tasks initialed and dated by me on the Qualification Record have been performed under my supervision in a satisfactory manner. The trainee has successfully performed all tasks in the PTB for the position. I have completed the Final Evaluator’s Verification section and recommend the trainee be considered for agency certification.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="63c9da79-f5be-40f4-8eb6-3e44ee06f5fb" x="46" y="410" width="19" height="41"/>
+				<textElement/>
+				<text><![CDATA[2.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9b34da04-1032-4a7c-a18a-0c842b554502" x="64" y="410" width="468" height="53"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[The tasks initialed and dated by me on the Qualification Record have been performed under my supervision in a satisfactory manner. However, opportunities were not available for all tasks (or all uncompleted tasks) to be performed and evaluated on this assignment. An additional assignment is needed to complete the evaluation.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="63c9da79-f5be-40f4-8eb6-3e44ee06f5fb" x="46" y="463" width="19" height="28"/>
+				<textElement/>
+				<text><![CDATA[3.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9b34da04-1032-4a7c-a18a-0c842b554502" mode="Transparent" x="64" y="463" width="468" height="28"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[The trainee did not complete certain tasks in the PTB in a satisfactory manner and additional training, guidance, or experience is recommended.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="63c9da79-f5be-40f4-8eb6-3e44ee06f5fb" x="46" y="500" width="19" height="41"/>
+				<textElement/>
+				<text><![CDATA[4.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9b34da04-1032-4a7c-a18a-0c842b554502" x="64" y="500" width="468" height="41"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[The individual is severely deficient in the performance of tasks in the PTB for the position and additional training, guidance, or experience is recommended prior to another training assignment.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="351fe27f-5df5-4610-a8a1-fccc1befad41" x="2" y="538" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Comments:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="f8a683da-a66b-457a-902b-bf03db9597e2" x="0" y="558" width="532" height="70"/>
+				<box topPadding="3" leftPadding="3" bottomPadding="3" rightPadding="3">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{trainerComments}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9b34da04-1032-4a7c-a18a-0c842b554502" x="1" y="633" width="100" height="26"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Evaluator's Signature:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9b34da04-1032-4a7c-a18a-0c842b554502" x="340" y="633" width="29" height="26"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9b34da04-1032-4a7c-a18a-0c842b554502" x="1" y="659" width="261" height="26"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Evaluator’s Relevant Qualification (or agency certification):]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="f0e3e500-3ce3-43a2-bab8-bab8cf6137c6" x="100" y="651" width="230" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="f0e3e500-3ce3-43a2-bab8-bab8cf6137c6" x="369" y="651" width="161" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="f0e3e500-3ce3-43a2-bab8-bab8cf6137c6" x="261" y="677" width="269" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="228fc5b8-9c6f-447f-9751-ba694d791d14" x="0" y="20" width="1" height="608"/>
+			</line>
+			<line>
+				<reportElement uuid="99c3f187-f8e4-4ae4-b247-ec3d2f4cf63f" x="1" y="20" width="531" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="228fc5b8-9c6f-447f-9751-ba694d791d14" x="532" y="20" width="1" height="608"/>
+			</line>
+			<rectangle>
+				<reportElement uuid="71131fd8-9e04-42e1-a06f-2f70c227867a" x="15" y="358" width="18" height="16"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="71131fd8-9e04-42e1-a06f-2f70c227867a" x="15" y="414" width="18" height="16"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="71131fd8-9e04-42e1-a06f-2f70c227867a" x="15" y="467" width="18" height="16"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="71131fd8-9e04-42e1-a06f-2f70c227867a" x="15" y="504" width="18" height="16"/>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="88d527ea-b5ff-40db-bc32-09311a3a7acf" x="15" y="358" width="18" height="16"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[($F{trainerRecommend}=='1' ? 'X' : '')]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="88d527ea-b5ff-40db-bc32-09311a3a7acf" x="15" y="414" width="18" height="16"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[($F{trainerRecommend}=='2' ? 'X' : '')]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="88d527ea-b5ff-40db-bc32-09311a3a7acf" x="15" y="467" width="18" height="16"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[($F{trainerRecommend}=='3' ? 'X' : '')]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="88d527ea-b5ff-40db-bc32-09311a3a7acf" x="15" y="504" width="18" height="16"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[($F{trainerRecommend}=='4' ? 'X' : '')]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="379f724b-9876-4e12-8de0-13ed0708ca60" x="1" y="40" width="532" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="379f724b-9876-4e12-8de0-13ed0708ca60" x="2" y="119" width="532" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="379f724b-9876-4e12-8de0-13ed0708ca60" x="1" y="149" width="532" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="379f724b-9876-4e12-8de0-13ed0708ca60" x="1" y="230" width="532" height="1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="b2be69cd-e537-4636-9245-38f62ff8c5fc" x="414" y="4" width="116" height="19"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{evalRecordNumber}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

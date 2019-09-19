@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (C) 2008 Cognos ULC, an IBM Company. All rights reserved.
+    Cognos (R) is a trademark of Cognos ULC, (formerly Cognos Incorporated).
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="Root">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Row" type="rowType" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="rowType">
+		<xs:sequence>
+			<xs:element name="Res_ID" type="xs:string"/>
+			<xs:element name="Res_Name" type="xs:string"/>
+			<xs:element name="Res_Disp_Org_Unit_Code" type="xs:string"/>
+			<xs:element name="Res_Prov_Unit_Code" type="xs:string"/>
+			<xs:element name="Res_Prov_Name" type="xs:string"/>
+			<xs:element name="Catalog_Item_Name" type="xs:string"/>
+			<xs:element name="Update_Date" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

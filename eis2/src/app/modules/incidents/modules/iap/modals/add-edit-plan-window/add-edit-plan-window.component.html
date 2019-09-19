@@ -1,0 +1,104 @@
+<app-jw-modal id="add-edit-plan-modal" style="display: none;" class="box-hdr-dv">
+    <div style="width: 650px; height: 260px;padding: 0px;">
+       <div class="w3-container w3-padding-small w3-theme-d2">
+          <div class="w3-left">{{ this.windowLabel }}</div>
+       </div>
+       <div id="dv-add-edit-plan" class="eis">
+         <form [formGroup]="planForm" autocomplete="off">
+         <table>
+                  <tr>
+                     <td>
+                        <table>
+                           <tr>
+                                 <td class="frmlbl"><label class="f1" for="txName">Plan Name</label></td>
+                                 <td><label class="ast">*</label></td>
+                                 <td>
+                                    <app-text-input id="txName" name="txName" type="text"
+                                    formControlName="incidentName"
+                                      width="200" maxlength="200" allowSpace="true" textTransform="uppercase"></app-text-input>
+                                 </td>
+                           </tr>
+                        </table>
+                     </td>
+                     <td>
+                           <table>
+                              <tr>
+                                    <td class="frmlbl"><label class="f1" for="txOp">Operational Period</label></td>
+                                    <td><label class="ast"></label></td>
+                                    <td>
+                                       <!--
+
+                                       <app-eis-dropdown id="ddOpPeriodType" #ddOpPeriodType
+                                       formControlName="operationalPeriod"
+                                       [width]="100"
+                                       [selectedDropdownData]="this.opPeriodTypeDropdownData"
+                                       [dropdownData]="operationalPeriodTypeData"></app-eis-dropdown>
+                                       -->
+                                       <app-text-input id="txOp" name="txOp" type="text"
+                                       formControlName="operationalPeriod"
+                                       width="200" maxlength="200" allowSpace="true" textTransform="uppercase"></app-text-input>
+                                    </td>
+                              </tr>
+                           </table>
+                        </td>
+                     </tr>
+          </table>
+          <table>
+               <tr>
+                 <td>
+                     <table>
+                         <tr>
+                            <td class="frmlbl"><label class="f1" for="dtDateFrom">Date From</label></td>
+                            <td><label class="ast">*</label></td>
+                            <td>
+                                 <app-eis-datepicker #dtDateFrom
+                                 formControlName="dateFrom"
+                                 id="dtDateFrom">
+                               </app-eis-datepicker>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="frmlbl"><label class="f1" for="dtDateTo">Date To</label></td>
+                           <td><label class="ast">*</label></td>
+                           <td>
+                              <app-eis-datepicker #dtDateTo
+                              formControlName="dateTo"
+                              id="dtDateTo">
+                               </app-eis-datepicker>
+                           </td>
+                       </tr>
+                     </table>
+                 </td>
+                 <td>
+                     <table>
+                         <tr>
+                             <td class="frmlbl"><label class="f1" for="txTimeFrom">Time From</label></td>
+                             <td><label class="ast">*</label></td>
+                             <td>
+                                 <app-text-input id="txTimeFrom" name="txTimeFrom" maxlength="4" restrict2="0-9"
+                                 formControlName="timeFrom"
+                                 width="50"></app-text-input>
+                             </td>
+                         </tr>
+                         <tr>
+                             <td class="frmlbl"><label class="f1" for="txTimeTo">Time To</label></td>
+                             <td><label class="ast">*</label></td>
+                             <td>
+                                 <app-text-input id="txTimeTo" name="txTimeTo" maxlength="4" restrict2="0-9"
+                                 formControlName="timeTo"
+                                 width="50"></app-text-input>
+                             </td>
+                         </tr>
+                      </table>
+                 </td>
+               </tr>
+             </table>
+             </form>
+      </div>
+   </div>
+   <div id="dv-plan-action-bar" class="w3-small w3-left">
+         <button (click)="this.save()" title="Click to save the Plan.">Save</button>
+         <button (click)="this.cancel()" title="Click to cancel changes.">Cancel</button>
+         <button (click)="this.closeModal();" title="Click to cancel changes and close window">Close</button>
+   </div>
+</app-jw-modal>

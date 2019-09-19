@@ -1,0 +1,47 @@
+<app-jw-modal id="quals-window-modal" style="display: none;" class="box-hdr-dv">
+    <div style="width: 420px; height: 150px;padding: 0px;">
+       <div class="w3-container w3-padding-small w3-theme-d2">
+          <div class="w3-left">{{ this.windowLabel }}</div>
+       </div>
+       <div id="dv-add-qual" class="eis">
+         <div>
+         <form [formGroup]="qualForm" autocomplete="off">
+           <table>
+             <tr>
+								<td class="frmlbl"><label for="ddItemCode">Item Code</label></td>
+								<td><label class="ast">*</label></td>
+								<td>
+                  <app-eis-dropdown id="ddItemCode" #ddItemCode
+                    [width]="100"
+                    (dropdownSelect)="this.kindSelectEvent($event)"
+                    [selectedDropdownData]="this.selectedItemCode"
+                    [dropdownData]="this.incidentSelectorService.resourceKindTypeData"></app-eis-dropdown>
+								</td>
+             </tr>
+             <tr>
+								<td class="frmlbl"><label for="txItemName">Item Name</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+                  <app-text-input formControlName="itemName" width="200"></app-text-input>
+  							</td>
+             </tr>
+             <tr>
+								<td class="frmlbl"><label for="txTrainee">Trainee</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+                  <input type="checkbox" formControlName="trainee">
+  							</td>
+             </tr>
+           </table>
+           <div *ngIf="this.showError === true" style="margin-left: 20px; margin-top: 20px;">
+              <label style="color: red">Item Code is a required field.</label>
+            </div>
+         </form>
+        </div>
+      </div>
+   </div>
+   <div class="dv-action-bar w3-small">
+     <button (click)="this.addQual()" title="Click to save the qualification.">Save</button>
+     <button (click)="this.closeModal();" title="Click to cancel changes and close window">Close</button>
+   </div>
+</app-jw-modal>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="GroupCategoryTotalSubChartReport" pageWidth="700" pageHeight="792" columnWidth="700" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="7651fdfa-47a3-4c99-8dc4-e4740e40368d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="groupName" class="java.lang.String"/>
+	<field name="description" class="java.lang.String"/>
+	<field name="totalAmount" class="java.lang.Double"/>
+	<field name="incidentId" class="java.lang.Long"/>
+	<group name="groupByCategory">
+		<groupExpression><![CDATA[$F{groupName}]]></groupExpression>
+	</group>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="513">
+			<pie3DChart>
+				<chart isShowLegend="false">
+					<reportElement uuid="2fa057e7-4e0b-4892-a3b9-4f1f6a604191" x="0" y="0" width="643" height="390"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend position="Left"/>
+				</chart>
+				<pieDataset>
+					<dataset incrementType="Group" incrementGroup="groupByCategory"/>
+					<keyExpression><![CDATA[$F{groupName}]]></keyExpression>
+					<valueExpression><![CDATA[$F{totalAmount}]]></valueExpression>
+					<labelExpression><![CDATA[$F{description}]]></labelExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel color="#000000" backgroundColor="#FFFFFF">
+						<font size="5"/>
+					</itemLabel>
+				</pie3DPlot>
+			</pie3DChart>
+		</band>
+	</summary>
+</jasperReport>

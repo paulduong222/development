@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TNSP3_TS_subreport" language="groovy" pageWidth="552" pageHeight="21" orientation="Landscape" columnWidth="552" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="63d517d4-92c0-4145-bf7b-db5599489520">
+	<property name="ireport.zoom" value="1.3310000000000026"/>
+	<property name="ireport.x" value="180"/>
+	<property name="ireport.y" value="0"/>
+	<style name="row_conditional_style" backcolor="#FFFFFF">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}%2==0)]]></conditionExpression>
+			<style mode="Opaque" backcolor="#CCCCCC"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="groupByClause" class="java.lang.String" isForPrompting="false"/>
+	<field name="agency" class="java.lang.String"/>
+	<field name="commandCount" class="java.lang.String"/>
+	<field name="operationsCount" class="java.lang.String"/>
+	<field name="plansCount" class="java.lang.String"/>
+	<field name="logisticsCount" class="java.lang.String"/>
+	<field name="financeCount" class="java.lang.String"/>
+	<field name="externalCount" class="java.lang.String"/>
+	<field name="totalCount" class="java.lang.String"/>
+	<detail>
+		<band height="21">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="7d4159a7-2b1d-4e2a-951a-62ee8ec3c1a8" stretchType="RelativeToBandHeight" mode="Opaque" x="0" y="0" width="103" height="20" isPrintWhenDetailOverflows="true" backcolor="#E3E3E3"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{agency}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="7d4159a7-2b1d-4e2a-951a-62ee8ec3c1a8" stretchType="RelativeToBandHeight" mode="Transparent" x="103" y="0" width="60" height="20" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{commandCount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="dbfb6f9c-d556-4b24-be78-3af1f99d6e6b" stretchType="RelativeToBandHeight" mode="Transparent" x="167" y="0" width="60" height="20" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{operationsCount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="MM/dd/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="7f954a3d-af85-4612-9f89-ed0ae2adc728" stretchType="RelativeToBandHeight" mode="Transparent" x="231" y="0" width="60" height="20" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{plansCount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="6e54680f-efaa-458a-a636-892b41293270" stretchType="RelativeToBandHeight" mode="Transparent" x="295" y="0" width="60" height="20" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{logisticsCount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="05270217-4b5d-4d93-9795-39eaa9a56cb4" stretchType="RelativeToBandHeight" mode="Transparent" x="359" y="0" width="60" height="20" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{financeCount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="c0159330-111d-45c4-8b4d-254ed0af71ce" stretchType="RelativeToBandHeight" mode="Transparent" x="424" y="0" width="60" height="20" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{externalCount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="7c206623-6e87-4d5a-b36b-ea2c40319fc1" stretchType="RelativeToBandHeight" mode="Transparent" x="488" y="0" width="60" height="20" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="2" bottomPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{totalCount}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="103" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="168" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="232" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="296" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="359" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="424" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="488" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="379f724b-9876-4e12-8de0-13ed0708ca60" x="0" y="20" width="552" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="0" y="0" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement uuid="0c25799a-1e08-4f1d-b17e-bbc7326c967d" x="552" y="0" width="1" height="20"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

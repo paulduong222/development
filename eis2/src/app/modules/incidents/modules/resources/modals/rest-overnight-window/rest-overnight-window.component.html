@@ -1,0 +1,40 @@
+<app-jw-modal id="rest-overnight-window-modal" style="display: none;" class="box-hdr-dv">
+    <div style="width: 420px; height: 150px;padding: 0px;">
+       <div class="w3-container w3-padding-small w3-theme-d2">
+          <div class="w3-left">{{ this.windowLabel }}</div>
+       </div>
+       <div id="dv-add-qual" class="eis">
+         <div>
+         <form [formGroup]="restForm" autocomplete="off">
+           <table>
+              <tr>
+                  <td class="frmlbl"><label for="txCity">City</label></td>
+                  <td><label class="ast">*</label></td>
+                  <td>
+                    <app-text-input id="txCity" name="txCity" formControlName="city" 
+                    width="250" allowSpace="true" maxlength="30"></app-text-input>
+                  </td>
+               </tr>
+               <tr>
+								<td class="frmlbl"><label for="ddState">State</label></td>
+								<td><label class="ast">*</label></td>
+								<td>
+                  <app-eis-dropdown id="ddState" #ddState
+                    [width]="100"
+                    [selectedDropdownData]="this.selectedState"
+                    [dropdownData]="this.incidentSelectorService.stateTypeData"></app-eis-dropdown>
+								</td>
+             </tr>
+           </table>
+           <div *ngIf="this.showError === true" style="margin-left: 20px; margin-top: 20px;">
+              <label style="color: red">City and State are required fields.</label>
+            </div>
+         </form>
+        </div>
+      </div>
+   </div>
+   <div class="dv-action-bar w3-small">
+     <button (click)="this.addLocation()" title="Click to add the rest location.">Add Location</button>
+     <button (click)="this.closeModal();" title="Click to cancel changes and close window">Close</button>
+   </div>
+</app-jw-modal>

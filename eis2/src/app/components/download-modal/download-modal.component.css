@@ -1,0 +1,12 @@
+.dv-md {
+    padding: 0px;
+    min-width: 240px;
+    min-height: 150px;
+}
+.dv-md button {
+    height: 26px;
+}
+.dv-md-msg {
+    padding: 20px 10px 20px 10px;
+	font: 14px Helvetica,Arial,sans-serif;
+}

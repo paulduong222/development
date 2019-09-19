@@ -1,0 +1,43 @@
+<div [style.height]="calcHt()">
+	<div id="dv-contractor-bar">
+		<div id="dv-contractor-bar-left" class="w3-left">
+			<app-grid-icon-bar
+				[showFilter]="true" 
+				[showExpandRetract]="true"
+				(filterEvent)="this.clearFilter()"
+				(expandRetractEvent)="this.expandRetract()"
+				(refreshEvent)="this.refreshGrid()">
+			</app-grid-icon-bar>
+		</div>
+		<div id="dv-contractor-bar-right" class="w3-right">
+			<button [class]="getTopBarButtonClass('add')" (click)="addContractor()" title="Click to add a new Contractor">Add Contractor</button>
+			<button [class]="getTopBarButtonClass('edit')" (click)="this.editContractor()" title="Click to edit Contractor">Edit Contractor</button>
+			<button class="w3-small" (click)="this.deleteContractor()" title="Click to delete the Contractor">Delete Contractor</button>
+			<button class="w3-small" (click)="navTo('/incidents/resources', 'time', 'timeview')" title="Click to navigate to Time Post">Time Post</button>
+			<button class="w3-small" (click)="navTo('/incidents/resources', 'timeadj', 'timeadjview')" title="Click to navigate to Time Adjustments">Time Adjustments</button>
+		</div>
+	</div>
+	<div class="split-example">
+		<as-split direction="horizontal">
+			<as-split-area [size]="splitAreaLeftSize">
+				<div id="dv-contractor-grid">
+					<app-eis-grid #contractorGrid 
+						[columnDefs]="this.gridColumnDefs" 
+						[rowData]="contractorList"
+						(rowSelectEvent)="this.onSelectContractor($event)">
+					</app-eis-grid>
+				</div>
+			</as-split-area> 
+			<as-split-area [size]="splitAreaRightSize" class="scroll-x">
+				<div id="dv-contractor-form">
+					<app-contractors-form #contractorsForm
+						(contractorFormEvent)="this.contractorFormEvent($event)"
+						[currentSelectedIncidentSelectorVo]="this.currentSelectedIncidentSelectorVo">
+					</app-contractors-form>
+					<app-contractors-agreement-form #contractorsAgreementForm></app-contractors-agreement-form>
+				</div>
+			</as-split-area>
+		</as-split>
+	</div>
+	<app-prompt-modal id="contractorPromptModal" #contractorPromptModal (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>
+</div>

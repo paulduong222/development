@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.nwcg.org/webservices/security/authentication" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.nwcg.org/webservices/security/authentication" targetNamespace="http://www.nwcg.org/webservices/security/authentication">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:auth="http://www.nwcg.org/webservices/security/authentication" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.nwcg.org/webservices/security/authentication"><element name="authenticationRequest"><complexType><sequence><element name="UserName"><simpleType><restriction base="string"><minLength value="1"/><maxLength value="32"/></restriction></simpleType></element><element name="Password"><simpleType><restriction base="string"><minLength value="1"/><maxLength value="512"/></restriction></simpleType></element><element name="ApplicationInstance"><simpleType><restriction base="string"><minLength value="1"/><maxLength value="31"/></restriction></simpleType></element></sequence></complexType></element><element name="authenticationResponse"><complexType><sequence><element name="FirstName"><simpleType><restriction base="string"><minLength value="1"/><maxLength value="30"/></restriction></simpleType></element><element name="MiddleName"><simpleType><restriction base="string"><minLength value="0"/><maxLength value="30"/></restriction></simpleType></element><element name="LastName"><simpleType><restriction base="string"><minLength value="1"/><maxLength value="30"/></restriction></simpleType></element><element name="LDAPIdentifier"><simpleType><restriction base="string"><minLength value="1"/><maxLength value="40"/></restriction></simpleType></element><element name="Status"><simpleType><restriction base="string"><minLength value="1"/><maxLength value="25"/></restriction></simpleType></element><element name="ROBAccepted" type="boolean"/><element name="ROBExpirationDays"><simpleType><restriction base="string"><minLength value="1"/><maxLength value="6"/></restriction></simpleType></element><element name="IsPrivileged" type="boolean"/></sequence></complexType></element></schema>
+  </wsdl:types>
+  <wsdl:message name="authenticationRequest">
+    <wsdl:part element="sch:authenticationRequest" name="authenticationRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authenticationResponse">
+    <wsdl:part element="sch:authenticationResponse" name="authenticationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Authentication">
+    <wsdl:operation name="authentication">
+      <wsdl:input message="sch:authenticationRequest" name="authenticationRequest">
+    </wsdl:input>
+      <wsdl:output message="sch:authenticationResponse" name="authenticationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AuthenticationSoap11" type="sch:Authentication">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="authentication">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="authenticationRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="authenticationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AuthenticationService">
+    <wsdl:port binding="sch:AuthenticationSoap11" name="AuthenticationSoap11">
+      <soap:address location="https://nap-ft.nwcg.gov:443/rossTR/authenticationService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

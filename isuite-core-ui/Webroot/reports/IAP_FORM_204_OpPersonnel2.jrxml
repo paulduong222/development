@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IAP_FORM_204_OpPersonnel2" language="groovy" pageWidth="572" pageHeight="752" columnWidth="572" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0e0f751b-fe40-473e-aa52-44c541e9868c">
+	<property name="ireport.zoom" value="1.5000000000000007"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="role" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="role1" class="java.lang.String"/>
+	<field name="role2" class="java.lang.String"/>
+	<field name="role3" class="java.lang.String"/>
+	<field name="role4" class="java.lang.String"/>
+	<field name="role5" class="java.lang.String"/>
+	<field name="role6" class="java.lang.String"/>
+	<field name="name1" class="java.lang.String"/>
+	<field name="name2" class="java.lang.String"/>
+	<field name="name3" class="java.lang.String"/>
+	<field name="name4" class="java.lang.String"/>
+	<field name="name5" class="java.lang.String"/>
+	<field name="name6" class="java.lang.String"/>
+	<field name="includeThirdRow" class="java.lang.Boolean"/>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="3780e9db-7410-47a4-ac86-26e8bc3164a3" stretchType="RelativeToTallestObject" x="0" y="1" width="125" height="13" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{role1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="8067b13b-8cef-48d3-a5f7-d8d553e3d954" stretchType="RelativeToTallestObject" x="130" y="1" width="155" height="13" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name1}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="7f1e69f7-9be0-42c9-9fa4-377b41d20c71" positionType="Float" stretchType="RelativeToTallestObject" x="127" y="0" width="1" height="14" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="7f1e69f7-9be0-42c9-9fa4-377b41d20c71" positionType="Float" stretchType="RelativeToTallestObject" x="572" y="0" width="1" height="14" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="7f1e69f7-9be0-42c9-9fa4-377b41d20c71" positionType="Float" stretchType="RelativeToTallestObject" x="286" y="0" width="1" height="14" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="3780e9db-7410-47a4-ac86-26e8bc3164a3" stretchType="RelativeToTallestObject" x="287" y="1" width="125" height="13" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{role2}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="7f1e69f7-9be0-42c9-9fa4-377b41d20c71" positionType="Float" stretchType="RelativeToTallestObject" x="413" y="0" width="1" height="14" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="8067b13b-8cef-48d3-a5f7-d8d553e3d954" stretchType="RelativeToTallestObject" x="416" y="1" width="155" height="13" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name2}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="14" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="3780e9db-7410-47a4-ac86-26e8bc3164a3" stretchType="RelativeToTallestObject" x="0" y="1" width="125" height="13" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{role3}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="8067b13b-8cef-48d3-a5f7-d8d553e3d954" stretchType="RelativeToTallestObject" x="130" y="1" width="155" height="13" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name3}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="3780e9db-7410-47a4-ac86-26e8bc3164a3" stretchType="RelativeToTallestObject" x="287" y="1" width="125" height="13" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{role4}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="8067b13b-8cef-48d3-a5f7-d8d553e3d954" stretchType="RelativeToTallestObject" x="416" y="1" width="155" height="13" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name4}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="7f1e69f7-9be0-42c9-9fa4-377b41d20c71" positionType="Float" stretchType="RelativeToTallestObject" x="413" y="0" width="1" height="14" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="7f1e69f7-9be0-42c9-9fa4-377b41d20c71" positionType="Float" stretchType="RelativeToTallestObject" x="286" y="0" width="1" height="14" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="7f1e69f7-9be0-42c9-9fa4-377b41d20c71" positionType="Float" stretchType="RelativeToTallestObject" x="127" y="0" width="1" height="14" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="7f1e69f7-9be0-42c9-9fa4-377b41d20c71" positionType="Float" stretchType="RelativeToTallestObject" x="572" y="0" width="1" height="14" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement uuid="88ca1f82-dc52-41f3-8574-4d3f061008e0" positionType="Float" x="0" y="0" width="572" height="1" isPrintWhenDetailOverflows="true"/>
+			</line>
+		</band>
+		<band height="14" splitType="Stretch">
+			<printWhenExpression><![CDATA[$F{includeThirdRow}==true]]></printWhenExpression>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="3780e9db-7410-47a4-ac86-26e8bc3164a3" stretchType="RelativeToTallestObject" x="0" y="1" width="125" height="13" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{role5}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="88ca1f82-dc52-41f3-8574-4d3f061008e0" positionType="Float" x="0" y="0" width="572" height="1" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[$F{includeThirdRow}==true]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement uuid="7f1e69f7-9be0-42c9-9fa4-377b41d20c71" positionType="Float" stretchType="RelativeToTallestObject" x="127" y="0" width="1" height="14" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[$F{includeThirdRow}==true]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement uuid="7f1e69f7-9be0-42c9-9fa4-377b41d20c71" positionType="Float" stretchType="RelativeToTallestObject" x="572" y="0" width="1" height="14" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[$F{includeThirdRow}==true]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement uuid="7f1e69f7-9be0-42c9-9fa4-377b41d20c71" positionType="Float" stretchType="RelativeToTallestObject" x="286" y="0" width="1" height="14" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[$F{includeThirdRow}==true]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement uuid="7f1e69f7-9be0-42c9-9fa4-377b41d20c71" positionType="Float" stretchType="RelativeToTallestObject" x="413" y="0" width="1" height="14" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[$F{includeThirdRow}==true]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="8067b13b-8cef-48d3-a5f7-d8d553e3d954" stretchType="RelativeToTallestObject" x="130" y="1" width="155" height="13" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name5}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="3780e9db-7410-47a4-ac86-26e8bc3164a3" stretchType="RelativeToTallestObject" x="287" y="1" width="125" height="13" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{role6}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="8067b13b-8cef-48d3-a5f7-d8d553e3d954" stretchType="RelativeToTallestObject" x="416" y="1" width="155" height="13" isPrintWhenDetailOverflows="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name6}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

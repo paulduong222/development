@@ -1,0 +1,109 @@
+<app-jw-modal id="check-in-settings-modal" style="display: none;" class="box-hdr-dv">
+    <div style="width: 800px; height: 500px;padding: 0px;">
+        <div class="w3-container w3-padding-small w3-theme-d2">
+            <div class="w3-left">{{ windowLabel }}</div>
+            <div class="w3-right"></div>
+        </div>
+        <div class="eis">
+                <div id="dv-hdr-info" class="w3-padding-small">
+                    <label><strong>{{ incidentTypeLabel }}</strong></label>
+                    <label><strong>{{ incidentNameLabel }}</strong></label>
+                </div>
+                <div class="dv-module-sub-nav-bar">
+                        <div class="btn-group-sub-menu">
+                          <button (click)="dataTabSelect('quickstats')" [class]="getStyle('quickstats')">Quick Stat Settings</button>	
+                          <button (click)="dataTabSelect('otherfields')" [class]="getStyle('otherfields')">Other Field Labels</button>
+                          <button (click)="dataTabSelect('defaultdatetime')" [class]="getStyle('defaultdatetime')">Default Check-in Date and Time</button>	
+                        </div>
+                </div>
+        </div>
+        <div  [class]="getActiveTab('quickstats')" >
+            <Label class="tablbl"><strong>Quick Stats Item Codes</strong></Label>
+            <div id="dv-shuttle-box">
+                    <div id="dv-shuttle-left">
+                        <div id="dv-shuttle-left-hdr"><label>Available</label></div>
+                        <div class="dv-grid-container">
+                            <app-eis-grid id="kindAvailGrid" #kindAvailGrid  
+                            [columnDefs]="this.gridColumnDefs" 
+                            [rowData]="gridAvailableList"
+                            (rowSelectEvent)="this.onSelectAvailRow($event)"
+                            >
+                        </app-eis-grid>
+                    </div>
+                    </div>
+                    <div id="dv-shuttle-mid">
+                        <div><img (click)="this.addItem()" src="assets/images/arrow_right.png" title="Click to add selected Item Code" style="margin-top:50px;"></div>
+                        <div><img (click)="this.removeItem()" src="assets/images/arrow_left.png" title="Click to remove selected Item Code"></div>
+                        <div><img (click)="this.addAllItems()" src="assets/images/arrow_right_double.png" title="Click to add all selected Item Codes"></div>
+                        <div><img (click)="this.removeAllItems()" src="assets/images/arrow_left_double.png" title="Click to remove all selected Item Codes"></div>
+                    </div>
+                    <div id="dv-shuttle-right">
+                        <div id="dv-shuttle-right-hdr"><label>Selected</label></div>
+                        <div class="dv-grid-container">
+                            <app-eis-grid #kindSelectedGrid 
+                                [treeViewMode]="false"
+                                [columnDefs]="this.gridColumnDefs" 
+                                [rowData]="gridSelectedList"
+                                (rowSelectEvent)="this.onSelectSelectedRow($event)"
+                                >
+                        </app-eis-grid>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div [class]="getActiveTab('otherfields')">
+            <form [formGroup]="otherFieldsForm" autocomplete="off">
+            <div class="">
+                <table>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txOther1">Other 1</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                            <app-text-input id="txOther1" name="txOther1" type="text"
+                                formControlName="other1Label"
+                                width="300" maxlength="30" textTransform="uppercase"></app-text-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txOther2">Other 2</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                            <app-text-input id="txOther2" name="txOther2" type="text"
+                            formControlName="other2Label"
+                            width="300" maxlength="30" textTransform="uppercase"></app-text-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="frmlbl"><label class="f1" for="txOther3">Other 3</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                            <app-text-input id="txOther3" name="txOther3" type="text"
+                            formControlName="other3Label"
+                            width="300" maxlength="30" textTransform="uppercase"></app-text-input>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            </form>
+        </div>
+        <div [class]="getActiveTab('defaultdatetime')">
+            <div class="dv-def-check-in-date">
+                <Label class="tablbl"><strong>Default Check-in Date and Time</strong></Label>
+                <form [formGroup]="defCheckInDateForm" autocomplete="off">
+                    <div class="dv-form-checkin">
+                            <input type="radio" formControlName="defaultValue" name="defaultValue" value="Blank"><label>Blank</label>
+                            <br>
+                            <input type="radio" formControlName="defaultValue"  name="defaultValue"  value="System Date"><label>System Date</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="dv-checkin-action-bar">
+            <div class="w3-center w3-small">
+                <button (click)="this.save()" [disabled]="btnDisabled" title="Click to save the Check-In Settings">Save</button>
+                <button (click)="this.cancel()" [disabled]="btnDisabled" title="Click to cancel changes">Cancel</button>
+                <button (click)="closeModal('check-in-settings-modal');" title="Click to close window">Close</button>
+            </div>
+        </div>
+      </div>
+</app-jw-modal>

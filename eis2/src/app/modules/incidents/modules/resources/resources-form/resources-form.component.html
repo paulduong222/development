@@ -1,0 +1,1099 @@
+<div class="eis" style="background-color: white;" >
+	<div id="dv-res-form" class="eis bg-white">
+		<form [formGroup]="resourceForm" autocomplete="off">
+			<table>
+				<tr>
+					<td>
+						<table>
+              <tr [class]="getIncidentSelectorClass()">
+								<td class="frmlbl"><label class="f1" style="width: 40px;word-break: break-all;">Select Incident</label></td>
+								<td><label class="ast">*</label></td>
+								<td>
+                  <app-eis-dropdown id="ddIncident" #ddIncident
+                  formControlName="incidentVo"
+                  [width]="200"
+                  [selectedDropdownData]="this.selectedIncidentTypeData"
+                  [dropdownData]="this.incidentSelectorService.resourceIncidentTypeData"></app-eis-dropdown>
+                </td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label for="ddIncAcctCode">Accounting Code</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+                    <app-eis-dropdown id="ddIncAcctCode" #ddIncAcctCode
+                        width="150"
+                        [selectedDropdownData]="this.selectedIncAcctCodeTypeData"
+                        [dropdownData]="this.incidentSelectorService.resourceIncAcctCodeTypeData"
+                        ></app-eis-dropdown>
+								</td>
+							</tr>
+							<tr>
+								<td class="frmlbl" ><label>Request Number</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+                  <app-text-input id="txRNum" name="txRNum" type="text"
+                    formControlName="requestNumber" width="100">
+                  </app-text-input>
+								</td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label for="ddStatusType">Status</label></td>
+								<td><label class="ast">*</label></td>
+								<td>
+                  <app-eis-dropdown id="ddStatusType" #ddStatusType
+                    formControlName="status"
+                    [width]="80"
+                    (dropdownSelect)="this.statusSelectEvent($event)"
+                    [selectedDropdownData]="this.statusTypeDropdownData"
+                    [dropdownData]="this.statusTypeData"></app-eis-dropdown>
+								</td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label for="ckPerson">Person</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+                     <input formControlName="person" id="ckPerson" type="checkbox"/>
+								</td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label for="ckContractor">Invoice OF-286</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+                  <input formControlName="contractor" id="ckContractor" type="checkbox"/>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td class="vtop">
+						<table>
+							<tr *ngIf="!this.resourceForm.get('person').value">
+								<td class="frmlbl"><label>Resource Name</label></td>
+								<td><label class="ast">*</label></td>
+								<td>
+                  <textarea id="txResName" name="txResName" 
+                    formControlName="resourceName" allowSpace="true"
+                      style="width:200px;height:50px;resize: none;"></textarea>
+								</td>
+							</tr>
+							<tr *ngIf="this.resourceForm.get('person').value">
+								<td class="frmlbl"><label for="txLName">Last Name</label></td>
+								<td><label class="ast">*</label></td>
+								<td>
+                    <app-text-input id="txLName" name="txLName" type="text" allowSpace="true"
+                    formControlName="lastName" width="200" maxlength="35">
+                  </app-text-input>
+								</td>
+							</tr>
+							<tr *ngIf="this.resourceForm.get('person').value">
+								<td class="frmlbl"><label for="txFName">First Name</label></td>
+								<td><label class="ast">*</label></td>
+								<td>
+                   <app-text-input id="txFName" name="txFName" type="text" allowSpace="true"
+                      formControlName="firstName" width="200" maxlength="35">
+                  </app-text-input>
+								</td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label for="txCellPhone">Cell Phone #</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+									<app-phone-input formControlName="cellPhone" id="txCellPhone" name="txCellPhone" style="width:200px;"></app-phone-input>
+								</td>
+							</tr>
+							<tr [class]="getLeaderClass()">
+								<td class="frmlbl"><label for="ddLeaderType">Leader Type</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+                  <app-eis-dropdown id="ddLeaderType" #ddLeaderType
+                    [width]="100"
+                    [selectedDropdownData]="this.selectedLeaderTypeData"
+                    [dropdownData]="this.leaderTypeData"></app-eis-dropdown>
+								</td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label for="ddKindType">Item Code</label></td>
+								<td><label class="ast">*</label></td>
+								<td>
+                  <app-eis-dropdown id="ddKindType" #ddKindType
+                    formControlName="kindVo"
+                    [width]="100"
+                    (dropdownSelect)="this.kindSelectEvent($event)"
+                    [selectedDropdownData]="this.kindTypeDropdownData"
+                    [dropdownData]="this.incidentSelectorService.resourceKindTypeData"></app-eis-dropdown>
+								</td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label for="txKindName">Item Name</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+                  <app-text-input id="txKindName" name="txKindName" type="text"
+                  formControlName="kindName" width="200" maxlength="35">
+              </app-text-input>
+            </td>
+							</tr>
+						</table>
+					</td>
+					<td class="vtop">
+						<table>
+							<tr>
+								<td class="frmlbl"><label for="ddUnitType">Unit ID</label></td>
+								<td><label class="ast">*</label></td>
+								<td>
+                  <app-eis-dropdown id="ddUnitType" #ddUnitType
+                    formControlName="unitVo"
+                    [width]="100"
+                    [selectedDropdownData]="this.unitTypeDropdownData"
+                    [dropdownData]="this.incidentSelectorService.resourceUnitTypeData"></app-eis-dropdown>
+								</td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label for="ddAgencyType">Agency</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+                  <app-eis-dropdown id="ddAgencyType" #ddAgencyType
+                    formControlName="agencyVo"
+                    [width]="100"
+                    [selectedDropdownData]="this.agencyTypeDropdownData"
+                    [dropdownData]="this.incidentSelectorService.resourceAgencyTypeData"></app-eis-dropdown>
+								</td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label for="dtMobDate">Mobilization Date</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+                  <app-eis-datepicker #dtMobDate
+                    formControlName="mobilizationDate"
+                    id="dtMobDate">
+                  </app-eis-datepicker>
+								</td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label for="dtCheckInDate">Check-In Date</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+                    <app-eis-datepicker #dtCheckInDate
+                      formControlName="checkInDate"
+                      id="dtCheckInDate">
+                    </app-eis-datepicker>
+                  </td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label for="txCheckInTime">Check-In Time</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+                  <app-text-input id="txCheckInTime" name="txCheckInTime" type="text"
+                      formControlName="checkInTime" restrict2="0-9" maxlength="4" width="80">
+                   </app-text-input>
+              </td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label for="dtActualReleaseDate">Actual Release Date</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+                  <app-eis-datepicker #dtActualReleaseDate
+                    formControlName="actualReleaseDate"
+                    id="dtActualReleaseDate">
+                  </app-eis-datepicker>
+              </td>
+							</tr>
+							<tr>
+								<td class="frmlbl"><label for="txActualReleaseTime">Actual Release Time</label></td>
+								<td><label class="ast"></label></td>
+								<td>
+                  <app-text-input id="txActualReleaseTime" name="txActualReleaseTime" type="text"
+                      formControlName="actualReleaseTime" restrict2="0-9" maxlength="4" width="80">
+                   </app-text-input>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+            <div class="dv-module-sub-nav-bar">
+              <div class="btn-group-sub-menu">
+                <div [class]="getBtnDivClass('checkindemob')"><button (click)="dataTabSelect('checkin')" [class]="getActiveTabBtn('checkin')">Check-In Data</button></div>	
+                <div [class]="getBtnDivClass('checkindemob')"><button (click)="dataTabSelect('demob')" [class]="getActiveTabBtn('demob')">Demob Data</button></div>
+                <div [class]="getBtnDivClass('checkindemob')"><button (click)="dataTabSelect('airtravel')" [class]="getActiveTabBtn('airtravel')">Demob Air Travel Data</button></div>	
+                <div [class]="getBtnDivClass('checkindemob')"><button (click)="dataTabSelect('airtravelquest')" [class]="getActiveTabBtn('airtravelquest')">Demob Air Travel Questions</button></div>	
+                <div [class]="getBtnDivClass('time')"><button (click)="dataTabSelect('time')" [class]="getActiveTabBtn('time')">Time Data</button></div>	
+                <div [class]="getBtnDivClass('cost')"><button (click)="dataTabSelect('cost')" [class]="getActiveTabBtn('cost')">Cost Data</button></div>	
+              </div>
+            </div>
+            <div [class]="getActiveTab('checkin')">
+  						<table>
+                            <tr>
+               					<td class="vtop">
+                                  <table>
+                                    <tr>
+                                      <td class="frmlbl"><label for="dtFirstWorkDay">First Work Day</label></td>
+                                      <td><label class="ast"></label></td>
+                                      <td>
+                                        <app-eis-datepicker #dtFirstWorkDay
+                                          formControlName="firstWorkDay"
+                                          id="dtFirstWorkDay">
+                                        </app-eis-datepicker>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="frmlbl"><label for="txLoa">Length of Assignment</label></td>
+                                      <td><label class="ast"></label></td>
+                                      <td>
+                                        <app-text-input id="txLoa" name="txLoa" type="text"
+                                          formControlName="loa" restrict2="0-9" maxlength="4" width="40">
+                                       </app-text-input>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="frmlbl"><label for="txDemobDate">Demob Date</label></td>
+                                      <td><label class="ast"></label></td>
+                                      <td>
+                                        <app-text-input id="txDemobDate" name="txDemobDate" type="text"
+                                          formControlName="demobDate" maxlength="10" width="60">
+                                       </app-text-input>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="frmlbl"><label for="txDaysLeft">Days Left</label></td>
+                                      <td><label class="ast"></label></td>
+                                      <td>
+                                        <app-text-input id="txDaysLeft" name="txDaysLeft" type="text"
+                                          formControlName="daysLeft" restrict2="0-9" maxlength="4" width="40">
+                                       </app-text-input>
+                                      </td>
+                                    </tr>
+                                      <tr>
+                                        <td class="frmlbl"><label for="txNumberOfPersonnel">Number of Personnel</label></td>
+                                        <td><label class="ast"></label></td>
+                                        <td>
+                                          <app-text-input id="txNumberOfPersonnel" name="txNumberOfPersonnel" type="text"
+                                          formControlName="numberOfPersonnel" restrict2="0-9" maxlength="4" width="40">
+                                          </app-text-input>
+                                        </td>
+                                      </tr>
+                                  </table>
+                                </td>
+               					<td class="vtop">
+                                    <table>
+                                      <tr>
+                                        <td class="frmlbl"><label for="txDemobCity">Demob City</label></td>
+                                        <td><label class="ast"></label></td>
+                                        <td>
+                                          <app-text-input id="txDemobCity" name="txDemobCity" type="text"
+                                          formControlName="demobCity" maxlength="50" allowSpace="true" width="150">
+                                          </app-text-input>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td class="frmlbl"><label for="ddDemobStateType">Demob State</label></td>
+                                        <td><label class="ast"></label></td>
+                                        <td>
+                                          <app-eis-dropdown id="ddDemobStateType" #ddDemobStateType
+                                          formControlName="demobStateVo"
+                                          [width]="100"
+                                          [selectedDropdownData]="this.demobStateTypeDropdownData"
+                                          [dropdownData]="this.incidentSelectorService.stateTypeData"></app-eis-dropdown>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td class="frmlbl"><label for="ddMobTravelMethodType">Mobilization Travel Method</label></td>
+                                        <td><label class="ast"></label></td>
+                                        <td>
+                                          <app-eis-dropdown id="ddMobTravelMethodType" #ddMobTravelMethodType
+                                          formControlName="mobTravelMethodVo"
+                                          [width]="80"
+                                          [selectedDropdownData]="this.mobTravelMethodTypeDropdownData"
+                                          [dropdownData]="this.travelMethodTypeData"></app-eis-dropdown>
+                                        </td>
+                                      </tr>
+                                      <tr *ngIf="this.showRental === true">
+                                        <td class="frmlbl"><label for="txRental">Rental Location</label></td>
+                                        <td><label class="ast"></label></td>
+                                        <td>
+                                          <app-text-input id="txRental" name="txRental" type="text"
+                                          formControlName="rentalLocation" maxlength="50" allowSpace="true" width="150">
+                                          </app-text-input>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td class="frmlbl"><label for="ddMobJetportType">Mobilization Jetport</label></td>
+                                        <td><label class="ast"></label></td>
+                                        <td>
+                                          <app-eis-dropdown id="ddMobJetportType" #ddMobJetportType
+                                          formControlName="mobJetportVo"
+                                          [width]="100"
+                                          [selectedDropdownData]="this.mobJetportTypeDropdownData"
+                                          [dropdownData]="this.incidentSelectorService.resourceJetportTypeData"></app-eis-dropdown>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                </td>
+               					<td class="vtop">
+                                    <table>
+                                      <tr>
+                                        <td class="frmlbl"><label for="txOther1">Other 1</label></td>
+                                        <td><label class="ast"></label></td>
+                                        <td>
+                                          <app-text-input id="txOther1" name="txOther1" type="text"
+                                          formControlName="other1" maxlength="15" width="150" allowSpace="true">
+                                       </app-text-input>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td class="frmlbl"><label for="txOther2">Other 2</label></td>
+                                        <td><label class="ast"></label></td>
+                                        <app-text-input id="txOther2" name="txOther2" type="text"
+                                        formControlName="other2" maxlength="15" width="150" allowSpace="true">
+                                     </app-text-input>
+                                      <td>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td class="frmlbl"><label for="txOther3">Other 3</label></td>
+                                        <td><label class="ast"></label></td>
+                                        <app-text-input id="txOther3" name="txOther3" type="text"
+                                        formControlName="other3" maxlength="15" width="150" allowSpace="true">
+                                     </app-text-input>
+                                      <td>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                      </table>
+                      <div class="dv-border">
+                        <table>
+                          <tr>
+                            <td>
+                              <table>
+                                <tr>
+                                    <td class="frmlbl"><label for="txCheckInRemarks">Check-In Remarks</label></td>
+                                    <td><label class="ast"></label></td>
+                                    <td>
+                                      <textarea id="txCheckInRemarks" name="txCheckInRemarks" 
+                                        formControlName="checkInRemarks" maxlength="1000"
+                                        style="width:400px;height:90px;resize: none;"></textarea>
+                                      </td>
+                                </tr>
+                              </table>
+                            </td>
+                            <td [class]="getQualClass()">
+                              <table>
+                                <tr>
+                                  <td><label>Qualifications</label></td>
+                                  <td>
+                                    <div style="width: 370px; height: 140px">
+                                      <app-eis-grid #gridQuals 
+                                      [floatingFilter]="false"
+                                      [columnDefs]="this.gridQualsColumnDefs" 
+                                      (rowSelectEvent)="this.onSelectQualRow($event)"
+                                      [rowData]="qualsList">
+                                    </app-eis-grid>
+                                    <div class="dv-action-bar w3-small">
+                                      <button (click)="this.openQualWindow('add')" [disabled]="this.resourceForm.get('person').value !== true" title="Click to add a new Qualification">Add</button>
+                                      <button (click)="this.openQualWindow('edit')" [disabled]="this.resourceForm.get('person').value !== true" title="Click to edit the Qualification">Edit</button>
+                                      <button (click)="this.deleteQual()" [disabled]="this.resourceForm.get('person').value !== true" title="Click to delete the Qualification">Delete</button>
+                                    </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+            </div>
+            <div [class]="getActiveTab('demob')">
+              <table>
+                <tr>
+                  <td>
+                    <div>
+                      <label style="font-weight: bold;">Tentative Demob</label>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><!-- tent demob col 1-->
+                    <table>
+                      <tr>
+                        <td class="frmlbl"><label for="ddDemobTravelMethodType">Demob Travel Method</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                          <app-eis-dropdown id="ddDemobTravelMethodType" #ddDemobTravelMethodType
+                          formControlName="demobTravelMethodVo"
+                          [width]="80"
+                          [selectedDropdownData]="this.demobTravelMethodTypeDropdownData"
+                          [dropdownData]="this.travelMethodTypeData"></app-eis-dropdown>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="frmlbl"><label for="txRenLoc">Rental Location</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                          <app-text-input id="txRenLoc" name="txRenLoc" type="text"
+                          formControlName="rentalLocation" width="140"></app-text-input>
+                      </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td><!-- tent demob col 2-->
+                    <table>
+                      <tr>
+                        <td class="frmlbl"><label for="dtTentReleaseDate">Tentative Release Date</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                          <app-eis-datepicker #dtTentReleaseDate
+                          formControlName="tentReleaseDate"
+                          id="dtTentReleaseDate">
+                        </app-eis-datepicker>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="frmlbl"><label for="txTentRelTime">Tentative Release Time</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                          <app-text-input id="txTentRelTime" name="txTentRelTime" type="text"
+                          formControlName="tentReleaseTime" restrict2="0-9" maxlength="4" width="80">
+                       </app-text-input>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td><!-- tent demob col 3-->
+                    <table>
+                      <tr>
+                        <td class="frmlbl"><label for="ckAvailReassign">Available for Reassignment</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                          <input id="ckAvailReassign" #ckAvailReassign formControlName="availReassign" type="checkbox"/>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="frmlbl"><label for="ckFrmPrinted">Checkout Form Printed</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                          <input id="ckFrmPrinted" #ckFrmPrinted formControlName="checkoutFormPrinted" type="checkbox"/>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td><!-- tent demob col 4-->
+                    <table>
+                      <tr>
+                        <td class="frmlbl"><label for="ckDispNot">Dispatch Notified</label></td>
+                        <td><label class="ast"></label></td>
+                        <td>
+                          <input id="ckDispNot" #ckDispNot formControlName="dispatchNotifiedTent" type="checkbox"/>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <!-- 
+                        <table>
+                          <tr>
+                                        <td class="frmlbl"><label>Tentative Demob Remarks</label></td>
+                                        <td><label class="ast"></label></td>
+                                        <td>
+                                          <textarea style="width: 600px; height: 40px; resize: none;"
+                                           formControlName="tentDemobRemarks"></textarea>
+                                        </td>
+                          </tr>
+                        </table>
+              -->
+              <table>
+                <tr>
+                  <td>
+                      <div>
+                        <label style="font-weight: bold;">Actual Demob</label>
+                      </div>
+                  </td>
+                </tr>
+              </table>
+
+              <table>
+                <tr>
+                  <td> <!-- outer column 1-->
+                    <table>
+                        <tr>
+                          <td>
+                            <!-- column 1-->  
+                            <table>
+                              <tr>
+                                  <td class="frmlbl"><label for="dtEstArrivalDate">Estimated Date of Arrival</label></td>
+                                  <td><label class="ast"></label></td>
+                                  <td>
+                                    <app-eis-datepicker id="dtEstArrivalDate" #dtEstArrivalDate
+                                     formControlName="estArrivalDate"></app-eis-datepicker>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td class="frmlbl"><label for="txEstArrivalTime">Estimated Time of Arrival</label></td>
+                                  <td><label class="ast"></label></td>
+                                  <td>
+                                    <app-text-input id="txEstArrivalTime" #txEstArrivalTime
+                                    formControlName="estArrivalTime"
+                                      restrict2="0-9" maxlength="4" width="80"></app-text-input>
+                                  </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td>
+                            <!-- column 2-->  
+                            <table>
+                              <tr>
+                                  <td class="frmlbl"><label>Dispatch Notified</label></td>
+                                  <td><label class="ast"></label></td>
+                                  <td>
+                                    <input id="ckDispNot" formControlName="dispatchNotifiedActual" type="checkbox"/>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td class="frmlbl"><label>Rest Overnight</label></td>
+                                  <td><label class="ast"></label></td>
+                                  <td>
+                                    <input id="ckRestOvernight" formControlName="restOvernight" type="checkbox"/>
+                                  </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                      <table>
+                          <tr>
+                              <td class="frmlbl"><label>Actual Demob Remarks</label></td>
+                              <td><label class="ast"></label></td>
+                              <td>
+                                <textarea id="txActDemobRemarks" name="txActDemobRemarks" 
+                                     maxlength="1000" formControlName="releaseRemarks"
+                                  style="width:400px;height:120px;resize: none;"></textarea>
+                              </td>
+                          </tr>
+                        </table>
+                  </td>
+                  <td [class]="getRestOvernightClass()"> <!-- outer column 2-->
+                    <table>
+                        <tr>
+                            <td>
+                                <label>Rest Overnight Locations</label>
+                                <div style="width: 370px; height: 150px">
+                                     <app-eis-grid #gridRestOvernight 
+                                    [floatingFilter]="false"
+                                    [columnDefs]="this.gridRestOvernightColumnDefs" 
+                                    (rowSelectEvent)="this.onSelectRestOvernightRow($event)"
+                                    [rowData]="restOvernightList">
+                                    </app-eis-grid>
+                                </div>
+                                <div class="dv-action-bar w3-small">
+                                    <button (click)="this.openRestOvernightWindow('add')" [disabled]="this.resourceForm.get('restOvernight').value !== true" title="Click to add a new Rest Overnight Location">Add</button>
+                                    <button (click)="this.removeRestOvernight()" [disabled]="this.resourceForm.get('restOvernight').value !== true" title="Click to remvoe the Rest Overnight Location">Remove</button>
+                                </div>
+                        </td>
+                        </tr>
+                      </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div [class]="getActiveTab('airtravel')">
+              <table>
+                <tr>
+                  <td>
+                    <table>
+                      <tr>
+                          <td class="frmlbl"><label for="txNameOnPicId">Name on Picture ID</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                            <app-text-input id="txNameOnPicId" name="txNameOnPicId"
+                              formControlName="nameOnPictureId"
+                              maxlength="70"
+                              allowSpace="true" width="150"></app-text-input>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="frmlbl"><label>Depart from Jetport (Local to Incident)</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                            <app-eis-dropdown id="ddAirJetportType" #ddAirJetportType
+                            [width]="100"
+                            [selectedDropdownData]="this.airJetportTypeDropdownData"
+                            [dropdownData]="this.incidentSelectorService.resourceJetportTypeData"></app-eis-dropdown>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="frmlbl"><label>Air Travel To Dispatch</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                            <input type="checkbox" formControlName="airTravelDispatch">
+                         </td>
+                      </tr>
+                      <tr>
+                          <td class="frmlbl"><label>Itinerary Received From Dispatch</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                            <input type="checkbox" formControlName="itineraryReceived">
+                         </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td>
+                    <table>
+                        <tr>
+                            <td class="frmlbl"><label>Airline</label></td>
+                            <td><label class="ast"></label></td>
+                            <td>
+                              <app-text-input 
+                              formControlName="airline" maxlength="50" 
+                              allowSpace="true" width="150"></app-text-input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label>Flight #</label></td>
+                            <td><label class="ast"></label></td>
+                            <td>
+                              <app-text-input 
+                              formControlName="flightNumber" 
+                              allowSpace="true" maxlength="20" width="150"></app-text-input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label>Flight Time</label></td>
+                            <td><label class="ast"></label></td>
+                            <td>
+                              <app-text-input formControlName="flightTime" maxlength="4" restrict2="0-9" width="80"></app-text-input>
+                            </td>
+                        </tr>
+                    </table>
+                  </td>
+                  <td>
+                    <table>
+                        <tr>
+                            <td class="frmlbl"><label>Hours To Airport</label></td>
+                            <td><label class="ast"></label></td>
+                            <td>
+                                <app-text-input 
+                                formControlName="hoursToAirport" maxlength="2" restrict2="0-9" width="80"></app-text-input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label>Minutes To Airport</label></td>
+                            <td><label class="ast"></label></td>
+                            <td>
+                                <app-text-input 
+                                formControlName="minutesToAirport" maxlength="2" restrict2="0-9" width="80"></app-text-input>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label>Leave ICP Time</label></td>
+                            <td><label class="ast"></label></td>
+                            <td>
+                                <app-text-input 
+                                formControlName="icpLeaveTime" maxlength="4" restrict2="0-9" width="80"></app-text-input>
+                            </td>
+                        </tr>
+
+                    </table>
+                  </td>
+                </tr>
+              </table>
+               <table>
+                <tr>
+                  <td class="frmlbl"><label>Special Instructions</label></td>
+                  <td><label class="ast"></label></td>
+                  <td>
+                    <textarea formControlName="airRemarks" style="width: 600px; height: 100px; resize: none;"></textarea>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div [class]="getActiveTab('airtravelquest')" style="margin-left: 20px;">
+              <table>
+                <tr>
+                  <td>
+                    <label><b>Check if answer is Yes</b></label>
+                    <!-- ngFor list of questions here -->
+                    <ul class="ul-list">
+                      <li *ngFor="let item of this.airTravelQuestions; let i = index;">
+                          <input type="checkbox" [checked]="item.questionValue"
+                          (change)="setQuestionValue(i, $event)">
+                           <label style="margin-left: 3px; font-size: 12px;">{{ item.incidentQuestionVo.questionVo.question }}</label>
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div [class]="getActiveTab('time')">
+              <div [class]="getTimeNonContractorDivClass()">
+                <!-- NonContractor -->
+                <table>
+                  <tr>
+                      <td class="frmlbl"><label>Employment Type</label></td>
+                      <td><label class="ast"></label></td>
+                      <td>
+                        <app-eis-dropdown id="ddEmploymentType"
+                         #ddEmploymentType
+                         [width]="100"
+                         [selectedDropdownData]="this.selectedEmploymentTypeData"
+                         [dropdownData]="this.employmentTypeData"></app-eis-dropdown>
+                      </td>
+                  </tr>
+                </table>
+                <table>
+                  <tr>
+                    <td style="width: 500px;">
+                      <div [class]="getTimeAdDivClass()">
+                        <!-- AD -->
+                        <table>
+                          <tr>
+                              <td class="frmlbl"><label>Employee Common Identifier</label></td>
+                              <td><label class="ast"></label></td>
+                              <td>
+                                <app-text-input 
+                                formControlName="eci" restrict2="0-9" width="150"></app-text-input>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="frmlbl"><label>Point of Hire</label></td>
+                              <td><label class="ast">*</label></td>
+                              <td>
+                                  <app-eis-dropdown id="ddPointOfHire" #ddPointOfHire
+                                    [width]="100"
+                                    [selectedDropdownData]="this.selectedPointOfHire"
+                                    [dropdownData]="this.incidentSelectorService.resourceUnitTypeData"></app-eis-dropdown>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="frmlbl"><label>Class</label></td>
+                              <td><label class="ast">*</label></td>
+                              <td>
+                                <app-eis-dropdown id="ddAdClass" #ddAdClass
+                                [selectedDropdownData]="this.selectedAdClass"
+                                (dropdownSelect)="this.onAdClassSelect($event)"
+                                [dropdownData]="this.rateClassRateData"
+                                    width="80"></app-eis-dropdown>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="frmlbl"><label>Current Rate</label></td>
+                              <td><label class="ast"></label></td>
+                              <td>
+                                <app-text-input 
+                                 formControlName="adRate" width="80"></app-text-input>
+                              </td>
+                          </tr>
+                        </table>
+                        <div style="margin-left: 20px;">
+                          <label><b>+ Employee Common Identifier Field 1234567 will be formatted as 0001234567</b></label>
+                          <br>
+                          <label><b>+ Employee Common Identifier Field will be required prior to generating an invoice</b></label>
+                        </div>
+                      </div>
+                      <div [class]="getTimeOtherDivClass()">
+                          <!-- OTHER -->
+                          <table>
+                            <tr>
+                                <td class="frmlbl"><label>Other Rate</label></td>
+                                <td><label class="ast"></label></td>
+                                <td>
+                                  <app-text-input 
+                                   formControlName="otherRate"
+                                   restrict2="0-9,." width="100"></app-text-input>
+                                </td>
+                            </tr>
+                          </table>
+                      </div>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td class="frmlbl"><label>Hiring Unit Name</label></td>
+                                <td><label class="ast"></label></td>
+                                <td>
+                                  <app-text-input 
+                                    formControlName="hiringUnitName" allowSpace="true" width="200"></app-text-input>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="frmlbl"><label>Hiring Unit Phone Number</label></td>
+                                <td><label class="ast"></label></td>
+                                <td>
+                                  <app-phone-input
+                                   formControlName="hiringUnitPhone"></app-phone-input>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="frmlbl"><label>Hiring Unit Fax Number</label></td>
+                                <td><label class="ast"></label></td>
+                                <td>
+                                  <app-phone-input
+                                   formControlName="hiringUnitFax"></app-phone-input>
+                                </td>
+                            </tr>
+                          </table>
+                    </td>
+                  </tr>
+                </table>
+                <br>
+                <table>
+                    <tr>
+                      <td class="frmlbl"><label>Remarks</label></td>
+                      <td><label class="ast"></label></td>
+                      <td>
+                        <textarea style="width: 600px; height: 80px; resize: none;"></textarea>
+                      </td>
+                    </tr>
+                </table>
+              </div>
+              <div [class]="getTimeContractorDivClass()">
+                  <!-- Contractor -->
+                  <div>
+                      <div class="w3-left" style="width: 480px;">
+                          <table>
+                            <tr>
+                              <td>
+                                  <table>
+                                      <tr>
+                                        <td class="frmlbl"><label>Contractor/Cooperator</label></td>
+                                        <td><label class="ast"></label></td>
+                                        <td>
+                                          <app-eis-dropdown id="ddContractor" #ddContractor width="200"
+                                          (dropdownSelect)="this.contractorSelectEvent($event)"
+                                          [selectedDropdownData]="this.selectedContractor"
+                                          [dropdownData]="this.contractorData"></app-eis-dropdown>
+                                          <button class="w3-small ml-10" style="height: 20px;width: 50px;"
+                                            (click)="this.openContractorWindow()">+</button>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td class="frmlbl"><label>Contract/Agreement #</label></td>
+                                        <td><label class="ast"></label></td>
+                                        <td>
+                                          <app-eis-dropdown id="ddAgreement" #ddAgreement width="200"
+                                          [selectedDropdownData]="this.selectedAgreement"
+                                            [dropdownData]="this.agreementData"></app-eis-dropdown>
+                                          <button class="w3-small ml-10" style="height: 20px;width: 50px;"
+                                            (click)="this.openAgreementWindow()">+</button>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                          <td class="frmlbl"><label>Unique Name or VIN</label></td>
+                                          <td><label class="ast">*</label></td>
+                                          <td>
+                                              <app-text-input formControlName="uniqueName"
+                                                width="250" maxlength="90" allowSpace="true">
+                                              </app-text-input>
+                                          </td>
+                                      </tr>  
+                                      <tr>
+                                          <td class="frmlbl"><label>Description 1</label></td>
+                                          <td><label class="ast"></label></td>
+                                          <td>
+                                              <app-text-input formControlName="desc1" 
+                                                width="250" maxlength="90" allowSpace="true">
+                                              </app-text-input>
+                                          </td>
+                                      </tr>  
+                                      <tr>
+                                          <td class="frmlbl"><label>Description 2</label></td>
+                                          <td><label class="ast"></label></td>
+                                          <td>
+                                              <app-text-input  formControlName="desc2"
+                                                width="250" maxlength="90" allowSpace="true">
+                                              </app-text-input>
+                                          </td>
+                                      </tr>  
+                                      <tr>
+                                          <td class="frmlbl"><label>Hired Date</label></td>
+                                          <td><label class="ast"></label></td>
+                                          <td>
+                                            <app-eis-datepicker #dtHiredDate
+                                              formControlName="hiredDate"></app-eis-datepicker>
+                                          </td>
+                                      </tr>  
+                                      <tr>
+                                          <td class="frmlbl"><label>Hired Time</label></td>
+                                          <td><label class="ast"></label></td>
+                                          <td>
+                                            <app-text-input  formControlName="hiredTime" width="80" restrict2="0-9"></app-text-input>
+                                          </td>
+                                      </tr>  
+                                      <tr>
+                                          <td class="frmlbl"><label>Point of Hire</label></td>
+                                          <td><label class="ast"></label></td>
+                                          <td>
+                                              <app-text-input  formControlName="pointOfHire"
+                                                width="250" maxlength="30" allowSpace="true">
+                                              </app-text-input>
+                                           </td>
+                                      </tr>  
+                                      <tr>
+                                          <td class="frmlbl"><label>Gov't Operator</label></td>
+                                          <td><label class="ast"></label></td>
+                                          <td>
+                                            <input type="checkbox"  formControlName="govOperator">
+                                          </td>
+                                      </tr>  
+                                      <tr>
+                                          <td class="frmlbl"><label>Gov't Supplies</label></td>
+                                          <td><label class="ast"></label></td>
+                                          <td>
+                                            <input type="checkbox"  formControlName="govSupplies">
+                                          </td>
+                                      </tr>  
+                                      <tr>
+                                          <td class="frmlbl"><label>Withdrawn</label></td>
+                                          <td><label class="ast"></label></td>
+                                          <td>
+                                            <input type="checkbox"  formControlName="govWithdrawn">
+                                          </td>
+                                      </tr>  
+                                      <tr>
+                                          <td class="frmlbl"><label>OF-286 Remarks</label></td>
+                                          <td><label class="ast"></label></td>
+                                          <td>
+                                              <textarea style="width: 250px; height: 60px; resize: none;"
+                                              formControlName="of286Remarks"
+                                              maxlength="50"></textarea>
+                                          </td>
+                                      </tr>
+                                   </table>
+                              </td>
+                              <td>
+                                <!-- column 2 -->
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+                          <div class="w3-left" style="width: 520px;height: 300px;margin-top: 10px;border: 1px solid darkgray;">
+                              <app-eis-grid #gridRates
+                                [floatingFilter]="false"
+                                [columnDefs]="this.gridRatesColumnDefs" 
+                                (rowSelectEvent)="this.onSelectContractorRate($event)"
+                                [rowData]="ratesList">
+                              </app-eis-grid>
+                              <div [class]="getContractorRateBtnDiv()">
+                                  <div class="dv-action-bar w3-small">
+                                      <button (click)="this.openContractorRateWindow('add')" title="Click to add a new Contractor Rate">Add</button>
+                                      <button (click)="this.openContractorRateWindow('edit')"  title="Click to edit the selected Contractor Rate">Edit</button>
+                                      <button (click)="this.deleteContractorRate()" title="Click to delete the seleceted Contractor Rate">Delete</button>
+                                  </div>
+                              </div>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+            <div [class]="getActiveTab('cost')">
+              <table>
+                <tr>
+                  <td style="width: 350px;">
+                    <table>
+                      <tr>
+                          <td class="frmlbl"><label>Payment Agency</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                              <app-eis-dropdown id="ddPaymentAgencyType" #ddPaymentAgencyType
+                              [width]="100"
+                              [selectedDropdownData]="this.selectedPaymentAgency"
+                              [dropdownData]="this.incidentSelectorService.resourceAgencyTypeData"></app-eis-dropdown>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="frmlbl"><label>Assign Date</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                            <app-eis-datepicker id="dtAssignDate" #dtAssignDate
+                              formControlName="assignDate"></app-eis-datepicker>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="frmlbl"><label>Accrual Code</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                            <app-eis-dropdown id="ddAccrualCodeType" #ddAccrualCodeType
+                            [width]="100"
+                            [selectedDropdownData]="this.selectedAccrualCode"
+                            [dropdownData]="this.incidentSelectorService.resourceAccrualCodeTypeData"></app-eis-dropdown>
+                        </td>
+                      </tr>
+                      <tr>
+                          <td class="frmlbl"><label>Lock Accrual Code</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                            <input type="checkbox" formControlName="accrualLocked">
+                          </td>
+                      </tr>
+                  </table>
+                  </td>
+                  <td style="width: 200px;">
+                      <table>
+                        <tr>
+                            <td class="frmlbl"><label>Use Actuals Only</label></td>
+                            <td><label class="ast"></label></td>
+                            <td>
+                              <input type="checkbox" formControlName="actualsOnly">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="frmlbl"><label>Generate Costs</label></td>
+                            <td><label class="ast"></label></td>
+                            <td>
+                              <input type="checkbox" formControlName="generateCosts">
+                            </td>
+                        </tr>
+                    </table>
+                  </td>
+                  <td style="width: 250px;">
+                    <table>
+                      <tr>
+                          <td class="frmlbl"><label>Other 1</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                            <app-text-input formControlName="costOther1"
+                             maxlength="15" allowSpace="true" width="150"></app-text-input>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="frmlbl"><label>Other 3</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                            <app-text-input formControlName="costOther2"
+                             maxlength="15" allowSpace="true" width="150"></app-text-input>
+                            </td>
+                      </tr>
+                      <tr>
+                          <td class="frmlbl"><label>Other 2</label></td>
+                          <td><label class="ast"></label></td>
+                          <td>
+                            <app-text-input formControlName="costOther3"
+                             maxlength="15" allowSpace="true" width="150"></app-text-input>
+                            </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <table>
+                  <tr>
+                    <td class="frmlbl"><label>Cost Remarks</label></td>
+                    <td><label class="ast"></label></td>
+                    <td>
+                      <textarea formControlName="costRemarks" style="width: 600px; height: 80px; resize: none;"></textarea>
+                    </td>
+                  </tr>
+              </table>
+            </div>
+        </form>
+	</div>
+
+</div>
+<app-prompt-modal id="promptModalResForm" #promptModalResForm (promptActionEvent)="this.promptActionResult($event)"></app-prompt-modal>
+<app-qual-window id="qualWindow" #qualWindow (addQualEvent)="this.addQualEvent($event)"></app-qual-window>
+<app-rest-overnight-window id="restWindow" #restWindow (addRestOvernightEvent)="this.addRestOvernightEvent($event)"></app-rest-overnight-window>
+<app-contractor-window id="contractorWindow" #contractorWindow
+    (saveContractorEvent)="this.saveContractorEvent($event)"></app-contractor-window>
+<app-agreement-window id="agreementWindow" #agreementWindow
+    (saveAgreementEvent)="this.saveAgreementEvent($event)"></app-agreement-window>
+<app-contractor-rate-window id="contractorRateWindow" #contractorRateWindow
+    (saveRateEvent)="this.saveRateEvent($event)"
+    ></app-contractor-rate-window>

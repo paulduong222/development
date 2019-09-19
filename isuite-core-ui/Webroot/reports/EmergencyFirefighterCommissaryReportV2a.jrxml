@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EmergencyFirefighterCommissaryReportV2a" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="01587954-303f-4ebe-9f97-0335464b65b7">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="420"/>
+	<property name="ireport.y" value="509"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\workspace\\isuite-core\\Webroot\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="dataSourceSubReport" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="incidentLocation" class="java.lang.String"/>
+	<field name="incidentName" class="java.lang.String"/>
+	<field name="incidentNumber" class="java.lang.String"/>
+	<field name="incidentState" class="java.lang.String"/>
+	<field name="identificationNumber" class="java.lang.String"/>
+	<field name="officialNumber" class="java.lang.String"/>
+	<field name="personDetail" class="java.lang.Object"/>
+	<field name="unitCode" class="java.lang.String"/>
+	<field name="reportType" class="java.lang.String"/>
+	<field name="startDate" class="java.util.Date"/>
+	<field name="endDate" class="java.util.Date"/>
+	<field name="reportTypeHeader" class="java.lang.String"/>
+	<field name="requestNumber" class="java.lang.String"/>
+	<field name="casualEmployee" class="java.lang.String"/>
+	<field name="otherEmployee" class="java.lang.String"/>
+	<field name="regularGovEmployee" class="java.lang.String"/>
+	<field name="hiringUnitName" class="java.lang.String"/>
+	<field name="hiringPhone" class="java.lang.String"/>
+	<field name="hiringFax" class="java.lang.String"/>
+	<field name="pointOfHire" class="java.lang.String"/>
+	<variable name="totalAmount" class="java.lang.Double" incrementType="Column" calculation="Sum"/>
+	<background>
+		<band height="572">
+			<line>
+				<reportElement uuid="e333919a-d943-4910-addd-eff3ab1b6123" x="1" y="98" width="751" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="45b6316d-9852-4eae-bfa6-68250824194d" x="54" y="99" width="1" height="450"/>
+			</line>
+			<line>
+				<reportElement uuid="45b6316d-9852-4eae-bfa6-68250824194d" x="121" y="99" width="1" height="450"/>
+			</line>
+			<line>
+				<reportElement uuid="45b6316d-9852-4eae-bfa6-68250824194d" x="615" y="99" width="1" height="450"/>
+			</line>
+			<line>
+				<reportElement uuid="45b6316d-9852-4eae-bfa6-68250824194d" x="451" y="99" width="1" height="450"/>
+			</line>
+			<line>
+				<reportElement uuid="45b6316d-9852-4eae-bfa6-68250824194d" x="540" y="99" width="1" height="450"/>
+			</line>
+			<line>
+				<reportElement uuid="45b6316d-9852-4eae-bfa6-68250824194d" x="0" y="16" width="1" height="554"/>
+			</line>
+			<line>
+				<reportElement uuid="45b6316d-9852-4eae-bfa6-68250824194d" x="751" y="16" width="1" height="554"/>
+			</line>
+			<line>
+				<reportElement uuid="e333919a-d943-4910-addd-eff3ab1b6123" x="1" y="115" width="751" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="f162fa26-d936-4448-886c-078613c81e21" x="0" y="549" width="751" height="1"/>
+			</line>
+			<rectangle>
+				<reportElement uuid="e591e89a-3ff2-4fe0-ae4e-99638a285c01" x="366" y="50" width="10" height="10"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="e591e89a-3ff2-4fe0-ae4e-99638a285c01" x="286" y="50" width="10" height="10"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="e591e89a-3ff2-4fe0-ae4e-99638a285c01" x="456" y="50" width="10" height="10"/>
+			</rectangle>
+			<line>
+				<reportElement uuid="45b6316d-9852-4eae-bfa6-68250824194d" x="190" y="100" width="1" height="450"/>
+			</line>
+			<line>
+				<reportElement uuid="45b6316d-9852-4eae-bfa6-68250824194d" x="648" y="549" width="1" height="21"/>
+			</line>
+		</band>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="114" splitType="Stretch">
+			<elementGroup>
+				<line>
+					<reportElement uuid="22ae7ee2-09d9-4f10-8b7e-03a34360f49d" x="458" y="8" width="5" height="1"/>
+				</line>
+				<staticText>
+					<reportElement uuid="ed997aed-5eea-4e87-9008-a3bb20e7ba8f" x="1" y="16" width="515" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[INCIDENT ADJUSTMENTS REPORT]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="fc17b71e-997e-4d18-b33a-d0bb10d014d9" x="5" y="28" width="511" height="15"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[(For use with OF-288 Block 18 Commissary Record)]]></text>
+				</staticText>
+				<textField evaluationTime="Report" pattern="MM/dd/yyyy" isBlankWhenNull="true">
+					<reportElement uuid="7fa3389e-430e-47db-b551-1b10de269c8f" x="375" y="0" width="80" height="15"/>
+					<textElement textAlignment="Right">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{startDate}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Report" pattern="MM/dd/yyyy" isBlankWhenNull="true">
+					<reportElement uuid="404c90f2-45da-4253-b50c-5aef943ad920" x="466" y="0" width="80" height="15"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{endDate}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="dc568ef0-c03b-4c3f-b22d-34841a91ba5a" x="155" y="0" width="191" height="15"/>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{reportTypeHeader}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="f62259e8-b4e1-4a2e-bdd9-29ef3d98f44a" x="547" y="1" width="199" height="15"/>
+					<textElement textAlignment="Right">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{identificationNumber}]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+			<staticText>
+				<reportElement uuid="43020780-8dec-4372-9ed7-8bfd4818c766" x="519" y="17" width="192" height="11"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[1. Hired At (e.g., ID-BOF)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="831c4ba5-b179-42d8-a3e1-16eed3cb955a" key="" x="5" y="70" width="279" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personDetail}.getFirstName() +"  " + $F{personDetail}.getLastName()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="95031653-fbe1-4591-96d8-880ba016c27c" x="2" y="62" width="139" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[5. Name (First, Middle, Last)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="25805885-6db4-4704-aa28-f0bdd6accbd3" x="2" y="41" width="205" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[2. Employee Common Identifier]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2f9341a6-8716-48d6-9ae4-fdefb8931617" x="5" y="49" width="249" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personDetail}.getSSN()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f9c627de-f61e-4991-a045-ff56c154c71e" x="603" y="63" width="143" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[7. Hiring Unit Fax Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b1992137-6423-4bd9-b73e-ff99d18d1629" x="1" y="86" width="750" height="15"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Block 18 Commissary and Travel (From OF-288)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2940555f-0df6-46a8-9b45-0c79b1ab3f0c" x="1" y="101" width="52" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[18a. Month]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0d8bd567-78f7-4fac-9a02-8fa683ed49d5" x="125" y="101" width="70" height="13"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[18c. Category]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="0c8d5548-3483-418f-ad90-39e789b08ee1" x="5" y="1" width="116" height="15"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{requestNumber}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="5b081fda-8752-43ef-94ad-f3302a338ac5" x="0" y="40" width="751" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="a0999085-f649-4c6a-bb34-9860c8a5ec9d" x="0" y="16" width="751" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="66e4f21e-c139-4324-90e1-87bc7ed438b3" x="517" y="17" width="1" height="23"/>
+			</line>
+			<line>
+				<reportElement uuid="66e4f21e-c139-4324-90e1-87bc7ed438b3" x="275" y="40" width="1" height="23"/>
+			</line>
+			<staticText>
+				<reportElement uuid="25805885-6db4-4704-aa28-f0bdd6accbd3" x="278" y="41" width="205" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[3. Type of Employment (X One)]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="66e4f21e-c139-4324-90e1-87bc7ed438b3" x="517" y="40" width="1" height="23"/>
+			</line>
+			<staticText>
+				<reportElement uuid="25805885-6db4-4704-aa28-f0bdd6accbd3" x="519" y="41" width="205" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[4. Hiring Unit Name (e.g., Ranger District)]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="5b081fda-8752-43ef-94ad-f3302a338ac5" x="1" y="62" width="751" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="5b081fda-8752-43ef-94ad-f3302a338ac5" x="1" y="85" width="751" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="66e4f21e-c139-4324-90e1-87bc7ed438b3" x="435" y="63" width="1" height="23"/>
+			</line>
+			<line>
+				<reportElement uuid="66e4f21e-c139-4324-90e1-87bc7ed438b3" x="601" y="63" width="1" height="23"/>
+			</line>
+			<staticText>
+				<reportElement uuid="f9c627de-f61e-4991-a045-ff56c154c71e" x="437" y="63" width="143" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[6. Hiring Unit Phone Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2940555f-0df6-46a8-9b45-0c79b1ab3f0c" x="59" y="101" width="52" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[18b. Day]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2940555f-0df6-46a8-9b45-0c79b1ab3f0c" x="453" y="101" width="94" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[18d. Addition]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2940555f-0df6-46a8-9b45-0c79b1ab3f0c" x="538" y="101" width="83" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[18e. Deduction]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2940555f-0df6-46a8-9b45-0c79b1ab3f0c" x="625" y="101" width="123" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[18f. FireCode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0d8bd567-78f7-4fac-9a02-8fa683ed49d5" x="195" y="101" width="256" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d92ae514-8502-40a0-8f6b-4ec11caa0977" x="301" y="50" width="54" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Casual]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d92ae514-8502-40a0-8f6b-4ec11caa0977" x="381" y="50" width="54" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Federal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d92ae514-8502-40a0-8f6b-4ec11caa0977" x="472" y="50" width="38" height="12"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Other]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="0f3a2e5c-1797-4f8e-8a75-37070e29a25e" x="285" y="51" width="10" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{casualEmployee}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="1c8c1b50-ae39-49cc-a0cd-244c266f3aff" x="457" y="51" width="10" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{otherEmployee}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="0ce125b2-b659-4892-a23c-33224efb23c0" x="366" y="51" width="10" height="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{regularGovEmployee}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2f9341a6-8716-48d6-9ae4-fdefb8931617" x="519" y="28" width="192" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pointOfHire}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2f9341a6-8716-48d6-9ae4-fdefb8931617" x="522" y="50" width="205" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hiringUnitName}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2f9341a6-8716-48d6-9ae4-fdefb8931617" x="440" y="73" width="143" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hiringPhone}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2f9341a6-8716-48d6-9ae4-fdefb8931617" x="609" y="73" width="136" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hiringFax}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="292" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="a0c57b7c-9820-494b-817c-fdb98bd888a1" x="0" y="0" width="752" height="292"/>
+				<dataSourceExpression><![CDATA[$F{dataSourceSubReport}]]></dataSourceExpression>
+				<returnValue subreportVariable="AMOUNT" toVariable="totalAmount"/>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "EmergencyFirefighterCommissaryReport_subreport12a.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="61f5ada8-5361-414b-9257-c2aff176ada6" x="497" y="1" width="138" height="15"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField evaluationTime="Report" pattern="¤ #,##0.00;(¤ #,##0.00)" isBlankWhenNull="true">
+				<reportElement uuid="a0448263-724c-490e-a856-ab00ef6d7d27" x="642" y="1" width="106" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{totalAmount}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="e245cb87-6c03-402d-81d0-52221eaf1693" x="0" y="15" width="752" height="1"/>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
